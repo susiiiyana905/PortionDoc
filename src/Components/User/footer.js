@@ -39,7 +39,7 @@ class Footer extends Component{
                 </div>
                 </div>
                 {/* <hr /> */}
-                <div className="container-fluid" >
+              
 
                 <div className="text"
                 style={{ backgroundColor: "#359B41" }}>
@@ -47,7 +47,7 @@ class Footer extends Component{
                           </div>
                           </div>
             </div>
-            </div>
+          
         )
     }
 }

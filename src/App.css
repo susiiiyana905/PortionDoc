@@ -70,22 +70,38 @@
   background-color: #4CBA19;
 }
  
-/* .nav{
-  font-size: 40px;
-} */
+.top{
+  background-color: #B1DF01;
+}
+
+.t1{
+  color: #ffffff;
+  text-align: center;
+}
+
+.t3{
+  text-align: center;
+}
+
+.t4{
+  font-size: 28px;
+  color: black
+  ;
+}
 
 
 .wcard{
   background-color: #d2d3d5;
 }
+/* mid content */
 .bt{
     padding: 30px 70px;
     border: none;
-    background-color:dimgray;
+    background-color:white;
     font-family: sans-serif;
     font-weight: bold;
     font-size: 16px;
-    color: #ffffff;
+    color: black;
     border-radius: 50px;
     width: fit-content;
     
@@ -94,18 +110,15 @@
 }
  
 .btn{
-    padding: 10px 70px;
+    padding: 30px 70px;
     border: none;
     background-color: chocolate;
     font-family: sans-serif;
     font-weight: bold;
     font-size: 16px;
     color: #ffffff;
-    border-radius: 50px;
+    border-radius: 10px;
     width: fit-content;
-    /* float: left; */
-
-
 }
 
 .card-1{
@@ -161,3 +174,45 @@
 
 }
 
+/* meals CSS */
+.m-1{
+  font-size: 30px;
+  text-align: center;
+}
+.m-2{
+  font-size: 20px;
+  text-align: center;
+}
+
+.meal-btn{
+  padding: 10px 50px;
+  border-radius: 10px;
+}
+
+/* review */
+.r{
+  font-size: 30px;
+  font-weight: bold;
+  color: #4CBA19;
+}
+.r-1{
+  background-color:darkgray;
+  
+}
+
+.e-1{
+  font-size: 25px;
+  font-weight: bold;
+  color: #4CBA19;
+}
+
+.e-2{
+  font-size: 25px;
+  color:black;
+  text-align: center;
+}
+
+.btn-email{
+  border-radius: 0%;
+  height: 40px;
+}
