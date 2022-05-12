@@ -1,7 +1,7 @@
 import { Component } from "react";
 import {Route,Routes} from "react-router-dom";
-import Home from "./home";
-import Login from "./login";
+import Home from "./User/home";
+import Login from "./User/login";
 
 class Mid extends Component{
     render(){

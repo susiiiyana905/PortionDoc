@@ -1,7 +1,6 @@
 import { Component } from "react";
-import Footer from "./footer";
-import Header from "./header";
-
+import Header from "../header";
+import Footer from "../footer";
 
 class Home extends Component{
     render(){
@@ -11,14 +10,14 @@ class Home extends Component{
                 {/* ------------------top content-------------------------------------------------------------------------- */}
                 <div className="container-fluid">
                 <div className="card  top" >
-                <div className="container my-3 py-3">
+                {/* <div className="container my-3 py-3"> */}
                 <div className="row">
-                    <div className="col-md-6 d-flex justify-content mx-auto product">
+                    {/* <div className="col-md-6 d-flex justify-content mx-auto product"> */}
                     <div className="card-body">
                         <h4 className="card-title my-1 t-2">
                             <p className="t1">
                                 Discover Food
-                                <p className="t2">Our Best Healthy & </p>
+                                <p className="t2">Our <span className="b">Best</span> Healthy & </p>
                                 <p className="t3">Tasty</p>
                                 <p className="t4">Get the best recipes at the best price.</p>
                             </p>
@@ -29,9 +28,9 @@ class Home extends Component{
                             </p> */}
                              
                         </div>
-                    </div>
+                    {/* </div> */}
                     <div className="col-md-6 d-flex flex-column justify-content-center">
-                    <img src = {"images/t1.png"} alt ="" style={{height: "400px"}}></img> 
+                    <img src = {"images/t1.png"} alt ="" style={{height: "500px"}}></img> 
                         <hr/>
                        
                     </div>
@@ -40,7 +39,7 @@ class Home extends Component{
                 </div>
     
               
-                </div>
+                {/* </div> */}
                 </div>
                 </div>
                 <br/>
@@ -76,25 +75,15 @@ class Home extends Component{
                         Rs.455 per meal.</p>
                        
                         </p></h4>
-                       
-
                         <button className="btn">
                                         Get Started
                                     </button>   
-
-                    </div>
-                    
+                    </div>   
                 </div>-
-    
-              
                 </div>
                 </div>
                 </div>
                 <br/>
-
-
-        
-
 
                 {/*-----------------------------content-3----------------------------------------*/}
                 <div className="container-fluid">
@@ -153,46 +142,50 @@ class Home extends Component{
                 <br/>
 
                 {/*--------------------------facility--------------------------------------------------------*/}
-                <div className="col-md-6 d-flex justify-content mx-auto ">
-                <div className="row row-cols-1 row-cols-md-2">
-                    <div className="col mb-4">
-                        <div className="card">
-                        <img src="images/organic.png" className="card-img-top" alt="..."></img>
+                
+                {/* <div className="col-md-6 d-flex justify-content mx-auto "> */}
+                <div className="container-fluid">
+                <div class="row row-cols-1 row-cols-md-4">
+                <div class="col mb-4">
+                    <div class="card">
+                    <img src="images/organic.png" className="card-img-top" style={{height:"200px", width:"400px"}} alt="..."></img>
                         <div className="card-body">
                             <h5 className="card-title">Organic Farm </h5>
-                            <p className="card-text">Product Fresh Veggies</p>
-                        </div>
-                        </div>
+                            <p className="card-text">Product Fresh Veggies</p></div>
                     </div>
-                    <div className="col mb-4">
-                        <div className="card">
-                        <img src="images/delivery.png" className="card-img-top" alt="..."></img>
+                </div>
+
+                <div class="col mb-4">
+                    <div class="card">
+                    <img src="images/delivery.png" className="card-img-top" style={{height:"200px", width:"400px"}} alt="..."></img>
                         <div className="card-body">
-                            <h5 className="card-title">24 Hours Delivert</h5>
+                            <h5 className="card-title">24 Hours Delivery</h5>
                             <p className="card-text">Fast Delivery Order</p>
                         </div>
-                        </div>
                     </div>
-                    <div className="col mb-4">
-                        <div className="card">
-                        <img src="images/promotion.png" className="card-img-top" alt="..."></img>
+                </div>
+               
+                <div class="col mb-4">
+                    <div class="card">
+                    <img src="images/promotion.png" className="card-img-top" style={{height:"200px", width:"400px"}} alt="..."></img>
                         <div className="card-body">
                             <h5 className="card-title">Promotion Week</h5>
                             <p className="card-text">Promotion and Discount</p>
                         </div>
-                        </div>
                     </div>
-                    <div className="col mb-4">
-                        <div className="card">
-                        <img src="images/quality.png" className="card-img-top" alt="..."></img>
+                </div>
+                <div class="col mb-4">
+                    <div class="card">
+                    <img src="images/quality.png" className="card-img-top" style={{height:"200px", width:"400px"}} alt="..."></img>
                         <div className="card-body">
                             <h5 className="card-title">Trusted & Quality</h5>
                             <p className="card-text">Best Quality Restaurant</p>
                         </div>
-                        </div>
                     </div>
-                    </div>
-                    </div>
+                </div>
+                </div>
+                </div>
+                    {/* </div> */}
                 <br/>
                 {/*------------------------------------------------Meals-----------------------------------------------------------------*/}
                 <div className="container-fluid">
