@@ -4,11 +4,6 @@ class Login extends Component{
     render(){
         return(
             <div>
-                <nav class="navbar navbar-expand-lg ">
-                 <i class="fa-solid fa-envelope" style={{height: "40px"}}>portiondoc@gmail.com</i>
-                 <i class="fa-solid fa-phone" style={{height: "40px", float:"right"}} >+977 983142567</i>
-                 </nav>
-
                  <div className="col-md-6 d-flex justify-content-center mx-auto ">
                  <form>
                      
@@ -31,7 +26,7 @@ class Login extends Component{
                         </div>
 
                         <div className="form-group">
-                            <button type="Submit" className="btn btn-light"  style={{width:'365px'}}>Sign In</button>
+                            <button type="Submit" className="btn btn-light"  style={{width:'100px'}}>Login</button>
                         </div>
                     </form>
                     </div>
