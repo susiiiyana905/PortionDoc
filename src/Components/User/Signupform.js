@@ -38,7 +38,7 @@ const SignupForm = () => {
       </label>
     </div>
   </div>
-  <button type="submit" class="btn btn-primary"style = {{"background-color":'orange'}}>Sign in</button>
+  <button type="submit" class="btn btn-primary"style = {{"background-color":'orange',"width":'290px',"textAlign":"center"}} >Create an account</button>
 </form>
 </div>
         </>
