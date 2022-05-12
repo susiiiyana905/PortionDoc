@@ -1,9 +1,8 @@
 import { Component } from "react";
-<<<<<<< HEAD
+
 import Header from "../header";
 import Footer from "../footer";
-=======
->>>>>>> e7ceb894ff74b74fe4411bce2b7500f1c853b34e
+
 
 class Home extends Component{
     render(){
