@@ -1,12 +1,10 @@
 import { Component } from "react";
-import Header from "../header";
-import Footer from "../footer";
 
 class Home extends Component{
     render(){
         return(
             <div className="container-fluid">
-                <Header></Header>
+                
                 {/* ------------------top content-------------------------------------------------------------------------- */}
                 <div className="container-fluid">
                 <div className="card  top" >
@@ -312,7 +310,7 @@ class Home extends Component{
     
                     </div>
 
-                <Footer></Footer>
+                
                 </div>
         )
     }
