@@ -66,27 +66,75 @@
     height: fit-content;
 }
 
+/* nav */
 .navbar-expand-lg{
   background-color: #4CBA19;
 }
- 
-/* .nav{
-  font-size: 40px;
-} */
 
-
-.wcard{
-  background-color: #d2d3d5;
+.i-1{
+  font-size: 20px;
+  color: #ffffff;
 }
+
+  
+
+.nav-item{
+  text-align: center;
+  font-size: 30px;
+}
+
+.btn-sign{
+  background-color: #4CBA19;
+  font-size: 30px;
+  border-radius: 20px;
+  color: white;
+  border-color: #4CBA19;
+  width: fit-content;
+  
+
+}
+/* Top */
+ 
+.top{
+  background-color: #B1DF01;
+}
+
+.t1{
+  color: #ffffff;
+  text-align: center;
+  padding: 30px 70px;
+  font-size: 80px;
+}
+
+.t3{
+  text-align: center;
+}
+
+.t4{
+  font-size: 30px;
+  color: black
+  ;
+}
+
+.b{
+  color: black;
+}
+
+/* mid-content */
+.wcard{
+  background-color: #FAFAFA;
+  border: none;
+}
+
 .bt{
     padding: 30px 70px;
     border: none;
-    background-color:dimgray;
+    background-color:white;
     font-family: sans-serif;
     font-weight: bold;
-    font-size: 16px;
-    color: #ffffff;
-    border-radius: 50px;
+    font-size: 30px;
+    color: black;
+    border-radius: 20px;
     width: fit-content;
     
     
@@ -94,20 +142,17 @@
 }
  
 .btn{
-    padding: 10px 70px;
+    padding: 30px 70px;
     border: none;
-    background-color: chocolate;
+    background-color: #FF7800;
     font-family: sans-serif;
     font-weight: bold;
     font-size: 16px;
     color: #ffffff;
-    border-radius: 50px;
+    border-radius: 10px;
     width: fit-content;
-    /* float: left; */
-
-
 }
-
+ /* content-3 */
 .card-1{
   background-color:#4CBA19;
   /* height: 1000px; */
@@ -136,7 +181,7 @@
 .btn1{
   padding: 30px 70px ;
   border: none;
-  background-color: chocolate;
+  background-color: #FF7800;
   font-family: sans-serif;
   font-weight: bold;
   font-size: 16px;
@@ -150,7 +195,7 @@
 .btn-2{
   padding: 30px 70px ;
   border: none;
-  background-color: chocolate;
+  background-color: #FF7800;
   font-family: sans-serif;
   font-weight: bold;
   font-size: 16px;
@@ -161,3 +206,58 @@
 
 }
 
+/* meals CSS */
+.m-1{
+  font-size: 30px;
+  text-align: center;
+}
+.m-2{
+  font-size: 20px;
+  text-align: center;
+}
+
+.meal-btn{
+  padding: 10px 50px;
+  border-radius: 10px;
+}
+
+/* review */
+.r{
+  font-size: 30px;
+  font-weight: bold;
+  color: #4CBA19;
+}
+.r-1{
+  background-color:darkgray;
+  
+}
+
+.e-1{
+  font-size: 25px;
+  font-weight: bold;
+  color: #4CBA19;
+}
+
+.e-2{
+  font-size: 25px;
+  color:black;
+  text-align: center;
+}
+
+.btn-email{
+  border-radius: 0%;
+  
+}
+
+
+.sign-btn{
+  padding: 30px, 70px;
+  width:fit-content;
+  /* font-size: 20px; */
+  height: 20px;
+
+}
+
+.log{
+  height: 80;
+}

@@ -1,54 +1,69 @@
 import { Component } from "react";
-import Footer from "./footer";
-import Header from "./header";
+
+import Header from "../header";
+import Footer from "../footer";
 
 
 class Home extends Component{
     render(){
         return(
+            <>
+            <Header></Header>
             <div className="container-fluid">
-                <Header></Header>
-                {/* <div className="conatiner-fluid d-flex justify-content mx-auto"> */}
-                <div className="col-md-6 d-flex justify-content mx-auto ">
-                <img src="images/h1.jpg"  alt="..." style={{height:"400px", width:"1000px"}}></img>
+                
+                {/* ------------------top content-------------------------------------------------------------------------- */}
+                <div className="container-fluid">
+                <div className="card  top" >
+                {/* <div className="container my-3 py-3"> */}
+                <div className="row">
+                    {/* <div className="col-md-6 d-flex justify-content mx-auto product"> */}
+                    <div className="card-body">
+                        <h4 className="card-title my-1 t-2">
+                            <p className="t1">
+                                Discover Food
+                                <p className="t2">Our <span className="b">Best</span> Healthy & </p>
+                                <p className="t3">Tasty</p>
+                                <p className="t4">Get the best recipes at the best price.</p>
+                            </p>
+                            </h4>
+                            {/* <p className="card-text txt-2">Make meals uniquely yours. <br/>
+                            Upgrade, double-up, add or swap protein on select meals.<br/>
+                            You're in control of your destiny.
+                            </p> */}
+                             
+                        </div>
+                    {/* </div> */}
+                    <div className="col-md-6 d-flex flex-column justify-content-center">
+                    <img src = {"images/t1.png"} alt ="" style={{height: "550px"}}></img> 
+                        <hr/>
+                       
+                    </div>
+                   
+                    
+                </div>
+    
+              
                 {/* </div> */}
                 </div>
-                <br/>
-                {/* ----------------- images carousel --------------------------------------- */}
-                {/* <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                    <img src="images/h2.jpg" alt="..." style={{height:"400px", width:"1500px"}}></img>
-                    </div>
-                    <div class="carousel-item">
-                    <img src="images/h1.jpg"  alt="..." style={{height:"400px", width:"1500px"}}></img>
-                    </div>
-                    <div class="carousel-item">
-                    <img src="images/h3.jpg"  alt="..." style={{height:"400px",width:"1500px"}}></img>
-                    </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-target="#carouselExampleIndicators" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-target="#carouselExampleIndicators" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </button>
-                </div> */}
+                <br/>
+                
+                {/* <div className="col-md-6 d-flex justify-content mx-auto ">
+                <img src="images/h1.jpg"  alt="..." style={{height:"400px", width:"1000px"}}></img>
+               
+                </div>
+                <br/> */}
 
               
                 {/* --------------------------midcontent--------------------------------------------- */}
               <div className="container-fluid">
               <div className="card wcard">
-              <button className="bt disable  py-4 my-4 mx-4  wbtn">
-                                       Why Potion Doc?
+              <div className="col-md-6 d-flex justify-content-center mx-auto ">
+              <button className="bt disable  wbtn">
+                                       Why Portion Doc?
                                     </button>   
+                    </div>
+             
                 <div className="container my-4 py-2">
                 <div className="row">
                     <div className="col-md-6 d-flex justify-content mx-auto product">
@@ -58,22 +73,17 @@ class Home extends Component{
                         {/* <h1 className="card-header"><p>Why Portion Doc?</p></h1> */}
                         <hr/>
                         <h4 className="my-4"><p class="card-text">No commitment whatsoever<br/>
-                        Skipping weeks or cancelling is super easy. <br/>
-                        Fresh and affordable<br/>
-                        Chef-created deliciousness from 
-                        Rs.455 per meal.
-                        </p></h4>
+                        Skipping weeks or cancelling is super easy. <br/> <br/> <br/>
+                        <p> Fresh and affordable<br/>
+                        Chef-created deliciousness from <br/>
+                        Rs.455 per meal.</p>
                        
-
+                        </p></h4>
                         <button className="btn">
                                         Get Started
                                     </button>   
-
-                    </div>
-                    
+                    </div>   
                 </div>-
-    
-              
                 </div>
                 </div>
                 </div>
@@ -111,7 +121,7 @@ class Home extends Component{
                     <div className="col-md-6 d-flex justify-content mx-auto product">
                     <div className="card-body">
                         <h4 className="card-title my-1 t-2"> Make It Yours </h4>
-                            <p class="card-text txt-2">Make meals uniquely yours. <br/>
+                            <p className="card-text txt-2">Make meals uniquely yours. <br/>
                             Upgrade, double-up, add or swap protein on select meals.<br/>
                             You're in control of your destiny.
                             </p>
@@ -136,29 +146,181 @@ class Home extends Component{
                 <br/>
 
                 {/*--------------------------facility--------------------------------------------------------*/}
+                
+                {/* <div className="col-md-6 d-flex justify-content mx-auto "> */}
                 <div className="container-fluid">
-                    <div className="card">
-                    <div className="container">
-                        <div className=" d-flex-column justify-content"> 
-                    <img src = {"images/organic.png"} alt ="" style={{height: "300px"}}></img> 
-                    <img src = {"images/delivery.png"} alt ="" style={{height: "300px"}}></img> 
+                <div class="row row-cols-1 row-cols-md-4">
+                <div class="col mb-4">
+                    <div class="card">
+                    <img src="images/organic.png" className="card-img-top" style={{height:"200px", width:"400px"}} alt="..."></img>
+                        <div className="card-body">
+                            <h5 className="card-title">Organic Farm </h5>
+                            <p className="card-text">Product Fresh Veggies</p></div>
                     </div>
-                   
-                   <div>
-                   <img src = {"images/promotion.png"} alt ="" style={{height: "300px"}}></img> 
-                    <img src = {"images/quality.png"} alt ="" style={{height: "300px"}}></img> 
-                   </div>
-
-    
-              
                 </div>
 
+                <div class="col mb-4">
+                    <div class="card">
+                    <img src="images/delivery.png" className="card-img-top" style={{height:"200px", width:"400px"}} alt="..."></img>
+                        <div className="card-body">
+                            <h5 className="card-title">24 Hours Delivery</h5>
+                            <p className="card-text">Fast Delivery Order</p>
+                        </div>
                     </div>
+                </div>
+               
+                <div class="col mb-4">
+                    <div class="card">
+                    <img src="images/promotion.png" className="card-img-top" style={{height:"200px", width:"400px"}} alt="..."></img>
+                        <div className="card-body">
+                            <h5 className="card-title">Promotion Week</h5>
+                            <p className="card-text">Promotion and Discount</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col mb-4">
+                    <div class="card">
+                    <img src="images/quality.png" className="card-img-top" style={{height:"200px", width:"400px"}} alt="..."></img>
+                        <div className="card-body">
+                            <h5 className="card-title">Trusted & Quality</h5>
+                            <p className="card-text">Best Quality Restaurant</p>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                </div>
+                    {/* </div> */}
+                <br/>
+                {/*------------------------------------------------Meals-----------------------------------------------------------------*/}
+                <div className="container-fluid">
+                <div className="card  card-1" >
+                <div className="container my-3 py-3">
+                <div className="row">
+                    <div className="col-md-6 d-flex justify-content-center mx-auto ">
+                      <p className="m-1">Over 25+ fresh recipes every week
+                      <p className="m-2">Easy meals designed by professional chefs and nutrionists</p>
+                      </p>
+                    </div>
+
+                    <div className="card-deck">
+                    <div className="card">
+                        <img src="images/m1.png" className="card-img-top" alt="..."></img>
+                        <div className="card-body">
+                        <h5 className="card-title">Healthy Oatmeal</h5>
+                        <p className="card-text">$15.30</p>
+                      
+                        </div>
+                    </div>
+                    <div className="card">
+                        <img src="images/m2.png" className="card-img-top" alt="..."></img>
+                        <div className="card-body">
+                        <h5 className="card-title">Chicken Galatine</h5>
+                        <p className="card-text">$16.00</p>
+                       
+                        </div>
+                    </div>
+                    <div className="card">
+                        <img src="images/m3.png" className="card-img-top" alt="..."></img>
+                        <div className="card-body">
+                        <h5 className="card-title">Tomato Cucumber</h5>
+                        <p className="card-text">$12.30</p>
+                        
+                        </div>
+                    </div>
+                    </div>    
+
+
+                    <div className="col-md-6 d-flex justify-content-center mx-auto ">
+                      <button className="btn meal-btn"> View Meals</button>
+                    </div>
+                </div>
+                </div>
+                </div>
                 </div>
                 <br/>
 
-                <Footer></Footer>
+         {/* ------------------------------------Reviews-------------------------------------------------- */}
+            <div className="container-fluid">
+                
+                    <div className="container my-3 py-3">
+                    <div className="row">
+                     <div className="col-md-6 d-flex justify-content-center mx-auto ">
+                        <p className="r">What Our Customer Has to Say</p>
+                        </div>
+
+                         <br/>
+            
+                        <div className="card-deck">
+                         <div className="card r-1">
+                            <div className="card-body">
+                            <h5 className="card-title">Italian Sausage and Roasted Tomato Cream</h5>
+                            <p className="card-text">This was a delicious and these meals make cooking healthy options for the family, so easy.<br/>
+                            A+ to home chef every time!<br/>
+                            -Madison J
+                            </p>
+                        
+                            </div>
+                            </div>                     
+                         <div className="card r-1">
+                            <div className="card-body">
+                            <h5 className="card-title">Italian Sausage and Roasted Tomato Cream</h5>
+                            <p className="card-text">This was a delicious and these meals make cooking healthy options for the family, so easy.<br/>
+                            A+ to home chef every time!<br/>
+                            -Madison J
+                            </p>
+                             </div>
+                            </div>
+                            <div className="card r-1">
+                                <div className="card-body">
+                                <h5 className="card-title">Italian Sausage and Roasted Tomato Cream</h5>
+                                <p className="card-text">This was a delicious and these meals make cooking healthy options for the family, so easy.<br/>
+                                A+ to home chef every time!<br/>
+                                -Madison J
+                                </p>
+                            
+                                </div>
+                            </div>  
+                            </div>
+                           
+                        </div>
+                        </div>
+        
+                        </div>
+                        <br/>
+            {/* ----------------------EMAIL---------------------------- */}
+            <div className="container-fluid">
+                
+                <div className="container my-3 py-3">
+                <div className="row">
+                 <div className="col-md-6 d-flex justify-content-center mx-auto ">
+                    <p className="e-1">Cook It. Love It. Tag It #PortionDocsPics
+                    <p className="e-2">Follow & Subscribe <br/>
+                    Get Updates</p>
+                    </p>
+        
+                    </div>   
+                    </div>
+                    <form>
+                    <div class="form-row">
+                    <div className="col-md-6 d-flex justify-content-center mx-auto ">
+                        <input type="text" class="form-control" placeholder="Email Address"></input>
+                        <button className="btn btn-email"> Go </button>
+                        </div>
+                    </div>
+                    </form>
+                    </div>
+
+                  
+
+                    
+    
+                    </div>
+
+                
                 </div>
+                <Footer></Footer>
+                
+                </>
         )
     }
 }

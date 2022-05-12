@@ -1,6 +1,8 @@
 import { Component } from "react";
 import {Route,Routes} from "react-router-dom";
-import Home from "./home";
+import Home from "./User/home";
+import Login from "./User/login";
+import SignupForm from "./User/Signupform";
 
 class Mid extends Component{
     render(){
@@ -8,6 +10,9 @@ class Mid extends Component{
             <div>
                 <Routes>
                     <Route path="/" element = {<Home></Home>}></Route>
+                    <Route path="/signup" element = {<SignupForm></SignupForm>} />
+                    <Route path = "/login" element = {<Login></Login>}></Route>
+
                 </Routes>
             </div>
         )
