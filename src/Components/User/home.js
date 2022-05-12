@@ -1,8 +1,15 @@
 import { Component } from "react";
+<<<<<<< HEAD
+import Header from "../header";
+import Footer from "../footer";
+=======
+>>>>>>> e7ceb894ff74b74fe4411bce2b7500f1c853b34e
 
 class Home extends Component{
     render(){
         return(
+            <>
+            <Header></Header>
             <div className="container-fluid">
                 
                 {/* ------------------top content-------------------------------------------------------------------------- */}
@@ -28,7 +35,7 @@ class Home extends Component{
                         </div>
                     {/* </div> */}
                     <div className="col-md-6 d-flex flex-column justify-content-center">
-                    <img src = {"images/t1.png"} alt ="" style={{height: "500px"}}></img> 
+                    <img src = {"images/t1.png"} alt ="" style={{height: "550px"}}></img> 
                         <hr/>
                        
                     </div>
@@ -54,7 +61,7 @@ class Home extends Component{
               <div className="card wcard">
               <div className="col-md-6 d-flex justify-content-center mx-auto ">
               <button className="bt disable  wbtn">
-                                       Why Potion Doc?
+                                       Why Portion Doc?
                                     </button>   
                     </div>
              
@@ -312,6 +319,9 @@ class Home extends Component{
 
                 
                 </div>
+                <Footer></Footer>
+                
+                </>
         )
     }
 }

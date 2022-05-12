@@ -6,7 +6,16 @@ const SignupForm = () => {
     }
     return(
         <>
+            <nav class="navbar navbar-expand-lg ">
+               
+               <i class="fas fa-solid fa-envelope fa-lg" style={{height: "40px", color:"white"}}></i><p className="i-1">portiondoc@gmail.com</p>
+               
+               <i class="fas fa-solid fa-phone" style={{height: "40px", float:"right", color:"white"}} ></i><p className="i-1">+977 983142567</p>
+               </nav>
         <div className="container" style={{"margin-top": "100px"}}>
+        {/* <div className="col-md-5 pr-lg-5 mb-5 mb-md-0"> */}
+            <h1 style={{ color: "black", textAlign:"center", fontSize:"60px", fontFamily:"sans-serif"  }}>Create an Account</h1>
+          {/* </div> */}
             <form>
   <div class="form-row">
     <div class="form-group col-md-6">
@@ -30,15 +39,8 @@ const SignupForm = () => {
     <label for="inputAddress2"> Confirm Password</label>
     <input type="text" class="form-control" id="inputConfirmPassword2"/>
   </div>
-  <div class="form-group">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="gridCheck"/>
-      <label class="form-check-label" for="gridCheck">
-        Remember Me
-      </label>
-    </div>
-  </div>
-  <button type="submit" class="btn btn-primary"style = {{"background-color":'orange',"width":'290px',"textAlign":"center"}} >Create an account</button>
+ 
+  <button type="submit" className="btn btn-primary sign-btn" style = {{"background-color":'orange' }} >Sign Up</button>
 </form>
 </div>
         </>
