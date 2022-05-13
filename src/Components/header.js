@@ -13,8 +13,8 @@ class Header extends Component{
                  </nav>
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
                     <a className="navbar-brand" href="#"><img src="images/logo.png" className="card-img-top" alt="..." style={{height:"100px", width:"150px", marginLeft:"100px"}}></img></a>
-
-                        <ul className="navbar-nav nav-item ">
+                    <div class="collapse navbar-collapse" style={{marginLeft:"400px"}} id="navbarSupportedContent">
+                        <ul className="navbar-nav nav-item">
 
                         <li className="nav-item active">
                             <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
@@ -36,6 +36,7 @@ class Header extends Component{
 
                     
                         </ul>
+                        </div>
                         
                     
                     

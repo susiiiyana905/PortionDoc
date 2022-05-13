@@ -6,11 +6,11 @@ const SignupForm = () => {
     }
     return(
         <>
-            <nav class="navbar navbar-expand-lg ">
+               <nav class="navbar navbar-expand-lg ">
                
                <i class="fas fa-solid fa-envelope fa-lg" style={{height: "40px", color:"white"}}></i><p className="i-1">portiondoc@gmail.com</p>
                
-               <i class="fas fa-solid fa-phone" style={{height: "40px", float:"right", color:"white"}} ></i><p className="i-1">+977 983142567</p>
+               <i class="fas fa-solid fa-phone" style={{height: "40px", marginLeft:"100px", color:"white"}} ></i><p className="i-1">+977 983142567</p>
                </nav>
         <div className="container" style={{"margin-top": "100px"}}>
         {/* <div className="col-md-5 pr-lg-5 mb-5 mb-md-0"> */}
@@ -40,7 +40,7 @@ const SignupForm = () => {
     <input type="text" class="form-control" id="inputConfirmPassword2"/>
   </div>
  
-  <button type="submit" className="btn btn-primary sign-btn" style = {{"background-color":'orange' }} >Sign Up</button>
+  <button type="submit" className="btn btn-primary sign-btn" style = {{"background-color":'#FF7800' }} >Sign Up</button>
 </form>
 </div>
         </>
