@@ -11,7 +11,7 @@ class Header extends Component{
                  <i class="fa-solid fa-phone" style={{height: "40px", float:"right"}} >+977 983142567</i>
 
                  </nav>
-               
+  
               
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
                     <a className="navbar-brand" href="#"><img src="images/logo.png" className="card-img-top" alt="..." style={{height:"100px", width:"150px", marginLeft:"100px"}}></img></a>
@@ -38,16 +38,16 @@ class Header extends Component{
 
 
                     
-
-                    
                         </ul>
                         
                     </div>
 
-                    
-                    </nav>
 
-            </div>
+                    {/* </div> */}
+                    </nav>
+                    </div>
+                    
+
         )
     }
 }
