@@ -40,7 +40,9 @@ const SignupForm = () => {
     <input type="text" class="form-control" id="inputConfirmPassword2"/>
   </div>
  
+
   <button type="submit" className="btn btn-primary sign-btn" style = {{"background-color":'#FF7800' }} >Sign Up</button>
+
 </form>
 </div>
         </>

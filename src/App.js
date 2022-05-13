@@ -10,8 +10,13 @@ function App(){
   <div>
     <BrowserRouter>
 
+
     <Mid></Mid>
    
+
+
+    <Mid></Mid>
+  
     </BrowserRouter>
   </div>
   );

@@ -11,6 +11,9 @@ class Login extends Component{
                <i class="fas fa-solid fa-phone" style={{height: "40px", marginLeft:"100px", color:"white"}} ></i><p className="i-1">+977 983142567</p>
                </nav>
             <div>
+
+                 <div className="col-md-6 d-flex justify-content-center mx-auto ">
+
                <div className="container">
                 <div className="row">
                 <div className="col-md-4">
@@ -19,7 +22,7 @@ class Login extends Component{
                     </div>
                     <div className="col-md-4">
                  <img src="images/logo.png" className="log"></img>
-               
+
                  <form>
                      
                         <div className="form-group mt-4">
@@ -41,7 +44,9 @@ class Login extends Component{
                         </div>
 
                         <div className="form-group">
+
                             <button type="Submit" className="btn btn-light login"  style={{width:'fit-content'}}>Login</button>
+
                         </div>
                     </form>
                     {/* </div> */}
