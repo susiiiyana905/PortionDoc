@@ -1,7 +1,30 @@
-import { Component } from "react";
+import { useState } from "react";
+import axios from "axios";
 
-class OtpPage extends Component{
-    render(){
+const OtpPage =()=> {
+	const [otp, setOtp] = useState('');
+	const [message, setMessage] = useState('');
+
+	const verifyOtp=(e)=>{
+        e.preventDefault();
+        const otpData = {
+            otp
+        }
+
+        
+        axios.post("http://localhost:4001/user/verify", otpData)
+        .then(result=>{
+            if(result.data.success){
+                setMessage("User Verification successfully!!!");
+                window.location.replace('/login');
+            }
+            else{
+                setMessage("Something is wrong!!!");
+            }
+        })
+        .catch();
+    }
+    
         return(
             <div>
 				   <nav class="navbar navbar-expand-lg ">
@@ -21,11 +44,14 @@ class OtpPage extends Component{
 			<form>  					
 				<div style={{"margin-bottom": "25px" }}>
 					<label class="text-success">Check your email for OTP</label>
-					<input type="text" class="form-control" id="otp" name="otp" placeholder="One Time Password" style={{width:"600px"}}/>                       
+					<input type="text" class="form-control" id="otp" name="otp" placeholder="One Time Password" style={{width:"600px"}}
+					value={otp}
+					onChange={(e)=>setOtp(e.target.value)}
+					/>                       
 				</div>                          
 				<div style={{"margin-top":"10px"}} class="form-group">                               
 					<div class="col-sm-12 controls">
-					  <input type="submit" name="authenticate" value="Submit" class="btn-success" style={{borderRadius:"10px"}}/>						  
+					  <input type="submit" name="authenticate" value="Submit" class="btn-success" style={{borderRadius:"10px"}} onClick={verifyOtp}/>						  
 					</div>
 				</div>                                
 			</form>   
@@ -33,7 +59,7 @@ class OtpPage extends Component{
 	</div>  
 </div>
             </div>
-        )
-    }
+    )
 }
+
 export default OtpPage;
