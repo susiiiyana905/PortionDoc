@@ -6,6 +6,7 @@ class Header extends Component{
         return(
             <div>
                 <nav class="navbar navbar-expand-lg ">
+
                  <i class="fa-solid fa-envelope" style={{height: "40px"}}>portiondoc@gmail.com</i>
                  <i class="fa-solid fa-phone" style={{height: "40px", float:"right"}} >+977 983142567</i>
                  </nav>
@@ -17,6 +18,18 @@ class Header extends Component{
                     </button>
                     <div className="collapse navbar-collapse nav" id="navbarNav">
                         <ul className="navbar-nav">
+
+               
+                 <i class="fas fa-solid fa-envelope fa-lg" style={{height: "40px", color:"white"}}></i><p className="i-1">portiondoc@gmail.com</p>
+                 
+                 <i class="fas fa-solid fa-phone" style={{height: "40px", marginLeft:"100px", color:"white"}} ></i><p className="i-1">+977 983142567</p>
+                 </nav>
+                <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                    <a className="navbar-brand" href="#"><img src="images/logo.png" className="card-img-top" alt="..." style={{height:"100px", width:"150px", marginLeft:"100px"}}></img></a>
+
+                        <ul className="navbar-nav nav-item ">
+
+
                         <li className="nav-item active">
                             <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
                         </li>
@@ -32,11 +45,21 @@ class Header extends Component{
                         <li className="nav-item">
                             <a className="nav-link">Contact Us</a>
                         </li>
+
                         <li><button className="btn btn-nav">Sign Up</button></li>
                     
                         </ul>
                         
                     </div>
+
+
+                       <button className="btn-sign">Sign Up</button>
+
+                    
+                        </ul>
+                        
+                    
+
                     
                     </nav>
 

@@ -1,11 +1,13 @@
 const bcrypt = require("bcrypt");
 const _ = require("lodash");
 const axios = require("axios");
+const validator = require("validator");
 const otpGenerator = require("otp-generator");
 const express = require('express');
 
 const User = require('../models/userModel');
 const Otp = require('../models/otpModel');
+const sendEmail = require('../utils/sendEmail');
 
 const router = new express.Router();
 
@@ -13,6 +15,7 @@ router.post('/signup', async(req,res)=>{
     const user = await User.findOne({
         email: req.body.email
     });
+    
     if(user) return res.status(400).send("User already registered!");
     const OTP = otpGenerator.generate(6, {
         digits: true, lowerCaseAlphabets: false, upperCaseAlphabets: false, specialChars:false
@@ -24,13 +27,18 @@ router.post('/signup', async(req,res)=>{
     const salt = await bcrypt.genSalt(10)
     otp.otp = await bcrypt.hash(otp.otp, salt);
     const result = await otp.save();
+    sendEmail(email, "User Verification OTP Token", OTP);
     return res.status(200).send("Otp send successfully!");
 })
 
 router.post('/user/verify', async(req,res)=>{
+    const email = req.body.email;
     const otpHolder = await Otp.find({
         email: req.body.email
     });
+    if(!validator.isEmail(email)) {
+        return res.json({message: "Provide a valid email address."});
+    }
     if (otpHolder.length === 0) return res.status(400).send("You used an Expired OTP!!");
     const rightOtpFind = otpHolder[otpHolder.length-1];
     const validUser = await bcrypt.compare(req.body.otp, rightOtpFind.otp);
@@ -43,7 +51,7 @@ router.post('/user/verify', async(req,res)=>{
             email: rightOtpFind.email
         });
         return res.status(200).send({
-            message: "User Registration Successfull!!",
+            message: "User Registration Successful!!",
             token: token,
             data: result,
         });

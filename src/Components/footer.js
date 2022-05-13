@@ -6,7 +6,9 @@ class Footer extends Component{
         return(
             <div className="main-footer">
             <div className="container-fluid" >
-                <div className="row" style={{ backgroundColor:"#B1DF01"}}>
+
+                <div className="row " style={{ backgroundColor:"#B1DF01", textAlign:"center"}}>
+
                 {/* Column1 */}
                 <div className="col">
                     <h4>Portion Doc</h4>
@@ -41,10 +43,27 @@ class Footer extends Component{
                 {/* <hr /> */}
               
 
+
                 <div className="text"
                 style={{ backgroundColor: "#359B41" }}>
                    <div><p>©PortionDoc2022</p>  <p>Terms and Conditions Privacy    Accessibility</p></div>
                           </div>
+
+               
+                          </div>
+                          <div className="text"
+                style={{ backgroundColor: "#359B41" }}>
+                   <div className="container">
+                      <a style={{marginRight:"500px"}}>©PortionDoc2022 </a> 
+                      <a style={{marginLeft:"50px"}}>Terms and Conditions </a> 
+                      <a style={{marginLeft:"50px"}}>Privacy</a> 
+                      <a style={{marginLeft:"50px"}}>Accessibility</a> 
+
+                        {/* <a></a>
+                        <a></a> 
+                        <a>Accessibility</a> */}
+                        </div>
+
                           </div>
             </div>
           

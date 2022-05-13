@@ -3,8 +3,22 @@ import { Component } from "react";
 class Login extends Component{
     render(){
         return(
+            <> 
+             <nav class="navbar navbar-expand-lg ">
+               
+               <i class="fas fa-solid fa-envelope fa-lg" style={{height: "40px", color:"white"}}></i><p className="i-1">portiondoc@gmail.com</p>
+               
+               <i class="fas fa-solid fa-phone" style={{height: "40px", float:"right", color:"white"}} ></i><p className="i-1">+977 983142567</p>
+               </nav>
             <div>
+
                  <div className="col-md-6 d-flex justify-content-center mx-auto ">
+
+               <div className="container">
+                 {/* <div className="col-md-6 d-flex justify-content-center mx-auto "> */}
+                 <img src="images/logo.png" className="log"></img>
+                 {/* <div className="contianer"> */}
+
                  <form>
                      
                         <div className="form-group mt-4">
@@ -26,12 +40,16 @@ class Login extends Component{
                         </div>
 
                         <div className="form-group">
-                            <button type="Submit" className="btn btn-light"  style={{width:'100px'}}>Login</button>
+
+                            <button type="Submit" className="btn btn-light"  style={{width:'fit-content'}}>Login</button>
+
                         </div>
                     </form>
+                    {/* </div> */}
                     </div>
 
             </div>
+            </>
         )
     }
 }
