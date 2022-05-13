@@ -9,24 +9,9 @@ class Header extends Component{
 
                  <i class="fa-solid fa-envelope" style={{height: "40px"}}>portiondoc@gmail.com</i>
                  <i class="fa-solid fa-phone" style={{height: "40px", float:"right"}} >+977 983142567</i>
-<<<<<<< HEAD
-=======
-                 </nav>
-                <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                    <a className="navbar-brand" href="#"><img src="images/logo.png" className="card-img-top" alt="..." style={{height:"80px"}}></img></a>
-                    {/* <img src="images/logo.png" className="card-img-top" alt="..." ></img> */}
-                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="collapse navbar-collapse nav" id="navbarNav">
-                        <ul className="navbar-nav">
 
-               
-                 <i class="fas fa-solid fa-envelope fa-lg" style={{height: "40px", color:"white"}}></i><p className="i-1">portiondoc@gmail.com</p>
-                 
-                 <i class="fas fa-solid fa-phone" style={{height: "40px", marginLeft:"100px", color:"white"}} ></i><p className="i-1">+977 983142567</p>
->>>>>>> e7a8ed665ac5714df92b865c239ebf6c1cdd830f
                  </nav>
+               
               
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
                     <a className="navbar-brand" href="#"><img src="images/logo.png" className="card-img-top" alt="..." style={{height:"100px", width:"150px", marginLeft:"100px"}}></img></a>
@@ -49,28 +34,16 @@ class Header extends Component{
                         <li className="nav-item">
                             <a className="nav-link">Contact Us</a>
                         </li>
+                        <button className="btn-sign">Sign Up</button>
 
-<<<<<<< HEAD
-                        {/* <li><button className="btn btn-nav">Sign Up</button></li> */}
-=======
-                        <li><button className="btn btn-nav">Sign Up</button></li>
->>>>>>> e7a8ed665ac5714df92b865c239ebf6c1cdd830f
+
+                    
+
                     
                         </ul>
                         
                     </div>
 
-
-                       <button className="btn-sign">Sign Up</button>
-
-                    
-                    
-<<<<<<< HEAD
-                     
-                        
-=======
-
->>>>>>> e7a8ed665ac5714df92b865c239ebf6c1cdd830f
                     
                     </nav>
 
