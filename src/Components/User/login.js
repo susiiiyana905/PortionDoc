@@ -49,12 +49,14 @@ class Login extends Component{
 
                         </div>
                     </form>
-                    {/* </div> */}
+                 
                     </div>
                     </div>
                     </div>
 
             </div>
+            </div>
+        
             </>
         )
     }
