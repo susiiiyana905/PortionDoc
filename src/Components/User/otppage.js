@@ -4,8 +4,14 @@ class OtpPage extends Component{
     render(){
         return(
             <div>
+				   <nav class="navbar navbar-expand-lg ">
+               
+               <i class="fas fa-solid fa-envelope fa-lg" style={{height: "40px", color:"white"}}></i><p className="i-1">portiondoc@gmail.com</p>
+               
+               <i class="fas fa-solid fa-phone" style={{height: "40px", marginLeft:"100px", color:"white"}} ></i><p className="i-1">+977 983142567</p>
+               </nav>
                 {/* <div class="col-md-6">                     */}
-                <div className="col-md-6 d-flex justify-content-center mx-auto ">
+                <div className="col-md-6 d-flex justify-content-center mx-auto " style={{marginTop:"80px"}}>
 	<div class="panel panel-info" >
 		<div class="panel-heading">
 			<div class="panel-title" style={{fontSize:"30px",fontWeight:"bold",fontFamily:"sans-serif"}}>Enter OTP</div>                        

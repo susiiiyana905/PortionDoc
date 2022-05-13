@@ -16,10 +16,10 @@ class Login extends Component{
 
                <div className="container">
                 <div className="row">
-                <div className="col-md-4">
+                {/* <div className="col-md-4">
                     
                
-                    </div>
+                    </div> */}
                     <div className="col-md-4">
                  <img src="images/logo.png" className="log"></img>
 
