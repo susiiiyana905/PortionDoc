@@ -5,12 +5,12 @@ class Header extends Component{
     render(){
         return(
             <div>
-                <nav class="navbar navbar-expand-lg ">
-
-                 <i class="fa-solid fa-envelope" style={{height: "40px"}}>portiondoc@gmail.com</i>
-                 <i class="fa-solid fa-phone" style={{height: "40px", float:"right"}} >+977 983142567</i>
-
-                 </nav>
+                   <nav class="navbar navbar-expand-lg ">
+               
+               <i class="fas fa-solid fa-envelope fa-lg" style={{height: "40px", color:"white"}}></i><p className="i-1">portiondoc@gmail.com</p>
+               
+               <i class="fas fa-solid fa-phone" style={{height: "40px", marginLeft:"100px", color:"white"}} ></i><p className="i-1">+977 983142567</p>
+               </nav>
   
               
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">

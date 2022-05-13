@@ -44,11 +44,11 @@ class Footer extends Component{
                 {/* <hr /> */}
               
 
-
+{/* 
                 <div className="text"
                 style={{ backgroundColor: "#359B41" }}>
                    <div><p>©PortionDoc2022</p>  <p>Terms and Conditions Privacy    Accessibility</p></div>
-                          </div>
+                          </div> */}
 
                
                           </div>
