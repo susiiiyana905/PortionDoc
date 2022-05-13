@@ -34,7 +34,7 @@ class Home extends Component{
                         </div>
                     {/* </div> */}
                     <div className="col-md-6 d-flex flex-column justify-content-center">
-                    <img src = {"images/t1.png"} alt ="" style={{height: "550px"}}></img> 
+                    <img src = {"images/t1.png"} alt ="" style={{height: "500px"}}></img> 
                         <hr/>
                        
                     </div>
@@ -79,7 +79,7 @@ class Home extends Component{
                         Rs.455 per meal.</p>
                        
                         </p></h4>
-                        <button className="btn">
+                        <button className="btn start">
                                         Get Started
                                     </button>   
                     </div>   
@@ -152,7 +152,7 @@ class Home extends Component{
                 <div class="row row-cols-1 row-cols-md-4">
                 <div class="col mb-4">
                     <div class="card">
-                    <img src="images/organic.png" className="card-img-top" style={{height:"200px", width:"400px"}} alt="..."></img>
+                    <img src="images/organic.png" className="card-img-top" style={{height:"200px", width:"300px"}} alt="..."></img>
                         <div className="card-body">
                             <h5 className="card-title">Organic Farm </h5>
                             <p className="card-text">Product Fresh Veggies</p></div>
@@ -161,7 +161,7 @@ class Home extends Component{
 
                 <div class="col mb-4">
                     <div class="card">
-                    <img src="images/delivery.png" className="card-img-top" style={{height:"200px", width:"400px"}} alt="..."></img>
+                    <img src="images/delivery.png" className="card-img-top" style={{height:"200px", width:"300px"}} alt="..."></img>
                         <div className="card-body">
                             <h5 className="card-title">24 Hours Delivery</h5>
                             <p className="card-text">Fast Delivery Order</p>
@@ -171,7 +171,7 @@ class Home extends Component{
                
                 <div class="col mb-4">
                     <div class="card">
-                    <img src="images/promotion.png" className="card-img-top" style={{height:"200px", width:"400px"}} alt="..."></img>
+                    <img src="images/promotion.png" className="card-img-top" style={{height:"200px", width:"300px"}} alt="..."></img>
                         <div className="card-body">
                             <h5 className="card-title">Promotion Week</h5>
                             <p className="card-text">Promotion and Discount</p>
@@ -180,7 +180,7 @@ class Home extends Component{
                 </div>
                 <div class="col mb-4">
                     <div class="card">
-                    <img src="images/quality.png" className="card-img-top" style={{height:"200px", width:"400px"}} alt="..."></img>
+                    <img src="images/quality.png" className="card-img-top" style={{height:"200px", width:"300px"}} alt="..."></img>
                         <div className="card-body">
                             <h5 className="card-title">Trusted & Quality</h5>
                             <p className="card-text">Best Quality Restaurant</p>
@@ -231,7 +231,7 @@ class Home extends Component{
 
 
                     <div className="col-md-6 d-flex justify-content-center mx-auto ">
-                      <button className="btn meal-btn"> View Meals</button>
+                      <button className="btn start meal-btn"> View Meals</button>
                     </div>
                 </div>
                 </div>
@@ -304,7 +304,7 @@ class Home extends Component{
                     <div class="form-row">
                     <div className="col-md-6 d-flex justify-content-center mx-auto ">
                         <input type="text" class="form-control" placeholder="Email Address"></input>
-                        <button className="btn btn-email"> Go </button>
+                        <button className="go">Go</button>
                         </div>
                     </div>
                     </form>

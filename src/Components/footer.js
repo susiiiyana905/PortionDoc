@@ -4,12 +4,13 @@ import { Component } from "react";
 class Footer extends Component{
     render(){
         return(
-            <div className="main-footer">
+            <div className="main-footer" style={{padding:"30px, 70px"}}>
             <div className="container-fluid" >
 
                 <div className="row " style={{ backgroundColor:"#B1DF01", textAlign:"center"}}>
 
                 {/* Column1 */}
+      
                 <div className="col">
                     <h4>Portion Doc</h4>
                     <ui className="list-unstyled">
@@ -66,6 +67,8 @@ class Footer extends Component{
 
                           </div>
             </div>
+
+            
           
         )
     }

@@ -4,20 +4,24 @@ class Login extends Component{
     render(){
         return(
             <> 
-             <nav class="navbar navbar-expand-lg ">
+                 <nav class="navbar navbar-expand-lg ">
                
                <i class="fas fa-solid fa-envelope fa-lg" style={{height: "40px", color:"white"}}></i><p className="i-1">portiondoc@gmail.com</p>
                
-               <i class="fas fa-solid fa-phone" style={{height: "40px", float:"right", color:"white"}} ></i><p className="i-1">+977 983142567</p>
+               <i class="fas fa-solid fa-phone" style={{height: "40px", marginLeft:"100px", color:"white"}} ></i><p className="i-1">+977 983142567</p>
                </nav>
             <div>
 
                  <div className="col-md-6 d-flex justify-content-center mx-auto ">
 
                <div className="container">
-                 {/* <div className="col-md-6 d-flex justify-content-center mx-auto "> */}
+                <div className="row">
+                <div className="col-md-4">
+                    
+               
+                    </div>
+                    <div className="col-md-4">
                  <img src="images/logo.png" className="log"></img>
-                 {/* <div className="contianer"> */}
 
                  <form>
                      
@@ -41,11 +45,13 @@ class Login extends Component{
 
                         <div className="form-group">
 
-                            <button type="Submit" className="btn btn-light"  style={{width:'fit-content'}}>Login</button>
+                            <button type="Submit" className="btn btn-light login"  style={{width:'fit-content'}}>Login</button>
 
                         </div>
                     </form>
                     {/* </div> */}
+                    </div>
+                    </div>
                     </div>
 
             </div>

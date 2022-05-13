@@ -103,7 +103,7 @@
   color: #ffffff;
   text-align: center;
   padding: 30px 70px;
-  font-size: 80px;
+  font-size: 60px;
 }
 
 .t3{
@@ -141,7 +141,7 @@
 
 }
  
-.btn{
+.start{
     padding: 30px 70px;
     border: none;
     background-color: #FF7800;
@@ -244,20 +244,25 @@
   text-align: center;
 }
 
-.btn-email{
-  border-radius: 0%;
-  
+.go{
+  /* padding: 30px 70px ; */
+  border: none;
+  background-color: #FF7800;
+  font-family: sans-serif;
+  font-weight: bold;
+  /* font-size: 16px; */
+  color: #ffffff;
+  width: fit-content;
 }
 
 
-.sign-btn{
-  padding: 30px, 70px;
-  width:fit-content;
-  /* font-size: 20px; */
-  height: 20px;
+/* .sign-btn{
+background-color: #FF7800;
 
-}
 
-.log{
-  height: 80;
+} */
+
+.login{
+  background-color: #FF7800;
+  color: #FAFAFA;
 }
