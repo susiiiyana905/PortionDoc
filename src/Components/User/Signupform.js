@@ -41,6 +41,7 @@ const SignupForm = () => {
   </div>
  
   <button type="submit" className="btn btn-primary sign-btn" style = {{"background-color":'orange' }} >Sign Up</button>
+
 </form>
 </div>
         </>
