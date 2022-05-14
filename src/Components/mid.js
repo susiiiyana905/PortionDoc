@@ -24,7 +24,7 @@ class Mid extends Component{
                     {/* <Route path= "/verifyuser" element={<VerifyUser></VerifyUser>}></Route> */}
 
    
-                    <Route path="/otppage" element={<OtpPage></OtpPage>}></Route>
+                    <Route path="/otpPage" element={<OtpPage></OtpPage>}></Route>
 
                 </Routes>
             </div>
