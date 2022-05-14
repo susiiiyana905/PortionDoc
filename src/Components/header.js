@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { Link } from "react-router-dom";
 // import { Link } from "react-router-dom";
 
 class Header extends Component{
@@ -34,10 +35,7 @@ class Header extends Component{
                         <li className="nav-item">
                             <a className="nav-link">Contact Us</a>
                         </li>
-                        <button className="btn-sign">Sign Up</button>
-
-
-                    
+                        <button className="btn-sign"><Link className="link" to="/login" style={{color: "white", textDecoration:"none"}}>Login</Link></button>
                         </ul>
                         
                     </div>
