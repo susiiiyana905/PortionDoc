@@ -4,19 +4,20 @@ describe('Product testing', () => {
     
     it('user login', async () => {
         const uerDat = {
-            email: "bkesh@gmail.com",
-            password: "123@gmm",
+            email: "susiyanashrestha329@gmail.com",
+            password: "susiyana11",
         };
         const res = await request(app)
-                    .post('/login')
+                    .post('/user/login')
                     .send(uerDat);
         expect(res.statusCode).toEqual(200);
     });
     it('user register', async () => {
         const uerDat = {
-            email: "bk435esh@gmail.com",
-            password: "123@gmm",
-            username: "bkesh",
+            email: "susiyanashrestha448@gmail.com",
+            password: "susiyana11",
+            firstName: "bkesh",
+            lastName: "thapa",
             address: "kapan",
             phone: 980385114       
         };

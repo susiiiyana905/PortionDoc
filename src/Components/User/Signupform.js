@@ -13,19 +13,45 @@ const SignupForm = () => {
 
     const userRegister = (e) =>{
       e.preventDefault();
-      const userData = {firstName, lastName, email, password};
-      axios.post("http://localhost:4001/signup", userData)
-      .then(result=>{
-        console.log(result);
-        if(result.data.success){
-          localStorage.setItem("email", email);
-          // window.location.replace('/otpPage');
-          navigate("/otpPage", {state: {email: email}})
-        }
-        else{
-          setMessage();
-        }
-      })
+      setMessage("");
+
+      const nameRegex = new RegExp('^[a-zA-Z0-9]+$');
+      const passwordRegex = new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{5,15}$');
+      const emailRegex = new RegExp("^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
+
+      if (email.trim()==="" || password.trim()==="" || firstName.trim()==="" || lastName.trim()==="") {
+        setMessage("Empty field found. Fill up the form completely.");          
+        return;             
+      } else if (firstName.length<=2 || firstName.length>=16) {
+          setMessage("FirstName most contain 3 to 15 characters.");          
+          return;                 
+      } else if (lastName.length<=2 || lastName.length>=16) {
+          setMessage("LastName most contain 3 to 15 characters.");
+          return;  
+      } else if (!nameRegex.test(firstName, lastName)) {
+          setMessage("Special characters and white spaces not allowed in name.");          
+          return;                
+      } else if (!passwordRegex.test(password)) {
+          setMessage("Provide at least one uppercase, lowercase, number, special character in password and it accepts only 5 to 15 characters.");          
+          return;             
+      } else if (!emailRegex.test(email)) {
+          setMessage("Invalid email address.");          
+          return;        
+      }
+
+        const userData = {firstName, lastName, email, password};
+        axios.post("http://localhost:4001/signup", userData)
+        .then(result=>{
+          console.log(result);
+          if(result.data.success){
+            localStorage.setItem("email", email);
+            // window.location.replace('/otpPage');
+            navigate("/otpPage", {state: {email: email}})
+          }
+          else{
+            setMessage();
+          }
+        })
       .catch(e)
     }
 
@@ -36,7 +62,7 @@ const SignupForm = () => {
           <i className="fas fa-solid fa-phone" style={{height: "40px", marginLeft:"100px", color:"white"}} ></i><p className="i-1">+977 983142567</p>
         </nav>
         <div className="container" style={{"marginTop": "100px"}}>
-          {message}
+        <div className="suggestion-message text-center mb-2" style={{color: "red", fontWeight:"bold"}}>{message}</div>
           <h1 style={{ color: "black", textAlign:"center", fontSize:"60px", fontFamily:"sans-serif"  }}>Create an Account</h1>
           <form>
             <div className="form-row">
