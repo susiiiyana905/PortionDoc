@@ -23,7 +23,7 @@ const Login =()=> {
             }
             else{
                 //login failed
-                setMessage("Invalid Credentials")
+                setMessage(result1.data.message)
             }
         })
         .catch(e)
@@ -35,6 +35,7 @@ const Login =()=> {
                     <i className="fas fa-solid fa-phone" style={{height: "40px", marginLeft:"100px", color:"white"}} ></i><p className="i-1">+977 983142567</p>
                 </nav>
                 <div>
+                    {message}
                     <div className="col-md-6 d-flex justify-content-center mx-auto ">
                         <div className="container">
                             <div className="row">
