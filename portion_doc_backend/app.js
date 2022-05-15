@@ -13,3 +13,4 @@ const UserRoute = require("./router/userRoute");
 app.use(UserRoute);
 
 app.listen(4001);
+module.exports = app;

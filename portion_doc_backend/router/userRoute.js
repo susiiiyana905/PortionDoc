@@ -82,32 +82,83 @@ router.post('/user/verify', async(req,res)=>{
 })
 
 
-router.post("/user/login", function(req,res){
+// router.post("/user/login", async(req,res)=>{
+//     const email = req.body.email;
+//     User.findOne({email: email})
+//     .then(function(userData){
+//         // console.log(userData);
+//         if(userData === null){
+//             return res.status(400).send({message: "Invalid email!"});
+//         }
+//         else if(userData.verified===false){
+//             return res.status(400).send({message:"Verification required first."})
+//         }
+//         //now its time for comparing password between the password
+//     //provided by user and password stored in db
+//     const password = req.body.password;
+//     bcryptjs.compare(password,userData.password,function(e, result){
+//         // console.log(result);
+//         if(result === false){
+//             return res.status(400).send({message: "Invalid login credentials!"})
+//         }
+//         //now lets generate token
+//         //jsonwebtoken
+//         const token = jwt.sign({userID: userData._id}, "anysecretkey");
+//         res.status(200).send({token: token, message: "success"});
+//     })
+//     })
+// })
+
+router.post("/user/login", (req, res)=> {
     const email = req.body.email;
-    User.findOne({email: email})
-    .then(function(userData){
-        // console.log(userData);
-        if(userData === null){
-            return res.status(400).send({message: "Invalid email!"});
-        }
-        else if(userData.verified===false){
-            return res.status(400).send({message:"Verification required first."})
-        }
-        //now its time for comparing password between the password
-    //provided by user and password stored in db
     const password = req.body.password;
-    bcryptjs.compare(password,userData.password,function(e, result){
-        // console.log(result);
-        if(result === false){
-            return res.status(400).send({message: "Invalid login credentials!"})
+    User.findOne({email: email}).then((userData)=> {
+        if(userData==null) {
+            if(!validator.isEmail(email)) {
+                return res.status(400).send({message: "User with that email does not exist or provide a valid email address."});
+            } 
+            User.findOne({email: email}).then((userData1)=> {
+                if(userData1===null) {
+                    return res.status(400).send({message: "User with that email address does not exist."});
+                } 
+                // Now comparing client password with the given password
+                bcryptjs.compare(password, userData1.password, function(e, result){
+                    if(!result) {
+                        res.status(400).send({message: "Incorrect password, try again."});
+                    }
+                    else {                        
+                        // Now lets generate token
+                        const token = jwt.sign({userId: userData1._id}, "loginKey");
+                        if (userData1.admin==false) {
+                            res.status(200).send({token: token, message: "Login success", userData: userData1});                              
+                        }  else if(userData1.verified===false){
+                            return res.status(400).send({message:"Verification required first."})
+                        }
+                        else if(userData1.admin) {
+                            res.status(200).send({token: token, message: "Login success as admin.", userData: userData1});  
+                        }
+                    }          
+                }); 
+            });
         }
-        //now lets generate token
-        //jsonwebtoken
-        const token = jwt.sign({userID: userData._id}, "anysecretkey");
-        res.json({token: token, message: "success"});
-    })
-    })
-})
+        else {            
+            // Now comparing client password with the given password
+            bcryptjs.compare(password, userData.password, function(e, result){
+                if(!result) {
+                    return res.status(400).send({message: "Incorrect password, try again."});
+                }
+                // Now lets generate token
+                const token = jwt.sign({userId: userData._id}, "loginKey");
+                if (userData.admin==false){
+                    res.status(200).send({token: token, message: "Login success", userData: userData});                              
+                }
+                else if(userData.admin) {
+                    res.status(200).send({token: token, message: "Login success as admin.", userData: userData});  
+                } 
+            });
+        }
+    });
+});
 
 
 // router.post('/login', async (req, res) => {

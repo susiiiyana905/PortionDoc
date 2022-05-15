@@ -10,6 +10,15 @@ const Login =()=> {
 
     const userLogin = (e)=>{
         e.preventDefault();
+
+        if(email.trim()==="") {
+            setMessage("Email is required.");
+            return;            
+        } else if (password.trim()==="") {
+            setMessage("Password is required.");
+            return;                        
+        } 
+
         const userData = {
             email, password
         }
@@ -19,7 +28,7 @@ const Login =()=> {
                 //login success
                 localStorage.setItem('token', result1.data.token)
                 console.log(result1.data);
-                window.location.replace('/');
+                // window.location.replace('/');
             }
             else{
                 //login failed
@@ -35,9 +44,11 @@ const Login =()=> {
                     <i className="fas fa-solid fa-phone" style={{height: "40px", marginLeft:"100px", color:"white"}} ></i><p className="i-1">+977 983142567</p>
                 </nav>
                 <div>
-                    {message}
+                    
                     <div className="col-md-6 d-flex justify-content-center mx-auto ">
+                        
                         <div className="container">
+                        <p style={{color:"red", fontWeight:"bold", marginTop:"50px", textAlign:"center"}}>{message}</p>
                             <div className="row">
                                 <div className="col-md-4">
                                     <img src="images/logo.png" className="log"></img>
