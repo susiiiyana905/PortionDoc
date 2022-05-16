@@ -10,11 +10,9 @@ const SignupForm = () => {
     const [message, setMessage] = useState('');
 
     const navigate = useNavigate();
-
     const userRegister = (e) =>{
       e.preventDefault();
       setMessage("");
-
       const nameRegex = new RegExp('^[a-zA-Z0-9]+$');
       const passwordRegex = new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{5,15}$');
       const emailRegex = new RegExp("^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
@@ -54,11 +52,11 @@ const SignupForm = () => {
         })
       .catch(e)
     }
-
     return(
       <>
-        <nav className="navbar navbar-expand-lg ">    
-          <i className="fas fa-solid fa-envelope fa-lg" style={{height: "40px", color:"white"}}></i><p className="i-1">portiondoc@gmail.com</p>        
+        <nav className="navbar navbar-expand-lg ">
+          <i className="fas fa-solid fa-envelope fa-lg" style={{height: "40px", color:"white"}}></i><p className="i-1">portiondoc@gmail.com</p>
+
           <i className="fas fa-solid fa-phone" style={{height: "40px", marginLeft:"100px", color:"white"}} ></i><p className="i-1">+977 983142567</p>
         </nav>
         <div className="container" style={{"marginTop": "100px"}}>

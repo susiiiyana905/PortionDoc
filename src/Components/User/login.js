@@ -44,9 +44,9 @@ const Login =()=> {
                     <i className="fas fa-solid fa-phone" style={{height: "40px", marginLeft:"100px", color:"white"}} ></i><p className="i-1">+977 983142567</p>
                 </nav>
                 <div>
-                    
+
                     <div className="col-md-6 d-flex justify-content-center mx-auto ">
-                        
+
                         <div className="container">
                         <p style={{color:"red", fontWeight:"bold", marginTop:"50px", textAlign:"center"}}>{message}</p>
                             <div className="row">
@@ -68,7 +68,7 @@ const Login =()=> {
                                             value={password}
                                             onChange={(e)=>setPassword(e.target.value)}
                                             />
-                                            
+
                                         </div>
 
                                         <div>
@@ -95,10 +95,9 @@ const Login =()=> {
                         </div>
                     </div>
                 </div>
-    
+
             </>
         )
-    
-}
 
-export default Login;
+}
+export default Login;;
