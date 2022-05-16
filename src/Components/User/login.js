@@ -2,12 +2,15 @@ import axios from "axios";
 import { useState } from "react";
 // import { Link } from "react-router-dom";
 import { BrowserRouter as Router, Link } from "react-router-dom";
+
 const Login =()=> {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
+
     const userLogin = (e)=>{
         e.preventDefault();
+
         if(email.trim()==="") {
             setMessage("Email is required.");
             return;            
@@ -15,6 +18,7 @@ const Login =()=> {
             setMessage("Password is required.");
             return;                        
         } 
+
         const userData = {
             email, password
         }
@@ -40,12 +44,15 @@ const Login =()=> {
                     <i className="fas fa-solid fa-phone" style={{height: "40px", marginLeft:"100px", color:"white"}} ></i><p className="i-1">+977 983142567</p>
                 </nav>
                 <div>
+
                     <div className="col-md-6 d-flex justify-content-center mx-auto ">
+
                         <div className="container">
                         <p style={{color:"red", fontWeight:"bold", marginTop:"50px", textAlign:"center"}}>{message}</p>
                             <div className="row">
                                 <div className="col-md-4">
                                     <img src="images/logo.png" className="log"></img>
+
                                     <form>
                                         <div className="form-group mt-4">
                                             <label>Email</label>
@@ -54,23 +61,28 @@ const Login =()=> {
                                             onChange={(e)=>setEmail(e.target.value)}
                                             />
                                         </div>
+
                                         <div className="form-group mt-3">
                                             <label>Password</label>
                                             <input type="password" className="form-control" style={{width:"600px"}}
                                             value={password}
                                             onChange={(e)=>setPassword(e.target.value)}
                                             />
+
                                         </div>
+
                                         <div>
                                             <div className = "form-group form-check mt-2">
                                                 <input type ="checkbox" className="form-check-input" id="rememberme"></input>
                                                 <label className = "form-check-label" for="rememberme">Remember Me</label>
                                             </div>
                                         </div>
+
                                         <div className="form-group">
                                             <button type="Submit" className="btn btn-light login"  style={{width:'fit-content'}}
                                             onClick={userLogin}
                                             >Login</button>
+
                                         </div>
                                     </form>
                                     <div className="card mt-4 border-0" style={{width:"25rem"}}>
@@ -83,7 +95,9 @@ const Login =()=> {
                         </div>
                     </div>
                 </div>
+
             </>
         )
+
 }
 export default Login;;

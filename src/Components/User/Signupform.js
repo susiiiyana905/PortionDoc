@@ -1,12 +1,14 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+
 const SignupForm = () => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
+
     const navigate = useNavigate();
     const userRegister = (e) =>{
       e.preventDefault();
@@ -14,6 +16,7 @@ const SignupForm = () => {
       const nameRegex = new RegExp('^[a-zA-Z0-9]+$');
       const passwordRegex = new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{5,15}$');
       const emailRegex = new RegExp("^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
+
       if (email.trim()==="" || password.trim()==="" || firstName.trim()==="" || lastName.trim()==="") {
         setMessage("Empty field found. Fill up the form completely.");          
         return;             
@@ -33,6 +36,7 @@ const SignupForm = () => {
           setMessage("Invalid email address.");          
           return;        
       }
+
         const userData = {firstName, lastName, email, password};
         axios.post("http://localhost:4001/signup", userData)
         .then(result=>{
@@ -52,6 +56,7 @@ const SignupForm = () => {
       <>
         <nav className="navbar navbar-expand-lg ">
           <i className="fas fa-solid fa-envelope fa-lg" style={{height: "40px", color:"white"}}></i><p className="i-1">portiondoc@gmail.com</p>
+
           <i className="fas fa-solid fa-phone" style={{height: "40px", marginLeft:"100px", color:"white"}} ></i><p className="i-1">+977 983142567</p>
         </nav>
         <div className="container" style={{"marginTop": "100px"}}>
