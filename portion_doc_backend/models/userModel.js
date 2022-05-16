@@ -7,17 +7,44 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         unique: true,
-    }
-},
-{
-    timestamps: true,
-});
+    },
+    firstName: {
+        type: String,
+        required: true,
+    },
+    lastName: {
+        type: String,
+        required: true
+    },
+    password: {
+        type: String,
+        required: true
+    },
+    address: {
+        type: String
+    },
+    phone: {
+        type: String
+    },
+    verified: {
+        type: Boolean,
+        default: false,
+        required : true
+    },
+    admin: {
+        type: Boolean, default: false
+    },
 
-userSchema.methods.generateJWT = function() {
-    const registerToken = jwt.sign({
+},
+    {
+        timestamps: true,
+    });
+
+userSchema.methods.generateJWT = function () {
+    return jwt.sign({
         _id: this._id,
         email: this.email,
-    }, "RegisterUserKey", {expiresIn: "5m"})
+    }, "RegisterUserKey", { expiresIn: "5m" })
 }
 
 const User = mongoose.model("User", userSchema);

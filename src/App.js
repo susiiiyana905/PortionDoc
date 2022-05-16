@@ -14,8 +14,6 @@ function App(){
     <Mid></Mid>
    
 
-
-    <Mid></Mid>
   
     </BrowserRouter>
   </div>

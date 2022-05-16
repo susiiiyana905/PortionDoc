@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+
 const SignupForm = () => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -33,6 +34,7 @@ const SignupForm = () => {
           setMessage("Invalid email address.");          
           return;        
       }
+
         const userData = {firstName, lastName, email, password};
         axios.post("http://localhost:4001/signup", userData)
         .then(result=>{
@@ -48,6 +50,7 @@ const SignupForm = () => {
         })
       .catch(e)
     }
+
     return(
       <>
         <nav className="navbar navbar-expand-lg ">
