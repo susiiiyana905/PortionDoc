@@ -3,11 +3,9 @@ import {Route,Routes} from "react-router-dom";
 import Home from "./User/home";
 import Login from "./User/login";
 import SignupForm from "./User/Signupform";
-
-
-
-//import VerifyUser from "./admin/userverfication";
-
+import UpdateProfile from "./User/updateProfile"
+import ViewProfile from "./User/viewProfile";
+import ViewMeals from "./admin/viewMeal";
 import OtpPage from "./User/otppage";
 
 
@@ -19,12 +17,10 @@ class Mid extends Component{
                     <Route path="/" element = {<Home></Home>}></Route>
                     <Route path="/signup" element = {<SignupForm></SignupForm>} />
                     <Route path = "/login" element = {<Login></Login>}></Route>
-
-
-                    {/* <Route path= "/verifyuser" element={<VerifyUser></VerifyUser>}></Route> */}
-
-   
                     <Route path="/otpPage" element={<OtpPage></OtpPage>}></Route>
+                    <Route path="/updateProfile" element={<UpdateProfile></UpdateProfile>}></Route> 
+                    <Route path="/viewProfile" element={<ViewProfile></ViewProfile>}></Route>
+                    <Route path="/viewMeal" element={<ViewMeals></ViewMeals>}></Route>
 
                 </Routes>
             </div>
