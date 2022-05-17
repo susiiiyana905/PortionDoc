@@ -15,5 +15,8 @@ app.use(UserRoute);
 const CategoryRoute = require("./router/categoryRoute");
 app.use(CategoryRoute);
 
+const MealRoute = require("./router/mealsRoute");
+app.use(MealRoute);
+
 app.listen(4001);
 module.exports = app;
