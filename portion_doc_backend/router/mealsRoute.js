@@ -1,13 +1,10 @@
 const express = require("express");
 const router = new express.Router();
-const bcryptjs = require("bcryptjs");
 
-// Importing self made js files....
-const user = require("../models/userModel.js");
 const auth = require("../auth/auth.js");
-const { Router } = require("express");
 const upload = require("../uploads/mealFile.js");
 const Meals = require("../models/mealsModel.js");
+const User = require("../models/userModel");
 
 router.post("/add/meals", auth.verifyAdmin, upload.single('mealImage'), async(req,res)=>{
     if(req.file==undefined){
@@ -63,13 +60,5 @@ router.put("/update/meals/:mid", auth.verifyAdmin, upload.single("mealImage"), a
         res.status(400).send({message: "Something went wrong!"})
     })
 })
-
-// router.put("/update/mealImage/:mid", auth.verifyAdmin, async(req, res)=>{
-//     const mid = req.params.mid;
-//     if(req.file===undefined){
-//         return res.json({message: "Invalid!!"})
-//     }
-//     Meals.up
-// })
 
 module.exports = router;
