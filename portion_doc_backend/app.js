@@ -12,13 +12,11 @@ require("./database/database");
 const UserRoute = require("./router/userRoute");
 app.use(UserRoute);
 
-<<<<<<< Updated upstream
 const CategoryRoute = require("./router/categoryRoute");
 app.use(CategoryRoute);
-=======
+
 const MealRoute = require("./router/mealsRoute");
 app.use(MealRoute);
->>>>>>> Stashed changes
 
 app.listen(4001);
 module.exports = app;
