@@ -12,5 +12,8 @@ require("./database/database");
 const UserRoute = require("./router/userRoute");
 app.use(UserRoute);
 
+const CategoryRoute = require("./router/categoryRoute");
+app.use(CategoryRoute);
+
 app.listen(4001);
 module.exports = app;

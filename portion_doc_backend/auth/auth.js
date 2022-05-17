@@ -7,7 +7,7 @@ const User = require("../models/userModel");
 module.exports.verifyUser = function(req,res,next){
     try{
         const token = req.headers.authorization.split(" ")[1];
-        const udata = jwt.verify(token, "anysecretkey");
+        const udata = jwt.verify(token, "loginKey");
         //select * from users where _id = udata.userID
         User.findOne({_id: udata.userID})
         .then(function(userData){
@@ -27,21 +27,33 @@ module.exports.verifyUser = function(req,res,next){
 
 
 // guard for admin
-// module.exports.verifyAdmin = function(req,res,next){
-//     try{
-//         const token = req.headers.authorization.split(" ")[1];
-//         const adata = jwt.verify(token, "anysecretkey");
-//         Admin.findOne({_id: adata.userID})
-//         .then(function(adminData){
-//             // console.log(adminData)
-//             req.adminInfo = adminData;
-//             next();
-//         })
-//         .catch(function(e){
-//             res.json({error : e})
-//         })
-//     }
-//     catch(e){
-//         res.json({error : e})
-//     }
-// }
+module.exports.verifyAdmin = function (req, res, next) {
+    try {
+        const token = req.headers.authorization.split(" ")[1];
+        //console.log(token);
+        const adata = jwt.verify(token, "loginKey");
+        console.log("try");
+        User.findOne({ _id: adata.userId }).then(function (userData) {
+            if (userData.admin) {
+                req.userInfo = userData;
+                next();
+            } else {
+
+                res.json({ message: "Users not allow" });
+            }
+
+        })
+
+            .catch(function (e) {
+                res.json({ error: e })
+            })
+    }
+    catch (e) {
+        console.log("catch");
+
+        res.json({ error: e })
+    }
+
+
+
+}
