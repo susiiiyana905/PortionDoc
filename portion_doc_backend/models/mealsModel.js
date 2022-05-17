@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const mealsSchema = new mongoose.Schema({
     mealImage: {
         type: String,
-        default: ""
+        default: "",
+        required: true
     },
     mealName: {
         type: String,

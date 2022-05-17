@@ -15,6 +15,29 @@ const { generate } = require("otp-generator");
 
 const router = new express.Router();
 
+// router.put("/profilepic", auth.verifyUser, upload.single("myimage"), function(req, res){
+//     const uid = req.userInfo._id;
+//     if(req.file===undefined){
+//         return res.json({msg: "Invaliddd!!"})
+//     }
+//     User.findOne({_id: uid})
+//     .then(function(userData){
+//         if(userData.profile_pic!=="profilepic.png"){
+//             fs.unlinkSync("./images/profile/"+userData.profile_pic)
+//         }
+//         User.updateOne({_id: uid},{
+//             profile_pic : req.file.filename
+//         })
+//         .then(function(){
+//             res.json({msg: "Profile picture added successfully!"})
+//         })
+//         .catch(function(e){
+//             res.json({msg: e})
+//         })
+//     })
+   
+// })
+
 router.post('/signup', async(req,res)=>{
     const email = req.body.email;
     if(!validator.isEmail(email)) {
