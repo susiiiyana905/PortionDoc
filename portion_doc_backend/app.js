@@ -18,5 +18,7 @@ app.use(CategoryRoute);
 const MealRoute = require("./router/mealsRoute");
 app.use(MealRoute);
 
+app.use(express.static(__dirname+'/images/'));
+
 app.listen(4001);
 module.exports = app;
