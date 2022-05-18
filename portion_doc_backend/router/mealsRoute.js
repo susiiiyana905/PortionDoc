@@ -61,4 +61,56 @@ router.put("/update/meals/:mid", auth.verifyAdmin, upload.single("mealImage"), a
     })
 })
 
+<<<<<<< Updated upstream
+=======
+
+router.get('/meals/single', auth.verifyAdmin, async(req,res)=>{
+    const MealData = await Meals.find()
+    res.json({success: true, message:"Meals Data", mealData:MealData})
+})
+
+router.get("/meals/single/:mid", auth.verifyAdmin, function(req,res){
+    const mid = req.params.mid;
+    Meals.findOne({_id : mid})
+    .then(function(){
+        res.status(200).send({success:true, message: "Meal details by Id"})
+    })
+    .catch(function(){
+        res.status(400).send({message: "Something went wrong!"})
+    })
+})
+
+router.get("/meals/category/:category", auth.verifyUser, function(req,res){
+    const _category = req.params.category;
+    Meals.find({mealCategory : _category})
+    .then(function(){
+        res.status(200).send({success:true, message: "Meals by category"})
+    })
+    .catch(function(){
+        res.status(400).send({message: "Something went wrong!"})
+    })
+})
+
+router.delete("/meals/delete/:mid", auth.verifyAdmin, function(req,res){
+    const mid = req.params.mid;
+    Meals.deleteOne({_id : mid})
+    .then(function(){
+        res.status(200).send({success:true, message: "Meal has been deleted!"})
+    })
+    .catch(function(){
+        res.status(400).send({message: "Something went wrong!"})
+    })
+
+})
+
+
+// router.put("/update/mealImage/:mid", auth.verifyAdmin, async(req, res)=>{
+//     const mid = req.params.mid;
+//     if(req.file===undefined){
+//         return res.json({message: "Invalid!!"})
+//     }
+//     Meals.up
+// })
+
+>>>>>>> Stashed changes
 module.exports = router;
