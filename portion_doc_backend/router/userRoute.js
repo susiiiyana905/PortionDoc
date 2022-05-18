@@ -5,6 +5,7 @@ const validator = require("validator");
 const otpGenerator = require("otp-generator");
 const express = require('express');
 const jwt = require('jsonwebtoken');
+const fs = require("fs");
 
 const User = require('../models/userModel');
 const Otp = require('../models/otpModel');
@@ -176,7 +177,7 @@ router.put("/update/profilePic", auth.verifyUser, upload.single("profilePic"), f
     User.findOne({_id: uid})
     .then(function(userData){
         if(userData.profile_pic!=="profilePic.png"){
-            fs.unlinkSync("./images/profile/"+userData.profile_pic)
+            fs.unlinkSync("./images/user/"+userData.profile_pic)
         }
         User.updateOne({_id: uid},{
             profile_pic : req.file.filename
