@@ -30,8 +30,6 @@ router.post('/signup', async(req,res)=>{
         password: hashed_value,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
-        address: req.body.address,
-        phone: req.body.phone,
         profile_pic : "profilePic.png"
     })
 
