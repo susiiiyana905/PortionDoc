@@ -62,6 +62,7 @@ router.put("/update/meals/:mid", auth.verifyAdmin, upload.single("mealImage"), a
 })
 
 
+
 router.get('/meals/single', auth.verifyAdmin, async(req,res)=>{
     const MealData = await Meals.find()
     res.json({success: true, message:"Meals Data", mealData:MealData})
@@ -70,8 +71,8 @@ router.get('/meals/single', auth.verifyAdmin, async(req,res)=>{
 router.get("/meals/single/:mid", auth.verifyAdmin, function(req,res){
     const mid = req.params.mid;
     Meals.findOne({_id : mid})
-    .then(function(){
-        res.status(200).send({success:true, message: "Meal details by Id"})
+    .then(function(result){
+        res.status(200).send({success:true, data:result, message: "Meal details by Id"})
     })
     .catch(function(){
         res.status(400).send({message: "Something went wrong!"})
@@ -83,6 +84,17 @@ router.get("/meals/category/:category", auth.verifyUser, function(req,res){
     Meals.find({mealCategory : _category})
     .then(function(){
         res.status(200).send({success:true, message: "Meals by category"})
+    })
+    .catch(function(){
+        res.status(400).send({message: "Something went wrong!"})
+    })
+})
+
+router.get("/meals/:category", auth.verifyAdmin, function(req,res){
+    const _category = req.params.category;
+    Meals.find({mealCategory : _category})
+    .then(function(result){
+        res.status(200).send({success:true, data:result, message: "Meals by category"})
     })
     .catch(function(){
         res.status(400).send({message: "Something went wrong!"})
