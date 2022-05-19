@@ -122,5 +122,4 @@ router.delete("/meals/delete/:mid", auth.verifyAdmin, function(req,res){
 //     Meals.up
 // })
 
-
 module.exports = router;
