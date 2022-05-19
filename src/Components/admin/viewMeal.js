@@ -27,7 +27,7 @@ const ViewMeals =()=>{
                         </thead>
                         <tbody>
                         {/* {productData.map(singleData=> { */}
-              return (
+              
                             
                              {/* <tr key={singleData._id}> */}
                                 
@@ -40,12 +40,12 @@ const ViewMeals =()=>{
                                 
                                 <td>
                                 <button className="btn btn-primary mb-2"style={{backgroundColor:"#FF7800",border:"none"}}>Update Product</button>
-                                    <button className="btn btn-primary mb-2"style={{backgroundColor:"#FF7800",border:"none"}}>Delete Product</button>
+                                    <button className="btn btn-primary mb-2"style={{backgroundColor:"#FF7800",border:"none", marginLeft:"10px"}}>Delete Product</button>
                                  
 
                                 </td>
                             {/* </tr> */}
-              )
+              
                         {/* })}  */}
                         </tbody>
                         </table>
