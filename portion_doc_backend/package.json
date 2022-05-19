@@ -23,9 +23,21 @@
     "test": "jest"
   },
   "jest": {
+<<<<<<< Updated upstream
     "testEnvironment": "node",
     "coveragePathIgnorePatterns": [
       "/node_modules/"
     ]
+=======
+
+    "testEnvironment": "node",
+
+    "coveragePathIgnorePatterns": [
+
+      "/node_modules/"
+
+    ]
+
+>>>>>>> Stashed changes
   }
 }
