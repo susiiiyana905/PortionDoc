@@ -61,8 +61,6 @@ router.put("/update/meals/:mid", auth.verifyAdmin, upload.single("mealImage"), a
     })
 })
 
-<<<<<<< Updated upstream
-=======
 
 router.get('/meals/single', auth.verifyAdmin, async(req,res)=>{
     const MealData = await Meals.find()
@@ -112,5 +110,4 @@ router.delete("/meals/delete/:mid", auth.verifyAdmin, function(req,res){
 //     Meals.up
 // })
 
->>>>>>> Stashed changes
 module.exports = router;
