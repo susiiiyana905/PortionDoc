@@ -266,3 +266,167 @@ background-color: #FF7800;
   background-color: #FF7800;
   color: #FAFAFA;
 }
+
+
+/* our menu */
+#search
+{
+  display:inline-flex;
+}
+
+#content
+{
+width:95%;
+height:365px;
+border:5px solid white;
+margin-top:10px;
+ margin-left:45px;
+background:white;
+margin-bottom:20px;
+}
+
+.contents
+{
+    height :330px;
+	width : 255px;
+	float : left;
+	border : 5px solid white;
+	 margin: 10px; 
+	 margin-left:9px;
+	background-color:white;
+	margin-right:5px;
+}
+
+.contents:hover
+{
+background: #e6ffe6;
+}
+
+#content-a
+{
+  /* background:url(image/1.png); */
+	background-size:220px 220px;
+	height:220px;
+	width: 220px;
+	margin-left: 20px;
+	margin-top:2px;
+	margin-right:auto;
+
+}
+
+#content-b
+{
+/* background:url(2.gif); */
+	background-size:220px 220px;
+	height:220px;
+	width: 220px;
+	margin-left: px;
+	margin-top:2px;
+	margin-right:auto;
+}
+
+#content-c
+{
+/* background:url(3.jpg); */
+	background-size:220px 220px;
+	height:220px;
+	width: 220px;
+	margin-left:9px;
+	margin-top:2px;
+	margin-right:auto;
+}
+
+#content-d
+{
+/* background:url(4.gif); */
+	background-size:220px 220px;
+	height:220px;
+	width: 220px;
+	margin-left: 9px;
+	margin-top:2px;
+	margin-right:auto;
+	}
+
+#content-e
+{
+/* background:url(5.jpg); */
+	background-size:220px 220px;
+	height:220px;
+	width: 220px;
+	margin-left: 9px;
+	margin-top:2px;
+	margin-right:auto;
+	}
+
+.first
+{
+text-align:center;
+margin-top:12px;
+color:#ff1a1a;
+
+
+}
+
+.second
+{
+text-align:center;
+color: #1f1f14;
+margin-top:0px;
+
+
+}
+
+#con
+{
+width:95%;
+height:365px;
+border:5px solid white;
+margin-top:10px;
+ margin-left:45px;
+background:white;
+margin-bottom:20px;
+}
+
+
+#cons
+{
+width:95%;
+height:365px;
+border:5px solid white;
+margin-top:10px;
+ margin-left:45px;
+background:white;
+margin-bottom:20px;
+}
+
+#mybutton
+{
+  margin:20px;
+  padding:20px;
+  background-color: orange;
+  color: white;
+  border:orange;
+  font-size: 30px;
+  margin-left:670px;
+  border-radius: 10%;
+  font-size: 20px;;
+  
+
+  
+}
+
+#mybutton:hover
+{
+  background-color: #ff944d;
+}
+
+#our
+{
+  text-align: center;
+  font-size: 25px;
+  color: #008000;
+  font-family:Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  margin:10px;
+  margin-bottom: 15px;
+}

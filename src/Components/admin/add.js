@@ -8,7 +8,7 @@ class AddMeal extends Component{
             <div className="row">
                 <div className="col-md-4"></div>
                 <div className="col-md-4">
-                    <h2 className="heading-h2-all">Add Meal Details :</h2>
+                    <h2 className="heading-h2-all">Add Meal:</h2>
 
                     <form>
                         <div className="form-group">
@@ -35,7 +35,7 @@ class AddMeal extends Component{
 
                             <div className="form-group">
                             <label>Meal Description</label>
-                            <input type="text" className="form-control"
+                            <textarea type="text" className="form-control"
                              
                             
                             />
@@ -49,7 +49,7 @@ class AddMeal extends Component{
 
                         </div>
 
-                        <p><input type='submit' className="btn btn-primary"  /></p>
+                        <p><button type='submit' className="btn btn-primary">Add</button></p>
                     </form>
                 </div>
                 <div className="col-md-4"></div>

@@ -9,7 +9,7 @@ class UpdateMeal extends Component{
                <div className="col-md-4"></div>
                <div className="col-md-4">
                
-                    <h2 className="heading-h2-all">Update Product</h2>
+                    <h2 className="heading-h2-all">Update Meal</h2>
                 
                    <form>
                         <div className="form-group">
@@ -35,9 +35,18 @@ class UpdateMeal extends Component{
 
                         <div className="form-group">
                             <label>Meal Description</label>
-                            <input type="text" className="form-control"
+                            <textarea type="text" className="form-control"
                              
                              />    
+                        </div>
+
+                        
+                        <div className="form-group">
+                            <label>Meal Image</label>
+                            <input type="file" className="form-control"
+                            
+                            />
+
                         </div>
                         
                          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" >
