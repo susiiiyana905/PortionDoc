@@ -1,17 +1,17 @@
 const bcrypt = require("bcrypt");
 const bcryptjs = require("bcryptjs");
 const _ = require("lodash");
-const axios = require("axios");
 const validator = require("validator");
 const otpGenerator = require("otp-generator");
 const express = require('express');
 const jwt = require('jsonwebtoken');
+const fs = require("fs");
 
 const User = require('../models/userModel');
 const Otp = require('../models/otpModel');
 const sendEmail = require('../utils/sendEmail');
-const { sortedUniq } = require("lodash");
-const { generate } = require("otp-generator");
+const auth = require("../auth/auth.js");
+const upload = require("../uploads/userFile");
 
 const router = new express.Router();
 
@@ -31,8 +31,7 @@ router.post('/signup', async(req,res)=>{
         password: hashed_value,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
-        address: req.body.address,
-        phone: req.body.phone
+        profile_pic : "profilePic.png"
     })
 
     newUser.save();
@@ -80,34 +79,6 @@ router.post('/user/verify', async(req,res)=>{
         return res.status(400).send("Your OTP was wrong!")
     }
 })
-
-
-// router.post("/user/login", async(req,res)=>{
-//     const email = req.body.email;
-//     User.findOne({email: email})
-//     .then(function(userData){
-//         // console.log(userData);
-//         if(userData === null){
-//             return res.status(400).send({message: "Invalid email!"});
-//         }
-//         else if(userData.verified===false){
-//             return res.status(400).send({message:"Verification required first."})
-//         }
-//         //now its time for comparing password between the password
-//     //provided by user and password stored in db
-//     const password = req.body.password;
-//     bcryptjs.compare(password,userData.password,function(e, result){
-//         // console.log(result);
-//         if(result === false){
-//             return res.status(400).send({message: "Invalid login credentials!"})
-//         }
-//         //now lets generate token
-//         //jsonwebtoken
-//         const token = jwt.sign({userID: userData._id}, "anysecretkey");
-//         res.status(200).send({token: token, message: "success"});
-//     })
-//     })
-// })
 
 router.post("/user/login", (req, res)=> {
     const email = req.body.email;
@@ -160,35 +131,64 @@ router.post("/user/login", (req, res)=> {
     });
 });
 
+router.get("/profile", auth.verifyUser, async(req,res)=>{
+    // res.json({msg : req.userInfo.phone_no});
+    const user = await User.findOne({_id : req.userInfo._id});
+    res.json(user);
+})
 
-// router.post('/login', async (req, res) => {
-//     // try{
-//         const foundUser = await User.find({email: req.body.email})
-//         console.log(req.body)
-//         if (foundUser) {
+router.put("/user/update", auth.verifyUser, function(req,res){
+    const uid = req.userInfo._id;
+    const {
+        firstName,
+        lastName,
+        bio,
+        dob,
+        gender,
+        address,
+        phone_no
+    } = req.body
+    
+    const updatedProfile = {
+        firstName,
+        lastName,
+        bio,
+        dob,
+        gender,
+        address,
+        phone_no
+    }
+    User.updateOne({_id : uid},updatedProfile)
+    .then(function(){
+        res.json({success:true, msg: "Profile updated!"})
+    })
+    .catch(function(e){
+        res.json({msg: e})
+    });
+})
 
-//             let submittedPass = req.body.password; 
-//             let storedPass = foundUser.password; 
-    
-//             const passwordMatch = await bcrypt.compare(submittedPass, storedPass);
-//             if (passwordMatch) {
-//                 let usrname = foundUser.username;
-//                 res.send(`<div align ='center'><h2>login successful</h2></div><br><br><br><div align ='center'><h3>Hello ${usrname}</h3></div><br><br><div align='center'><a href='./login.html'>logout</a></div>`);
-//             } else {
-//                 res.send("<div align ='center'><h2>Invalid email or password</h2></div><br><br><div align ='center'><a href='./login.html'>login again</a></div>");
-//             }
-//         }
-//         else {
-    
-//             let fakePass = `$2b$$10$ifgfgfgfgfgfgfggfgfgfggggfgfgfga`;
-//             await bcrypt.compare(req.body.password, fakePass);
-    
-//             res.send("<div align ='center'><h2>Invalid email or password</h2></div><br><br><div align='center'><a href='./login.html'>login again<a><div>");
-//         }
-//     // } catch(err){
-//     //   res.send(err)
-//     // }
-// });
+router.put("/update/profilePic", auth.verifyUser, upload.single("profilePic"), function(req, res){
+    const uid = req.userInfo._id;
+    if(req.file===undefined){
+        return res.json({msg: "Invaliddd!!"})
+    }
+    User.findOne({_id: uid})
+    .then(function(userData){
+        if(userData.profile_pic!=="profilePic.png"){
+            fs.unlinkSync("./images/user/"+userData.profile_pic)
+        }
+        User.updateOne({_id: uid},{
+            profile_pic : req.file.filename
+        })
+        .then(function(){
+            res.json({msg: "Profile picture added successfully!"})
+        })
+        .catch(function(e){
+            res.json({msg: e})
+        })
+    })
+   
+})
 
 const generateJWT = (id,email) => {
     return jwt.sign({

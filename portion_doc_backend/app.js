@@ -12,5 +12,13 @@ require("./database/database");
 const UserRoute = require("./router/userRoute");
 app.use(UserRoute);
 
+const CategoryRoute = require("./router/categoryRoute");
+app.use(CategoryRoute);
+
+const MealRoute = require("./router/mealsRoute");
+app.use(MealRoute);
+
+app.use(express.static(__dirname+'/images/'));
+
 app.listen(4001);
 module.exports = app;

@@ -1,12 +1,14 @@
 import axios from "axios";
 import { useState } from "react";
 // import { Link } from "react-router-dom";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { BrowserRouter as Router, Link, useNavigate } from "react-router-dom";
 
 const Login =()=> {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
+
+    const navigate = useNavigate();
 
     const userLogin = (e)=>{
         e.preventDefault();
@@ -25,10 +27,15 @@ const Login =()=> {
         axios.post("http://localhost:4001/user/login", userData)
         .then(result1=>{
             if(result1.data.token){
-                //login success
-                localStorage.setItem('token', result1.data.token)
-                console.log(result1.data);
-                // window.location.replace('/');
+                console.log(result1);
+                if (result1.data.userData.admin===false) { 
+                    localStorage.setItem('userToken', result1.data.token);                
+                    navigate("/"); 
+                }
+                else if (result1.data.userData.admin===true){ 
+                    localStorage.setItem('adminToken', result1.data.token);                               
+                    // navigate("/adminDashBoard");   
+                }
             }
             else{
                 //login failed
