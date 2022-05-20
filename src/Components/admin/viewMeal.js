@@ -38,6 +38,7 @@ const ViewMeals =()=>{
                                     <button className="btn btn-primary mb-2"style={{backgroundColor:"#FF7800",border:"none", marginLeft:"10px"}}>Delete Product</button>
                                 </td>
                             {/* </tr> */}
+
                         {/* })}  */}
                         </tbody>
                         </table>

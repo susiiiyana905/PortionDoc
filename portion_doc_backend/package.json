@@ -6,10 +6,12 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.18.1",
+    "fs": "^0.0.1-security",
     "jest": "^28.1.0",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.21",
     "mongoose": "^6.3.3",
+    "multer": "^1.4.4",
     "nodemailer": "^6.7.5",
     "nodemon": "^2.0.16",
     "otp-generator": "^4.0.0",
@@ -21,6 +23,12 @@
     "test": "jest"
   },
   "jest": {
+<<<<<<< Updated upstream
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
+=======
 
     "testEnvironment": "node",
 
@@ -30,5 +38,6 @@
 
     ]
 
+>>>>>>> Stashed changes
   }
 }
