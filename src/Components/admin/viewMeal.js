@@ -12,7 +12,6 @@ const ViewMeals =()=>{
                         <div className="col-md-8">
                         <div class="container">
                             <div class="row">
-                            
                   <div>
                       <table class="table">
                         <thead>
@@ -27,25 +26,26 @@ const ViewMeals =()=>{
                         </thead>
                         <tbody>
                         {/* {productData.map(singleData=> { */}
-              
-                            
+
                              {/* <tr key={singleData._id}> */}
-                                
                                  <th scope='row'></th>
                                  {/* <td><img src={''} height="100px"/></td> */}
                                 <td colSpan="2">  {}</td>
                                 <td colSpan="2"> {}</td>
                                 <td colSpan="2"> {}</td>
                                 <td colSpan="4">{}</td>
-                                
                                 <td>
                                 <button className="btn btn-primary mb-2"style={{backgroundColor:"#FF7800",border:"none"}}>Update Product</button>
                                     <button className="btn btn-primary mb-2"style={{backgroundColor:"#FF7800",border:"none", marginLeft:"10px"}}>Delete Product</button>
+
+                                </td>
+                            {/* </tr> */}
                                  
 
                                 </td>
                             {/* </tr> */}
               
+
                         {/* })}  */}
                         </tbody>
                         </table>
@@ -55,11 +55,10 @@ const ViewMeals =()=>{
           </div>
           </div>
           </div>
-          
-               
-    
       </div>
         </>
     )
 }
 export default ViewMeals;
+
+
