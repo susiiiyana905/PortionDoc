@@ -27,6 +27,7 @@ const ViewMeals =()=>{
                         <tbody>
                         {/* {productData.map(singleData=> { */}
 
+
                              {/* <tr key={singleData._id}> */}
                                  <th scope='row'></th>
                                  {/* <td><img src={''} height="100px"/></td> */}
@@ -40,11 +41,7 @@ const ViewMeals =()=>{
 
                                 </td>
                             {/* </tr> */}
-                                 
 
-                                </td>
-                            {/* </tr> */}
-              
 
                         {/* })}  */}
                         </tbody>
