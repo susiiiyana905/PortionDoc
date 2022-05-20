@@ -60,10 +60,10 @@ const Login =()=> {
                                 <div className="col-md-4">
                                     <img src="images/logo.png" className="log"></img>
 
-                                    <form>
+                                    <form id="loginForm">
                                         <div className="form-group mt-4">
                                             <label>Email</label>
-                                            <input type="text" className="form-control" style={{width:"600px"}}
+                                            <input type="text" className="form-control" style={{width:"600px"}} id="email"
                                             value={email}
                                             onChange={(e)=>setEmail(e.target.value)}
                                             />
@@ -71,7 +71,7 @@ const Login =()=> {
 
                                         <div className="form-group mt-3">
                                             <label>Password</label>
-                                            <input type="password" className="form-control" style={{width:"600px"}}
+                                            <input type="password" className="form-control" style={{width:"600px"}} id="password"
                                             value={password}
                                             onChange={(e)=>setPassword(e.target.value)}
                                             />
@@ -86,7 +86,7 @@ const Login =()=> {
                                         </div>
 
                                         <div className="form-group">
-                                            <button type="Submit" className="btn btn-light login"  style={{width:'fit-content'}}
+                                            <button type="Submit" className="btn btn-light login"  style={{width:'fit-content'}} id="loginBtn"
                                             onClick={userLogin}
                                             >Login</button>
 

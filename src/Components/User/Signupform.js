@@ -62,18 +62,18 @@ const SignupForm = () => {
         <div className="container" style={{"marginTop": "100px"}}>
         <div className="suggestion-message text-center mb-2" style={{color: "red", fontWeight:"bold"}}>{message}</div>
           <h1 style={{ color: "black", textAlign:"center", fontSize:"60px", fontFamily:"sans-serif"  }}>Create an Account</h1>
-          <form>
+          <form id="registerForm">
             <div className="form-row">
               <div className="form-group col-md-6">
                 <label htmlFor="inputFirstName4">First Name</label>
-                <input type="First Name" className="form-control" id="inputFirstName4"
+                <input type="First Name" className="form-control" id="firstName"
                 value={firstName}
                 onChange={(e)=>setFirstName(e.target.value)}
                 />
               </div>
               <div className="form-group col-md-6">
                 <label htmlFor="inputLastName4">Last Name</label>
-                <input type="Last Name" className="form-control" id="inputLastName4"
+                <input type="Last Name" className="form-control" id="lastName"
                 value={lastName}
                 onChange={(e)=>setLastName(e.target.value)}
                 />
@@ -81,23 +81,23 @@ const SignupForm = () => {
             </div>
             <div className="form-group">
               <label htmlFor="inputEmail">Email</label>
-              <input type="text" className="form-control" id="inputEmail"
+              <input type="text" className="form-control" id="email"
               value={email}
               onChange={(e)=>setEmail(e.target.value)}
               />
             </div>
             <div className="form-group">
               <label htmlFor="inputAddress2">Password</label>
-              <input type="password" className="form-control" id="inputPassword2"
+              <input type="password" className="form-control" id="password"
               value={password}
               onChange={(e)=>setPassword(e.target.value)}
               />
             </div>
             <div className="form-group">
               <label htmlFor="inputAddress2"> Confirm Password</label>
-              <input type="password" className="form-control" id="inputConfirmPassword2"/>
+              <input type="password" className="form-control" id="verifyPassword"/>
             </div>
-            <button type="submit" className="btn btn-primary sign-btn" style = {{"backgroundColor":'#FF7800' }} 
+            <button type="submit" id="registerBtn" className="btn btn-primary sign-btn" style = {{"backgroundColor":'#FF7800' }} 
             onClick={userRegister}
             >Sign Up</button>
           </form>
