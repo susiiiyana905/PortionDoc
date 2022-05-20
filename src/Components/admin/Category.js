@@ -1,84 +1,80 @@
-import React from 'react';
-import {
-    Grid,
-    Card,
-    CardContent,
-    CardHeader,
-    Box,
-    Button,
-  } from '@material-ui/core';
+// import React from 'react';
+import { useState } from 'react';
+import axios from 'axios';
 
 
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+  const AddCategory = () => {
+   const [categoryName, setcategoryName] = useState('');
+   const [categoryImage, setcategoryImage] = useState('');
+   const [message, setMessage] = useState('');
 
+   const config ={
+       headers : {
+           Authorization : 'Bearer ' + localStorage.getItem('adminToken')
+       }
+   }
+   const addcategory = (e) => {
+       e.preventDefault();
 
-  const Category = () => {
-   
+       const categoryData = new FormData();
+       categoryData.append('categoryName', categoryName);
+       categoryData.append('categoryImage',categoryImage);
 
-    const [category, setCategory] = React.useState('');
-
-    const handleChange = (event) => {
-        setCategory(event.target.value);
-      };
-
-   
-    return (
-        <Grid container spacing={3}>
+       axios.post("http://localhost:4001/category/insert", categoryData, config)
+       .then(result=>{
+           console.log(result.data);
+           if(result.data.message === "Category Inserted Successfully"){
+               setMessage("Category inserted successfully");
+           }else{
+               setMessage("Something went wrong!!");
+           }
+       })
+       .catch (e =>{
            
-            <Grid item lg={9} md={12} xs={12}>
-                <Card elevation={1}>
-                    <CardHeader titleTypographyProps={{variant:'h4' }} title="Category"/>
-                    <CardContent>
-                    <form autoComplete="off" noValidate >
-                            <Grid  container spacing={3} >
-                            <FormControl fullWidth>
-                                <InputLabel id="demo-simple-select-label">Age</InputLabel>
-                                <Select
-                                labelId="demo-simple-select-label"
-                                id="demo-simple-select"
-                                value={category}
-                                label="Age"
-                                onChange={handleChange}
-                                >
-                                <MenuItem value={1}>Vegetarian</MenuItem>
-                                <MenuItem value={2}>Non-Vegetarian</MenuItem>
-                                <MenuItem value={3}>Chef's Choice</MenuItem>
-                                <MenuItem value={4}>Diabetes-Friendly</MenuItem>
-                                <MenuItem value={5}>Gluten Free</MenuItem>
-                                <MenuItem value={6}>Low Calorie</MenuItem>
-                                <MenuItem value={7}>Lean and Clean</MenuItem>
-                                <MenuItem value={8}>Fresh and Ready</MenuItem>
-                                </Select>
-                            </FormControl>
-                                <Grid item md={12} xs={12} >
-                                <input type="file" name="FileAttachment" id="FileAttachment"/>
-                                </Grid>
-                               
-                            </Grid>
-                            
-                            
-                            <Box
-                            display="flex"
-                            justifyContent="flex-start"
-                            mt={3}
-                            >
-                            <Button
-                                color="primary"
-                                variant="contained"
-                            >
-                                Submit
-                            </Button>
-                            </Box>
-                        
-                        </form>
-                    </CardContent>
-                </Card>
-            </Grid>
-        </Grid>
-    );
+           setMessage("Error!!");
+       })
+   }
+
+
+
+    return(
+        <div>
+
+
+        <div className="container">
+            <div className="row">
+                <div className="col-md-4"></div>
+                <div className="col-md-4">
+                    <h2 className="heading-h2-all">Add Category Details </h2>
+                    <p>{message}</p>
+                    <form>
+                        <div className="form-group">
+                            <label>Category Name</label>
+                            <input type="text" className="form-control"
+                            value={categoryName}
+                            onChange={e=>{setcategoryName(e.target.value)}}
+                            />
+                        </div>
+
+                        <div className="form-group">
+                            <label>Category Image</label>
+                            <input type="file" className="form-control"
+                            onChange={e=>setcategoryImage(e.target.files[0])}
+                            />
+
+                        </div>
+
+                        <p><input type='submit'  className="btn btn-primary" onClick={addcategory}  /></p>
+                    </form>
+                </div>
+                <div className="col-md-4"></div>
+            </div>
+        </div>
+        </div>
+
+    )
+   
+
 }
  
-export default Category;
+export default AddCategory;

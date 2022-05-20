@@ -7,6 +7,8 @@ import UpdateProfile from "./User/updateProfile"
 import ViewProfile from "./User/viewProfile";
 import ViewMeals from "./admin/viewMeal";
 import OtpPage from "./User/otppage";
+import AddCategory from "./admin/Category";
+import ShowCategory from "./admin/CategoryList";
 
 
 class Mid extends Component{
@@ -21,6 +23,9 @@ class Mid extends Component{
                     <Route path="/updateProfile" element={<UpdateProfile></UpdateProfile>}></Route> 
                     <Route path="/viewProfile" element={<ViewProfile></ViewProfile>}></Route>
                     <Route path="/viewMeal" element={<ViewMeals></ViewMeals>}></Route>
+                    <Route path="/addCategory" element={<AddCategory></AddCategory>}></Route>
+                    <Route path="/viewCategory" element={<ShowCategory></ShowCategory>}></Route>
+                
 
                 </Routes>
             </div>

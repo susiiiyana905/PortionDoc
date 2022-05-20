@@ -8,7 +8,7 @@ class Header extends Component{
             window.location.replace('/login')
         }
         var menu;
-        if(localStorage.getItem('token')){
+        if(localStorage.getItem('userToken')){
             menu=(
             <>
             <nav class="navbar navbar-expand-lg ">
@@ -16,7 +16,7 @@ class Header extends Component{
                 <i class="fas fa-solid fa-phone" style={{height: "40px", marginLeft:"100px", color:"white"}} ></i><p className="i-1">+977 983142567</p>
                 </nav>
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                    <a className="navbar-brand" href="#"><img src="images/logo.png" className="card-img-top" alt="..." style={{height:"100px", width:"150px", marginLeft:"100px"}}></img></a>
+                    <a className="navbar-brand" href="#"><img src="images/logo.png" className="card-img-top" alt="..." style={{height:"100px", width:"150px", marginLeft:"60px"}}></img></a>
                     <div class="collapse navbar-collapse" style={{marginLeft:"400px"}} id="navbarSupportedContent">
                         <ul className="navbar-nav nav-item">
                             <li className="nav-item active">
