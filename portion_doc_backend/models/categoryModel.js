@@ -5,9 +5,9 @@ const categorySchema = new mongoose.Schema({
         type: String,
         unique :  true
     },
-    // categoryImage:{
-    //     type: String,
-    // },
+    categoryImage:{
+        type: String,
+    },
     createdAt: {
         type: Date,
         default: Date.now,

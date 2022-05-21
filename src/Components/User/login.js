@@ -34,7 +34,7 @@ const Login =()=> {
                 }
                 else if (result1.data.userData.admin===true){ 
                     localStorage.setItem('adminToken', result1.data.token);                               
-                    // navigate("/adminDashBoard");   
+                    navigate("/addCategory");   
                 }
             }
             else{
