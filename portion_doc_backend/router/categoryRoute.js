@@ -21,7 +21,7 @@ router.post("/category/insert",auth.verifyAdmin, async(req,res)=>{
 router.get('/category/single', auth.verifyAdmin, async(req,res)=>{
 
     const CategoryData = await Category.find()
-    res.json({sucess: true, message: "Category Data", data:CategoryData});
+    res.json({success: true, message: "Category Data", data:CategoryData});
   
 })
 
