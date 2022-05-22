@@ -9,6 +9,8 @@ import ViewMeals from "./admin/viewMeal";
 import OtpPage from "./User/otppage";
 import AddMeal from "./admin/add";
 import UpdateMeal from "./admin/updatemeal";
+import Menu1 from "./User/ourmenu";
+import Menu from "./User/viewMenu";
 
 
 class Mid extends Component{
@@ -25,6 +27,8 @@ class Mid extends Component{
                     <Route path="/viewMeal" element={<ViewMeals></ViewMeals>}></Route>
                     <Route path="/addMeal" element={<AddMeal></AddMeal>}></Route>
                     <Route path="/updateMeal" element={<UpdateMeal></UpdateMeal>}></Route>
+                    <Route path="/menu" element = {<Menu></Menu>}> </Route>
+                    <Route path="/ourmenu" element = {<Menu1></Menu1>}> </Route>
 
                 </Routes>
             </div>
