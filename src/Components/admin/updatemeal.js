@@ -66,11 +66,24 @@ const UpdateMeal =()=> {
             // console.log(result.data)
             if(result.data.success){
                 setMessage(result.data.message);
-                // navigate('/updateMeal/'+mid);
-                axios.get("http://localhost:4001/meals/single"+mid,config)
-                .then(result1=>{
-                 setMealData(result1.data.data)
+                axios.get("http://localhost:4001/meals/single/"+mid, config)
+                .then(result=>{
+                    console.log(result.data.data.mealCategory)
+                    setMealImage(result.data.data.mealImage)
+                    setMealName(result.data.data.mealName)
+                    setMealPrice(result.data.data.mealPrice)
+                    setMealCategory(result.data.data.mealCategory)
+                    setMealDescription(result.data.data.mealDescription)
+                    setTime(result.data.data.time)
+                    setCalory(result.data.data.calory)
+                    setDifficulty(result.data.data.difficulty)
+                    setID(result.data.data._id)
                 })
+                // navigate('/updateMeal/'+mid);
+                // axios.get("http://localhost:4001/meals/single"+mid,config)
+                // .then(result1=>{
+                //  setMealData(result1.data.data)
+                // })
             }
             else{
                 setMessage("Something is wrong!!!");
@@ -91,8 +104,8 @@ const UpdateMeal =()=> {
         mealData.append("mealDescription", mealDescription);
         mealData.append("time", time);
         mealData.append("mealCategory", mealCategory);
-        mealData.append("calory", calory);
-        mealData.append("difficulty", difficulty);
+        // mealData.append("calory", calory);
+        // mealData.append("difficulty", difficulty);
         
         axios.put("http://localhost:4001/update/meals/"+mid, mealData, config)
         .then(result=>{
@@ -206,7 +219,7 @@ const UpdateMeal =()=> {
                              />    
                              </div>
                         </div>
-                        <div className="form-group row">
+                        {/* <div className="form-group row">
                             <label htmlFor="calory" className="col-sm-3 col-form-label">Calory</label>
                             <div className="col-sm-9">
                             <input type="text" className="form-control"
@@ -214,8 +227,8 @@ const UpdateMeal =()=> {
                              onChange={(e)=>setCalory(e.target.value)}
                              />    
                              </div>
-                        </div>
-                        <div className="form-group row">
+                        </div> */}
+                        {/* <div className="form-group row">
                             <label htmlFor="difficulty" className="col-sm-3 col-form-label">Difficulty</label>
                             <div className="col-sm-9">
                             <input type="text" className="form-control"
@@ -223,7 +236,7 @@ const UpdateMeal =()=> {
                              onChange={(e)=>setDifficulty(e.target.value)}
                              />    
                              </div>
-                        </div>
+                        </div> */}
                         <div className="form-group row">
                             <div className="col-sm-3"></div>
                         <div className="col-sm-9">
