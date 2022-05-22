@@ -64,8 +64,8 @@ const ViewMeals =()=>{
                             <th scope="col" colSpan="4">Price</th>
                             <th scope="col" colSpan="4">Category</th>
                             <th scope="col " colSpan="6">Time</th>
-                            <th scope="col " colSpan="6">Calory</th>
-                            <th scope="col " colSpan="6">Difficulty</th>
+                            {/* <th scope="col " colSpan="6">Calory</th>
+                            <th scope="col " colSpan="6">Difficulty</th> */}
                             <th scope="col" colSpan="6">Edit</th>
                             </tr>
                         </thead>
