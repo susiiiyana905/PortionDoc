@@ -25,7 +25,19 @@ const mealsSchema = new mongoose.Schema({
     mealCategory: {
         type: String,
         required: true
-    }
+    },
+    calory : {
+        type: String,
+        required: true
+    },
+    difficulty : {
+        type: String,
+        required: true
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now,
+    },
 },
 {
     timestamps: true,

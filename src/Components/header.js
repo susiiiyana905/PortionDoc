@@ -8,7 +8,7 @@ class Header extends Component{
             window.location.replace('/login')
         }
         var menu;
-        if(localStorage.getItem('token')){
+        if(localStorage.getItem('userToken')){
             menu=(
             <>
             <nav class="navbar navbar-expand-lg ">
@@ -40,7 +40,7 @@ class Header extends Component{
                             Account </i>
                           </li>
                           <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><li className="dropdown-item" to="/profile">Profile</li></li>
+                            <li><Link className="dropdown-item" to="/viewProfile">Profile</Link></li>
                             <li><button className="dropdown-item" onClick={logout} to="#">Logout</button></li>
                             </ul>
                         </li>
@@ -62,7 +62,7 @@ class Header extends Component{
                 </nav>
     
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                    <a className="navbar-brand" href="#"><img src="images/logo.png" className="card-img-top" alt="..." style={{height:"100px", width:"150px", marginLeft:"100px"}}></img></a>
+                    <a className="navbar-brand" href="#"><img src="images/logo.png" className="card-img-top" alt="..." style={{height:"100px", width:"150px", marginLeft:"120px"}}></img></a>
                     <div class="collapse navbar-collapse" style={{marginLeft:"400px"}} id="navbarSupportedContent">
                         <ul className="navbar-nav nav-item">
                         <li className="nav-item active">
