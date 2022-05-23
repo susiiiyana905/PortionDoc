@@ -139,12 +139,12 @@ const UpdateMeal =()=> {
                        <div className="form-group row">
                             <label htmlFor="mealImage" className="col-sm-3 col-form-label">Meal Image</label>
                             <img src={"http://localhost:4001/meal/"+mealImage} data-bs-toggle="modal" data-bs-target="#exampleModal" height="200px"/>
-                            {/* <span>{mealImage}</span> */}
-                            {/* <div className="col-sm-9">
+                            <span>{mealImage}</span>
+                            <div className="col-sm-9">
                             <input type="file" className="form-control"
                             onChange={(e)=>setMealImage(e.target.files[0])}
                             />
-                            </div> */}
+                            </div>
 
                             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
@@ -219,7 +219,7 @@ const UpdateMeal =()=> {
                              />    
                              </div>
                         </div>
-                        {/* <div className="form-group row">
+                        <div className="form-group row">
                             <label htmlFor="calory" className="col-sm-3 col-form-label">Calory</label>
                             <div className="col-sm-9">
                             <input type="text" className="form-control"
@@ -227,8 +227,8 @@ const UpdateMeal =()=> {
                              onChange={(e)=>setCalory(e.target.value)}
                              />    
                              </div>
-                        </div> */}
-                        {/* <div className="form-group row">
+                        </div>
+                        <div className="form-group row">
                             <label htmlFor="difficulty" className="col-sm-3 col-form-label">Difficulty</label>
                             <div className="col-sm-9">
                             <input type="text" className="form-control"
@@ -236,7 +236,7 @@ const UpdateMeal =()=> {
                              onChange={(e)=>setDifficulty(e.target.value)}
                              />    
                              </div>
-                        </div> */}
+                        </div>
                         <div className="form-group row">
                             <div className="col-sm-3"></div>
                         <div className="col-sm-9">
