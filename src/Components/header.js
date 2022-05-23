@@ -11,7 +11,7 @@ class Header extends Component{
         if(localStorage.getItem('userToken')){
             menu=(
             <>
-            <nav class="navbar navbar-expand-lg ">
+            <nav className="navbar navbar-expand-lg mainNav ">
                 <i class="fas fa-solid fa-envelope fa-lg" style={{height: "40px", color:"white"}}></i><p className="i-1">portiondoc@gmail.com</p>
                 <i class="fas fa-solid fa-phone" style={{height: "40px", marginLeft:"100px", color:"white"}} ></i><p className="i-1">+977 983142567</p>
                 </nav>

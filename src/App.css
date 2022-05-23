@@ -94,7 +94,9 @@
 
 }
 /* Top */
- 
+.mainNav{
+  background-image: linear-gradient(green, yellowgreen);
+}
 .top{
   background-color: #B1DF01;
 }
