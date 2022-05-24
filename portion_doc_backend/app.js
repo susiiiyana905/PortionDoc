@@ -18,8 +18,8 @@ app.use(CategoryRoute);
 const MealRoute = require("./router/mealsRoute");
 app.use(MealRoute);
 
-// const RecipeRoute = require("./router/recipeRoute");
-// app.use(RecipeRoute);
+const IngredientsRoute = require("./router/ingredientsRoute");
+app.use(IngredientsRoute);
 
 app.use(express.static(__dirname+'/images/'));
 
