@@ -44,18 +44,14 @@ const userSchema = new mongoose.Schema({
         type: String,
         default: ""
     },
-    verified: {
-        type: Boolean,
-        default: false,
-        required : true
-    },
+    // verified: {
+    //     type: Boolean,
+    //     default: false,
+    //     required : true
+    // },
     admin: {
         type: Boolean, default: false
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now,
-    },
+    }
 },
     {
         timestamps: true,

@@ -52,33 +52,33 @@ router.post('/signup', async(req,res)=>{
 });
 
 
-router.post('/user/verify', async(req,res)=>{
-    const email = req.body.email;
-    const otpHolder = await Otp.find({
-        email: req.body.email
-    });
+// router.post('/user/verify', async(req,res)=>{
+//     const email = req.body.email;
+//     const otpHolder = await Otp.find({
+//         email: req.body.email
+//     });
    
-    if (otpHolder.length === 0) return res.status(400).send("You used an Expired OTP!!");
-    const rightOtpFind = otpHolder[otpHolder.length-1];
-    const validUser = await bcrypt.compare(req.body.otp, rightOtpFind.otp);
+//     if (otpHolder.length === 0) return res.status(400).send("You used an Expired OTP!!");
+//     const rightOtpFind = otpHolder[otpHolder.length-1];
+//     const validUser = await bcrypt.compare(req.body.otp, rightOtpFind.otp);
 
-    if(rightOtpFind.email === req.body.email && validUser) {
-        const user = await User.updateOne({email: req.body.email},{verified: true});
-        const token =generateJWT(user._id,user.email);
-        const OTPDelete = await Otp.deleteMany({
-            email: rightOtpFind.email
-        });
+//     if(rightOtpFind.email === req.body.email && validUser) {
+//         const user = await User.updateOne({email: req.body.email},{verified: true});
+//         const token =generateJWT(user._id,user.email);
+//         const OTPDelete = await Otp.deleteMany({
+//             email: rightOtpFind.email
+//         });
 
-        return res.status(200).send({
-            message: "User Registration Successful!!",
-            token: token,
-            data: user,
-        });
-    }
-    else{
-        return res.status(400).send("Your OTP was wrong!")
-    }
-})
+//         return res.status(200).send({
+//             message: "User Registration Successful!!",
+//             token: token,
+//             data: user,
+//         });
+//     }
+//     else{
+//         return res.status(400).send("Your OTP was wrong!")
+//     }
+// })
 
 router.post("/user/login", (req, res)=> {
     const email = req.body.email;
@@ -102,9 +102,10 @@ router.post("/user/login", (req, res)=> {
                         const token = jwt.sign({userId: userData1._id}, "loginKey");
                         if (userData1.admin==false) {
                             res.status(200).send({token: token, message: "Login success", userData: userData1});                              
-                        }  else if(userData1.verified===false){
-                            return res.status(400).send({message:"Verification required first."})
-                        }
+                        }  
+                        // else if(userData1.verified===false){
+                        //     return res.status(400).send({message:"Verification required first."})
+                        // }
                         else if(userData1.admin) {
                             res.status(200).send({token: token, message: "Login success as admin.", userData: userData1});  
                         }
