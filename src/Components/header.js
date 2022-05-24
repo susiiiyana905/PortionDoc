@@ -14,23 +14,14 @@ class Header extends Component{
             <nav className="navbar navbar-expand-lg mainNav ">
                 <i class="fas fa-solid fa-envelope fa-lg" style={{height: "40px", color:"white"}}></i><p className="i-1">portiondoc@gmail.com</p>
                 <i class="fas fa-solid fa-phone" style={{height: "40px", marginLeft:"100px", color:"white"}} ></i><p className="i-1">+977 983142567</p>
-                </nav>
-                <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                    <a className="navbar-brand" href="#"><img src="images/logo.png" className="card-img-top" alt="..." style={{height:"100px", width:"150px", marginLeft:"100px"}}></img></a>
-                    <div class="collapse navbar-collapse" style={{marginLeft:"400px"}} id="navbarSupportedContent">
-                        <ul className="navbar-nav nav-item">
-                            <li className="nav-item active">
-                                <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
-                                </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="#">Dieatery</a>
-                                </li>
-                             <li className="nav-item">
-                                <a className="nav-link" href="#">Our Menu</a>
-                                </li>
-                        <li className="nav-item">
-                            <a className="nav-link">Packages</a>
-                        </li>
+            </nav>
+            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                <a className="navbar-brand" href="#"><img src="images/logo.png" className="card-img-top" alt="..." style={{height:"100px", width:"150px", marginLeft:"100px"}}></img></a>
+                <div class="collapse navbar-collapse" style={{marginLeft:"400px"}} id="navbarSupportedContent">
+                    <ul className="navbar-nav nav-item">
+                        <li className="nav-item active">
+                            <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
+                            </li>
                         <li className="nav-item">
                             <a className="nav-link">Contact Us</a>
                         </li>
@@ -44,58 +35,57 @@ class Header extends Component{
                             <li><button className="dropdown-item" onClick={logout} to="#">Logout</button></li>
                             </ul>
                         </li>
-                        
+                        <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><li className="dropdown-item" to="/profile">Profile</li></li>
+                        <li><button className="dropdown-item" onClick={logout} to="#">Logout</button></li>
                         </ul>
-                    </div>
-
-                
-                    </nav>
-                </>
+                    </li>
+                    
+                    </ul>
+                </div>
+            </nav>
+            </>
             )
         }else{
             menu=(
                 <>
                 <nav class="navbar navbar-expand-lg ">
-    
-                <i class="fas fa-solid fa-envelope fa-lg" style={{height: "40px", color:"white"}}></i><p className="i-1">portiondoc@gmail.com</p>
-                <i class="fas fa-solid fa-phone" style={{height: "40px", marginLeft:"100px", color:"white"}} ></i><p className="i-1">+977 983142567</p>
+                    <i class="fas fa-solid fa-envelope fa-lg" style={{height: "30px", color:"white", marginRight:"10px"}}></i><p className="i-1">portiondoc@gmail.com</p>
+                    <i class="fas fa-solid fa-phone" style={{height: "30px", marginLeft:"100px", color:"white", marginRight:"10px"}} ></i><p className="i-1">+977 983142567</p>
                 </nav>
     
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                    <a className="navbar-brand" href="#"><img src="images/logo.png" className="card-img-top" alt="..." style={{height:"100px", width:"150px", marginLeft:"120px"}}></img></a>
-                    <div class="collapse navbar-collapse" style={{marginLeft:"400px"}} id="navbarSupportedContent">
+                    <a className="navbar-brand" href="#"><img src="images/logo.png" className="card-img-top" alt="..." style={{height:"100px", width:"150px", marginLeft:"80px"}}></img></a>
+                    <div class="collapse navbar-collapse" style={{marginLeft:"550px"}} id="navbarSupportedContent">
                         <ul className="navbar-nav nav-item">
                         <li className="nav-item active">
-                            <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
+                            <a className="nav-link" href="#">HOME <span className="sr-only">(current)</span></a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Dieatery</a>
+                            <a className="nav-link" href="#">DIETARY</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Our Menu</a>
+                            <a className="nav-link" href="#">OUR MENU</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link">Packages</a>
+                            <a className="nav-link">PACKAGES</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link">Contact Us</a>
+                            <a className="nav-link">CONTACT US</a>
                         </li>
-                        
-                        <button className="btn-sign"><Link className="link" to="/login" style={{color: "white", textDecoration:"none"}}>Login</Link></button>
+                            <button className="btn-sign" style={{marginLeft: "10px"}}><Link className="link" to="/login" style={{color: "white", textDecoration:"none"}}>Login</Link></button>
                         </ul>
                     </div>
-    
-                
-                    </nav>
-                     </>
-                     )
-                     }
-            return(
+                </nav>
+                </>
+                )
+            }
+        return(
             <>
             <div>
                 {menu}
-                </div>
-                </>
+            </div>
+            </>
 
         )
     }
