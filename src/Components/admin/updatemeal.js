@@ -96,6 +96,7 @@ const UpdateMeal =()=> {
         mealData.append("mealCategory", mealCategory);
         mealData.append("calory", calory);
         mealData.append("difficulty", difficulty);
+      
         axios.put("http://localhost:4001/update/meals/"+mid, mealData, config)
         .then(result=>{
             console.log(result.data)

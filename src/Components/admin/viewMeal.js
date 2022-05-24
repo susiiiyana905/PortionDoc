@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+// import Navbar from "./navbar";
 
 const ViewMeals =()=>{
     const [mealData, setMealData] = useState([]);
@@ -37,6 +38,7 @@ const ViewMeals =()=>{
 
     return(
         <>
+        {/* <Navbar></Navbar> */}
          <nav className="navbar navbar-expand-lg ">
           <i className="fas fa-solid fa-envelope fa-lg" style={{height: "40px", color:"white"}}></i><p className="i-1">portiondoc@gmail.com</p>
           <i className="fas fa-solid fa-phone" style={{height: "40px", marginLeft:"100px", color:"white"}} ></i><p className="i-1">+977 983142567</p>

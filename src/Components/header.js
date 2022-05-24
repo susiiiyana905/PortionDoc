@@ -11,7 +11,7 @@ class Header extends Component{
         if(localStorage.getItem('userToken')){
             menu=(
             <>
-            <nav class="navbar navbar-expand-lg ">
+            <nav className="navbar navbar-expand-lg mainNav ">
                 <i class="fas fa-solid fa-envelope fa-lg" style={{height: "40px", color:"white"}}></i><p className="i-1">portiondoc@gmail.com</p>
                 <i class="fas fa-solid fa-phone" style={{height: "40px", marginLeft:"100px", color:"white"}} ></i><p className="i-1">+977 983142567</p>
             </nav>
@@ -23,21 +23,17 @@ class Header extends Component{
                             <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
                             </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Dieatery</a>
-                            </li>
-                            <li className="nav-item">
-                            <a className="nav-link" href="#">Our Menu</a>
-                            </li>
-                    <li className="nav-item">
-                        <a className="nav-link">Packages</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link">Contact Us</a>
-                    </li>
-                    <li className="nav-item dropdown">
-                    <li className="nav-link dropdown-toggle" to="/account" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i className="fas fa-user-alt fa-1.5x">
-                        Account </i>
+                            <a className="nav-link">Contact Us</a>
+                        </li>
+                        <li className="nav-item dropdown">
+                        <li className="nav-link dropdown-toggle" to="/account" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i className="fas fa-user-alt fa-1.5x">
+                            Account </i>
+                          </li>
+                          <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><Link className="dropdown-item" to="/viewProfile">Profile</Link></li>
+                            <li><button className="dropdown-item" onClick={logout} to="#">Logout</button></li>
+                            </ul>
                         </li>
                         <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><li className="dropdown-item" to="/profile">Profile</li></li>

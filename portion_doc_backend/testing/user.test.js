@@ -1,30 +1,57 @@
-const request = require("supertest");
-const app = require("../app");
-describe('Product testing', () => {
-    
-    it('user login', async () => {
-        const uerDat = {
-            email: "susiyanashrestha329@gmail.com",
-            password: "susiyana11",
+const User = require('../models/userModel')
+const mongoose = require('mongoose');
+
+// use the new name of the database
+const url = 'mongodb://localhost:27017/Portion_Doc_Test';
+
+beforeAll(async ()=> {
+    mongoose.connect(url, {
+
+        useNewUrlParser: true,
+
+        useUnifiedTopology: true
+
+    })
+
+})
+
+afterAll(async ()=> {
+
+    await mongoose.connection.close()
+
+})
+
+describe('User Schema test anythong', () =>{
+
+    it('Register User testing anything', () =>{
+        const test_user = {
+            email: "shtsadikshya28@gmail.com",
+            password: "User@123",
+            firstName:"Sadikshyaa",
+            lastName:"Shrestha",
+          
         };
-        const res = await request(app)
-                    .post('/user/login')
-                    .send(uerDat);
-        expect(res.statusCode).toEqual(200);
-    });
-    it('user register', async () => {
-        const uerDat = {
-            email: "susiyanashrestha448@gmail.com",
-            password: "susiyana11",
-            firstName: "bkesh",
-            lastName: "thapa",
-            address: "kapan",
-            phone: 980385114       
-        };
-        const res = await request(app)
-                    .post('/signup')
-                    .send(uerDat);
-        expect(res.statusCode).toEqual(200);
+        return User.create(test_user)
+        .then((userData)=>{
+            expect(userData.email).toEqual("shtsadikshya28@gmail.com"),
+            expect(userData.password).toEqual("User@123"),
+            expect(userData.firstName).toEqual("Sadikshyaa"),
+            expect(userData.lastName).toEqual("Shrestha")
+          
+        });
     });
 
+    // it('Login User testing anything', () =>{
+    //     const test_user = {
+    //         email: "sadikshyasht123@gmail.com",
+    //         password: "Portion@123" 
+          
+    //     };
+    //     return User.create(test_user)
+    //     .then((userData)=>{
+    //         expect(userData.email).toEqual("sadiksshyasht123@gmail.com"),
+    //         expect(userData.password).toEqual("Portion@123")
+          
+    //     });
+    // })
 })
