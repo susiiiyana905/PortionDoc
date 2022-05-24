@@ -8,7 +8,7 @@ class Header extends Component{
             window.location.replace('/login')
         }
         var menu;
-        if(localStorage.getItem('token')){
+        if(localStorage.getItem('userToken')){
             menu=(
             <>
             <nav class="navbar navbar-expand-lg ">
