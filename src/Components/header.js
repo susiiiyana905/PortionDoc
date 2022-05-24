@@ -39,8 +39,7 @@ class Header extends Component{
                         <li><li className="dropdown-item" to="/profile">Profile</li></li>
                         <li><button className="dropdown-item" onClick={logout} to="#">Logout</button></li>
                         </ul>
-                    </li>
-                    
+                        
                     </ul>
                 </div>
             </nav>
