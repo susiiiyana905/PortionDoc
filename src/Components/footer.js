@@ -7,7 +7,7 @@ class Footer extends Component{
             <div className="main-footer" style={{padding:"30px, 70px"}}>
             <div className="container-fluid" >
 
-                <div className="row " style={{ backgroundColor:"#B1DF01", textAlign:"center"}}>
+                <div className="row footer " style={{ backgroundColor:"#B1DF01", textAlign:"center"}}>
 
                 {/* Column1 */}
       

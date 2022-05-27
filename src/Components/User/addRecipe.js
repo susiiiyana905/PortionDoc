@@ -1,4 +1,6 @@
 import {Component} from "react";
+import Footer from "../footer";
+import Header from "../header";
 
 
 
@@ -36,8 +38,10 @@ class AddRecipes extends Component{
   }
   render(){
     return(
-      <div style={{backgroundColor:"#FAFAFA"}}>
-        {/* <img src="images/recipe.jpg" style={{width:"1600px", height:"200px"}}></img> */}
+      <>
+      <Header></Header>
+      {/* <div style={{backgroundColor:"#FAFAFA"}}> */}
+      
       <div className="col-md-6 d-flex justify-content-center mx-auto" style={{"marginTop":"50px", marginBottom:"50px"}}>
       <div class="card w-75">
       <div class="card-body">
@@ -54,43 +58,6 @@ class AddRecipes extends Component{
     <label for="exampleFormControlTextarea1">Short Description</label>
     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
   </div>
-
-  <form>
-  <div class="form-group">
-    <label for="exampleFormControlFile1">Upload Image</label>
-    <input type="file" class="form-control-file" id="exampleFormControlFile1"></input>
-  </div>
-</form>
-
-
-
-
-<form  onSubmit={this.handleSubmit}>
-<div><label>Ingredient</label></div>
-          {this.state.formValues.map((element, index) => (
-          <div> 
-            <div class="form-group row">
-    
-            <div class="col-sm-11">
-              <input type="text" class="form-control" id="inputText" style={{float:"left"}}></input>
-             
-            </div>
-            <button type="button"  className="button remove" onClick={() => this.removeFormFields(index)} style={{width:"40px"}} ><i class="fas fa-solid fa-trash"></i></button> 
-            
-            {/* {
-             index ? 
-             <button type="button"  className="button remove" onClick={() => this.removeFormFields(index)}>Remove</button> 
-             : null
-             } */}
-          </div>
-            </div>
-          ))}
-          <div className="button-section">
-              <button className="button add" type="button" onClick={() => this.addFormFields()} style = {{marginLeft:"450px", backgroundColor:"#4CBA19", height:"50px", width:"50px", color:"white"}}><i class="fas fa-solid fa-plus"></i></button>
-            
-          </div>
-      </form>
-
       
       <form  onSubmit={this.handleSubmit}>
       <div><label>Steps</label></div>
@@ -99,17 +66,17 @@ class AddRecipes extends Component{
                   <div class="form-group row">
           
                   <div class="col-sm-11">
-                    <input type="text" class="form-control" id="inputText" style={{float:"left"}}></input>
+                    <textarea type="text" class="form-control" id="inputText" style={{float:"left"}}></textarea>
                   
                   </div>
                   <button type="button"  className="button remove" onClick={() => this.removeFormFields(index)} style={{width:"40px"}} ><i class="fas fa-solid fa-trash"></i></button> 
-                  
-                  {/* {
+{/*                   
+                  {
                   index ? 
                   <button type="button"  className="button remove" onClick={() => this.removeFormFields(index)}>Remove</button> 
                   : null
                   } */}
-                </div>
+                 </div>
                   </div>
                 ))}
                 <div className="button-section">
@@ -125,7 +92,9 @@ class AddRecipes extends Component{
       </div>
     </div>
     </div>
-      </div>
+      {/* </div> */}
+      <Footer></Footer>
+      </>
     )
   }
 }

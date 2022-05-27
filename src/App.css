@@ -72,17 +72,21 @@
 }
 
 .i-1{
-  font-size: 20px;
+  font-size: 15px;
   color: #ffffff;
 }
 
+.logoNav{
+height: 80px;
+}
   
 
 .nav-item{
   text-align: center;
-  font-size: 30px;
+  font-size: 20px;
 }
 
+/* landing */
 .btn-sign{
   background-color: #4CBA19;
   font-size: 30px;
@@ -93,12 +97,15 @@
   
 
 }
-/* Top */
+
 .mainNav{
-  background-image: linear-gradient(green, yellowgreen);
+  background-image: linear-gradient(#4CBA19, #B3E000);
 }
+/* Top */
 .top{
-  background-color: #B1DF01;
+  
+    background-image: linear-gradient(#4CBA19, #B3E000);
+  
 }
 
 .t1{
@@ -156,17 +163,22 @@
 }
  /* content-3 */
 .card-1{
-  background-color:#4CBA19;
-  /* height: 1000px; */
+
+    background-image: linear-gradient(#4CBA19, #B3E000);
+    height: 600px;
+ 
+
 
 }
 
 .t-1{
   font-size: 50px;
+  margin-top: 10px;
+
 }
 
 .txt-1{
-  font-size: 30px;
+  font-size: 25px;
   height: fit-content;
   color: #ffffff;
 }
@@ -176,11 +188,11 @@
 }
 
 .txt-2{
-  font-size: 30px;
+  font-size: 20px;
   height: fit-content;
   color: #ffffff;
 }
-.btn1{
+/* .btn1{
   padding: 30px 70px ;
   border: none;
   background-color: #FF7800;
@@ -190,6 +202,7 @@
   color: #ffffff;
   border-radius: 20px;
   width: fit-content;
+  height: 15px;
   
 
 }
@@ -204,11 +217,25 @@
   color: #ffffff;
   border-radius: 20px;
   width: fit-content;
+  height: 15px;
 
 
+} */
+
+.c3-btn{
+  padding: 20px 50px;
+  border-radius: 10px;
+
+ 
 }
 
+
+
 /* meals CSS */
+.card-3{
+  background-image: linear-gradient(#4CBA19, #B3E000);
+  height: 700px;
+}
 .m-1{
   font-size: 30px;
   text-align: center;
@@ -221,6 +248,7 @@
 .meal-btn{
   padding: 10px 50px;
   border-radius: 10px;
+  margin-top: 20px;
 }
 
 /* review */
@@ -264,11 +292,16 @@ background-color: #FF7800;
 
 } */
 
+
 .login{
   background-color: #FF7800;
   color: #FAFAFA;
 }
 
+/* footer */
+.footer{
+  background-image: linear-gradient(#B1DF01, #E6EA39);
+}
 
 /* our menu */
 #search
@@ -360,7 +393,7 @@ background: #e6ffe6;
 	margin-top:2px;
 	margin-right:auto;
 	}
-
+/* 
 .first
 {
 text-align:center;
@@ -375,16 +408,16 @@ color:#ff1a1a;
 text-align:center;
 color: #1f1f14;
 margin-top:0px;
-}
+} */
 
-.third
+/* .third
 {
  
 
 
 margin-top:2px;
 color:black;
-}
+} */
 
 #con
 {
@@ -417,7 +450,7 @@ margin-bottom:20px;
   color: white;
   border:orange;
   font-size: 30px;
-  margin-left:670px;
+  margin-left:500px;
   border-radius: 10%;
   font-size: 20px;
   margin-top :30px;
@@ -478,4 +511,11 @@ margin-bottom:20px;
   margin-left: 600px;
   margin-top:20px;
   margin-bottom: 20px;
+}
+
+
+.meal-data {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }

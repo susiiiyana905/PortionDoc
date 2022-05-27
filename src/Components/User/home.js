@@ -13,9 +13,9 @@ const Home =()=>{
             {/* ------------------top content-------------------------------------------------------------------------- */}
             <div className="container-fluid">
             <div className="card  top" >
-            {/* <div className="container my-3 py-3"> */}
+          
             <div className="row">
-                {/* <div className="col-md-6 d-flex justify-content mx-auto product"> */}
+               
                 <div className="card-body">
                     <h4 className="card-title my-1 t-2">
                         <p className="t1">
@@ -71,10 +71,10 @@ const Home =()=>{
             {/*-----------------------------content-3----------------------------------------*/}
             <div className="container-fluid">
             <div className="card  card-1" >
-            <div className="container my-3 py-3">
+            <div className="container">
             <div className="row">
                 <div className="col-md-6 d-flex justify-content mx-auto product">
-                    <img src = {"images/c1.png"} alt ="" style={{height: "400px"}}></img> 
+                    <img src = {"images/c1.png"} alt ="" style={{height: "300px"}} className="img"></img> 
                 </div>
                 <div className="col-md-6 d-flex flex-column justify-content-center">
                     <hr/>
@@ -83,9 +83,9 @@ const Home =()=>{
                         <p className="card-text txt-1">Add meals. Edit Servings. <br/>
                         Plans and prefrences change.
                         </p>
-                        <button className="btn btn1">
-                                    View Plans
-                                </button>   
+                        <div className="col-md-6 d-flex justify-content-center mx-auto ">
+                    <button className="btn start c3-btn"> View Meals</button>
+                </div> 
                     </div>
                 </div>
                 
@@ -95,22 +95,22 @@ const Home =()=>{
             
             </div>
 
-            <div className="container my-3 py-3">
+            <div className="container">
             <div className="row">
-                <div className="col-md-6 d-flex justify-content mx-auto product">
+                <div className="col-md-6 d-flex flex-column justify-content-center">
                 <div className="card-body">
                     <h4 className="card-title my-1 t-2"> Make It Yours </h4>
                         <p className="card-text txt-2">Make meals uniquely yours. <br/>
                         Upgrade, double-up, add or swap protein on select meals.<br/>
                         You're in control of your destiny.
                         </p>
-                        <button className="btn btn-2">
-                                    View Plans
-                                </button>   
+                        <div className="col-md-6 d-flex justify-content-center mx-auto ">
+                    <button className="btn start c3-btn"> View Meals</button>
+                </div>  
                     </div>
                 </div>
                 <div className="col-md-6 d-flex flex-column justify-content-center">
-                <img src = {"images/c2.png"} alt ="" style={{height: "400px"}}></img> 
+                <img src = {"images/c2.png"} alt ="" style={{height: "300px", width:"350px", paddingTop:"0px"}}></img> 
                     <hr/>
                     
                 </div>
@@ -172,7 +172,7 @@ const Home =()=>{
             <br/>
             {/*------------------------------------------------Meals-----------------------------------------------------------------*/}
             <div className="container-fluid">
-            <div className="card  card-1" >
+            <div className="card  card-3" >
             <div className="container my-3 py-3">
             <div className="row">
                 <div className="col-md-6 d-flex justify-content-center mx-auto ">
