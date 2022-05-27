@@ -1,5 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Footer from "../footer";
+import Header from "../header";
 
 const UpdateProfile =()=>{
     const [profile_pic, setProfilePic] = useState('');
@@ -73,10 +75,7 @@ const UpdateProfile =()=>{
 
     return(
         <>
-         <nav className="navbar navbar-expand-lg ">
-          <i className="fas fa-solid fa-envelope fa-lg" style={{height: "40px", color:"white"}}></i><p className="i-1">portiondoc@gmail.com</p>
-          <i className="fas fa-solid fa-phone" style={{height: "40px", marginLeft:"100px", color:"white"}} ></i><p className="i-1">+977 983142567</p>
-        </nav>
+         <Header></Header>
         <div>
             <div className="container" style={{marginBottom:"50px"}}>
             <h3 className="mt-5 mb-3" style={{textAlign:"center"}}>Update Profile</h3>
@@ -214,6 +213,7 @@ const UpdateProfile =()=>{
             </div>
         </div>
             </div>
+            <Footer></Footer>
         </>
     )
 }
