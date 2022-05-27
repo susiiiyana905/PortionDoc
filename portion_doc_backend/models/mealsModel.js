@@ -18,11 +18,25 @@ const mealsSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    steps: [
+        {
+            type: String,
+            default: ''
+        }
+    ],
     time: {
         type: String,
         required: true
     },
     mealCategory: {
+        type: String,
+        required: true
+    },
+    calory : {
+        type: String,
+        required: true
+    },
+    difficulty : {
         type: String,
         required: true
     }
