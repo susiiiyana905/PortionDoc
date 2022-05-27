@@ -21,8 +21,8 @@ Given("Test registration functionality", { timeout: 30000 }, async function () {
 Given("Test login functionality", { timeout: 30000 }, async function () {
   let driver = await new Builder().forBrowser("chrome").build();
   await driver.get("http://localhost:3000/login");
-  await driver.findElement(By.id("email")).sendKeys("test1@gmail.com");
-  await driver.findElement(By.id("password")).sendKeys("test1234@T");
+  await driver.findElement(By.id("email")).sendKeys("susiyanashrestha448@gmail.com");
+  await driver.findElement(By.id("password")).sendKeys("susiyana11A@");
   await driver.sleep(delay);
   await driver.findElement(By.id("loginBtn")).click();
 

@@ -4,11 +4,11 @@ const router = new express.Router();
 const auth = require("../auth/auth.js");
 const upload = require("../uploads/mealFile.js");
 const Meals = require("../models/mealsModel.js");
-const User = require("../models/userModel");
+const { fstat } = require("fs");
 
 router.post("/add/meals", auth.verifyAdmin, upload.single('mealImage'), async(req,res)=>{
-    if(req.file==undefined){
-        return res.json({msg : "Invalid!!"})
+    if(req.file===undefined){
+        return res.status(400).json({msg : "Invalid!!"})
     }
     const mealImage = req.file.filename;
     const mealName = req.body.mealName;
@@ -16,19 +16,24 @@ router.post("/add/meals", auth.verifyAdmin, upload.single('mealImage'), async(re
     const mealDescription = req.body.mealDescription;
     const time = req.body.time;
     const mealCategory = req.body.mealCategory;
+    const calory = req.body.calory;
+    const difficulty = req.body.difficulty;
+    
     const mealData = new Meals({
         mealImage: mealImage,
         mealName: mealName,
         mealPrice: mealPrice,
         mealDescription: mealDescription,
         time: time,
-        mealCategory: mealCategory
+        mealCategory: mealCategory,
+        calory: calory,
+        difficulty: difficulty
     })
     mealData.save()
     .then(function(){
         res.status(200).send({success: true, message: "New meal added successfully!"});
     }).catch(function(e){
-        res.status(400).send({message: "Something went wrong!"});
+        res.status(400).send({message: e});
     })
 })
 
@@ -44,28 +49,44 @@ router.put("/update/meals/:mid", auth.verifyAdmin, upload.single("mealImage"), a
     const mealDescription = req.body.mealDescription;
     const time = req.body.time;
     const mealCategory = req.body.mealCategory;
+    const calory = req.body.calory;
+    const difficulty = req.body.difficulty;
+    const mealImage= req.file.filename;
 
-    Meals.updateOne({_id:mid}, {
-        mealName: mealName,
-        mealPrice: mealPrice,
-        mealDescription: mealDescription,
-        time: time,
-        mealCategory: mealCategory,
-        mealImage: req.file.filename,
+    Meals.findOne({_id: mid})
+    .then((mealData)=>{
+        if(!mealData.mealImage){
+            const meal_image_path = `./uploads/meal/${mealData.mealImage}`;
+            fs.unlinkSync(meal_image_path);
+        }
+
+        Meals.updateOne({_id:mid}, {
+            mealName: mealName,
+            mealPrice: mealPrice,
+            mealDescription: mealDescription,
+            time: time,
+            mealCategory: mealCategory,
+            calory: calory,
+            difficulty: difficulty,
+            mealImage: mealImage,
+        })
+        .then(function(){
+            res.status(200).send({success:true, message: "Meal details has been updated!"})
+        })
+        .catch(function(){
+            res.status(400).send({message: e})
+        });
     })
-    .then(function(){
-        res.status(200).send({success:true, message: "Meal details has been updated!"})
-    })
-    .catch(function(){
-        res.status(400).send({message: "Something went wrong!"})
+    .catch((e)=>{
+        res.status(400).send({message:e });
     })
 })
 
 
 
-router.get('/meals/single', auth.verifyAdmin, async(req,res)=>{
+router.get('/meals/all', auth.verifyAdmin, async(req,res)=>{
     const MealData = await Meals.find()
-    res.json({success: true, message:"Meals Data", mealData:MealData})
+    res.json({success: true, message:"Meals Data", data:MealData});
 })
 
 router.get("/meals/single/:mid", auth.verifyAdmin, function(req,res){
@@ -112,14 +133,5 @@ router.delete("/meals/delete/:mid", auth.verifyAdmin, function(req,res){
     })
 
 })
-
-
-// router.put("/update/mealImage/:mid", auth.verifyAdmin, async(req, res)=>{
-//     const mid = req.params.mid;
-//     if(req.file===undefined){
-//         return res.json({message: "Invalid!!"})
-//     }
-//     Meals.up
-// })
 
 module.exports = router;

@@ -60,7 +60,14 @@ const UpdateProfile =()=>{
         const profilePic = new FormData();
         profilePic.append("profilePic", profile_pic);
         axios.put("http://localhost:4001/update/profilePic", profilePic, config)
-        .then(result=>console.log(result))
+        .then(result=>{
+            if(result.data.success){
+                setMessage("Profile Edited Successfully!")
+            }
+            else{
+                setMessage(e);
+            }
+        })
         .catch(e)
     }
 
