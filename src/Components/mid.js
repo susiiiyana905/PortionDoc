@@ -16,7 +16,8 @@ import Menu from "./User/viewMenu";
 import UpdateMeal from "./admin/updateMeal";
 import ShowCategory from "./admin/CategoryList";
 import AddCategory from "./admin/Category";
-import AddRecipes from "./admin/addRecipe";
+import AddRecipes from "./User/addRecipe";
+import AddIngredient from "./admin/ingredient";
 
 
 class Mid extends Component{
@@ -42,6 +43,8 @@ class Mid extends Component{
                     <Route path="/addCategory" element={<AddCategory></AddCategory>}></Route>
                     <Route path ="/viewCategory" element={<ShowCategory></ShowCategory>}></Route>
                     <Route path = "/addRecipe" element={<AddRecipes></AddRecipes>}></Route>
+
+                    <Route path ="/addIngredient" element={<AddIngredient></AddIngredient>}></Route>
 
                 </Routes>
             </div>

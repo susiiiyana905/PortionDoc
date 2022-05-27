@@ -111,6 +111,11 @@ router.get("/meals/category/:category", auth.verifyUser, function(req,res){
     })
 })
 
+router.get('/meal/all', auth.verifyUser, async(req,res)=>{
+    const MealData = await Meals.find()
+    res.json({success: true, message:"Meals Data", data:MealData});
+})
+
 router.get("/meals/:category", auth.verifyAdmin, function(req,res){
     const _category = req.params.category;
     Meals.find({mealCategory : _category})

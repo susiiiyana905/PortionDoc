@@ -5,23 +5,36 @@ class Header extends Component{
     render(){
         const logout = ()=>{
             localStorage.clear();
-            window.location.replace('/login')
+            window.location.replace('/')
         }
         var menu;
         if(localStorage.getItem('userToken')){
             menu=(
             <>
-            <nav className="navbar navbar-expand-lg mainNav ">
-                <i class="fas fa-solid fa-envelope fa-lg" style={{height: "40px", color:"white"}}></i><p className="i-1">portiondoc@gmail.com</p>
-                <i class="fas fa-solid fa-phone" style={{height: "40px", marginLeft:"100px", color:"white"}} ></i><p className="i-1">+977 983142567</p>
-            </nav>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                <a className="navbar-brand" href="#"><img src="images/logo.png" className="card-img-top" alt="..." style={{height:"100px", width:"150px", marginLeft:"100px"}}></img></a>
-                <div class="collapse navbar-collapse" style={{marginLeft:"400px"}} id="navbarSupportedContent">
-                    <ul className="navbar-nav nav-item">
-                        <li className="nav-item active">
-                            <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
-                            </li>
+
+            <nav className="navbar navbar-expand-lg mainNav" style={{"height":"35px"}}>
+                <i class="fas fa-solid fa-envelope fa-lg" style={{height: "40px", color:"white", marginTop:"20px"}}></i><p className="i-1" style={{marginLeft:"10px",  marginTop:"10px"}}>portiondoc@gmail.com</p>
+                <i class="fas fa-solid fa-phone" style={{height: "40px", marginLeft:"100px", color:"white", marginTop:"20px"}} ></i><p className="i-1" style={{marginLeft:"10px",  marginTop:"10px"}}>+977 983142567</p>
+                <i class="fas fa-light fa-file-circle-plus" style={{height: "40px",  color:"white", marginTop:"20px"}}></i>
+                <i class="fas fa-light fa-cart-arrow-down" style={{height: "40px", marginLeft:"1000px", color:"white", marginTop:"20px"}} ></i>
+                </nav>
+                <nav className="navbar navbar-expand-lg navbar-light bg-light logoNav">
+                    <a className="navbar-brand" href="#"><img src="images/logo.png" className="card-img-top" alt="..." style={{height:"80px", width:"160px", marginLeft:"30px"}}></img></a>
+                    <div class="collapse navbar-collapse" style={{marginLeft:"650px"}} id="navbarSupportedContent">
+                        <ul className="navbar-nav nav-item">
+                            <li className="nav-item active">
+                                <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
+                                </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="#">Dieatery</a>
+                                </li>
+                             <li className="nav-item">
+                                <a className="nav-link" href="#">Our Menu</a>
+                                </li>
+                        <li className="nav-item">
+                            <a className="nav-link">Packages</a>
+                        </li>
+
                         <li className="nav-item">
                             <a className="nav-link">Contact Us</a>
                         </li>
@@ -48,14 +61,17 @@ class Header extends Component{
         }else{
             menu=(
                 <>
-                <nav class="navbar navbar-expand-lg ">
-                    <i class="fas fa-solid fa-envelope fa-lg" style={{height: "30px", color:"white", marginRight:"10px"}}></i><p className="i-1">portiondoc@gmail.com</p>
-                    <i class="fas fa-solid fa-phone" style={{height: "30px", marginLeft:"100px", color:"white", marginRight:"10px"}} ></i><p className="i-1">+977 983142567</p>
+
+               <nav className="navbar navbar-expand-lg mainNav" style={{"height":"35px"}}>
+                <i class="fas fa-solid fa-envelope fa-lg" style={{height: "40px", color:"white", marginTop:"20px"}}></i><p className="i-1" style={{marginLeft:"10px",  marginTop:"10px"}}>portiondoc@gmail.com</p>
+                <i class="fas fa-solid fa-phone" style={{height: "40px", marginLeft:"100px", color:"white", marginTop:"20px"}} ></i><p className="i-1" style={{marginLeft:"10px",  marginTop:"10px"}}>+977 983142567</p>
+                
                 </nav>
     
-                <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                    <a className="navbar-brand" href="#"><img src="images/logo.png" className="card-img-top" alt="..." style={{height:"100px", width:"150px", marginLeft:"80px"}}></img></a>
-                    <div class="collapse navbar-collapse" style={{marginLeft:"550px"}} id="navbarSupportedContent">
+                <nav className="navbar navbar-expand-lg navbar-light bg-light logoNav">
+                    <a className="navbar-brand" href="#"><img src="images/logo.png" className="card-img-top" alt="..." style={{height:"80px", width:"160px", marginLeft:"30px"}}></img></a>
+                    <div class="collapse navbar-collapse" style={{marginLeft:"650px"}} id="navbarSupportedContent">
+
                         <ul className="navbar-nav nav-item">
                         <li className="nav-item active">
                             <a className="nav-link" href="#">HOME <span className="sr-only">(current)</span></a>

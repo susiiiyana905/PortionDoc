@@ -40,11 +40,10 @@ const UpdateMeal =()=> {
     },[]);
     const updateMealImage = (e) => {
         e.preventDefault();
-        // const mealData = {
-        //     mealImage, mealName, mealPrice, mealDescription, time, mealCategory, calory, difficulty
-        // }
+      
         const mealData = new FormData();
         mealData.append("mealImage", mealImage);
+
         // mealData.append("mealName", mealName);
         // mealData.append("mealPrice", mealPrice);
         // mealData.append("mealDescription", mealDescription);
@@ -52,6 +51,7 @@ const UpdateMeal =()=> {
         // mealData.append("mealCategory", mealCategory);
         // mealData.append("calory", calory);
         // mealData.append("difficulty", difficulty);
+
         axios.put("http://localhost:4001/update/meals/"+mid, mealData, config)
         .then(result=>{
             // console.log(result.data)
@@ -61,20 +61,8 @@ const UpdateMeal =()=> {
                 .then(result=>{
                     console.log(result.data.data.mealCategory)
                     setMealImage(result.data.data.mealImage)
-                    setMealName(result.data.data.mealName)
-                    setMealPrice(result.data.data.mealPrice)
-                    setMealCategory(result.data.data.mealCategory)
-                    setMealDescription(result.data.data.mealDescription)
-                    setTime(result.data.data.time)
-                    setCalory(result.data.data.calory)
-                    setDifficulty(result.data.data.difficulty)
-                    setID(result.data.data._id)
                 })
-                // navigate('/updateMeal/'+mid);
-                // axios.get("http://localhost:4001/meals/single"+mid,config)
-                // .then(result1=>{
-                //  setMealData(result1.data.data)
-                // })
+               
             }
             else{
                 setMessage("Something is wrong!!!");
@@ -84,9 +72,7 @@ const UpdateMeal =()=> {
     }
     const updateMeal = (e) => {
         e.preventDefault();
-        // const mealData = {
-        //     mealImage, mealName, mealPrice, mealDescription, time, mealCategory, calory, difficulty
-        // }
+     
         const mealData = new FormData();
         mealData.append("mealImage", mealImage);
         mealData.append("mealName", mealName);
@@ -96,7 +82,7 @@ const UpdateMeal =()=> {
         mealData.append("mealCategory", mealCategory);
         mealData.append("calory", calory);
         mealData.append("difficulty", difficulty);
-      
+
         axios.put("http://localhost:4001/update/meals/"+mid, mealData, config)
         .then(result=>{
             console.log(result.data)
@@ -125,12 +111,7 @@ const UpdateMeal =()=> {
                        <div className="form-group row">
                             <label htmlFor="mealImage" className="col-sm-3 col-form-label">Meal Image</label>
                             <img src={"http://localhost:4001/meal/"+mealImage} data-bs-toggle="modal" data-bs-target="#exampleModal" height="200px"/>
-                            {/* <span>{mealImage}</span> */}
-                            {/* <div className="col-sm-9">
-                            <input type="file" className="form-control"
-                            onChange={(e)=>setMealImage(e.target.files[0])}
-                            />
-                            </div> */}
+
                             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -141,7 +122,7 @@ const UpdateMeal =()=> {
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                {/* <span>{mealImage}</span> */}
+                              
                                 <input type="file" className="form-control"
                             onChange={(e)=>setMealImage(e.target.files[0])}
                             />
