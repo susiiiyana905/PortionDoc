@@ -7,6 +7,7 @@ import UpdateProfile from "./User/updateProfile"
 import ViewProfile from "./User/viewProfile";
 import ViewMeals from "./admin/viewMeal";
 import OtpPage from "./User/otppage";
+import ViewRecipies from "./admin/viewRecipies";
 
 
 class Mid extends Component{
@@ -21,6 +22,7 @@ class Mid extends Component{
                     <Route path="/updateProfile" element={<UpdateProfile></UpdateProfile>}></Route> 
                     <Route path="/viewProfile" element={<ViewProfile></ViewProfile>}></Route>
                     <Route path="/viewMeal" element={<ViewMeals></ViewMeals>}></Route>
+                    <Route path="/viewRecipies"element={<ViewRecipies></ViewRecipies>}></Route>
 
                 </Routes>
             </div>
