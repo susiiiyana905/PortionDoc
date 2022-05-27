@@ -16,7 +16,13 @@ import Menu from "./User/viewMenu";
 import UpdateMeal from "./admin/updateMeal";
 import ShowCategory from "./admin/CategoryList";
 import AddCategory from "./admin/Category";
+<<<<<<< Updated upstream
 import AddRecipes from "./admin/addRecipe";
+=======
+import AddRecipes from "./User/addRecipe";
+import AddIngredient from "./admin/ingredient";
+import ListMeals from "./admin/listViewMeal";
+>>>>>>> Stashed changes
 
 
 class Mid extends Component{
@@ -42,7 +48,12 @@ class Mid extends Component{
                     <Route path="/addCategory" element={<AddCategory></AddCategory>}></Route>
                     <Route path ="/viewCategory" element={<ShowCategory></ShowCategory>}></Route>
                     <Route path = "/addRecipe" element={<AddRecipes></AddRecipes>}></Route>
+<<<<<<< Updated upstream
 
+=======
+                    <Route path ="/addIngredient" element={<AddIngredient></AddIngredient>}></Route>
+                    <Route path="/listmeal" element={<ListMeals></ListMeals>}></Route>
+>>>>>>> Stashed changes
                 </Routes>
             </div>
         )
