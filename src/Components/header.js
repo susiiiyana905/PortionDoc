@@ -11,6 +11,7 @@ class Header extends Component{
         if(localStorage.getItem('userToken')){
             menu=(
             <>
+
             <nav className="navbar navbar-expand-lg mainNav" style={{"height":"35px"}}>
                 <i class="fas fa-solid fa-envelope fa-lg" style={{height: "40px", color:"white", marginTop:"20px"}}></i><p className="i-1" style={{marginLeft:"10px",  marginTop:"10px"}}>portiondoc@gmail.com</p>
                 <i class="fas fa-solid fa-phone" style={{height: "40px", marginLeft:"100px", color:"white", marginTop:"20px"}} ></i><p className="i-1" style={{marginLeft:"10px",  marginTop:"10px"}}>+977 983142567</p>
@@ -33,6 +34,7 @@ class Header extends Component{
                         <li className="nav-item">
                             <a className="nav-link">Packages</a>
                         </li>
+
                         <li className="nav-item">
                             <a className="nav-link">Contact Us</a>
                         </li>
@@ -46,17 +48,20 @@ class Header extends Component{
                             <li><button className="dropdown-item" onClick={logout} to="#">Logout</button></li>
                             </ul>
                         </li>
-                        
+                        <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><li className="dropdown-item" to="/profile">Profile</li></li>
+                        <li><button className="dropdown-item" onClick={logout} to="#">Logout</button></li>
                         </ul>
-                    </div>
-
-                
-                    </nav>
-                </>
+                        
+                    </ul>
+                </div>
+            </nav>
+            </>
             )
         }else{
             menu=(
                 <>
+
                <nav className="navbar navbar-expand-lg mainNav" style={{"height":"35px"}}>
                 <i class="fas fa-solid fa-envelope fa-lg" style={{height: "40px", color:"white", marginTop:"20px"}}></i><p className="i-1" style={{marginLeft:"10px",  marginTop:"10px"}}>portiondoc@gmail.com</p>
                 <i class="fas fa-solid fa-phone" style={{height: "40px", marginLeft:"100px", color:"white", marginTop:"20px"}} ></i><p className="i-1" style={{marginLeft:"10px",  marginTop:"10px"}}>+977 983142567</p>
@@ -66,38 +71,36 @@ class Header extends Component{
                 <nav className="navbar navbar-expand-lg navbar-light bg-light logoNav">
                     <a className="navbar-brand" href="#"><img src="images/logo.png" className="card-img-top" alt="..." style={{height:"80px", width:"160px", marginLeft:"30px"}}></img></a>
                     <div class="collapse navbar-collapse" style={{marginLeft:"650px"}} id="navbarSupportedContent">
+
                         <ul className="navbar-nav nav-item">
                         <li className="nav-item active">
-                            <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
+                            <a className="nav-link" href="#">HOME <span className="sr-only">(current)</span></a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Dieatery</a>
+                            <a className="nav-link" href="#">DIETARY</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Our Menu</a>
+                            <a className="nav-link" href="#">OUR MENU</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link">Packages</a>
+                            <a className="nav-link">PACKAGES</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link">Contact Us</a>
+                            <a className="nav-link">CONTACT US</a>
                         </li>
-                        
-                        <button className="btn-sign"><Link className="link" to="/login" style={{color: "white", textDecoration:"none"}}>Login</Link></button>
+                            <button className="btn-sign" style={{marginLeft: "10px"}}><Link className="link" to="/login" style={{color: "white", textDecoration:"none"}}>Login</Link></button>
                         </ul>
                     </div>
-    
-                
-                    </nav>
-                     </>
-                     )
-                     }
-            return(
+                </nav>
+                </>
+                )
+            }
+        return(
             <>
             <div>
                 {menu}
-                </div>
-                </>
+            </div>
+            </>
 
         )
     }

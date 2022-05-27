@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-
 const UpdateMeal =()=> {
     const [mealImage, setMealImage] = useState('');
     const [mealName, setMealName] = useState('');
@@ -14,18 +13,13 @@ const UpdateMeal =()=> {
     const [_id, setID] = useState('');
     const [mealData, setMealData]= useState([]);
     const [message, setMessage] = useState('');
-
     const navigate = useNavigate();
-
     const config = {
         headers :{
             Authorization : "Bearer " + localStorage.getItem('adminToken')
         }
     }
     const {mid}= useParams();
-
-    
-
     useEffect(()=>{
         axios.get("http://localhost:4001/meals/single/"+mid, config)
         .then(result=>{
@@ -44,17 +38,22 @@ const UpdateMeal =()=> {
             console.log(e)
         })
     },[]);
-
     const updateMealImage = (e) => {
         e.preventDefault();
       
         const mealData = new FormData();
         mealData.append("mealImage", mealImage);
 
-        
+        // mealData.append("mealName", mealName);
+        // mealData.append("mealPrice", mealPrice);
+        // mealData.append("mealDescription", mealDescription);
+        // mealData.append("time", time);
+        // mealData.append("mealCategory", mealCategory);
+        // mealData.append("calory", calory);
+        // mealData.append("difficulty", difficulty);
+
         axios.put("http://localhost:4001/update/meals/"+mid, mealData, config)
         .then(result=>{
-            
             // console.log(result.data)
             if(result.data.success){
                 setMessage(result.data.message);
@@ -71,7 +70,6 @@ const UpdateMeal =()=> {
         })
         .catch(e);
     }
-
     const updateMeal = (e) => {
         e.preventDefault();
      
@@ -84,13 +82,13 @@ const UpdateMeal =()=> {
         mealData.append("mealCategory", mealCategory);
         mealData.append("calory", calory);
         mealData.append("difficulty", difficulty);
-        
+
         axios.put("http://localhost:4001/update/meals/"+mid, mealData, config)
         .then(result=>{
             console.log(result.data)
             if(result.data.success){
                 setMessage(result.data.message);
-                // navigate('/viewMeal');
+                navigate('/viewMeal');
                 axios.get(`http://localhost:4001/meals/all`,config)
                 .then(result1=>{
                  setMealData(result1.data.data)
@@ -102,22 +100,17 @@ const UpdateMeal =()=> {
         })
         .catch(e);
     }
-    
     return(
-
             <div>
        <div className="container">
            <div className="row">
                <div className="col-md-2"></div>
                <div className="col-md-8">
-               
                     <h2 className="heading-h2-all">Update Meal</h2>
-                
                    <form>
                        <div className="form-group row">
                             <label htmlFor="mealImage" className="col-sm-3 col-form-label">Meal Image</label>
                             <img src={"http://localhost:4001/meal/"+mealImage} data-bs-toggle="modal" data-bs-target="#exampleModal" height="200px"/>
-                          
 
                             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
@@ -141,7 +134,6 @@ const UpdateMeal =()=> {
                                 </div>
                             </div>
                             </div>
-
                         </div>
                         <div className="form-group row">
                             <label htmlFor="mealName" className="col-sm-3 col-form-label">Meal Name</label>
@@ -152,7 +144,6 @@ const UpdateMeal =()=> {
                              />    
                              </div>
                         </div>
-
                         <div className="form-group row">
                             <label htmlFor="mealPrice" className="col-sm-3 col-form-label">Meal Price</label>
                             <div className="col-sm-9">
@@ -162,7 +153,6 @@ const UpdateMeal =()=> {
                              /> 
                              </div>   
                         </div>
-
                         <div className="form-group row">
                             <label htmlFor="mealCategory" className="col-sm-3 col-form-label">Meal Category</label>
                             <div className="col-sm-9">
@@ -172,7 +162,6 @@ const UpdateMeal =()=> {
                              /> 
                              </div>   
                         </div>
-
                         <div className="form-group row">
                             <label htmlFor="mealDescription" className="col-sm-3 col-form-label">Meal Description</label>
                             <div className="col-sm-9">
@@ -182,7 +171,6 @@ const UpdateMeal =()=> {
                              />  
                              </div>  
                         </div>
-
                         <div className="form-group row">
                             <label htmlFor="time" className="col-sm-3 col-form-label">Time</label>
                             <div className="col-sm-9">
@@ -218,7 +206,6 @@ const UpdateMeal =()=> {
                         </button>
                         </div>
                         </div>
-                                
                     </form>
            </div>
            </div>
@@ -226,7 +213,4 @@ const UpdateMeal =()=> {
            </div>
         )
     }
-
-
-
 export default UpdateMeal;

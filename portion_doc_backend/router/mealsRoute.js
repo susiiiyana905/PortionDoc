@@ -4,7 +4,6 @@ const router = new express.Router();
 const auth = require("../auth/auth.js");
 const upload = require("../uploads/mealFile.js");
 const Meals = require("../models/mealsModel.js");
-const User = require("../models/userModel");
 const { fstat } = require("fs");
 
 router.post("/add/meals", auth.verifyAdmin, upload.single('mealImage'), async(req,res)=>{
@@ -139,14 +138,5 @@ router.delete("/meals/delete/:mid", auth.verifyAdmin, function(req,res){
     })
 
 })
-
-
-// router.put("/update/mealImage/:mid", auth.verifyAdmin, async(req, res)=>{
-//     const mid = req.params.mid;
-//     if(req.file===undefined){
-//         return res.json({message: "Invalid!!"})
-//     }
-//     Meals.up
-// })
 
 module.exports = router;
