@@ -33,7 +33,7 @@ router.post("/add/meals", auth.verifyAdmin, upload.single('mealImage'), async(re
     })
     mealData.save()
     .then(function(){
-        res.status(200).send({success: true, message: "New meal added successfully!"});
+        res.status(200).send({success: true,data:mealData, message: "New meal added successfully!"});
     }).catch(function(e){
         res.status(400).send({message: e});
     })
