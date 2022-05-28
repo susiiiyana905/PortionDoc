@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const ingredientsSchema = new mongoose.Schema({
-    ingredientsName: {
+    name: {
         type: String,
         default: ''
     },
@@ -9,7 +9,7 @@ const ingredientsSchema = new mongoose.Schema({
         type: String,
         default: ''
     },
-    ingredientsImage: {
+    image: {
         type: String,
         default: ''
     },

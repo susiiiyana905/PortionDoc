@@ -14,6 +14,7 @@ router.post("/add/meals", auth.verifyAdmin, upload.single('mealImage'), async(re
     const mealName = req.body.mealName;
     const mealPrice = req.body.mealPrice;
     const mealDescription = req.body.mealDescription;
+    const steps = req.body.steps
     const time = req.body.time;
     const mealCategory = req.body.mealCategory;
     const calory = req.body.calory;
@@ -25,6 +26,7 @@ router.post("/add/meals", auth.verifyAdmin, upload.single('mealImage'), async(re
         mealPrice: mealPrice,
         mealDescription: mealDescription,
         time: time,
+        steps: steps,
         mealCategory: mealCategory,
         calory: calory,
         difficulty: difficulty
@@ -48,6 +50,7 @@ router.put("/update/meals/:mid", auth.verifyAdmin, upload.single("mealImage"), a
     const mealPrice = req.body.mealPrice;
     const mealDescription = req.body.mealDescription;
     const time = req.body.time;
+    const steps = req.body.steps;
     const mealCategory = req.body.mealCategory;
     const calory = req.body.calory;
     const difficulty = req.body.difficulty;
@@ -65,6 +68,7 @@ router.put("/update/meals/:mid", auth.verifyAdmin, upload.single("mealImage"), a
             mealPrice: mealPrice,
             mealDescription: mealDescription,
             time: time,
+            steps: steps,
             mealCategory: mealCategory,
             calory: calory,
             difficulty: difficulty,
