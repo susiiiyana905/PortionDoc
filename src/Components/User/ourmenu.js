@@ -80,10 +80,10 @@ const Meals =()=> {
     <div className="meal-data container">
          {mealData.map((singleData) =>{
             return(
-                <div className="container py-3" style={{width: "350px"}}>
+                <div className="container py-3" style={{width: "270px"}}>
                 <div className="card-deck">
-                    <div className="card" style={{height:"400px"}}>
-                    <img className="card" src={"http://localhost:4001/meal/"+singleData.mealImage} style={{marginTop:"10px"}}></img>
+                    <div className="card" style={{height:"380px"}}>
+                    <img  src={"http://localhost:4001/meal/"+singleData.mealImage} style={{width:"100%"}} ></img>
                     <div className="card-body">
                         <p class="first" style={{fontWeight:"bold"}}>{singleData.mealName}</p>
                         {/* <p class="second">{singleData.mealPrice}</p>  */}

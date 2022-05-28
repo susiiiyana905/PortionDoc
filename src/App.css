@@ -519,3 +519,18 @@ margin-bottom:20px;
   flex-direction: row;
   flex-wrap: wrap;
 }
+
+.addMeal{
+  /* padding: 30px 70px; */
+  border: none;
+  background-color:forestgreen;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  color: #ffffff;
+  height: 40px;
+  width: 130px;
+  justify-content: center;  
+  
+ 
+}

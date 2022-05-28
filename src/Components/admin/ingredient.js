@@ -70,36 +70,26 @@ class AddIngredient extends Component{
                     
                     <div>
                     <div><label>Quantity</label></div>
-                    <div className="quantity" data-th="Quantity">
+                    <div class="form-row">
+                    <div class="form-group col-md-6">
                       
-                      <button className = "btn btn-warning">
-                        {/* <button
-                          className="btn btn-warning"
-                          onClick={this.updateQuantity.bind(
-                            this,
-                            cart._id,
-                            cart.quantity - 1
-                          )}
-                        > */}
-                          <h5>-</h5>
-                        </button>
-                        <span style={{ margin: "5px" }}>
-                          2
-                          {/* {cart.quantity} */}
-                        </span>
-                        <button className = "btn btn-warning">
-                        {/* <button
-                          className="btn btn-warning"
-                          onClick={this.updateQuantity.bind(
-                            this,
-                            cart._id,
-                            cart.quantity + 1
-                          )}
-                        > */}
-                          <h5>+</h5>
-                        </button>
-                      </div> 
-                      </div>
+                      <input type="text" class="form-control" id="inputCity"></input>
+                    </div>
+                    <div class="form-group col-md-4">
+                      
+                      <select id="inputState" class="form-control">
+                        <option selected>Unit</option>
+                        <option>Kg</option>
+                        <option>Ounch</option>
+                        <option>TeaSpoon</option>
+                        <option>TableSpoon</option>
+                        <option>Clove</option>
+                        <option>Cup</option>
+                      </select>
+                    </div>
+                    </div>
+                        </div> 
+                
                     <hr/>
                         </div>
                         
