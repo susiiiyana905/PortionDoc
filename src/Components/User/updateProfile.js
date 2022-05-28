@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 import Footer from "../footer";
 import Header from "../header";
 
@@ -15,6 +16,7 @@ const UpdateProfile =()=>{
     const [gender, setGender] = useState('');
     const [_id, setID] = useState('');
     const [message, setMessage] = useState('');
+    const navigate = useNavigate();
 
     const config = {
         headers :{
@@ -49,7 +51,8 @@ const UpdateProfile =()=>{
         // .then(result=>console.log(result))
         .then(result=>{
             if(result.data.success){
-                setMessage("Profile Edited Successfully!")
+                setMessage("Profile Edited Successfully!");
+                navigate('/viewProfile');
             }
             else{
                 setMessage(e);
@@ -121,11 +124,11 @@ const UpdateProfile =()=>{
                     
                     <div className="col-md-6">
                     <div className="container editProfile" style={{"margin-left":"100px"}}>
-                        <form>
+                        <form id="updateProfileForm">
                         <div className="form-group editProfileForm row">
                             <label for="inputFname" className="col-sm-3 col-form-label">First Name</label>
                             <div className="col-sm-9">
-                                <input type="text" className="form-control border-dark" id="inputFname"
+                                <input type="text" className="form-control border-dark" id="fName"
                                 value={firstName}
                                 onChange={(e)=>setFirstName(e.target.value)}
                                 />
@@ -134,7 +137,7 @@ const UpdateProfile =()=>{
                         <div className="form-group editProfileForm row">
                             <label for="inputLname" className="col-sm-3 col-form-label">Last Name</label>
                             <div className="col-sm-9">
-                                <input type="text" className="form-control border-dark" id="inputLname"
+                                <input type="text" className="form-control border-dark" id="lName"
                                 value={lastName}
                                 onChange={(e)=>setLastName(e.target.value)}
                                 />
@@ -143,7 +146,7 @@ const UpdateProfile =()=>{
                         <div className="form-group editProfileForm row">
                             <label for="inputEmail3" className="col-sm-3 col-form-label">Email</label>
                             <div className="col-sm-9">
-                            <input type="email" className="form-control border-dark" id="inputEmail3"
+                            <input type="email" className="form-control border-dark" id="email"
                            value={email}
                             />
                             </div>
@@ -151,7 +154,7 @@ const UpdateProfile =()=>{
                         <div className="form-group editProfileForm row">
                             <label for="inputBio" className="col-sm-3 col-form-label">Bio</label>
                             <div className="col-sm-9">
-                            <input type="text" maxLength="10" className="form-control border-dark" id="inputBio"
+                            <input type="text" maxLength="10" className="form-control border-dark" id="bio"
                             value={bio}
                             onChange={(e)=>setBio(e.target.value)}
                             />
@@ -160,7 +163,7 @@ const UpdateProfile =()=>{
                         <div className="form-group editProfileForm row">
                             <label for="inputDob" className="col-sm-3 col-form-label">DoB</label>
                             <div className="col-sm-9">
-                                <input type="date" className="form-control border-dark" id="inputDob"
+                                <input type="date" className="form-control border-dark" id="dob"
                                 value={dob}
                                 onChange={(e)=>setDoB(e.target.value)}
                                 />
@@ -169,7 +172,7 @@ const UpdateProfile =()=>{
                         <div className="form-group editProfileForm row">
                             <label for="inputGender" className="col-sm-3 col-form-label">Gender</label>
                             <div className="col-sm-9">
-                                <select className="custom-select custom-select-lg" style={{width:"100%"}}
+                                <select className="custom-select custom-select-lg" style={{width:"100%"}} id="gender"
                                 value={gender}
                                 onChange={(e)=>setGender(e.target.value)}
                                 >
@@ -182,7 +185,7 @@ const UpdateProfile =()=>{
                         <div className="form-group editProfileForm row">
                             <label for="inputPhone" className="col-sm-3 col-form-label">Phone No.</label>
                             <div className="col-sm-9">
-                            <input type="text" maxLength="10" className="form-control border-dark" id="inputPhone"
+                            <input type="text" maxLength="10" className="form-control border-dark" id="phone"
                             value={phone_no}
                             onChange={(e)=>setPhoneNo(e.target.value)}
                             />
@@ -191,7 +194,7 @@ const UpdateProfile =()=>{
                         <div className="form-group editProfileForm row">
                             <label for="inputAddress" className="col-sm-3 col-form-label">Address</label>
                             <div className="col-sm-9">
-                            <input type="text" maxLength="10" className="form-control border-dark" id="inputAddress"
+                            <input type="text" maxLength="10" className="form-control border-dark" id="address"
                             value={address}
                             onChange={(e)=>setAddress(e.target.value)}
                             />
@@ -202,6 +205,7 @@ const UpdateProfile =()=>{
                             <div className="col-sm-3"></div>
                         <div className="col-sm-9">
                         <button type="submit" className="btn btn-primary mt-4" style={{backgroundColor:"#FF7800",border:"none" }}
+                        id="updateProfileButton"
                         onClick={editProfile}
                         >Save change </button>
                         </div>
