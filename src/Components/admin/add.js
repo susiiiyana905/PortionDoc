@@ -42,6 +42,7 @@ const AddMeal =()=> {
     const [mealPrice, setMealPrice] = useState('');
     const [mealDescription, setMealDescription] = useState('');
     const [time, setTime] = useState('');
+    const [steps, setSteps] = useState([]);
     const [mealCategory, setMealCategory] = useState('Veg');
     const [calory, setCalory] = useState('');
     const [difficulty, setDifficulty] = useState('Difficult');
@@ -67,6 +68,7 @@ const AddMeal =()=> {
         mealData.append("mealPrice", mealPrice);
         mealData.append("mealDescription", mealDescription);
         mealData.append("time", time);
+        mealData.append("steps", steps);
         mealData.append("mealCategory", mealCategory);
         mealData.append("calory", calory);
         mealData.append("difficulty", difficulty);
@@ -92,6 +94,7 @@ const AddMeal =()=> {
     return(
         <>
         <div className="container">
+
         <h2 className="heading-h2-all">Add Meal:</h2>
         <form>
         <div class="form-group row">
@@ -205,7 +208,7 @@ const AddMeal =()=> {
        
   </form>
   </div>
-        </>
+</>
     )
     
 }
