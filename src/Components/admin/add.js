@@ -1,17 +1,18 @@
 import axios from "axios";
 import { useState } from "react";
 import { BrowserRouter as Router, Link, useNavigate } from "react-router-dom";
-
 const AddMeal =()=> {
 
-    // constructor(props)
-    //  {
+
+
+    // constructor(props) {
     //     super(props)
     //     this.state = { 
     //        formValues: [{ ingredient: ""}]
     //      };
     //     this.handleSubmit = this.handleSubmit.bind(this)
     //   }
+
       
     //   handleChange(i, e)
     //    {
@@ -37,26 +38,22 @@ const AddMeal =()=> {
     //     alert(JSON.stringify(this.state.formValues));
     //   }
       
+
     const [mealImage, setMealImage] = useState('');
     const [mealName, setMealName] = useState('');
     const [mealPrice, setMealPrice] = useState('');
     const [mealDescription, setMealDescription] = useState('');
     const [time, setTime] = useState('');
-    const [steps, setSteps] = useState([]);
     const [mealCategory, setMealCategory] = useState('Veg');
     const [calory, setCalory] = useState('');
     const [difficulty, setDifficulty] = useState('Difficult');
     const [message, setMessage] = useState('');
-
     const navigate = useNavigate();
-
     const config = {
         headers :{
             Authorization : "Bearer " + localStorage.getItem('adminToken')
         }
     }
-
-    
     const addMeal = (e) => {
         e.preventDefault();
         // const mealData = {
@@ -68,11 +65,9 @@ const AddMeal =()=> {
         mealData.append("mealPrice", mealPrice);
         mealData.append("mealDescription", mealDescription);
         mealData.append("time", time);
-        mealData.append("steps", steps);
         mealData.append("mealCategory", mealCategory);
         mealData.append("calory", calory);
         mealData.append("difficulty", difficulty);
-
         axios.post("http://localhost:4001/add/meals", mealData, config)
         .then(result=>{
             console.log(result.data);
@@ -85,16 +80,10 @@ const AddMeal =()=> {
             }
         })
         .catch(e);
-
-        
     }
-
-  
-
     return(
         <>
         <div className="container">
-
         <h2 className="heading-h2-all">Add Meal:</h2>
         <form>
         <div class="form-group row">
@@ -105,7 +94,6 @@ const AddMeal =()=> {
             ></input>
             </div>
         </div>
-       
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Meal Name</label>
             <div class="col-sm-10">
@@ -118,7 +106,6 @@ const AddMeal =()=> {
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Meal Price</label>
             <div class="col-sm-10">
-              
             <input type="text" class="form-control" 
              value={mealPrice}
              onChange={(e)=>setMealPrice(e.target.value)}
@@ -178,18 +165,15 @@ const AddMeal =()=> {
          </select>
             </div>
         </div>
-
-        {/* <div className="form-group row">
+        <div className="form-group row">
             <label className="col-sm-2 col-form-label">Steps</label>
             <form  onSubmit={this.handleSubmit}>
       <div><label>Steps</label></div>
                 {this.state.formValues.map((element, index) => (
                 <div> 
                   <div class="form-group row">
-          
                   <div class="col-sm-11">
                     <textarea type="text" class="form-control" id="inputText" style={{float:"left"}}></textarea>
-                  
                   </div>
                   <button type="button"  className="button remove" onClick={() => this.removeFormFields(index)} style={{width:"40px"}} ><i class="fas fa-solid fa-trash"></i></button> 
                  </div>
@@ -197,20 +181,18 @@ const AddMeal =()=> {
                 ))}
                 <div className="button-section">
                     <button className="button add" type="button" onClick={() => this.addFormFields()} style = {{marginLeft:"450px", backgroundColor:"#4CBA19", height:"50px", width:"50px", color:"white"}}><i class="fas fa-solid fa-plus"></i></button>
-                  
                 </div>
             </form>
-        </div> */}
+        </div>
         <p><button type='submit' className="btn btn-primary addMeal"
          onClick={addMeal}
         >
         Add Meal</button></p>
-       
   </form>
   </div>
-</>
+
+        </>
+
     )
-    
 }
 export default AddMeal;
-  
