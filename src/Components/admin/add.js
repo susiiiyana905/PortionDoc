@@ -47,6 +47,7 @@ const AddMeal =()=> {
     const [mealCategory, setMealCategory] = useState('Veg');
     const [calory, setCalory] = useState('');
     const [difficulty, setDifficulty] = useState('Difficult');
+    const [ID, setID] = useState('');
     const [message, setMessage] = useState('');
     const navigate = useNavigate();
     const config = {
@@ -56,9 +57,7 @@ const AddMeal =()=> {
     }
     const addMeal = (e) => {
         e.preventDefault();
-        // const mealData = {
-        //     mealImage, mealName, mealPrice, mealDescription, time, mealCategory, calory, difficulty
-        // }
+       
         const mealData = new FormData();
         mealData.append("mealImage", mealImage);
         mealData.append("mealName", mealName);
@@ -70,10 +69,11 @@ const AddMeal =()=> {
         mealData.append("difficulty", difficulty);
         axios.post("http://localhost:4001/add/meals", mealData, config)
         .then(result=>{
-            console.log(result.data);
+            console.log(result.data.data);
             if(result.data.success){
+                localStorage.setItem("_id", result.data.data._id);
                 setMessage(result.data.message);
-                navigate('/viewMeal');
+                navigate('/addIngredient', {state: {_id: result.data.data._id}});
             }
             else{
                 setMessage("Something is wrong!!!");

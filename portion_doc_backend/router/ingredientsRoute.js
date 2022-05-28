@@ -6,6 +6,7 @@ const Ingredients = require("../models/ingredientsModel");
 const upload = require("../uploads/ingredientsFile");
 
 router.post("/add/ingredients", auth.verifyAdmin, upload.single('image'), async(req,res)=>{
+    console.log("backend");
     if(req.file===undefined){
         return res.status(400).json({msg : "Invalid!!"})
     }
