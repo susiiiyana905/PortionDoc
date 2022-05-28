@@ -37,7 +37,7 @@ class AddIngredient extends Component{
             <div className="col-md-6 d-flex justify-content-center mx-auto" style={{"marginTop":"50px", marginBottom:"50px"}}>
             <div class="card w-75">
             <div class="card-body">
-                <h2 style={{textAlign:"center"}}>Add Ingredient</h2>
+                <h2 style={{textAlign:"center"}}>Add Ingredient</h2><hr/>
             <div className="container">
             <form style={{marginTop:"20px"}}></form>
                         
@@ -49,13 +49,29 @@ class AddIngredient extends Component{
                 
                         <div class="col-sm-11">
                         <form>
+                      <div class="row">
+                        <div class="col">
+                        <form>
+                        <div class="form-group">
+                          {/* <label for="exampleFormControlFile1">Example file input</label> */}
+                          <input type="file" class="form-control-file" id="exampleFormControlFile1"></input>
+                        </div>
+                      </form>
+                       
+                        </div>
+                        <div class="col">
+                          <input type="text" class="form-control" placeholder="Enter Ingredient Name"></input>
+                        </div>
+                      </div>
+                    </form>
+                        {/* <form>
                         <div class="form-group">
                             <label for="exampleFormControlFile1">Image of Ingredient</label>
                             <input type="file" class="form-control-file" id="exampleFormControlFile1"></input>
                         </div>
                         </form>
                         <label>Name of Ingredient</label>
-                        <input type="text" class="form-control" id="inputText" style={{float:"left"}} placeholder="Enter Ingredient Name"></input> 
+                        <input type="text" class="form-control" id="inputText" style={{float:"left"}} placeholder="Enter Ingredient Name"></input>  */}
                         </div>
                         <button type="button"  className="button remove" onClick={() => this.removeFormFields(index)} style={{width:"40px", height:"40px"}} ><i class="fas fa-solid fa-trash"></i></button> 
                         

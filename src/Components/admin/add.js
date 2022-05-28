@@ -2,6 +2,9 @@ import axios from "axios";
 import { useState } from "react";
 import { BrowserRouter as Router, Link, useNavigate } from "react-router-dom";
 const AddMeal =()=> {
+
+
+
     // constructor(props) {
     //     super(props)
     //     this.state = { 
@@ -9,6 +12,33 @@ const AddMeal =()=> {
     //      };
     //     this.handleSubmit = this.handleSubmit.bind(this)
     //   }
+
+      
+    //   handleChange(i, e)
+    //    {
+    //     let formValues = this.state.formValues;
+    //     formValues[i][e.target.ingredient] = e.target.value;
+    //     this.setState({ formValues });
+    //   }
+    
+    //   addFormFields() {
+    //     this.setState(({
+    //       formValues: [...this.state.formValues, { ingredient: "" }]
+    //     }))
+    //   }
+    
+    //   removeFormFields(i) {
+    //     let formValues = this.state.formValues;
+    //     formValues.splice(i, 1);
+    //     this.setState({ formValues });
+    //   }
+    
+    //   handleSubmit(event) {
+    //     event.preventDefault();
+    //     alert(JSON.stringify(this.state.formValues));
+    //   }
+      
+
     const [mealImage, setMealImage] = useState('');
     const [mealName, setMealName] = useState('');
     const [mealPrice, setMealPrice] = useState('');
@@ -99,8 +129,8 @@ const AddMeal =()=> {
             <label class="col-sm-2 col-form-label">Meal Description</label>
             <div class="col-sm-10">
             <textarea type="text" class="form-control" 
-            value={mealDescription}
-            onChange={e=>setMealDescription(e.target.value)}
+             value={mealDescription}
+             onChange={(e)=>setMealDescription(e.target.value)}
             ></textarea>
             </div>
         </div>
@@ -160,7 +190,9 @@ const AddMeal =()=> {
         Add Meal</button></p>
   </form>
   </div>
+
         </>
+
     )
 }
 export default AddMeal;
