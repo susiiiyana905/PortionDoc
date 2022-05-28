@@ -1,96 +1,72 @@
-const ListMeals =()=>{
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
+
+const ViewRecipies =()=>{
+    const [mealData, setMealData] = useState([]);
+    const [message, setMessage] = useState('');
+
+    const config = {
+        headers :{
+            Authorization : "Bearer " + localStorage.getItem('adminToken')
+        }
+    }
+
+    useEffect(()=>{
+        axios.get("http://localhost:4001/meals/all", config)
+        .then(result=>{
+            console.log(result.data.data)
+            setMealData(result.data.data)
+        })
+        .catch(e=>{
+            console.log(e)
+        })
+    },[]);
     return(
         <>
-        <h1> Recipie</h1>
-        <div className ="container">
-        <form>
-        <div class="form-group">
-            <label for="formGroupExampleInput">Recipies Title</label>
-            <input type="text" class="form-control" id="formGroupExampleInput" placeholder=""></input>
-        </div>
-        </form>
-        <form>
-        <div class="form-group">
-            <label for="exampleFormControlFile1">Recipies Images</label>
-            <input type="file" class="form-control-file" id="exampleFormControlFile1"></input>
-        </div>
-        </form>
+          <nav className="navbar navbar-expand-lg mainNav" style={{"height":"35px"}}>
+                <i class="fas fa-solid fa-envelope fa-lg" style={{height: "40px", color:"white", marginTop:"20px"}}></i><p className="i-1" style={{marginLeft:"10px",  marginTop:"10px"}}>portiondoc@gmail.com</p>
+                <i class="fas fa-solid fa-phone" style={{height: "40px", marginLeft:"100px", color:"white", marginTop:"20px"}} ></i><p className="i-1" style={{marginLeft:"10px",  marginTop:"10px"}}>+977 983142567</p>
+                
+                </nav>
+        <br/>
         <div className="container">
-        <label for="exampleFormControlFile1">Ingredients</label>
-                        <div  className="row">
-                            <div className="col-md-2"></div>
-                            <div className="col-md-8">
-                            <div class="container">
-                                <div class="row">
-                                <div>
-                        <table className="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col" colSpan="2">Recipies Image</th>
-                                    <th scope="col" colSpan="2">Recipies Name</th>
-                                    <th scope="col" colSpan="2">Recipies Quantity</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {/* {categoryData.map(singleData => { */}
-                                        <tr>
-                                        {/* // <tr key={singleData._id}> */}
-                                            <td><img src="images/1.png" height="100px"/></td>
-                                                <td colSpan="2"> Recipies</td>
-                                                <td>1kg</td>
-                                            <td> 
-                                            {/* <button className="btn btn-primary mb-2" onClick={()=>{deleteCategory(singleData._id)}}>Delete Product</button> */}
-                                            </td>
-                                        </tr>
-                            </tbody>
-                        </table>
-                                </div>
-                                </div>
-                                </div>
-                                </div>
-                                </div>
-                                </div>
-                        <label for="exampleFormControlFile1">Steps</label>
-                        <table class="table">
-            <thead>
-                <tr>
-                <th scope="col">Name</th>
-                <th scope="col"> Quantity</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                <th scope="row">Potatoes</th>
-                <td>1kg</td>
-                </tr>
-                <tr>
-                <th scope="row">Garlic</th>
-                <td>5</td>
-                </tr>
-                <tr>
-                <th scope="row">Tofu</th>
-                <td>1 box</td>
-                </tr>
-            </tbody>
-            </table>
-            <form>
-            <label for="exampleFormControlFile1">Portions</label>
-            <form class="form-inline">
-            <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Preference</label>
-            <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-                <option selected>Choose...</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-            </select>
-            <div class="custom-control custom-checkbox my-1 mr-sm-2">
-                <input type="checkbox" class="custom-control-input" id="customControlInline"></input>
+            <NavLink to={"/addMeal"}>
+        <button className="btn btn-primary mb-2"style={{backgroundColor:"#FF7800",border:"none", float:"right"}}>Add New Meal</button>
+        </NavLink>
+        </div>
+        <div className="container">
+            {/* <h1> Meals </h1> */}
+
+            {mealData.map((singleData)=> {
+                            return(
+        <div class="card mb-3" style={{"width": "1000px","height":"300px"}}>
+       <div class="row no-gutters">
+            <div class="col-md-4">
+            <img src={"http://localhost:4001/meal/"+singleData.mealImage} height="300px"></img>
+          
             </div>
-            <button type="submit" class="btn btn-primary my-1">Submit</button>
-            </form>
-                </form>
-                    </div>
-                    </>
+            <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">{singleData.mealName}</h5> <hr/>
+                <p class="card-text">{singleData.mealDescription}</p>
+            </div>
+            </div>
+        </div>
+        </div>
+                            )
+                        })} 
+
+
+
+
+
+
+
+        </div>
+
+        </>
+
     )
 }
-export default ListMeals;
+export default ViewRecipies;
