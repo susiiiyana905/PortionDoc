@@ -8,6 +8,7 @@ const AddMeal =()=> {
     const [mealPrice, setMealPrice] = useState('');
     const [mealDescription, setMealDescription] = useState('');
     const [time, setTime] = useState('');
+    const [steps, setSteps] = useState([]);
     const [mealCategory, setMealCategory] = useState('Veg');
     const [calory, setCalory] = useState('');
     const [difficulty, setDifficulty] = useState('Difficult');
@@ -32,6 +33,7 @@ const AddMeal =()=> {
         mealData.append("mealPrice", mealPrice);
         mealData.append("mealDescription", mealDescription);
         mealData.append("time", time);
+        mealData.append("steps", steps);
         mealData.append("mealCategory", mealCategory);
         mealData.append("calory", calory);
         mealData.append("difficulty", difficulty);
@@ -114,6 +116,24 @@ const AddMeal =()=> {
                             <input type="text" className="form-control"
                              value={calory}
                              onChange={(e)=>setCalory(e.target.value)}
+                            
+                            />
+                            </div>
+
+                            <div className="form-group">
+                            <label>Steps</label>
+                            <input type="text" className="form-control"
+                             value={steps}
+                             onChange={(e)=>setSteps(e.target.value)}
+                            
+                            />
+                            </div>
+
+                            <div className="form-group">
+                            <label>Steps</label>
+                            <input type="text" className="form-control"
+                            //  value={steps}
+                             onChange={(e)=>setSteps(e.target.value)}
                             
                             />
                             </div>
