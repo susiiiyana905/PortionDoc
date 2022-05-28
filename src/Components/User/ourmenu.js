@@ -39,25 +39,10 @@ const Meals =()=> {
               {/* <div> */}
                 <div className="container">
 
-                <div class="nav-item dropdown">
-                    <button class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                    Dropdown
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </div>
-
-                <form class="form-inline ">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" ></input>
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+              
 
 
-                    {/* <div id="front">
+                    <div id="front">
                     <div  id="one">
                     <div class="dropdown">
                         <button  id="search" class="btn btn-secondary dropdown-toggle" type="button"  data-toggle="dropdown" aria-expanded="false">
@@ -77,7 +62,7 @@ const Meals =()=> {
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style={{marginLeft:"10px"}}>Search</button>
                 </form>
                 </div>
-                </div> */}
+                </div>
 
 
                 </div>
@@ -97,33 +82,30 @@ const Meals =()=> {
             return(
                 <div className="container py-3" style={{width: "350px"}}>
                 <div className="card-deck">
-                    <div className="card">
-                    <img className="card" src={"http://localhost:4001/meal/"+singleData.mealImage}></img>
+                    <div className="card" style={{height:"400px"}}>
+                    <img className="card" src={"http://localhost:4001/meal/"+singleData.mealImage} style={{marginTop:"10px"}}></img>
                     <div className="card-body">
-                        <p class="first">{singleData.mealName}</p>
+                        <p class="first" style={{fontWeight:"bold"}}>{singleData.mealName}</p>
                         {/* <p class="second">{singleData.mealPrice}</p>  */}
                     </div>
                     <div className="card-footer">
-                    <button className="btn btn-outline-primary" >
-                      Price:  <p class="second">{singleData.mealPrice}</p> 
-                    </button>    
-                    <button className="btn btn-outline-primary"  style={{float: "right"}} >
-                        Time:    <p class= "third" >{singleData.time}</p>
-                     </button>  
-                 
+                        
+                <p class="card-text" style={{fontWeight:"bold", fontSize:"20px"}}>
+                    <small class="text-muted">{singleData.mealPrice}</small>
+                    <small class="text-muted" style={{float: "right", marginTop:"1px"}}><i class="fas fa-solid fa-timer"></i>{singleData.time}</small>
+
+                  
+                
+                </p>
+
+                {/* <p class="card-text" style={{fontWeight:"bold", fontSize:"20px", marginRight:"100px", float: "right"}}><small class="text-muted">{singleData.time}</small></p> */}
+
+                
                     </div>
                     </div>
                 </div>
                 </div>
-                // <div className="container py-5" style={{width: "300px"}}>
-                //     <img className="card" src={"http://localhost:4001/meal/"+singleData.mealImage}></img>
-                //     <p class="first">{singleData.mealName}</p>
-                //     <p class="second">{singleData.mealPrice}</p> 
-                //     <div class="me">
-                //     <p class= "third" >{singleData.time}</p>
-                //     {/* <button class="view">View Details</button> */}
-                //     </div>
-                //     </div>
+               
                                 )
                 })}
      <div>

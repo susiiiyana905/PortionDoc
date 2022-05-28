@@ -64,8 +64,42 @@ class AddIngredient extends Component{
                         <button type="button"  className="button remove" onClick={() => this.removeFormFields(index)}>Remove</button> 
                         : null
                         } */}
+    
                           
                     </div>
+                    
+                    <div>
+                    <div><label>Quantity</label></div>
+                    <div className="quantity" data-th="Quantity">
+                      
+                      <button className = "btn btn-warning">
+                        {/* <button
+                          className="btn btn-warning"
+                          onClick={this.updateQuantity.bind(
+                            this,
+                            cart._id,
+                            cart.quantity - 1
+                          )}
+                        > */}
+                          <h5>-</h5>
+                        </button>
+                        <span style={{ margin: "5px" }}>
+                          2
+                          {/* {cart.quantity} */}
+                        </span>
+                        <button className = "btn btn-warning">
+                        {/* <button
+                          className="btn btn-warning"
+                          onClick={this.updateQuantity.bind(
+                            this,
+                            cart._id,
+                            cart.quantity + 1
+                          )}
+                        > */}
+                          <h5>+</h5>
+                        </button>
+                      </div> 
+                      </div>
                     <hr/>
                         </div>
                         
