@@ -64,8 +64,32 @@ class AddIngredient extends Component{
                         <button type="button"  className="button remove" onClick={() => this.removeFormFields(index)}>Remove</button> 
                         : null
                         } */}
+    
                           
                     </div>
+                    
+                    <div>
+                    <div><label>Quantity</label></div>
+                    <div class="form-row">
+                    <div class="form-group col-md-6">
+                      
+                      <input type="text" class="form-control" id="inputCity"></input>
+                    </div>
+                    <div class="form-group col-md-4">
+                      
+                      <select id="inputState" class="form-control">
+                        <option selected>Unit</option>
+                        <option>Kg</option>
+                        <option>Ounch</option>
+                        <option>TeaSpoon</option>
+                        <option>TableSpoon</option>
+                        <option>Clove</option>
+                        <option>Cup</option>
+                      </select>
+                    </div>
+                    </div>
+                        </div> 
+                
                     <hr/>
                         </div>
                         
