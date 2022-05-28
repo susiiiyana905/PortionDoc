@@ -165,7 +165,7 @@ const AddMeal =()=> {
          </select>
             </div>
         </div>
-        <div className="form-group row">
+        {/* <div className="form-group row">
             <label className="col-sm-2 col-form-label">Steps</label>
             <form  onSubmit={this.handleSubmit}>
       <div><label>Steps</label></div>
@@ -183,7 +183,7 @@ const AddMeal =()=> {
                     <button className="button add" type="button" onClick={() => this.addFormFields()} style = {{marginLeft:"450px", backgroundColor:"#4CBA19", height:"50px", width:"50px", color:"white"}}><i class="fas fa-solid fa-plus"></i></button>
                 </div>
             </form>
-        </div>
+        </div> */}
         <p><button type='submit' className="btn btn-primary addMeal"
          onClick={addMeal}
         >

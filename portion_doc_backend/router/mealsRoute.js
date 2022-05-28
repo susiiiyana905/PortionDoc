@@ -41,10 +41,6 @@ router.post("/add/meals", auth.verifyAdmin, upload.single('mealImage'), async(re
 
 router.put("/update/meals/:mid", auth.verifyAdmin, upload.single("mealImage"), async(req,res)=>{
     const mid = req.params.mid;
-    
-    if(req.file === undefined){
-        return res.json({message: "Invalid!!"})
-    }
 
     const mealName = req.body.mealName;
     const mealPrice = req.body.mealPrice;
@@ -54,14 +50,9 @@ router.put("/update/meals/:mid", auth.verifyAdmin, upload.single("mealImage"), a
     const mealCategory = req.body.mealCategory;
     const calory = req.body.calory;
     const difficulty = req.body.difficulty;
-    const mealImage= req.file.filename;
 
     Meals.findOne({_id: mid})
     .then((mealData)=>{
-        if(!mealData.mealImage){
-            const meal_image_path = `./uploads/meal/${mealData.mealImage}`;
-            fs.unlinkSync(meal_image_path);
-        }
 
         Meals.updateOne({_id:mid}, {
             mealName: mealName,
@@ -72,7 +63,6 @@ router.put("/update/meals/:mid", auth.verifyAdmin, upload.single("mealImage"), a
             mealCategory: mealCategory,
             calory: calory,
             difficulty: difficulty,
-            mealImage: mealImage,
         })
         .then(function(){
             res.status(200).send({success:true, message: "Meal details has been updated!"})
@@ -86,6 +76,36 @@ router.put("/update/meals/:mid", auth.verifyAdmin, upload.single("mealImage"), a
     })
 })
 
+router.put("/update/meal/image/:mid", auth.verifyAdmin, upload.single("mealImage"), async(req,res)=>{
+    const mid = req.params.mid;
+
+    if(req.file === undefined){
+        return res.json({message: "Invalid!!"})
+    }
+
+    const mealImage = req.file.filename;
+
+    Meals.findOne({_id: mid})
+    .then((mealData)=>{
+        if(!mealData.mealImage){
+            const meal_image_path = `./uploads/meal/${mealData.mealImage}`;
+            fs.unlinkSync(meal_image_path);
+        }
+
+        Meals.updateOne({_id: mid}, {
+            mealImage: mealImage
+        })
+        .then(function(){
+            res.status(200).send({success: true, message: "Meal Image Updated!"});
+        })
+        .catch(function(){
+            res.status(400).send({message: e});
+        });
+    })
+    .catch((e)=>{
+        res.status(400).send({message: e});
+    })
+})
 
 
 router.get('/meals/all', auth.verifyAdmin, async(req,res)=>{

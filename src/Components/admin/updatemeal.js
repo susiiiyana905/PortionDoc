@@ -52,14 +52,13 @@ const UpdateMeal =()=> {
         // mealData.append("calory", calory);
         // mealData.append("difficulty", difficulty);
 
-        axios.put("http://localhost:4001/update/meals/"+mid, mealData, config)
+        axios.put("http://localhost:4001/update/meal/image/"+mid, mealData, config)
         .then(result=>{
             // console.log(result.data)
             if(result.data.success){
                 setMessage(result.data.message);
                 axios.get("http://localhost:4001/meals/single/"+mid, config)
                 .then(result=>{
-                    console.log(result.data.data.mealCategory)
                     setMealImage(result.data.data.mealImage)
                 })
                
@@ -74,7 +73,7 @@ const UpdateMeal =()=> {
         e.preventDefault();
      
         const mealData = new FormData();
-        mealData.append("mealImage", mealImage);
+        
         mealData.append("mealName", mealName);
         mealData.append("mealPrice", mealPrice);
         mealData.append("mealDescription", mealDescription);
