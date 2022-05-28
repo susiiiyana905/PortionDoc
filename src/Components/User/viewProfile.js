@@ -63,86 +63,60 @@ const ViewProfile =()=>{
                     <span style={{"font-size":"15px","margin-top":"0px"}}>{bio}</span>
                     </div>
                 </div>
-            <div className="container mt-5">
+            <div className="container mt-3">
                 <div className="row">
                     <div className="col-md-2"></div>
                     
                     <div className="col-md-6">
                     <div className="container editProfile" style={{"margin-left":"100px"}}>
-                        <form>
+                        
                         <div className="form-group editProfileForm row">
                             <label for="inputFname" className="col-sm-3 col-form-label">First Name</label>
                             <div className="col-sm-9">
-                                <input type="text" className="form-control border-dark" id="inputFname"
-                                value={firstName}
-                                onChange={(e)=>setFirstName(e.target.value)}
-                                />
+                                <p className="form-control border-dark">{firstName}</p>
+                                
                             </div>
                         </div>
                         <div className="form-group editProfileForm row">
                             <label for="inputLname" className="col-sm-3 col-form-label">Last Name</label>
                             <div className="col-sm-9">
-                                <input type="text" className="form-control border-dark" id="inputLname"
-                                value={lastName}
-                                onChange={(e)=>setLastName(e.target.value)}
-                                />
+                                <p className="form-control border-dark" id="inputLname">{lastName}</p>
                             </div>
                         </div>
                         <div className="form-group editProfileForm row">
                             <label for="inputEmail3" className="col-sm-3 col-form-label">Email</label>
                             <div className="col-sm-9">
-                            <input type="email" className="form-control border-dark" id="inputEmail3"
-                           value={email}
-                            />
+                                <p className="form-control border-dark" id="inputEmail3" >{email}</p>
                             </div>
                         </div>
                         <div className="form-group editProfileForm row">
                             <label for="inputBio" className="col-sm-3 col-form-label">Bio</label>
                             <div className="col-sm-9">
-                            <input type="text" maxLength="10" className="form-control border-dark" id="inputBio"
-                            value={bio}
-                            onChange={(e)=>setBio(e.target.value)}
-                            />
+                                <p className="form-control border-dark" id="inputBio">{bio}</p>
                             </div>
                         </div>
                         <div className="form-group editProfileForm row">
                             <label for="inputDob" className="col-sm-3 col-form-label">DoB</label>
                             <div className="col-sm-9">
-                                <input type="date" className="form-control border-dark" id="inputDob"
-                                value={dob}
-                                onChange={(e)=>setDoB(e.target.value)}
-                                />
+                                <p className="form-control border-dark" id="inputDob">{dob}</p>
                             </div>
                         </div>
                         <div className="form-group editProfileForm row">
                             <label for="inputGender" className="col-sm-3 col-form-label">Gender</label>
                             <div className="col-sm-9">
-                                <select className="custom-select custom-select-lg" style={{width:"100%"}}
-                                value={gender}
-                                onChange={(e)=>setGender(e.target.value)}
-                                >
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                    <option value="Other">Other</option>
-                                </select>
+                                <p className="form-control border-dark">{gender}</p>
                             </div>
                         </div>
                         <div className="form-group editProfileForm row">
                             <label for="inputPhone" className="col-sm-3 col-form-label">Phone No.</label>
                             <div className="col-sm-9">
-                            <input type="text" maxLength="10" className="form-control border-dark" id="inputPhone"
-                            value={phone_no}
-                            onChange={(e)=>setPhoneNo(e.target.value)}
-                            />
+                                <p className="form-control border-dark" id="inputPhone">{phone_no}</p>
                             </div>
                         </div>
                         <div className="form-group editProfileForm row">
                             <label for="inputAddress" className="col-sm-3 col-form-label">Address</label>
                             <div className="col-sm-9">
-                            <input type="text" maxLength="10" className="form-control border-dark" id="inputAddress"
-                            value={address}
-                            onChange={(e)=>setAddress(e.target.value)}
-                            />
+                                <p type="text" maxLength="10" className="form-control border-dark" id="inputAddress">{address}</p>
                             </div>
                         </div>
 
@@ -154,7 +128,7 @@ const ViewProfile =()=>{
                         >Edit Profile</button>
                         </div>
                         </div>
-                        </form>
+                        
                         </div>
                     </div>
                 </div>

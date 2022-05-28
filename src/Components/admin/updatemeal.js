@@ -107,7 +107,7 @@ const UpdateMeal =()=> {
                <div className="col-md-2"></div>
                <div className="col-md-8">
                     <h2 className="heading-h2-all">Update Meal</h2>
-                   <form>
+                   <form id="updateMealForm">
                        <div className="form-group row">
                             <label htmlFor="mealImage" className="col-sm-3 col-form-label">Meal Image</label>
                             <img src={"http://localhost:4001/meal/"+mealImage} data-bs-toggle="modal" data-bs-target="#exampleModal" height="200px"/>
@@ -138,7 +138,7 @@ const UpdateMeal =()=> {
                         <div className="form-group row">
                             <label htmlFor="mealName" className="col-sm-3 col-form-label">Meal Name</label>
                             <div className="col-sm-9">
-                            <input type="text" className="form-control"
+                            <input type="text" className="form-control" id="mealName"
                              value={mealName}
                              onChange={(e)=>setMealName(e.target.value)}
                              />    
@@ -147,7 +147,7 @@ const UpdateMeal =()=> {
                         <div className="form-group row">
                             <label htmlFor="mealPrice" className="col-sm-3 col-form-label">Meal Price</label>
                             <div className="col-sm-9">
-                            <input type="text" className="form-control"
+                            <input type="text" className="form-control" id="mealPrice"
                             value={mealPrice}
                             onChange={(e)=>setMealPrice(e.target.value)}
                              /> 
@@ -156,7 +156,7 @@ const UpdateMeal =()=> {
                         <div className="form-group row">
                             <label htmlFor="mealCategory" className="col-sm-3 col-form-label">Meal Category</label>
                             <div className="col-sm-9">
-                            <input type="text" className="form-control"
+                            <input type="text" className="form-control" id="mealCategory"
                              value={mealCategory}
                              onChange={(e)=>setMealCategory(e.target.value)}
                              /> 
@@ -165,7 +165,7 @@ const UpdateMeal =()=> {
                         <div className="form-group row">
                             <label htmlFor="mealDescription" className="col-sm-3 col-form-label">Meal Description</label>
                             <div className="col-sm-9">
-                            <textarea type="text" className="form-control"
+                            <textarea type="text" className="form-control" id="mealDescription"
                              value={mealDescription}
                              onChange={(e)=>setMealDescription(e.target.value)}
                              />  
@@ -174,7 +174,7 @@ const UpdateMeal =()=> {
                         <div className="form-group row">
                             <label htmlFor="time" className="col-sm-3 col-form-label">Time</label>
                             <div className="col-sm-9">
-                            <input type="text" className="form-control"
+                            <input type="text" className="form-control" id="time"
                              value={time}
                              onChange={(e)=>setTime(e.target.value)}
                              />    
@@ -183,7 +183,7 @@ const UpdateMeal =()=> {
                         <div className="form-group row">
                             <label htmlFor="calory" className="col-sm-3 col-form-label">Calory</label>
                             <div className="col-sm-9">
-                            <input type="text" className="form-control"
+                            <input type="text" className="form-control" id="calory"
                              value={calory}
                              onChange={(e)=>setCalory(e.target.value)}
                              />    
@@ -192,7 +192,7 @@ const UpdateMeal =()=> {
                         <div className="form-group row">
                             <label htmlFor="difficulty" className="col-sm-3 col-form-label">Difficulty</label>
                             <div className="col-sm-9">
-                            <input type="text" className="form-control"
+                            <input type="text" className="form-control" id="difficulty"
                              value={difficulty}
                              onChange={(e)=>setDifficulty(e.target.value)}
                              />    
@@ -201,7 +201,9 @@ const UpdateMeal =()=> {
                         <div className="form-group row">
                             <div className="col-sm-3"></div>
                         <div className="col-sm-9">
-                         <button type="button" className="btn btn-primary" style={{backgroundColor:"#FF7800"}} onClick={updateMeal}>
+                         <button type="button" className="btn btn-primary" style={{backgroundColor:"#FF7800"}} 
+                         id="updateMealButton"
+                         onClick={updateMeal}>
                              Update
                         </button>
                         </div>

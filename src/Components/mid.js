@@ -17,14 +17,14 @@ import UpdateMeal from "./admin/updateMeal";
 import ShowCategory from "./admin/CategoryList";
 import AddCategory from "./admin/Category";
 
-import AddRecipes from "./admin/addRecipe";
+// import AddRecipes from "./admin/addRecipe";
 
 import AddRecipes from "./User/addRecipe";
 import AddIngredient from "./admin/ingredient";
 import ListMeals from "./admin/listViewMeal";
 
-import AddRecipes from "./User/addRecipe";
-import AddIngredient from "./admin/ingredient";
+// import AddRecipes from "./User/addRecipe";
+// import AddIngredient from "./admin/ingredient";
 
 
 

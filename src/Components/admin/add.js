@@ -61,10 +61,10 @@ const AddMeal =()=> {
                 <div className="col-md-4">
                     <h2 className="heading-h2-all">Add Meal:</h2>
 
-                    <form>
+                    <form id="addMealForm">
                         <div className="form-group">
                             <label>Meal Name</label>
-                            <input type="text" className="form-control"
+                            <input type="text" className="form-control" id="mealName"
                             value={mealName}
                             onChange={(e)=>setMealName(e.target.value)}
                             />
@@ -72,7 +72,7 @@ const AddMeal =()=> {
 
                         <div className="form-group">
                             <label>Meal Price</label>
-                            <input type="text" className="form-control"
+                            <input type="text" className="form-control" id="mealPrice"
                              value={mealPrice}
                              onChange={(e)=>setMealPrice(e.target.value)}
                             />
@@ -82,7 +82,7 @@ const AddMeal =()=> {
                         
                         <label for="inputCategory" className="col-form-label">Meal Category</label>
                             
-                                <select className="custom-select custom-select-lg" style={{width:"100%"}}
+                                <select className="custom-select custom-select-lg" style={{width:"100%"}} id="mealCategory"
                                 value={mealCategory}
                                 onChange={e=>setMealCategory(e.target.value)}
                                 >
@@ -95,7 +95,7 @@ const AddMeal =()=> {
 
                             <div className="form-group">
                             <label>Meal Description</label>
-                            <textarea type="text" className="form-control"
+                            <textarea type="text" className="form-control" id="mealDescription"
                              value={mealDescription}
                              onChange={(e)=>setMealDescription(e.target.value)}
                             
@@ -104,7 +104,7 @@ const AddMeal =()=> {
 
                             <div className="form-group">
                             <label>Time</label>
-                            <input type="text" className="form-control"
+                            <input type="text" className="form-control" id="time"
                              value={time}
                              onChange={(e)=>setTime(e.target.value)}
                             
@@ -113,7 +113,7 @@ const AddMeal =()=> {
 
                             <div className="form-group">
                             <label>Calory</label>
-                            <input type="text" className="form-control"
+                            <input type="text" className="form-control" id="calory"
                              value={calory}
                              onChange={(e)=>setCalory(e.target.value)}
                             
@@ -122,17 +122,8 @@ const AddMeal =()=> {
 
                             <div className="form-group">
                             <label>Steps</label>
-                            <input type="text" className="form-control"
+                            <input type="text" className="form-control" id="steps"
                              value={steps}
-                             onChange={(e)=>setSteps(e.target.value)}
-                            
-                            />
-                            </div>
-
-                            <div className="form-group">
-                            <label>Steps</label>
-                            <input type="text" className="form-control"
-                            //  value={steps}
                              onChange={(e)=>setSteps(e.target.value)}
                             
                             />
@@ -141,7 +132,7 @@ const AddMeal =()=> {
                             <div className="form-group">
                             <label for="inputDifficulty" className="col-form-label">Difficulty</label>
                             
-                            <select className="custom-select custom-select-lg" style={{width:"100%"}}
+                            <select className="custom-select custom-select-lg" style={{width:"100%"}} id="difficulty"
                                 value={difficulty}
                                 onChange={e=>setDifficulty(e.target.value)}
                                 >
@@ -160,7 +151,7 @@ const AddMeal =()=> {
 
                         </div>
 
-                        <p><button type='submit' className="btn btn-primary"
+                        <p><button type='submit' className="btn btn-primary" id="addMealButton"
                         onClick={addMeal}
                         >Add</button></p>
                     </form>
