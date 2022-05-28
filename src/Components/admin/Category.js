@@ -47,10 +47,10 @@ import axios from 'axios';
                 <div className="col-md-4">
                     <h2 className="heading-h2-all">Add Category Details </h2>
                     <p>{message}</p>
-                    <form>
+                    <form id='addCategoryForm'>
                         <div className="form-group">
                             <label>Category Name</label>
-                            <input type="text" className="form-control"
+                            <input type="text" className="form-control" id='categoryName'
                             value={categoryName}
                             onChange={e=>{setcategoryName(e.target.value)}}
                             />
@@ -64,7 +64,7 @@ import axios from 'axios';
 
                         </div>
 
-                        <p><input type='submit'  className="btn btn-primary" onClick={addcategory}  /></p>
+                        <p><input type='submit' id='addCategoryButton'  className="btn btn-primary" onClick={addcategory}  /></p>
                     </form>
                 </div>
                 <div className="col-md-4"></div>
