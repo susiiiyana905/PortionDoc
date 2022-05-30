@@ -7,9 +7,6 @@ import UpdateProfile from "./User/updateProfile"
 import ViewProfile from "./User/viewProfile";
 import ViewMeals from "./admin/viewMeal";
 import OtpPage from "./User/otppage";
-
-import ViewRecipies from "./admin/viewRecipies";
-
 import AddMeal from "./admin/add";
 import Menu1 from "./User/ourmenu";
 import Menu from "./User/viewMenu";
@@ -21,6 +18,8 @@ import AddCategory from "./admin/Category";
 import AddRecipes from "./User/addRecipe";
 import AddIngredient from "./admin/ingredient";
 import ListMeals from "./admin/listViewMeal";
+
+
 
 
 
@@ -37,9 +36,6 @@ class Mid extends Component{
                     <Route path="/updateProfile" element={<UpdateProfile></UpdateProfile>}></Route> 
                     <Route path="/viewProfile" element={<ViewProfile></ViewProfile>}></Route>
                     <Route path="/viewMeal" element={<ViewMeals></ViewMeals>}></Route>
-
-                    <Route path="/viewRecipies"element={<ViewRecipies></ViewRecipies>}></Route>
-
 
                     <Route path="/addMeal" element={<AddMeal></AddMeal>}></Route>
                     <Route path="/menu" element = {<Menu></Menu>}> </Route>
