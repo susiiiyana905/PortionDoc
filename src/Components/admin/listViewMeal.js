@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import UpdateMeals from "./updateMeals";
 
 const ViewRecipies =()=>{
     const [mealData, setMealData] = useState([]);
@@ -36,7 +37,7 @@ const ViewRecipies =()=>{
         </NavLink>
         </div>
         <div className="container">
-            {/* <h1> Meals </h1> */}
+            <h1 style={{textAlign:"center"}}> Meals </h1>
 
             {mealData.map((singleData)=> {
                             return(
