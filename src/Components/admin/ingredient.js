@@ -1,19 +1,18 @@
 import axios from "axios";
-import{Component} from "react";
-import { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import {Component} from "react";
 
 class AddIngredient extends Component{
     constructor(props) {
         super(props)
         
         this.state = { 
-           formValues: [{ ingredient: ""}]
+           formValues: [{ingredient: ""}]
          };
         this.handleSubmit = this.handleSubmit.bind(this)
       }
       
-      handleChange(i, e) {
+      handleChange(i, e) 
+      {
         let formValues = this.state.formValues;
         formValues[i][e.target.ingredient] = e.target.value;
         this.setState({ formValues });
@@ -42,38 +41,11 @@ class AddIngredient extends Component{
         image: "",
       }
 
-    //   useEffect(()=> {
-    //     try {  
-    //         if(localStorage.getItem("email")) {
-		// 		console.log(location.state.email)
-    //             setSResponse(location.state.email);
-                
-    //         }
-    //     }
-    //     catch (error) {
-    //         console.log("Email not recognized.", error);
-    //     }    
-    // }, [])
-      getId=()=>{
-        useEffect (() =>{
-          const location = useLocation();
-          try {
-            if(localStorage.getItem('_id')) {
-              console.log(location.state._id);
-            }
-          }
-          catch(e) {
-            console.log("ID not recognized,", e);
-          }
-        },[])
-        return;
-      }
-
       addIngredient = () =>{
         const ingredientData = new FormData();
         ingredientData.append("name", this.state.name);
-        
         ingredientData.append("image", this.state.image);
+        ingredientData.append("meals_id", localStorage.getItem("_id"));
         
         if (this.state.unit === undefined){
           ingredientData.append("quantity", this.state.quantity+ " Unit");
@@ -176,7 +148,6 @@ class AddIngredient extends Component{
                         <button className="button add" type="button" onClick={() => this.addFormFields()} style = {{marginLeft:"450px", backgroundColor:"#4CBA19", height:"50px", width:"50px", color:"white"}}><i class="fas fa-solid fa-plus"></i></button>
                         
                     </div>
-                 
                 </form>
             
                 </div>
@@ -189,16 +160,3 @@ class AddIngredient extends Component{
     }
 }
 export default AddIngredient;
-{/* <form>
-<label>Ingredient</label>
-<div class="row">
-
-  <div class="col">
-  <input type="file" class="form-control-file" id="exampleFormControlFile1"></input>
-  </div>
-  <div class="col">
-    <input type="text" class="form-control" placeholder="Ingredient Name"></input>
-  </div>
-</div>
-<button type="submit" class="btn btn-primary mb-2">Add Ingredient</button>
-</form> */}
