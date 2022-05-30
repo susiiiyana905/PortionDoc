@@ -70,6 +70,10 @@ class AddIngredient extends Component{
     render(){
         return(
             <>
+             <nav className="navbar navbar-expand-lg mainNav" style={{"height":"35px"}}>
+                <i class="fas fa-solid fa-envelope fa-lg" style={{height: "40px", color:"white", marginTop:"20px"}}></i><p className="i-1" style={{marginLeft:"10px",  marginTop:"10px"}}>portiondoc@gmail.com</p>
+                <i class="fas fa-solid fa-phone" style={{height: "40px", marginLeft:"100px", color:"white", marginTop:"20px"}} ></i><p className="i-1" style={{marginLeft:"10px",  marginTop:"10px"}}>+977 983142567</p>
+                </nav>
             <div className="col-md-6 d-flex justify-content-center mx-auto" style={{"marginTop":"50px", marginBottom:"50px"}}>
             <div class="card w-100">
             <div class="card-body">
