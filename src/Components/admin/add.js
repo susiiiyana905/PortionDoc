@@ -104,7 +104,7 @@ const AddMeal = () => {
       .catch(e);
   };
   return (
-      <>
+    <>
       <div className="container">
         <h2 className="heading-h2-all">Add Meal:</h2>
         <form>
@@ -215,7 +215,7 @@ const AddMeal = () => {
               ></textarea>
               <span
                 className="add-report bi bi-plus-circle-fill fw-bold me-2 fa-2x"
-                style={{ float: "right"}}
+                style={{ float: "right" }}
                 onClick={() => {
                   addSteps(singleStep);
                 }}
