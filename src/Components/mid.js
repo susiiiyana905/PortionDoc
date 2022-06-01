@@ -19,6 +19,12 @@ import AddRecipes from "./User/addRecipe";
 import AddIngredient from "./admin/ingredient";
 import ListMeals from "./admin/listViewMeal";
 
+import UpdateMeals from "./admin/updateMeals";
+import ViewRecipe from "./User/viewRecipe";
+import Contact from "./User/review";
+import Review from "./User/review";
+
+
 
 class Mid extends Component{
     render(){
@@ -43,6 +49,10 @@ class Mid extends Component{
 
                     <Route path ="/addIngredient" element={<AddIngredient></AddIngredient>}></Route>
                     <Route path="/listmeal" element={<ListMeals></ListMeals>}></Route>
+                    <Route path="/mealUpdate" element={<UpdateMeals></UpdateMeals>}></Route>
+                    <Route path="/viewRecipe" element={<ViewRecipe></ViewRecipe>}></Route>
+                    {/* <Route path="contact" element={<Contact></Contact>}></Route> */}
+                    <Route path="review" element={<Review></Review>}></Route>
 
                 </Routes>
             </div>
