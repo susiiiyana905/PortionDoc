@@ -206,15 +206,16 @@ const AddMeal = () => {
           <div class="form-group row">
             <label class="col-sm-2 col-form-label">Steps</label>
 
-            <div class="col-sm-10">
+            <div class="col-sm-9">
               <textarea
                 type="text"
                 class="form-control"
-                style={{ float: "left", width: "880px", marginRight: "5px" }}
+                style={{ float: "left", marginRight: "5px" }}
                 onChange={(e) => setSingleStep(e.target.value)}
               ></textarea>
               <span
                 className="add-report bi bi-plus-circle-fill fw-bold me-2 fa-2x"
+                style={{ float: "right"}}
                 onClick={() => {
                   addSteps(singleStep);
                 }}
