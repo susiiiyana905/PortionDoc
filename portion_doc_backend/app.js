@@ -27,6 +27,9 @@ app.use(RecipeRoute);
 const DietaryRoute = require("./router/dietaryRoute");
 app.use(DietaryRoute);
 
+const DietPreferenceRoute = require("./router/dietPreferenceRoute");
+app.use(DietPreferenceRoute);
+
 app.use(express.static(__dirname+'/images/'));
 
 app.listen(4001);
