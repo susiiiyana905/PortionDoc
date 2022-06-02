@@ -24,6 +24,19 @@ const ViewRecipies = () => {
         console.log(e);
       });
   }, []);
+
+  const deleteMeal = (mid) => {
+    axios
+      .delete("http://localhost:4001/meals/delete/" + mid, config)
+      .then((result) => {
+        axios.get(`http://localhost:4001/meals/all`, config).then((result1) => {
+          setMealData(result1.data.data);
+        });
+        // console.log(result.data);
+      })
+      .catch();
+  };
+
   return (
     <>
       <nav
@@ -70,18 +83,28 @@ const ViewRecipies = () => {
 
         {mealData.map((singleData) => {
           return (
-            <div class="card mb-3" style={{ width: "1000px", height: "300px" }}>
+            <div class="card mb-3" style={{ width: "1200px", height: "350px" }}>
               <div class="row no-gutters">
                 <div class="col-md-4">
                   <img
                     src={"http://localhost:4001/meal/" + singleData.mealImage}
-                    height="300px"
+                    height="348px"
                   ></img>
                 </div>
                 <div class="col-md-8">
                   <div class="card-body">
-                    <h5 class="card-title">{singleData.mealName}</h5> <hr />
+                  <NavLink to={"/updateMeal/" + singleData._id}>
+                    <h5 class="card-title">{singleData.mealName}</h5></NavLink>
+                    <i class="fas fa-solid fa-trash" style={{marginLeft:"600px", marginTop:"0px"}} onClick={() => {
+                                      deleteMeal(singleData._id);
+                                    }}></i>
+                     <hr />
                     <p class="card-text">{singleData.mealDescription}</p>
+                    
+                    <NavLink to="/addIngredient">
+                   <button className="btn btn-primary" style={{marginLeft:"600px"}}>
+                                    Add Ingredient
+                                  </button></NavLink>
                   </div>
                 </div>
               </div>

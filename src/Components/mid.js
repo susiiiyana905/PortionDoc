@@ -24,6 +24,7 @@ import ViewRecipe from "./User/viewRecipe";
 import Review from "./User/review";
 import ViewUserRecipe from "./admin/viewUserRecipe";
 import UserRecipeDetail from "./admin/userRecipeDetail";
+import ViewReview from "./admin/viewReview";
 
 class Mid extends Component {
   render() {
@@ -77,6 +78,7 @@ class Mid extends Component {
           <Route path="/viewRecipe/:mid" element={<ViewRecipe></ViewRecipe>}></Route>
           {/* <Route path="contact" element={<Contact></Contact>}></Route> */}
           <Route path="/review" element={<Review></Review>}></Route>
+          <Route path="/viewReview" element={<ViewReview></ViewReview>}></Route>
 
           <Route path="/userRecipe" element={<ViewUserRecipe></ViewUserRecipe>}></Route>
           <Route path="/userRecipeDetail" element={<UserRecipeDetail></UserRecipeDetail>}></Route>
