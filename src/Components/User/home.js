@@ -6,7 +6,10 @@ const Home = () => {
   return (
     <>
       <Header></Header>
-      <div className="container-fluid">
+      <div
+        className="container-fluid"
+        style={{ paddingRight: "0px!important" }}
+      >
         {/* ------------------top content-------------------------------------------------------------------------- */}
         <div className="container-fluid">
           <div className="card  top">
