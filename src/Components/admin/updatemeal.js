@@ -10,8 +10,11 @@ const UpdateMeal = () => {
   const [mealCategory, setMealCategory] = useState("");
   const [calory, setCalory] = useState("");
   const [difficulty, setDifficulty] = useState("");
+  const [steps, setSteps] = useState("");
   const [_id, setID] = useState("");
   const [mealData, setMealData] = useState([]);
+  const [mealsData, setMealsData] = useState([]);
+  const [ingredientData, setIngredientData] = useState([]);
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
   const config = {
@@ -24,7 +27,7 @@ const UpdateMeal = () => {
     axios
       .get("http://localhost:4001/meals/single/" + mid, config)
       .then((result) => {
-        console.log(result.data.data.mealCategory);
+        console.log(result.data.data);
         setMealImage(result.data.data.mealImage);
         setMealName(result.data.data.mealName);
         setMealPrice(result.data.data.mealPrice);
@@ -34,11 +37,34 @@ const UpdateMeal = () => {
         setCalory(result.data.data.calory);
         setDifficulty(result.data.data.difficulty);
         setID(result.data.data._id);
+        setSteps(result.data.data.steps);
+        // setMealsData(result.data.data);
       })
       .catch((e) => {
         console.log(e);
       });
   }, []);
+  useEffect(() => {
+    axios
+      .get("http://localhost:4001/get/all/ingredients/" + mid, config)
+      .then((result) => {
+        // console.log(result.data.data.name);
+        setIngredientData(result.data.data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }, []);
+  const deleteIngredient = (iid) =>{
+    axios.delete("http://localhost:4001/delete/ingredient/"+iid, config)
+    .then((result)=> {
+      // axios.get(`http://localhost:4001/get/all/ingredients/`+mid, config)
+      // .then((result1)=> {
+      //   setIngredientData(result.data.data);
+      // })
+    })
+    .catch();
+  }
   const updateMealImage = (e) => {
     e.preventDefault();
 
@@ -265,6 +291,74 @@ const UpdateMeal = () => {
                     onChange={(e) => setDifficulty(e.target.value)}
                   />
                 </div>
+              </div>
+
+              <div className="form-group row">
+                <label className="col-sm-3">Ingredient</label>
+                <table className="table col-sm-9">
+                  <thead>
+                    <tr>
+                      <th scope="col" colSpan="2">
+                        Ingredient Image
+                      </th>
+                      <th scope="col" colSpan="2">
+                        Ingredient Name
+                      </th>
+                      <th scope="col" colSpan="2">
+                        Quantity
+                      </th>
+                      <th scope="col" colSpan="2">Edit</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {ingredientData.map((singleData) => {
+                      return (
+                        <tr>
+                          <td>
+                            <img
+                              src={
+                                "http://localhost:4001/ingredients/" +
+                                singleData.image
+                              }
+                              height="100px"
+                            />
+                          </td>
+                          <td colSpan="2">{singleData.name}</td>
+                          <td colSpan="2">{singleData.quantity}</td>
+                          <td colSpan="2">
+                            <span className="remove-report bi bi-dash-circle-fill fw-bold me-2" 
+                            onClick={()=>{
+                              deleteIngredient(singleData._id);
+                            }}
+                            />
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+
+              <div className="form-group row">
+                <label className="col-sm-3">Steps</label>
+                <table className="table col-sm-9">
+                  <thead></thead>
+                  <tbody>
+                    {/* {mealsData.map((singleData)=>{
+                      return( */}
+                        <tr>
+                      <td colSpan="2">
+                        <span value={steps}/>
+                      </td>
+
+                      {/* <td> 
+                                <button className="btn btn-primary mb-3">Delete Ingredient</button>
+                                    </td> */}
+                    </tr>
+                      {/* )
+                    })} */}
+                  </tbody>
+                </table>
               </div>
               <div className="form-group row">
                 <div className="col-sm-3"></div>

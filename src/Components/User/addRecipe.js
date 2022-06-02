@@ -1,75 +1,163 @@
-import { Component } from "react";
+import axios from "axios";
+import { Component, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Footer from "../footer";
 import Header from "../header";
 
-class AddRecipes extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      formValues: [{ ingredient: "" }],
-    };
-    this.handleSubmit = this.handleSubmit.bind(this);
+const AddRecipes = () => {
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [recipePic, setRecipePic] = useState("");
+  const [steps, setSteps] = useState([]);
+  const [singleStep, setSingleStep] = useState("");
+  const [response, setResponse] = useState("");
+  const [sResponse, setSResponse] = useState("");
+  const [message, setMessage] = useState("");
+  const navigate = useNavigate();
+  const config = {
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("userToken"),
+    },
+  };
+
+  function addSteps(step) {
+    setResponse("");
+    setSResponse("");
+
+    var tempSteps = steps;
+    tempSteps.push(step);
+
+    setSteps(tempSteps);
+    console.log(steps);
   }
 
-  handleChange(i, e) {
-    let formValues = this.state.formValues;
-    formValues[i][e.target.ingredient] = e.target.value;
-    this.setState({ formValues });
+  function removeSteps(step) {
+    setResponse("");
+    setSResponse("");
+
+    var tempSteps = steps;
+    tempSteps.splice(tempSteps.indexOf(step), 1);
+    setSteps(tempSteps);
+  }
+  const addRecipe=(e)=>{
+    e.preventDefault();
+
+    const recipeData = new FormData();
+    recipeData.append("title", title);
+    recipeData.append("description", description);
+    recipeData.append("recipePic", recipePic);
+    recipeData.append("steps", steps);
+    
+    axios.post("http://localhost:4001/add/recipe", recipeData, config)
+    .then((result)=>{
+      if(result.data.success) {
+        console.log(result.data)
+        setMessage(result.data.message);
+      }
+      else {
+        console.log(result.data);
+        setMessage(result.data.message);
+      }
+    })
+    .catch(e);
   }
 
-  addFormFields() {
-    this.setState({
-      formValues: [...this.state.formValues, { ingredient: "" }],
-    });
-  }
+  return (
+    <>
+      <Header></Header>
+      {/* <div style={{backgroundColor:"#FAFAFA"}}> */}
 
-  removeFormFields(i) {
-    let formValues = this.state.formValues;
-    formValues.splice(i, 1);
-    this.setState({ formValues });
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
-    alert(JSON.stringify(this.state.formValues));
-  }
-  render() {
-    return (
-      <>
-        <Header></Header>
-        {/* <div style={{backgroundColor:"#FAFAFA"}}> */}
-
-        <div
-          className="col-md-6 d-flex justify-content-center mx-auto"
-          style={{ marginTop: "50px", marginBottom: "50px" }}
-        >
-          <div class="card w-75">
-            <div class="card-body">
-              <h2 style={{ textAlign: "center" }}>Add Recipes</h2>
-              <div className="container">
-                <form style={{ marginTop: "20px" }}>
-                  <div class="form-group">
-                    <label for="exampleFormControlInput1">Recipe Title</label>
-                    <input
-                      type="email"
-                      class="form-control"
-                      id="exampleFormControlInput1"
-                      placeholder="Enter Recipe Title"
-                    ></input>
+      <div
+        className="col-md-6 d-flex justify-content-center mx-auto"
+        style={{ marginTop: "50px", marginBottom: "50px" }}
+      >
+        <div class="card w-100">
+          <div class="card-body">
+            <h2 style={{ textAlign: "center" }}>Add Recipes</h2>
+            <div className="container">
+              <form style={{ marginTop: "20px" }}>
+              <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Recipe Image</label>
+            <div class="col-sm-10">
+              <input
+                type="file"
+                class="form-control"
+                onChange={(e) => setRecipePic (e.target.files[0])}
+              ></input>
+            </div>
+          </div>
+                <div class="form-group row">
+                  <label className="col-sm-2" for="exampleFormControlInput1">Recipe Title</label>
+                  <div className="col-sm-10">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="exampleFormControlInput1"
+                    placeholder="Enter Recipe Title"
+                    value={title}
+                    onChange={(e)=>setTitle(e.target.value)}
+                  ></input>
                   </div>
+                </div>
 
-                  <div class="form-group">
-                    <label for="exampleFormControlTextarea1">
-                      Short Description
-                    </label>
+                <div class="form-group row">
+                  <label className="col-sm-2" for="exampleFormControlTextarea1">
+                    Short Description
+                  </label>
+                  <div className="col-sm-10">
+                  <textarea
+                    class="form-control"
+                    id="exampleFormControlTextarea1"
+                    rows="3"
+                    placeholder="Write short description of recipe"
+                    value={description}
+                    onChange={(e)=>setDescription(e.target.value)}
+                  ></textarea>
+                  </div>
+                  
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-2 col-form-label">Steps</label>
+
+                  <div class="col-sm-9">
                     <textarea
+                      type="text"
                       class="form-control"
-                      id="exampleFormControlTextarea1"
-                      rows="3"
+                      style={{ float: "left", marginRight: "5px" }}
+                      onChange={(e) => setSingleStep(e.target.value)}
                     ></textarea>
+                    <span
+                      className="add-report bi bi-plus-circle-fill fw-bold me-2 fa-2x"
+                      style={{ float: "right" }}
+                      onClick={() => {
+                        addSteps(singleStep);
+                      }}
+                    />
                   </div>
-
-                  <form onSubmit={this.handleSubmit}>
+                </div>
+                <div style={{ display: "flex", flexDirection: "column" }}>
+                  {steps.map((steps) => {
+                    return (
+                      <div className="d-flex align-items-center" key={steps}>
+                        <span
+                          className="remove-report bi bi-dash-circle-fill fw-bold me-2"
+                          onClick={() => {
+                            removeSteps(steps);
+                          }}
+                        />
+                        <label className="report-options">{steps}</label>
+                      </div>
+                    );
+                  })}
+                </div>
+                <button
+              type="submit"
+              className="btn btn-primary addMeal"
+              onClick={addRecipe}
+            >
+              Add Recipe
+            </button>
+                {/* <form onSubmit={this.handleSubmit}>
                     <div>
                       <label>Steps</label>
                     </div>
@@ -98,7 +186,7 @@ class AddRecipes extends Component {
                   <button type="button"  className="button remove" onClick={() => this.removeFormFields(index)}>Remove</button> 
                   : null
                   } */}
-                        </div>
+                {/* </div>
                       </div>
                     ))}
                     <div className="button-section">
@@ -117,18 +205,18 @@ class AddRecipes extends Component {
                         <i class="fas fa-solid fa-plus"></i>
                       </button>
                     </div>
-                  </form>
-                </form>
-              </div>
-
-              {/* <a href="#" class="btn btn-primary">Button</a> */}
+                  </form> */}
+              </form>
             </div>
+
+            {/* <a href="#" class="btn btn-primary">Button</a> */}
           </div>
         </div>
-        {/* </div> */}
-        <Footer></Footer>
-      </>
-    );
-  }
-}
+      </div>
+      {/* </div> */}
+      <Footer></Footer>
+    </>
+  );
+};
+
 export default AddRecipes;
