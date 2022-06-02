@@ -21,14 +21,13 @@ app.use(MealRoute);
 const IngredientsRoute = require("./router/ingredientsRoute");
 app.use(IngredientsRoute);
 
-<<<<<<< Updated upstream
+
 const RecipeRoute = require("./router/recipeRoute");
 app.use(RecipeRoute);
 
-=======
 const ReviewRoute = require("./router/reviewRoute");
 app.use(ReviewRoute);
->>>>>>> Stashed changes
+
 app.use(express.static(__dirname+'/images/'));
 
 app.listen(4001);

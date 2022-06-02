@@ -10,24 +10,18 @@ import OtpPage from "./User/otppage";
 import AddMeal from "./admin/add";
 import Menu1 from "./User/ourmenu";
 import Menu from "./User/viewMenu";
-import UpdateMeal from "./admin/updateMeal";
+
 import ShowCategory from "./admin/CategoryList";
 import AddCategory from "./admin/Category";
-
 
 import AddRecipes from "./User/addRecipe";
 import AddIngredient from "./admin/ingredient";
 import ListMeals from "./admin/listViewMeal";
-<<<<<<< Updated upstream
-import AddMealS from "./admin/addMeal";
 
-
-=======
-import UpdateMeals from "./admin/updateMeals";
 import ViewRecipe from "./User/viewRecipe";
-import Contact from "./User/review";
 import Review from "./User/review";
->>>>>>> Stashed changes
+import UpdateMeals from "./admin/updateMeals";
+import ViewReview from "./admin/viewReview";
 
 
 
@@ -46,10 +40,9 @@ class Mid extends Component{
                     <Route path="/viewMeal" element={<ViewMeals></ViewMeals>}></Route>
 
                     <Route path="/addMeal" element={<AddMeal></AddMeal>}></Route>
-                    <Route path="/addMealS" element={<AddMealS></AddMealS>}></Route>
                     <Route path="/menu" element = {<Menu></Menu>}> </Route>
                     <Route path="/ourmenu" element = {<Menu1></Menu1>}> </Route>
-                    <Route path="/updateMeal/:mid" element={<UpdateMeal></UpdateMeal>}></Route>
+                    {/* <Route path="/updateMeal/:mid" element={<UpdateMeal></UpdateMeal>}></Route> */}
                     <Route path="/addCategory" element={<AddCategory></AddCategory>}></Route>
                     <Route path ="/viewCategory" element={<ShowCategory></ShowCategory>}></Route>
                     <Route path = "/addRecipe" element={<AddRecipes></AddRecipes>}></Route>
@@ -57,9 +50,9 @@ class Mid extends Component{
                     <Route path ="/addIngredient" element={<AddIngredient></AddIngredient>}></Route>
                     <Route path="/listmeal" element={<ListMeals></ListMeals>}></Route>
                     <Route path="/mealUpdate" element={<UpdateMeals></UpdateMeals>}></Route>
-                    <Route path="/viewRecipe" element={<ViewRecipe></ViewRecipe>}></Route>
-                    {/* <Route path="contact" element={<Contact></Contact>}></Route> */}
-                    <Route path="review" element={<Review></Review>}></Route>
+                    <Route path="/viewRecipe/:mid" element={<ViewRecipe></ViewRecipe>}></Route>
+                    <Route path="/review" element={<Review></Review>}></Route>
+                    <Route path="/viewReview" element={<ViewReview></ViewReview>}></Route>
 
                 </Routes>
             </div>

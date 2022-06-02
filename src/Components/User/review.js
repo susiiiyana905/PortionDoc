@@ -1,9 +1,44 @@
-import { Component } from "react";
+import axios from "axios";
+import { Component, useState } from "react";
 import Footer from "../footer";
 import Header from "../header";
 
-class Review extends Component{
-    render(){
+const Review = ()=> {
+    
+    const [subject, setSubject] = useState("");
+    const [reviewMessage, setReviewMessage] = useState("");
+    const [message, setMessage]= useState("");
+
+    const config ={
+        headers: {
+            Authorization: "Bearer " + localStorage.getItem("userToken")
+        }
+    }
+
+    const review = (e) => {
+        e.preventDefault();
+
+        const reviewData = {
+            subject, reviewMessage
+        }
+
+        axios.post("http://localhost:4001/add/review", reviewData, config)
+        .then(result=>{
+            console.log(result.data);
+            if(result.data.success){
+              
+                setMessage("Review Send Successfully");
+            }else{
+             
+                setMessage("Something went wrong!!");
+            }
+        })
+        .catch (e =>{
+            setMessage("Error!!");
+        })
+
+    }
+
         return(
             <>
             <Header></Header>
@@ -23,7 +58,7 @@ class Review extends Component{
 
             <div class="card-deck" style={{marginTop:"20px", marginBottom:"20px"}}>
             <div class="card">
-                <img src="images/location.png" class="card-img-top" alt="..." style={{height:"200px", width:"200px", marginLeft:"80px", marginTop:"10px"}}></img>
+                <img src="images/location.png" class="card-img-top" alt="..." style={{height:"120px", width:"120px", marginLeft:"100px", marginTop:"10px"}}></img>
                 <div class="card-body">
                 <h4><p class="card-text" style={{marginLeft:"40px"}}>Dilibazar, Kathmandu</p>
                 <p style={{marginLeft:"100px"}}>Nepal</p>
@@ -31,7 +66,7 @@ class Review extends Component{
                 </div>
             </div>
             <div class="card">
-                <img src="images/phone-call.png" class="card-img-top" alt="..." style={{height:"200px", width:"200px", marginLeft:"80px", marginTop:"10px"}}></img>
+                <img src="images/phone-call.png" class="card-img-top" alt="..." style={{height:"120px", width:"120px", marginLeft:"100px", marginTop:"10px"}}></img>
                 <div class="card-body">
                 <h4><p class="card-text" style={{marginLeft:"55px"}}>+977 983142567</p>
                 <p class="card-text" style={{marginLeft:"55px"}}>+977 983142567</p>
@@ -40,7 +75,7 @@ class Review extends Component{
                 </div>
             </div>
             <div class="card">
-                <img src="images/emaill.png" class="card-img-top" alt="..." style={{height:"200px", width:"200px", marginLeft:"80px", marginTop:"10px"}}></img>
+                <img src="images/emaill.png" class="card-img-top" alt="..." style={{height:"120px", width:"120px", marginLeft:"100px", marginTop:"10px"}}></img>
                 <div class="card-body">
                 <h4><p class="card-text" style={{marginLeft:"15px"}}>portiondoc77@gmail.com</p>
                 
@@ -60,14 +95,20 @@ class Review extends Component{
             <form>
             <div class="form-group">
                 <label for="exampleInputEmail1">Subject</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"></input>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                // value={subject}
+                onChange={(e)=>{setSubject(e.target.value)}}
+                ></input>
                 
             </div>
            
            
             <div className="form-group col-md-4" >
                     <label>Your Message</label>
-                <textarea style={{height:"200px", width:"1010px"}}></textarea>
+                <textarea style={{height:"200px", width:"1010px"}} 
+                // value={message}
+                onChange={(e)=>setReviewMessage(e.target.value)}
+                ></textarea>
             </div>
         
             </form>
@@ -75,7 +116,7 @@ class Review extends Component{
 
           
             <div className="col-md-6 d-flex justify-content-center mx-auto ">
-                    <button className="btn start review-btn"> Send Message</button>
+                    <button className="btn start review-btn" onClick={review}> Send Message</button>
                 </div>
 
            
@@ -91,5 +132,5 @@ class Review extends Component{
             </>
         )
     }
-}
+
 export default Review;

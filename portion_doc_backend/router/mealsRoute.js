@@ -124,6 +124,17 @@ router.get("/meals/single/:mid", auth.verifyAdmin, function(req,res){
     })
 })
 
+router.get("/meals/:mid", auth.verifyUser, function(req,res){
+    const mid = req.params.mid;
+    Meals.findOne({_id : mid})
+    .then(function(result){
+        res.status(200).send({success:true, data:result, message: "Meal details by Id"})
+    })
+    .catch(function(){
+        res.status(400).send({message: "Something went wrong!"})
+    })
+})
+
 router.get("/meals/category/:category", auth.verifyUser, function(req,res){
     const _category = req.params.category;
     Meals.find({mealCategory : _category})

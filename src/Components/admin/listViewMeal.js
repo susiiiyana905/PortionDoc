@@ -38,6 +38,7 @@ const ViewRecipies =()=>{
         </div>
         <div className="container">
             <h1 style={{textAlign:"center"}}> Meals </h1>
+       
 
             {mealData.map((singleData)=> {
                             return(
@@ -45,18 +46,27 @@ const ViewRecipies =()=>{
        <div class="row no-gutters">
             <div class="col-md-4">
             <img src={"http://localhost:4001/meal/"+singleData.mealImage} height="300px"></img>
+           
           
             </div>
             <div class="col-md-8">
             <div class="card-body">
-                <h5 class="card-title">{singleData.mealName}</h5> <hr/>
+            {/* <NavLink to={"/viewRecipe/:mid"}> */}
+            <div>
+                <h5 class="card-title">{singleData.mealName}</h5>
+                <i class="fas fa-solid fa-trash" style={{marginLeft:"600px", marginTop:"0px"}}></i>
+                </div>
+                 <hr/>
+                {/* </NavLink> */}
                 <p class="card-text">{singleData.mealDescription}</p>
+                
             </div>
             </div>
         </div>
         </div>
                             )
                         })} 
+                       
 
 
 
