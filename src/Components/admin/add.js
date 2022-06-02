@@ -2,38 +2,6 @@ import axios from "axios";
 import { useState } from "react";
 import { BrowserRouter as Router, Link, useNavigate } from "react-router-dom";
 const AddMeal = () => {
-  // constructor(props) {
-  //     super(props)
-  //     this.state = {
-  //        formValues: [{ ingredient: ""}]
-  //      };
-  //     this.handleSubmit = this.handleSubmit.bind(this)
-  //   }
-
-  //   handleChange(i, e)
-  //    {
-  //     let formValues = this.state.formValues;
-  //     formValues[i][e.target.ingredient] = e.target.value;
-  //     this.setState({ formValues });
-  //   }
-
-  //   addFormFields() {
-  //     this.setState(({
-  //       formValues: [...this.state.formValues, { ingredient: "" }]
-  //     }))
-  //   }
-
-  //   removeFormFields(i) {
-  //     let formValues = this.state.formValues;
-  //     formValues.splice(i, 1);
-  //     this.setState({ formValues });
-  //   }
-
-  //   handleSubmit(event) {
-  //     event.preventDefault();
-  //     alert(JSON.stringify(this.state.formValues));
-  //   }
-
   const [mealImage, setMealImage] = useState("");
   const [mealName, setMealName] = useState("");
   const [mealPrice, setMealPrice] = useState("");

@@ -17,7 +17,7 @@ const ViewMeals = () => {
     axios
       .get("http://localhost:4001/meals/all", config)
       .then((result) => {
-        console.log(result.data.data);
+        // console.log(result.data.data);
         setMealData(result.data.data);
       })
       .catch((e) => {
@@ -32,14 +32,13 @@ const ViewMeals = () => {
         axios.get(`http://localhost:4001/meals/all`, config).then((result1) => {
           setMealData(result1.data.data);
         });
-        console.log(result.data);
+        // console.log(result.data);
       })
       .catch();
   };
 
   return (
     <>
-      {/* <Navbar></Navbar> */}
       <nav className="navbar navbar-expand-lg ">
         <i
           className="fas fa-solid fa-envelope fa-lg"
@@ -71,24 +70,23 @@ const ViewMeals = () => {
       <div style={{ marginTop: "50px" }}>
         <div className="container">
           <div className="row">
-            <div className="col-md-2"></div>
-            <div className="col-md-10">
+            <div className="col-md-12">
               <div class="container">
                 <div class="row">
                   <div>
                     <table class="table">
                       <thead>
                         <tr>
-                          <th scope="col" colSpan="4">
+                          <th scope="col" colSpan="6">
                             Image
                           </th>
-                          <th scope="col" colSpan="4">
+                          <th scope="col" colSpan="6">
                             Name
                           </th>
-                          <th scope="col" colSpan="4">
+                          <th scope="col" colSpan="6">
                             Price
                           </th>
-                          <th scope="col" colSpan="4">
+                          <th scope="col" colSpan="6">
                             Category
                           </th>
                           <th scope="col " colSpan="6">
@@ -119,16 +117,16 @@ const ViewMeals = () => {
                                   height="100px"
                                 />
                               </td>
-                              <td colSpan="4"> {singleData.mealName}</td>
-                              <td colSpan="4"> {singleData.mealPrice}</td>
-                              <td colSpan="4"> {singleData.mealCategory}</td>
+                              <td colSpan="6"> {singleData.mealName}</td>
+                              <td colSpan="6"> {singleData.mealPrice}</td>
+                              <td colSpan="6"> {singleData.mealCategory}</td>
                               <td colSpan="6">{singleData.time}</td>
                               <td colSpan="6"> {singleData.calory}</td>
                               <td colSpan="6"> {singleData.difficulty}</td>
 
                               <td colSpan="6">
                                 <div style={{ float: "left" }}>
-                                  <NavLink to={"/mealUpdate/" + singleData._id}>
+                                  <NavLink to={"/updateMeal/" + singleData._id}>
                                     <button
                                       className="btn btn-primary mb-2"
                                       style={{
@@ -139,20 +137,21 @@ const ViewMeals = () => {
                                       Update
                                     </button>
                                   </NavLink>
+
+                                  <button
+                                    className="btn btn-primary mb-2"
+                                    style={{
+                                      backgroundColor: "#FF7800",
+                                      border: "none",
+                                      marginLeft: "10px",
+                                    }}
+                                    onClick={() => {
+                                      deleteMeal(singleData._id);
+                                    }}
+                                  >
+                                    Delete
+                                  </button>
                                 </div>
-                                <button
-                                  className="btn btn-primary mb-2"
-                                  style={{
-                                    backgroundColor: "#FF7800",
-                                    border: "none",
-                                    marginLeft: "10px",
-                                  }}
-                                  onClick={() => {
-                                    deleteMeal(singleData._id);
-                                  }}
-                                >
-                                  Delete
-                                </button>
                               </td>
                             </tr>
                           );
