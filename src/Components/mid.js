@@ -20,8 +20,10 @@ import ListMeals from "./admin/listViewMeal";
 
 import UpdateMeals from "./admin/updateMeals";
 import ViewRecipe from "./User/viewRecipe";
-import Contact from "./User/review";
+
 import Review from "./User/review";
+import ViewUserRecipe from "./admin/viewUserRecipe";
+import UserRecipeDetail from "./admin/userRecipeDetail";
 
 class Mid extends Component {
   render() {
@@ -74,7 +76,10 @@ class Mid extends Component {
           ></Route>
           <Route path="/viewRecipe/:mid" element={<ViewRecipe></ViewRecipe>}></Route>
           {/* <Route path="contact" element={<Contact></Contact>}></Route> */}
-          <Route path="review" element={<Review></Review>}></Route>
+          <Route path="/review" element={<Review></Review>}></Route>
+
+          <Route path="/userRecipe" element={<ViewUserRecipe></ViewUserRecipe>}></Route>
+          <Route path="/userRecipeDetail" element={<UserRecipeDetail></UserRecipeDetail>}></Route>
         </Routes>
       </div>
     );
