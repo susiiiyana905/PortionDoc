@@ -54,7 +54,9 @@ const AddMeal = () => {
     mealData.append("mealCategory", mealCategory);
     mealData.append("calory", calory);
     mealData.append("difficulty", difficulty);
-    mealData.append("steps", steps);
+    for(let i=0; i<steps.length; i++){
+      mealData.append("steps[" + i +"]", steps[i]);
+    }
 
     axios
       .post("http://localhost:4001/add/meals", mealData, config)

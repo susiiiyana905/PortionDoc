@@ -10,7 +10,10 @@ const UpdateMeal = () => {
   const [mealCategory, setMealCategory] = useState("");
   const [calory, setCalory] = useState("");
   const [difficulty, setDifficulty] = useState("");
-  const [steps, setSteps] = useState("");
+  const [steps, setSteps] = useState([]);
+  const [singleStep, setSingleStep] = useState("");
+  const [response, setResponse] = useState("");
+  const [sResponse, setSResponse] = useState("");
   const [_id, setID] = useState("");
   const [mealData, setMealData] = useState([]);
   const [mealsData, setMealsData] = useState([]);
@@ -23,6 +26,25 @@ const UpdateMeal = () => {
     },
   };
   const { mid } = useParams();
+  function addSteps(step) {
+    setResponse("");
+    setSResponse("");
+
+    var tempSteps = steps;
+    tempSteps.push(step);
+
+    setSteps(tempSteps);
+    console.log(steps);
+  }
+
+  function removeSteps(step) {
+    setResponse("");
+    setSResponse("");
+
+    var tempSteps = steps;
+    tempSteps.splice(tempSteps.indexOf(step), 1);
+    setSteps(tempSteps);
+  }
   useEffect(() => {
     axios
       .get("http://localhost:4001/meals/single/" + mid, config)
@@ -55,16 +77,17 @@ const UpdateMeal = () => {
         console.log(e);
       });
   }, []);
-  const deleteIngredient = (iid) =>{
-    axios.delete("http://localhost:4001/delete/ingredient/"+iid, config)
-    .then((result)=> {
-      // axios.get(`http://localhost:4001/get/all/ingredients/`+mid, config)
-      // .then((result1)=> {
-      //   setIngredientData(result.data.data);
-      // })
-    })
-    .catch();
-  }
+  const deleteIngredient = (iid) => {
+    axios
+      .delete("http://localhost:4001/delete/ingredient/" + iid, config)
+      .then((result) => {
+        // axios.get(`http://localhost:4001/get/all/ingredients/`+mid, config)
+        // .then((result1)=> {
+        //   setIngredientData(result.data.data);
+        // })
+      })
+      .catch();
+  };
   const updateMealImage = (e) => {
     e.preventDefault();
 
@@ -100,6 +123,9 @@ const UpdateMeal = () => {
     mealData.append("mealCategory", mealCategory);
     mealData.append("calory", calory);
     mealData.append("difficulty", difficulty);
+    for (let i = 0; i < steps.length; i++) {
+      mealData.append("steps[" + i + "]", steps[i]);
+    }
 
     axios
       .put("http://localhost:4001/update/meals/" + mid, mealData, config)
@@ -307,7 +333,9 @@ const UpdateMeal = () => {
                       <th scope="col" colSpan="2">
                         Quantity
                       </th>
-                      <th scope="col" colSpan="2">Edit</th>
+                      <th scope="col" colSpan="2">
+                        Edit
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
@@ -326,10 +354,11 @@ const UpdateMeal = () => {
                           <td colSpan="2">{singleData.name}</td>
                           <td colSpan="2">{singleData.quantity}</td>
                           <td colSpan="2">
-                            <span className="remove-report bi bi-dash-circle-fill fw-bold me-2" 
-                            onClick={()=>{
-                              deleteIngredient(singleData._id);
-                            }}
+                            <span
+                              className="remove-report bi bi-dash-circle-fill fw-bold me-2"
+                              onClick={() => {
+                                deleteIngredient(singleData._id);
+                              }}
                             />
                           </td>
                         </tr>
@@ -339,27 +368,44 @@ const UpdateMeal = () => {
                 </table>
               </div>
 
-              <div className="form-group row">
-                <label className="col-sm-3">Steps</label>
-                <table className="table col-sm-9">
-                  <thead></thead>
-                  <tbody>
-                    {/* {mealsData.map((singleData)=>{
-                      return( */}
-                        <tr>
-                      <td colSpan="2">
-                        <span value={steps}/>
-                      </td>
-
-                      {/* <td> 
-                                <button className="btn btn-primary mb-3">Delete Ingredient</button>
-                                    </td> */}
-                    </tr>
-                      {/* )
-                    })} */}
-                  </tbody>
-                </table>
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Steps</label>
+                <div className="col-sm-9">
+                  <div style={{ display: "flex", flexDirection: "column" }}>
+                    {steps.map((steps) => {
+                      return (
+                        <div className="d-flex align-items-center" key={steps}>
+                          <span
+                            className="remove-report bi bi-dash-circle-fill fw-bold me-2"
+                            onClick={() => {
+                              removeSteps(steps);
+                            }}
+                          />
+                          <label className="report-options">{steps}</label>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              
+                <div className="col-sm-3"></div>
+                <div class="col-sm-9">
+                  <textarea
+                    type="text"
+                    class="form-control"
+                    style={{ float: "left", marginRight: "5px" }}
+                    onChange={(e) => setSingleStep(e.target.value)}
+                  ></textarea>
+                  <span
+                    className="add-report bi bi-plus-circle-fill fw-bold me-2 fa-2x"
+                    style={{ float: "right" }}
+                    onClick={() => {
+                      addSteps(singleStep);
+                    }}
+                  />
+                </div>
               </div>
+
               <div className="form-group row">
                 <div className="col-sm-3"></div>
                 <div className="col-sm-9">
