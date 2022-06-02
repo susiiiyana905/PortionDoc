@@ -140,6 +140,17 @@ router.get('/meal/all', auth.verifyUser, async(req,res)=>{
     res.json({success: true, message:"Meals Data", data:MealData});
 })
 
+router.get("/meals/single/view/:mid", auth.verifyUser, async(req,res)=>{
+    const mid = req.params.mid;
+    Meals.findOne({_id : mid})
+    .then(function(result){
+        res.status(200).send({success:true, data:result, message: "Meal details by Id"})
+    })
+    .catch(function(){
+        res.status(400).send({message: "Something went wrong!"})
+    })
+})
+
 router.get("/meals/:category", auth.verifyAdmin, function(req,res){
     const _category = req.params.category;
     Meals.find({mealCategory : _category})

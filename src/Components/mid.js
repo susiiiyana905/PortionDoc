@@ -72,7 +72,7 @@ class Mid extends Component {
             path="/mealUpdate/:mid"
             element={<UpdateMeals></UpdateMeals>}
           ></Route>
-          <Route path="/viewRecipe" element={<ViewRecipe></ViewRecipe>}></Route>
+          <Route path="/viewRecipe/:mid" element={<ViewRecipe></ViewRecipe>}></Route>
           {/* <Route path="contact" element={<Contact></Contact>}></Route> */}
           <Route path="review" element={<Review></Review>}></Route>
         </Routes>
