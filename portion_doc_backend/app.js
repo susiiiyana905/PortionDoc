@@ -30,8 +30,13 @@ const DietaryRoute = require("./router/dietaryRoute");
 app.use(DietaryRoute);
 
 
+const DietPreferenceRoute = require("./router/dietPreferenceRoute");
+app.use(DietPreferenceRoute);
+
+
 const ReviewRoute = require("./router/reviewRoute");
 app.use(ReviewRoute);
+
 
 app.use(express.static(__dirname+'/images/'));
 

@@ -2,11 +2,12 @@ const express = require("express");
 const router = new express.Router();
 const auth = require("../auth/auth");
 const Dietary = require("../models/dietryModel");
+const { fstat } = require("fs");
 
 router.post("/request/diet", auth.verifyUser,async(req,res)=>{
     const gender = req.body.gender;
     const weight = req.body.weight;
-    const height = req.body.weight;
+    const height = req.body.height;
     const preference = req.body.preference;
 
     const DietaryData = new Dietary({

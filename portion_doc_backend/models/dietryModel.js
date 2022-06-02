@@ -1,9 +1,8 @@
 const mongoose = require('mongoose');
 const dietarySchema = new mongoose.Schema({
-   userId:{
-       type: mongoose.Schema.Types.ObjectId,
-       ref:"User",
-   },
+    user_id : {
+        type : mongoose.Types.ObjectId, ref : "User"
+      },
    gender:{
        type: String,
       
@@ -19,6 +18,9 @@ const dietarySchema = new mongoose.Schema({
    preference:{
        type: String,
     
+   },
+   foodAllergies:{
+       type: String,
    },
       
 });
