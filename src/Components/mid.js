@@ -8,7 +8,7 @@ import ViewProfile from "./User/viewProfile";
 import ViewMeals from "./admin/viewMeal";
 import OtpPage from "./User/otppage";
 import AddMeal from "./admin/add";
-import Menu1 from "./User/ourmenu";
+import Meals from "./User/ourmenu";
 import Menu from "./User/viewMenu";
 import UpdateMeal from "./admin/updateMeal";
 import ShowCategory from "./admin/CategoryList";
@@ -49,7 +49,7 @@ class Mid extends Component {
           <Route path="/menu" element={<Menu></Menu>}>
             {" "}
           </Route>
-          <Route path="/ourmenu" element={<Menu1></Menu1>}>
+          <Route path="/ourMenu" element={<Meals></Meals>}>
             {" "}
           </Route>
           <Route
