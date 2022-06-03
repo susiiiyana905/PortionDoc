@@ -2,38 +2,6 @@ import axios from "axios";
 import { useState } from "react";
 import { BrowserRouter as Router, Link, useNavigate } from "react-router-dom";
 const AddMeal = () => {
-  // constructor(props) {
-  //     super(props)
-  //     this.state = {
-  //        formValues: [{ ingredient: ""}]
-  //      };
-  //     this.handleSubmit = this.handleSubmit.bind(this)
-  //   }
-
-  //   handleChange(i, e)
-  //    {
-  //     let formValues = this.state.formValues;
-  //     formValues[i][e.target.ingredient] = e.target.value;
-  //     this.setState({ formValues });
-  //   }
-
-  //   addFormFields() {
-  //     this.setState(({
-  //       formValues: [...this.state.formValues, { ingredient: "" }]
-  //     }))
-  //   }
-
-  //   removeFormFields(i) {
-  //     let formValues = this.state.formValues;
-  //     formValues.splice(i, 1);
-  //     this.setState({ formValues });
-  //   }
-
-  //   handleSubmit(event) {
-  //     event.preventDefault();
-  //     alert(JSON.stringify(this.state.formValues));
-  //   }
-
   const [mealImage, setMealImage] = useState("");
   const [mealName, setMealName] = useState("");
   const [mealPrice, setMealPrice] = useState("");
@@ -86,7 +54,9 @@ const AddMeal = () => {
     mealData.append("mealCategory", mealCategory);
     mealData.append("calory", calory);
     mealData.append("difficulty", difficulty);
-    mealData.append("steps", steps);
+    for(let i=0; i<steps.length; i++){
+      mealData.append("steps[" + i +"]", steps[i]);
+    }
 
     axios
       .post("http://localhost:4001/add/meals", mealData, config)
@@ -104,7 +74,7 @@ const AddMeal = () => {
       .catch(e);
   };
   return (
-      <>
+    <>
       <div className="container">
         <h2 className="heading-h2-all">Add Meal:</h2>
         <form>
@@ -206,15 +176,16 @@ const AddMeal = () => {
           <div class="form-group row">
             <label class="col-sm-2 col-form-label">Steps</label>
 
-            <div class="col-sm-10">
+            <div class="col-sm-9">
               <textarea
                 type="text"
                 class="form-control"
-                style={{ float: "left", width: "880px", marginRight: "5px" }}
+                style={{ float: "left", marginRight: "5px" }}
                 onChange={(e) => setSingleStep(e.target.value)}
               ></textarea>
               <span
                 className="add-report bi bi-plus-circle-fill fw-bold me-2 fa-2x"
+                style={{ float: "right" }}
                 onClick={() => {
                   addSteps(singleStep);
                 }}

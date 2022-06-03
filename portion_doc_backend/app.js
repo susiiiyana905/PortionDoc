@@ -21,8 +21,22 @@ app.use(MealRoute);
 const IngredientsRoute = require("./router/ingredientsRoute");
 app.use(IngredientsRoute);
 
+
 const RecipeRoute = require("./router/recipeRoute");
 app.use(RecipeRoute);
+
+
+const DietaryRoute = require("./router/dietaryRoute");
+app.use(DietaryRoute);
+
+
+const DietPreferenceRoute = require("./router/dietPreferenceRoute");
+app.use(DietPreferenceRoute);
+
+
+const ReviewRoute = require("./router/reviewRoute");
+app.use(ReviewRoute);
+
 
 app.use(express.static(__dirname+'/images/'));
 
