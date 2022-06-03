@@ -383,6 +383,18 @@ const UpdateMeal = () => {
                           />
                           <label className="report-options">{steps}</label>
                         </div>
+
+                        </div>
+
+                        
+                    </form>
+           </div>
+           </div>
+           </div>
+           </div>
+        )
+    }
+
                       );
                     })}
                   </div>
@@ -428,3 +440,4 @@ const UpdateMeal = () => {
   );
 };
 export default UpdateMeal;
+

@@ -18,6 +18,17 @@ import AddRecipes from "./User/addRecipe";
 import AddIngredient from "./admin/ingredient";
 import ListMeals from "./admin/listViewMeal";
 
+import AddMealS from "./admin/addMeal";
+
+
+
+import AddDiet from "./admin/addDietMeal";
+import UpdateDiet from "./admin/updateDietMeal";
+import Table from "./admin/viewDietRequest";
+
+
+
+
 import UpdateMeals from "./admin/updateMeals";
 import ViewRecipe from "./User/viewRecipe";
 
@@ -25,6 +36,40 @@ import Review from "./User/review";
 import ViewUserRecipe from "./admin/viewUserRecipe";
 import UserRecipeDetail from "./admin/userRecipeDetail";
 import ViewReview from "./admin/viewReview";
+
+
+class Mid extends Component{
+    render(){
+        return(
+            <div>
+            
+                <Routes>
+                    <Route path="/" element = {<Home></Home>}></Route>
+                    <Route path="/signup" element = {<SignupForm></SignupForm>} />
+                    <Route path = "/login" element = {<Login></Login>}></Route>
+                    <Route path="/otpPage" element={<OtpPage></OtpPage>}></Route>
+                    <Route path="/updateProfile" element={<UpdateProfile></UpdateProfile>}></Route> 
+                    <Route path="/viewProfile" element={<ViewProfile></ViewProfile>}></Route>
+                    <Route path="/viewMeal" element={<ViewMeals></ViewMeals>}></Route>
+                  
+                    <Route path="/addMeal" element={<AddMeal></AddMeal>}></Route>
+                    <Route path="/addMealS" element={<AddMealS></AddMealS>}></Route>
+                    <Route path="/menu" element = {<Menu></Menu>}> </Route>
+                    <Route path="/ourmenu" element = {<Menu1></Menu1>}> </Route>
+                    <Route path="/updateMeal/:mid" element={<UpdateMeal></UpdateMeal>}></Route>
+                    <Route path="/addCategory" element={<AddCategory></AddCategory>}></Route>
+                    <Route path ="/viewCategory" element={<ShowCategory></ShowCategory>}></Route>
+                    <Route path = "/addRecipe" element={<AddRecipes></AddRecipes>}></Route>
+                
+                    <Route path ="/addIngredient" element={<AddIngredient></AddIngredient>}></Route>
+                    <Route path="/listmeal" element={<ListMeals></ListMeals>}></Route>
+                    <Route path="/add" element={<AddDiet></AddDiet>}></Route>
+                    <Route path="/viewDietRequest" element={<Table></Table>}></Route>
+                    <Route path="/updateDiet" element={<UpdateDiet></UpdateDiet>}></Route>
+                </Routes>
+            </div>
+        )
+    }
 
 class Mid extends Component {
   render() {
@@ -86,6 +131,7 @@ class Mid extends Component {
       </div>
     );
   }
+
 }
 
 export default Mid;
