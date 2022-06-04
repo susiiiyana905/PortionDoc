@@ -20,11 +20,6 @@ import ListMeals from "./admin/listViewMeal";
 import AddDiet from "./admin/addDietMeal";
 import UpdateDiet from "./admin/updateDietMeal";
 import Table from "./admin/viewDietRequest";
-
-
-
-
-import UpdateMeals from "./admin/updateMeals";
 import ViewRecipe from "./User/viewRecipe";
 
 import Review from "./User/review";
@@ -87,7 +82,7 @@ class Mid extends Component {
             path="/updateMeal/:mid"
             element={
               <AdminPrivateRoute>
-                <UpdateMeal />
+                <UpdateMeal/>
               </AdminPrivateRoute>
             }
           ></Route>
@@ -125,10 +120,7 @@ class Mid extends Component {
             }
           ></Route>
           <Route path="/listmeal" element={<ListMeals></ListMeals>}></Route>
-          <Route
-            path="/mealUpdate/:mid"
-            element={<UpdateMeals></UpdateMeals>}
-          ></Route>
+          
           <Route
             path="/viewRecipe/:mid"
             element={<ViewRecipe></ViewRecipe>}
