@@ -10,13 +10,19 @@ import OtpPage from "./User/otppage";
 import AddMeal from "./admin/add";
 import Meals from "./User/ourmenu";
 import Menu from "./User/viewMenu";
-import UpdateMeal from "./admin/updateMeal";
+import UpdateMeal from "./admin/updateMeals";
 import ShowCategory from "./admin/CategoryList";
 import AddCategory from "./admin/Category";
 
 import AddRecipes from "./User/addRecipe";
 import AddIngredient from "./admin/ingredient";
 import ListMeals from "./admin/listViewMeal";
+import AddDiet from "./admin/addDietMeal";
+import UpdateDiet from "./admin/updateDietMeal";
+import Table from "./admin/viewDietRequest";
+
+
+
 
 import UpdateMeals from "./admin/updateMeals";
 import ViewRecipe from "./User/viewRecipe";
@@ -27,6 +33,9 @@ import UserRecipeDetail from "./admin/userRecipeDetail";
 import ViewReview from "./admin/viewReview";
 import UserPrivateRoute from "./UserProtectedRoute";
 import AdminPrivateRoute from "./AdminProtectedRoute";
+
+
+
 
 class Mid extends Component {
   render() {
@@ -142,6 +151,7 @@ class Mid extends Component {
             }
           ></Route>
 
+
           <Route
             path="/userRecipe"
             element={
@@ -158,10 +168,16 @@ class Mid extends Component {
               </AdminPrivateRoute>
             }
           ></Route>
+
+          <Route path="/add" element={<AddDiet></AddDiet>}></Route>
+                    <Route path="/viewDietRequest" element={<Table></Table>}></Route>
+                    <Route path="/updateDiet" element={<UpdateDiet></UpdateDiet>}></Route>
+
         </Routes>
       </div>
     );
   }
+
 }
 
 export default Mid;
