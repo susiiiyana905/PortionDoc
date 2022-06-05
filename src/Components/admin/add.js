@@ -175,8 +175,25 @@ const AddMeal = () => {
           </div>
           <div class="form-group row">
             <label class="col-sm-2 col-form-label">Steps</label>
-
-            <div class="col-sm-9">
+            <div className="col-sm-10">
+            <div style={{ display: "flex", flexDirection: "column" }}>
+            {steps.map((steps) => {
+              return (
+                <div className="d-flex align-items-center" key={steps}>
+                  <span
+                    className="remove-report bi bi-dash-circle-fill fw-bold me-2"
+                    onClick={() => {
+                      removeSteps(steps);
+                    }}
+                  />
+                  <label className="report-options">{steps}</label>
+                </div>
+              );
+            })}
+          </div>
+          </div>
+          <div className="col-sm-2"></div>
+            <div class="col-sm-10">
               <textarea
                 type="text"
                 class="form-control"
@@ -192,40 +209,6 @@ const AddMeal = () => {
               />
             </div>
           </div>
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            {steps.map((steps) => {
-              return (
-                <div className="d-flex align-items-center" key={steps}>
-                  <span
-                    className="remove-report bi bi-dash-circle-fill fw-bold me-2"
-                    onClick={() => {
-                      removeSteps(steps);
-                    }}
-                  />
-                  <label className="report-options">{steps}</label>
-                </div>
-              );
-            })}
-          </div>
-          {/* <div className="form-group row">
-            <label className="col-sm-2 col-form-label">Steps</label>
-            <form  onSubmit={this.handleSubmit}>
-      <div><label>Steps</label></div>
-                {this.state.formValues.map((element, index) => (
-                <div> 
-                  <div class="form-group row">
-                  <div class="col-sm-11">
-                    <textarea type="text" class="form-control" id="inputText" style={{float:"left"}}></textarea>
-                  </div>
-                  <button type="button"  className="button remove" onClick={() => this.removeFormFields(index)} style={{width:"40px"}} ><i class="fas fa-solid fa-trash"></i></button> 
-                 </div>
-                  </div>
-                ))}
-                <div className="button-section">
-                    <button className="button add" type="button" onClick={() => this.addFormFields()} style = {{marginLeft:"450px", backgroundColor:"#4CBA19", height:"50px", width:"50px", color:"white"}}><i class="fas fa-solid fa-plus"></i></button>
-                </div>
-            </form>
-        </div> */}
           <p>
             <button
               type="submit"

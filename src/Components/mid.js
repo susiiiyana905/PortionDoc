@@ -29,9 +29,6 @@ import ViewReview from "./admin/viewReview";
 import UserPrivateRoute from "./UserProtectedRoute";
 import AdminPrivateRoute from "./AdminProtectedRoute";
 
-
-
-
 class Mid extends Component {
   render() {
     return (
@@ -74,15 +71,13 @@ class Mid extends Component {
               </AdminPrivateRoute>
             }
           ></Route>
-          <Route path="/menu" element={<Menu></Menu>}>
-          </Route>
-          <Route path="/ourMenu" element={<Meals></Meals>}>
-          </Route>
+          <Route path="/menu" element={<Menu></Menu>}></Route>
+          <Route path="/ourMenu" element={<Meals></Meals>}></Route>
           <Route
             path="/updateMeal/:mid"
             element={
               <AdminPrivateRoute>
-                <UpdateMeal/>
+                <UpdateMeal />
               </AdminPrivateRoute>
             }
           ></Route>
@@ -120,7 +115,7 @@ class Mid extends Component {
             }
           ></Route>
           <Route path="/listmeal" element={<ListMeals></ListMeals>}></Route>
-          
+
           <Route
             path="/viewRecipe/:mid"
             element={<ViewRecipe></ViewRecipe>}
@@ -143,7 +138,6 @@ class Mid extends Component {
             }
           ></Route>
 
-
           <Route
             path="/userRecipe"
             element={
@@ -162,14 +156,12 @@ class Mid extends Component {
           ></Route>
 
           <Route path="/add" element={<AddDiet></AddDiet>}></Route>
-                    <Route path="/viewDietRequest" element={<Table></Table>}></Route>
-                    <Route path="/updateDiet" element={<UpdateDiet></UpdateDiet>}></Route>
-
+          <Route path="/viewDietRequest" element={<Table></Table>}></Route>
+          <Route path="/updateDiet" element={<UpdateDiet></UpdateDiet>}></Route>
         </Routes>
       </div>
     );
   }
-
 }
 
 export default Mid;
