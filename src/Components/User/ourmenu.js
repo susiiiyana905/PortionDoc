@@ -132,11 +132,29 @@ const Meals = () => {
                     <div class="modal-dialog">
                         <div class="modal-content">
                         <div class="modal-header">
+
+                          <img
+                            src="images/Bulgogi.jpg"
+                            style={{ height: "300px", width: "600px" }}
+                          ></img>
+
+                          <button
+                            type="button"
+                            class="close"
+                            data-dismiss="modal"
+                            aria-label="Close"
+                          >
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                   
+
                             <img src={"http://localhost:4001/meal/"+singleData.mealImage} style={{height:"300px", width:"600px"}}></img>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
                         </div>                      
+
                         <div class="modal-body">
                         <div className="info">
                                 <div>
