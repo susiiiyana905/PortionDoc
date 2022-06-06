@@ -16,7 +16,6 @@ const UpdateMeal = () => {
   const [sResponse, setSResponse] = useState("");
   const [_id, setID] = useState("");
   const [mealData, setMealData] = useState([]);
-  const [mealsData, setMealsData] = useState([]);
   const [ingredientData, setIngredientData] = useState([]);
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
