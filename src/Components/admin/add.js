@@ -66,7 +66,7 @@ const AddMeal = () => {
           localStorage.setItem("_id", result.data.data._id);
           setSteps([]);
           setMessage(result.data.message);
-          navigate("/addIngredient", { state: { _id: result.data.data._id } });
+          navigate("/viewMeal", { state: { _id: result.data.data._id } });
         } else {
           setMessage(result.data.message);
         }
