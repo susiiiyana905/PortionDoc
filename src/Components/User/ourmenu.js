@@ -150,7 +150,6 @@ const Meals = () => {
                             style={{ height: "300px", width: "600px" }}
                           ></img>
 
-                          {/* <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> */}
                           <button
                             type="button"
                             class="close"
@@ -160,10 +159,7 @@ const Meals = () => {
                             <span aria-hidden="true">&times;</span>
                           </button>
                         </div>
-                        {/* <div className="card" style={{marginLeft:"0px", marginRight:"0px", height:"10px"}}>
-                            
-                            </div> */}
-
+                   
                         <div class="modal-body">
                           <div className="info">
                             <div>
