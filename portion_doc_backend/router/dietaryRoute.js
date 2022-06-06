@@ -1,7 +1,7 @@
 const express = require("express");
 const router = new express.Router();
 const auth = require("../auth/auth");
-const Dietary = require("../models/dietryModel");
+const Dietary = require("../models/dietaryModel");
 const { fstat } = require("fs");
 
 router.post("/request/diet", auth.verifyUser,async(req,res)=>{
@@ -9,17 +9,19 @@ router.post("/request/diet", auth.verifyUser,async(req,res)=>{
     const weight = req.body.weight;
     const height = req.body.height;
     const preference = req.body.preference;
+    const foodAllergies = req.body.foodAllergies;
 
     const DietaryData = new Dietary({
         gender:gender,
         weight: weight,
         height: height,
         preference: preference,
+        foodAllergies: foodAllergies,
         user_id: req.userInfo._id,
     })
     DietaryData.save()
     .then(function(){
-        res.status(200).send({success: true, message: "Dietary Approved"})
+        res.status(200).send({success: true, message: "Dietary Requested!!"})
     }).catch(function(e){
         res.status(400).send({message: e});
     })
@@ -34,6 +36,13 @@ router.get("/get/all/diet", auth.verifyUser,function(req,res){
     .catch(function(){
         res.status(400).send({message: "Something went wrong!"})
     })
+})
+
+router.get("/get/all/user/diet", auth.verifyAdmin, async(req,res)=>{
+    const DietaryData = await Dietary.find()
+    .populate("user_id","firstName lastName profile_pic")
+    .sort({createdAt:-1});
+    res.json({success:true, message:"Diet Request", data:DietaryData});
 })
 
 

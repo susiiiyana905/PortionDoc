@@ -1,21 +1,21 @@
 import axios from "axios";
 import { useState } from "react";
 import { BrowserRouter as Router, Link, useNavigate } from "react-router-dom";
-const AddMeal = () => {
-  const [mealImage, setMealImage] = useState("");
-  const [mealName, setMealName] = useState("");
-  const [mealPrice, setMealPrice] = useState("");
-  const [mealDescription, setMealDescription] = useState("");
+
+const AddDiet = () => {
+  const [dietMealImage, setDietMealImage] = useState("");
+  const [dietMealName, setDietMealName] = useState("");
+  const [dietMealPrice, setDietMealPrice] = useState("");
+  const [dietMealDescription, setDietMealDescription] = useState("");
   const [time, setTime] = useState("");
-  const [mealCategory, setMealCategory] = useState("Veg");
   const [calory, setCalory] = useState("");
   const [difficulty, setDifficulty] = useState("Difficult");
+  const [preference, setPreference] = useState("Weight loss");
   const [steps, setSteps] = useState([]);
   const [singleStep, setSingleStep] = useState("");
   const [response, setResponse] = useState("");
   const [sResponse, setSResponse] = useState("");
   const [message, setMessage] = useState("");
-  const navigate = useNavigate();
   const config = {
     headers: {
       Authorization: "Bearer " + localStorage.getItem("adminToken"),
@@ -42,119 +42,104 @@ const AddMeal = () => {
     setSteps(tempSteps);
   }
 
-  const addMeal = (e) => {
+  const addDietMeal = (e) => {
     e.preventDefault();
 
-    const mealData = new FormData();
-    mealData.append("mealImage", mealImage);
-    mealData.append("mealName", mealName);
-    mealData.append("mealPrice", mealPrice);
-    mealData.append("mealDescription", mealDescription);
-    mealData.append("time", time);
-    mealData.append("mealCategory", mealCategory);
-    mealData.append("calory", calory);
-    mealData.append("difficulty", difficulty);
-    for(let i=0; i<steps.length; i++){
-      mealData.append("steps[" + i +"]", steps[i]);
+    const dietMealData = new FormData();
+    dietMealData.append("dietImage", dietMealImage);
+    dietMealData.append("dietName", dietMealName);
+    dietMealData.append("dietPrice", dietMealPrice);
+    dietMealData.append("dietDescription", dietMealDescription);
+    dietMealData.append("time", time);
+    dietMealData.append("calory", calory);
+    dietMealData.append("difficulty", difficulty);
+    dietMealData.append("preference", preference);
+    for (let i = 0; i < steps.length; i++) {
+      dietMealData.append("steps[" + i + "]", steps[i]);
     }
-
     axios
-      .post("http://localhost:4001/add/meals", mealData, config)
+      .post("http://localhost:4001/add/dietPreference", dietMealData, config)
       .then((result) => {
-        console.log(result.data.data);
-        if (result.data.success) {
-          localStorage.setItem("_id", result.data.data._id);
-          setSteps([]);
+        if(result.data.success){
           setMessage(result.data.message);
-          navigate("/viewMeal", { state: { _id: result.data.data._id } });
-        } else {
+        }
+        else {
           setMessage(result.data.message);
         }
       })
       .catch(e);
   };
+
   return (
     <>
       <div className="container">
-        <h2 className="heading-h2-all">Add Meal:</h2>
+        <h2 className="heading-h2-all">Add Diet Meal</h2>
         <form>
           <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Meal Image</label>
+            <label class="col-sm-2 col-form-label">Diet Meal Image</label>
             <div class="col-sm-10">
-              <input
-                type="file"
-                class="form-control"
-                onChange={(e) => setMealImage(e.target.files[0])}
+              <input type="file" class="form-control"
+              onChange={(e) => setDietMealImage(e.target.files[0])}
               ></input>
             </div>
           </div>
           <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Meal Name</label>
+            <label class="col-sm-2 col-form-label">Diet Meal Name</label>
             <div class="col-sm-10">
-              <input
-                type="text"
-                class="form-control"
-                value={mealName}
-                onChange={(e) => setMealName(e.target.value)}
+              <input type="text" class="form-control"
+              value={dietMealName}
+              onChange={(e) => setDietMealName(e.target.value)}
               ></input>
             </div>
           </div>
           <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Meal Price</label>
+            <label class="col-sm-2 col-form-label">Diet Meal Price</label>
             <div class="col-sm-10">
-              <input
-                type="text"
-                class="form-control"
-                value={mealPrice}
-                onChange={(e) => setMealPrice(e.target.value)}
+              <input type="text" class="form-control"
+              value={dietMealPrice}
+              onChange={(e) => setDietMealPrice(e.target.value)}
               ></input>
             </div>
           </div>
           <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Meal Category</label>
+            <label class="col-sm-2 col-form-label">Diet Meal Preference</label>
             <div class="col-sm-10">
               <select
                 className="custom-select custom-select-lg"
                 style={{ width: "100%" }}
-                value={mealCategory}
-                onChange={(e) => setMealCategory(e.target.value)}
+                value={preference}
+                onChange={(e) => setPreference(e.target.value)}
               >
-                <option value="Veg">Veg</option>
-                <option value="Non-Veg">Non-Veg</option>
-                <option value="Vegan">Vegan</option>
+                <option value="Weight Loss">Veg</option>
+                <option value="Weight Gain">Non-Veg</option>
+                <option value="Weight Loss">Vegan</option>
               </select>
             </div>
           </div>
           <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Meal Description</label>
+            <label class="col-sm-2 col-form-label">Diet Meal Description</label>
             <div class="col-sm-10">
-              <textarea
-                type="text"
-                class="form-control"
-                value={mealDescription}
-                onChange={(e) => setMealDescription(e.target.value)}
+              <textarea type="text" class="form-control"
+              value={dietMealDescription}
+              onChange={(e) => setDietMealDescription(e.target.value)}
               ></textarea>
             </div>
           </div>
           <div class="form-group row">
             <label class="col-sm-2 col-form-label">Time</label>
             <div class="col-sm-10">
-              <input
-                type="text"
-                class="form-control"
-                value={time}
-                onChange={(e) => setTime(e.target.value)}
+              <input type="text" class="form-control"
+              value={time}
+              onChange={(e) => setTime(e.target.value)}
               ></input>
             </div>
           </div>
           <div class="form-group row">
             <label class="col-sm-2 col-form-label">Calory</label>
             <div class="col-sm-10">
-              <input
-                type="text"
-                class="form-control"
-                value={calory}
-                onChange={(e) => setCalory(e.target.value)}
+              <input type="text" class="form-control"
+              value={calory}
+              onChange={(e) => setCalory(e.target.value)}
               ></input>
             </div>
           </div>
@@ -210,10 +195,8 @@ const AddMeal = () => {
             </div>
           </div>
           <p>
-            <button
-              type="submit"
-              className="btn btn-primary addMeal"
-              onClick={addMeal}
+            <button type="submit" className="btn btn-primary addMeal"
+            onClick={addDietMeal}
             >
               Add Meal
             </button>
@@ -223,4 +206,5 @@ const AddMeal = () => {
     </>
   );
 };
-export default AddMeal;
+
+export default AddDiet;

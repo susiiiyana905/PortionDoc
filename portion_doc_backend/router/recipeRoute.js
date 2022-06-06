@@ -54,9 +54,9 @@ router.get("/get/all/recipes", auth.verifyUser, function(req, res){
 
 router.get("/get/all/user/recipe", auth.verifyAdmin, async(req,res)=>{
     const recipes = await Recipe.find({})
-    .sort({createdAt: -1});
-
-    res.send(recipes);
+    .populate("user_id","firstName lastName profile_pic")
+    .sort({createdAt:-1});
+    res.json({success: true, message:"Review Data", data:recipes});
 })
 
 router.get("/get/single/recipe/:rid", auth.verifyAdmin, async(req,res)=>{

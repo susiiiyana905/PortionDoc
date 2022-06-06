@@ -8,23 +8,27 @@ import ViewProfile from "./User/viewProfile";
 import ViewMeals from "./admin/viewMeal";
 import OtpPage from "./User/otppage";
 import AddMeal from "./admin/add";
-import Menu1 from "./User/ourmenu";
+import Meals from "./User/ourmenu";
 import Menu from "./User/viewMenu";
-import UpdateMeal from "./admin/updateMeal";
+import UpdateMeal from "./admin/updateMeals";
 import ShowCategory from "./admin/CategoryList";
 import AddCategory from "./admin/Category";
 
 import AddRecipes from "./User/addRecipe";
 import AddIngredient from "./admin/ingredient";
 import ListMeals from "./admin/listViewMeal";
-
-import UpdateMeals from "./admin/updateMeals";
+import AddDiet from "./admin/addDietMeal";
+import UpdateDiet from "./admin/updateDietMeal";
+import Table from "./admin/viewDietRequest";
 import ViewRecipe from "./User/viewRecipe";
 
 import Review from "./User/review";
 import ViewUserRecipe from "./admin/viewUserRecipe";
 import UserRecipeDetail from "./admin/userRecipeDetail";
 import ViewReview from "./admin/viewReview";
+import UserPrivateRoute from "./UserProtectedRoute";
+import AdminPrivateRoute from "./AdminProtectedRoute";
+import RequestDietary from "./User/requestDiet";
 
 class Mid extends Component {
   render() {
@@ -37,51 +41,125 @@ class Mid extends Component {
           <Route path="/otpPage" element={<OtpPage></OtpPage>}></Route>
           <Route
             path="/updateProfile"
-            element={<UpdateProfile></UpdateProfile>}
+            element={
+              <UserPrivateRoute>
+                <UpdateProfile />
+              </UserPrivateRoute>
+            }
           ></Route>
           <Route
             path="/viewProfile"
-            element={<ViewProfile></ViewProfile>}
+            element={
+              <UserPrivateRoute>
+                <ViewProfile />
+              </UserPrivateRoute>
+            }
           ></Route>
-          <Route path="/viewMeal" element={<ViewMeals></ViewMeals>}></Route>
+          <Route
+            path="/viewMeal"
+            element={
+              <AdminPrivateRoute>
+                <ViewMeals />
+              </AdminPrivateRoute>
+            }
+          ></Route>
 
-          <Route path="/addMeal" element={<AddMeal></AddMeal>}></Route>
-          <Route path="/menu" element={<Menu></Menu>}>
-            {" "}
-          </Route>
-          <Route path="/ourmenu" element={<Menu1></Menu1>}>
-            {" "}
-          </Route>
+          <Route
+            path="/addMeal"
+            element={
+              <AdminPrivateRoute>
+                <AddMeal />
+              </AdminPrivateRoute>
+            }
+          ></Route>
+          <Route path="/menu" element={<Menu></Menu>}></Route>
+          <Route path="/ourMenu" element={<Meals></Meals>}></Route>
           <Route
             path="/updateMeal/:mid"
-            element={<UpdateMeal></UpdateMeal>}
+            element={
+              <AdminPrivateRoute>
+                <UpdateMeal />
+              </AdminPrivateRoute>
+            }
           ></Route>
           <Route
             path="/addCategory"
-            element={<AddCategory></AddCategory>}
+            element={
+              <AdminPrivateRoute>
+                <AddCategory />
+              </AdminPrivateRoute>
+            }
           ></Route>
           <Route
             path="/viewCategory"
-            element={<ShowCategory></ShowCategory>}
+            element={
+              <AdminPrivateRoute>
+                <ShowCategory />
+              </AdminPrivateRoute>
+            }
           ></Route>
-          <Route path="/addRecipe" element={<AddRecipes></AddRecipes>}></Route>
+          <Route
+            path="/addRecipe"
+            element={
+              <AdminPrivateRoute>
+                <AddRecipes />
+              </AdminPrivateRoute>
+            }
+          ></Route>
 
           <Route
             path="/addIngredient"
-            element={<AddIngredient></AddIngredient>}
+            element={
+              <AdminPrivateRoute>
+                <AddIngredient />
+              </AdminPrivateRoute>
+            }
           ></Route>
-          <Route path="/listmeal" element={<ListMeals></ListMeals>}></Route>
-          <Route
-            path="/mealUpdate/:mid"
-            element={<UpdateMeals></UpdateMeals>}
-          ></Route>
-          <Route path="/viewRecipe" element={<ViewRecipe></ViewRecipe>}></Route>
-          {/* <Route path="contact" element={<Contact></Contact>}></Route> */}
-          <Route path="/review" element={<Review></Review>}></Route>
-          <Route path="/viewReview" element={<ViewReview></ViewReview>}></Route>
+          <Route path="/listMeal" element={<ListMeals></ListMeals>}></Route>
 
-          <Route path="/userRecipe" element={<ViewUserRecipe></ViewUserRecipe>}></Route>
-          <Route path="/userRecipeDetail" element={<UserRecipeDetail></UserRecipeDetail>}></Route>
+          <Route
+            path="/viewRecipe/:mid"
+            element={<ViewRecipe></ViewRecipe>}
+          ></Route>
+          {/* <Route path="contact" element={<Contact></Contact>}></Route> */}
+          <Route
+            path="/review"
+            element={
+              <UserPrivateRoute>
+                <Review />
+              </UserPrivateRoute>
+            }
+          ></Route>
+          <Route
+            path="/viewReview"
+            element={
+              <AdminPrivateRoute>
+                <ViewReview />
+              </AdminPrivateRoute>
+            }
+          ></Route>
+
+          <Route
+            path="/userRecipe"
+            element={
+              <AdminPrivateRoute>
+                <ViewUserRecipe />
+              </AdminPrivateRoute>
+            }
+          ></Route>
+          <Route
+            path="/userRecipeDetail/:rid"
+            element={
+              <AdminPrivateRoute>
+                <UserRecipeDetail />
+              </AdminPrivateRoute>
+            }
+          ></Route>
+
+          <Route path="/add" element={<AddDiet></AddDiet>}></Route>
+          <Route path="/viewDietRequest" element={<Table></Table>}></Route>
+          <Route path="/updateDiet" element={<UpdateDiet></UpdateDiet>}></Route>
+          <Route path="/requestDiet" element={<RequestDietary></RequestDietary>}></Route>
         </Routes>
       </div>
     );
