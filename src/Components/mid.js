@@ -28,7 +28,13 @@ import UserRecipeDetail from "./admin/userRecipeDetail";
 import ViewReview from "./admin/viewReview";
 import UserPrivateRoute from "./UserProtectedRoute";
 import AdminPrivateRoute from "./AdminProtectedRoute";
+
+
+
+import AdminDashboard from "../Components/adminDashboard";
+
 import RequestDietary from "./User/requestDiet";
+
 
 class Mid extends Component {
   render() {
@@ -157,9 +163,14 @@ class Mid extends Component {
           ></Route>
 
           <Route path="/add" element={<AddDiet></AddDiet>}></Route>
+
+                    <Route path="/admindashboard" element={<AdminDashboard></AdminDashboard>}></Route>
+
+
           <Route path="/viewDietRequest" element={<Table></Table>}></Route>
           <Route path="/updateDiet" element={<UpdateDiet></UpdateDiet>}></Route>
           <Route path="/requestDiet" element={<RequestDietary></RequestDietary>}></Route>
+
         </Routes>
       </div>
     );

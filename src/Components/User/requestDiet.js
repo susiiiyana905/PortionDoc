@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "../footer";
 import Header from "../header";
+
 const RequestDietary = () => {
   const [gender, setGender] = useState("Male");
   const [weight, setWeight] = useState("");
@@ -100,3 +101,4 @@ const RequestDietary = () => {
 };
 
 export default RequestDietary;
+

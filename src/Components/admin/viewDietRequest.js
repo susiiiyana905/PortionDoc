@@ -1,8 +1,10 @@
+
 import axios from "axios";
 import { Component, useEffect, useState } from "react";
 const Table = () => {
   const [dietaryData, setDietaryData] = useState([]);
   const [message, setMessage] = useState("");
+
 
   const config = {
     headers: {

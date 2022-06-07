@@ -81,6 +81,7 @@ const AddDiet = () => {
               <input type="file" class="form-control"
               onChange={(e) => setDietMealImage(e.target.files[0])}
               ></input>
+
             </div>
           </div>
           <div class="form-group row">
