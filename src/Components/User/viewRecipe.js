@@ -107,6 +107,7 @@ class ViewRecipe extends Component {
                 Not included in delivery
               </h5>
 
+<<<<<<< Updated upstream
               <div class=" mb-3" style={{ maxwidth: "540px" }}>
                 <div class="row no-gutters">
                   <div>
@@ -119,6 +120,57 @@ class ViewRecipe extends Component {
                     <div class="body">
                       <p>3/4 cups</p>
                       <p>Rice</p>
+=======
+        <div class="container card">
+          <div class="card-body">
+            <h5 class="card-title" style={{ fontSize: "55px" }}>
+              {mealName}
+            </h5>
+            <hr />
+            <div style={{fontSize: "20px" }}>
+              <p>{mealDescription}</p>
+            </div>
+            <div>
+              <label>Time: {time}</label>
+              <br />
+              <label>Cooking Difficulty: {difficulty}</label>
+            </div>
+          </div>
+        </div>
+        <div
+          class="container card text-align-center"
+          style={{ marginTop: "10px" }}
+        >
+          <div class="card-body">
+          <div id="front">
+          <div>
+          <h5 class="card-title" style={{ fontSize: "45px" }}>
+              Ingredients
+            </h5>
+          </div>
+          <div id="two">
+          <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
+            <h6 style={{marginRight:"20px", marginTop:"15px"}}>Serving Amount</h6>
+            <button type="button" class="btn btn-success serving">2</button>
+            <button type="button" class="btn btn-success serving">4</button>
+          </div>
+          </div>
+        </div>
+          
+            {ingredientData.map((singleData) => {
+              return (
+                <div class=" mb-3">
+                  <div class="row no-gutters">
+                    <div>
+                      <img
+                        className="rounded-circle"
+                        src={
+                          "http://localhost:4001/ingredients/" +
+                          singleData.image
+                        }
+                        style={{ height: "70px", width:"70px" }}
+                      ></img>
+>>>>>>> Stashed changes
                     </div>
                   </div>
                 </div>

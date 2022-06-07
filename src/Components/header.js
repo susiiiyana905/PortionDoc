@@ -90,7 +90,7 @@ class Header extends Component {
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link">Packages</a>
+                  <Link className="nav-link" to="/addRecipe">Recipes</Link>
                 </li>
 
                 <li className="nav-item">
