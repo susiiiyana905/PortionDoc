@@ -37,6 +37,8 @@ app.use(DietPreferenceRoute);
 const ReviewRoute = require("./router/reviewRoute");
 app.use(ReviewRoute);
 
+const CartRoute = require("./router/cartRoute");
+app.use(CartRoute);
 
 app.use(express.static(__dirname+'/images/'));
 
