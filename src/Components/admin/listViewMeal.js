@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import UpdateMeals from "./updateMeals";
+import React from "react"
 
 const ViewRecipies = () => {
   const [mealData, setMealData] = useState([]);

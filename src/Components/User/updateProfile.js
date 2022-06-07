@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import Footer from "../footer";
 import Header from "../header";
+import React from "react"
 
 const UpdateProfile = () => {
   const [profile_pic, setProfilePic] = useState("");

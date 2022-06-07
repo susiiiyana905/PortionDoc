@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import Footer from "../footer";
 import Header from "../header";
+import React from "react"
 const Meals = () => {
   const [mealData, setMealData] = useState([]);
   useEffect(() => {

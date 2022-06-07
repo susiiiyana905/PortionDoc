@@ -29,8 +29,8 @@ import ViewReview from "./admin/viewReview";
 import UserPrivateRoute from "./UserProtectedRoute";
 import AdminPrivateRoute from "./AdminProtectedRoute";
 
-
-
+import React from "react"
+import AdminDashboard from "../Components/adminDashboard";
 
 class Mid extends Component {
   render() {
@@ -164,6 +164,7 @@ class Mid extends Component {
           <Route path="/add" element={<AddDiet></AddDiet>}></Route>
                     <Route path="/viewDietRequest" element={<Table></Table>}></Route>
                     <Route path="/updateDiet" element={<UpdateDiet></UpdateDiet>}></Route>
+                    <Route path="/admindashboard" element={<AdminDashboard></AdminDashboard>}></Route>
 
         </Routes>
       </div>
