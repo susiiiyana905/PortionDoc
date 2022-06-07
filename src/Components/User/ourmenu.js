@@ -1,34 +1,29 @@
-// import {Component} from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Footer from "../footer";
 import Header from "../header";
-
 const Meals = () => {
-  const [mealData, setmealData] = useState([]);
-
+  const [mealData, setMealData] = useState([]);
   useEffect(() => {
     const config = {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("userToken"),
       },
     };
-
     axios
       .get("http://localhost:4001/meal/all", config)
       .then((result) => {
-        setmealData(result.data.data);
+        console.log(result.data);
+        setMealData(result.data.data);
       })
       .catch((e) => {
         console.log(e);
       });
   }, []);
-
   //     useEffect =()=>{
   //     axios.get("http://localhost:4001/category/all",config)
   //     .then(category=>{
-
   //         setcategoryData(category.data.data)
   //     })
   //     .catch(e=>{
@@ -52,7 +47,6 @@ const Meals = () => {
               >
                 Categories
               </button>
-
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <a class="dropdown-item" href="#">
                   afa
@@ -67,25 +61,20 @@ const Meals = () => {
             </div>
           </div>
           <div id="two">
-            <form class="form-inline">
+            <form class="d-flex">
               <input
-                class="form-control mr-sm-2"
+                class="form-control me-2"
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
-              />
-              <button
-                class="btn btn-outline-success my-2 my-sm-0"
-                type="submit"
-                style={{ marginLeft: "10px" }}
-              >
+              ></input>
+              <button class="btn btn-outline-success" type="submit">
                 Search
               </button>
             </form>
           </div>
         </div>
       </div>
-
       <div className="container py-5">
         <div className="row">
           <div className="col-12 text-center">
@@ -98,24 +87,31 @@ const Meals = () => {
       <div className="meal-data container">
         {mealData.map((singleData) => {
           return (
-            <div className="container py-3" style={{ width: "270px" }}>
+            <div className="container py-3" style={{ width: "17rem" }}>
               <div className="card-deck">
-                <div className="card" style={{ height: "380px" }}>
+                <div className="card" style={{ height: "25rem" }}>
                   <div
                     id="content-a"
                     data-toggle="modal"
                     data-target="#exampleModal"
                   >
-                    <img
-                      src={"http://localhost:4001/meal/" + singleData.mealImage}
-                      style={{ width: "100%" }}
-                    ></img>
-                    <div className="card-body">
-                      <p class="first" style={{ fontWeight: "bold" }}>
-                        {singleData.mealName}
-                      </p>
-                      {/* <p class="second">{singleData.mealPrice}</p>  */}
-                    </div>
+                    <NavLink to={"/viewRecipe/" + singleData._id}>
+                      <img
+                        src={
+                          "http://localhost:4001/meal/" + singleData.mealImage
+                        }
+                        className="card-img-top"
+                        style={{ width: "240px" }}
+                      ></img>
+                      <div className="card-body">
+                        <p
+                          class="first"
+                          style={{ fontWeight: "bold", fontSize: "17px" }}
+                        >
+                          {singleData.mealName}
+                        </p>
+                      </div>
+                    </NavLink>
                     <div className="card-footer">
                       <p
                         class="card-text"
@@ -130,27 +126,18 @@ const Meals = () => {
                           {singleData.time}
                         </small>
                       </p>
-
-                      {/* <p class="card-text" style={{fontWeight:"bold", fontSize:"20px", marginRight:"100px", float: "right"}}><small class="text-muted">{singleData.time}</small></p> */}
                     </div>
                   </div>
-                  <div
-                    class="modal fade"
-                    id="exampleModal"
-                    tabindex="-1"
-                    aria-labelledby="exampleModalLabel"
-                    aria-hidden="true"
-                    style={{ width: "1500px" }}
-                  >
+                  {/* <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style={{width:"1500px"}}>
                     <div class="modal-dialog">
-                      <div class="modal-content">
+                        <div class="modal-content">
                         <div class="modal-header">
+
                           <img
                             src="images/Bulgogi.jpg"
                             style={{ height: "300px", width: "600px" }}
                           ></img>
 
-                          {/* <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> */}
                           <button
                             type="button"
                             class="close"
@@ -160,140 +147,88 @@ const Meals = () => {
                             <span aria-hidden="true">&times;</span>
                           </button>
                         </div>
-                        {/* <div className="card" style={{marginLeft:"0px", marginRight:"0px", height:"10px"}}>
-                            
-                            </div> */}
+                   
+
+                            <img src={"http://localhost:4001/meal/"+singleData.mealImage} style={{height:"300px", width:"600px"}}></img>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>                      
 
                         <div class="modal-body">
-                          <div className="info">
+                        <div className="info">
+                                <div>
+                                <a style={{marginRight:"100px", fontWeight:"bold"}}>Time:</a>
+                                <a style={{marginRight:"80px", fontWeight:"bold"}}>Calories:</a>
+                                <a style={{marginRight:"80px", fontWeight:"bold"}}>Difficulties: </a>
+                                </div>
+                                <div>
+                                <a style={{marginRight:"100px"}}>{singleData.time}</a>
+                                <a style={{marginRight:"80px"}}>{singleData.calory}</a>
+                                <a style={{marginRight:"80px"}}>{singleData.difficulty}</a>
+                                </div>
+                            </div>
+                            <hr/>
                             <div>
-                              <a
-                                style={{
-                                  marginRight: "100px",
-                                  fontWeight: "bold",
-                                }}
-                              >
-                                Time:
-                              </a>
-                              <a
-                                style={{
-                                  marginRight: "80px",
-                                  fontWeight: "bold",
-                                }}
-                              >
-                                Calories:
-                              </a>
-                              <a
-                                style={{
-                                  marginRight: "80px",
-                                  fontWeight: "bold",
-                                }}
-                              >
-                                Difficulties:{" "}
-                              </a>
+                                <h5>Description</h5>
+                                <p>{singleData.mealDescription}</p>
                             </div>
-
+                            <hr/>
                             <div>
-                              <a style={{ marginRight: "100px" }}>45min</a>
-                              <a style={{ marginRight: "80px" }}>810kcal</a>
-                              <a style={{ marginRight: "80px" }}>Medium </a>
-                            </div>
-                          </div>
-                          <hr />
-                          <div>
-                            <h5>Description</h5>
-                            <p>
-                              We firmly believe taco night should be treated
-                              like a holiday—one that should be celebrated at
-                              LEAST once a week, if not more. If you agree,
-                              you’ve got to add this Southwest version to your
-                              repertoire. Spiced ground pork and onion are piled
-                              into steamy tortillas with Monterey Jack cheese, a
-                              tangy cilantro lemon slaw, and sour cream. Taco
-                              about a killer meal.
-                            </p>
-                          </div>
-                          <hr />
-                          {/* Ingredients */}
-                          <div>
-                            <h5>Ingredients</h5>
-                            <div class="mb-3" style={{ "max-width": "540px" }}>
-                              <div class="row no-gutters">
+                                <h5>Ingredients</h5>
+                                <div class="mb-3" style={{"max-width": "540px"}}>
+                                <div class="row no-gutters">
                                 <div>
-                                  <img
-                                    src="images/rice.jpg"
-                                    style={{ height: "100px" }}
-                                  ></img>
+                                <img src="images/rice.jpg" style={{height:"100px"}}></img>
                                 </div>
-                                <div
-                                  class="col-md-4"
-                                  style={{ marginTop: "20px" }}
-                                >
-                                  <div class="body">
+                                <div class="col-md-4" style={{marginTop:"20px"}}>
+                                    <div class="body">
                                     <p>3/4 cups</p>
-                                    <p>Rice</p>
-                                  </div>
+                                <p>Rice</p>
+                                    </div>
                                 </div>
-                              </div>
-                            </div>
-
-                            <div class="mb-3" style={{ "max-width": "540px" }}>
-                              <div class="row no-gutters">
+                                </div>
+                                </div>
+                                <div class="mb-3" style={{"max-width": "540px"}}>
+                                <div class="row no-gutters">
                                 <div>
-                                  <img
-                                    src="images/rice.jpg"
-                                    style={{ height: "100px" }}
-                                  ></img>
+                                <img src="images/rice.jpg" style={{height:"100px"}}></img>
                                 </div>
-                                <div
-                                  class="col-md-4"
-                                  style={{ marginTop: "20px" }}
-                                >
-                                  <div class="body">
+                                <div class="col-md-4" style={{marginTop:"20px"}}>
+                                    <div class="body">
                                     <p>3/4 cups</p>
-                                    <p>Rice</p>
-                                  </div>
+                                <p>Rice</p>
+                                    </div>
                                 </div>
-                              </div>
-                            </div>
-
-                            <div class="mb-3" style={{ "max-width": "540px" }}>
-                              <div class="row no-gutters">
+                                </div>
+                                </div>
+                                <div class="mb-3" style={{"max-width": "540px"}}>
+                                <div class="row no-gutters">
                                 <div>
-                                  <img
-                                    src="images/rice.jpg"
-                                    style={{ height: "100px" }}
-                                  ></img>
+                                <img src="images/rice.jpg" style={{height:"100px"}}></img>
                                 </div>
-                                <div
-                                  class="col-md-4"
-                                  style={{ marginTop: "20px" }}
-                                >
-                                  <div class="body">
+                                <div class="col-md-4" style={{marginTop:"20px"}}>
+                                    <div class="body">
                                     <p>3/4 cups</p>
-                                    <p>Rice</p>
-                                  </div>
+                                <p>Rice</p>
+                                    </div>
                                 </div>
-                              </div>
+                                </div>
+                                </div>
                             </div>
-                          </div>
                         </div>
                         <div class="modal-footer">
-                          <Link
-                            className="col-md-8 d-flex flex-column justify-content-center"
-                            to="/viewRecipe"
-                          >
-                            See Full Recipe
-                          </Link>
+                           <Link className="col-md-8 d-flex flex-column justify-content-center" to={"/viewRecipe/"+singleData._mid} >See Full Recipe</Link>
                         </div>
-                      </div>
+                        </div>
                     </div>
-                  </div>
+                    </div> */}
                 </div>
               </div>
             </div>
           );
         })}
+
         <div>
           <button
             id="mybutton"
@@ -310,5 +245,4 @@ const Meals = () => {
     </>
   );
 };
-
 export default Meals;

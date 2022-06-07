@@ -1,113 +1,74 @@
-import { Component } from "react";
+import axios from "axios";
+import { useState, useEffect } from "react";
 import Footer from "../footer";
 import Header from "../header";
-class ViewRecipe extends Component {
-  render() {
-    return (
-      <>
-        <Header></Header>
-        <div style={{ backgroundColor: "#fcfcfa" }}>
-          {/* image */}
-          <div className="container-fluid">
-            <div className="card  top">
-              <img
-                src={"images/bibim.jpg"}
-                alt=""
-                style={{ height: "500px" }}
-              ></img>
-            </div>
-          </div>
+import { useParams } from "react-router-dom";
 
-          <div class="card" style={{ width: "1300px", marginLeft: "110px" }}>
-            <div class="card-body">
-              <h5 class="card-title" style={{ fontSize: "55px" }}>
-                Pork and Veggie Bibmbap
-              </h5>
-              <hr />
-              <div style={{ width: "800px" }}>
-                <p>
-                  This dish takes its name from the Korean word for mixing rice.
-                  Which is exactly what you’re meant to do after serving it: put
-                  your rice in a bowl, add the toppings, and mix it all together
-                  so that those flavors and textures combine in a glorious
-                  mishmash. There are plenty of flavors and textures going on
-                  here, too, like sweet carrot, mighty mushrooms, and pork
-                  tossed with garlic, ginger, and soy sauce.
-                </p>
-              </div>
-              <div>
-                <p>Time: 40min</p>
-                <p>Cooking Difficulty: Medium</p>
-              </div>
-              {/* <a href="#" class="btn btn-primary">View Our Plans</a> */}
-            </div>
-          </div>
-          {/* Ingredients */}
-          <div
-            class="card"
-            style={{ width: "900px", marginLeft: "110px", marginTop: "10px" }}
-          >
-            <div class="card-body">
-              <h5 class="card-title" style={{ fontSize: "45px" }}>
-                Ingredients
-              </h5>
+const ViewRecipe = () => {
+  const [mealImage, setMealImage] = useState([]);
+  const [mealName, setMealName] = useState("");
+  const [mealDescription, setMealDescription] = useState("");
+  const [steps, setSteps] = useState([]);
+  const [time, setTime] = useState("");
+  const [mealCategory, setMealCategory] = useState("");
+  const [calory, setCalory] = useState("");
+  const [difficulty, setDifficulty] = useState("");
+  const [ingredientData, setIngredientData] = useState([]);
+  const [message, setMessage] = useState("");
 
-              <div class=" mb-3" style={{ maxwidth: "540px" }}>
-                <div class="row no-gutters">
-                  <div>
-                    <img
-                      src="images/rice.jpg"
-                      style={{ height: "110px" }}
-                    ></img>
-                  </div>
-                  <div class="col-md-4" style={{ marginTop: "20px" }}>
-                    <div class="body">
-                      <p>3/4 cups</p>
-                      <p>Rice</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+  const config = {
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("userToken"),
+    },
+  };
+  const { mid } = useParams();
+  useEffect(() => {
+    axios
+      .get("http://localhost:4001/meals/single/view/" + mid, config)
+      .then((result) => {
+        console.log(result.data.data);
+        setMealImage(result.data.data.mealImage);
+        setMealName(result.data.data.mealName);
+        setMealDescription(result.data.data.mealDescription);
+        setSteps(result.data.data.steps);
+        setMealCategory(result.data.data.mealCategory);
+        setCalory(result.data.data.calory);
+        setDifficulty(result.data.data.difficulty);
+        setTime(result.data.data.time);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }, []);
 
-              <div class=" mb-3" style={{ maxwidth: "540px" }}>
-                <div class="row no-gutters">
-                  <div>
-                    <img
-                      src="images/carrot.jpg"
-                      style={{ height: "110px" }}
-                    ></img>
-                  </div>
-                  <div class="col-md-4" style={{ marginTop: "20px" }}>
-                    <div class="body">
-                      <p>3/4 cups</p>
-                      <p>Rice</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+  useEffect(() => {
+    axios
+      .get("http://localhost:4001/get/all/ingredients/users/" + mid, config)
+      .then((result) => {
+        console.log(result.data.data);
+        setIngredientData(result.data.data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }, []);
 
-              <div class=" mb-3" style={{ maxwidth: "540px" }}>
-                <div class="row no-gutters">
-                  <div>
-                    <img
-                      src="images/ginger.jpg"
-                      style={{ height: "110px" }}
-                    ></img>
-                  </div>
-                  <div class="col-md-4" style={{ marginTop: "20px" }}>
-                    <div class="body">
-                      <p>3/4 cups</p>
-                      <p>Rice</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <hr />
-              <h5 class="card-title" style={{ fontSize: "25px" }}>
-                Not included in delivery
-              </h5>
+  return (
+    <>
+      <Header></Header>
+      <div>
+        <div
+          className="container"
+          style={{ textAlign: "center", margin: "auto" }}
+        >
+          <img
+            src={"http://localhost:4001/meal/" + mealImage}
+            alt=""
+            style={{ height: "500px" }}
+          ></img>
+        </div>
 
-<<<<<<< Updated upstream
+
               <div class=" mb-3" style={{ maxwidth: "540px" }}>
                 <div class="row no-gutters">
                   <div>
@@ -120,14 +81,19 @@ class ViewRecipe extends Component {
                     <div class="body">
                       <p>3/4 cups</p>
                       <p>Rice</p>
-=======
+
+
         <div class="container card">
           <div class="card-body">
             <h5 class="card-title" style={{ fontSize: "55px" }}>
               {mealName}
             </h5>
             <hr />
+
             <div style={{fontSize: "20px" }}>
+
+            <div style={{fontSize: "30px" }}>
+
               <p>{mealDescription}</p>
             </div>
             <div>
@@ -142,6 +108,7 @@ class ViewRecipe extends Component {
           style={{ marginTop: "10px" }}
         >
           <div class="card-body">
+
           <div id="front">
           <div>
           <h5 class="card-title" style={{ fontSize: "45px" }}>
@@ -157,6 +124,11 @@ class ViewRecipe extends Component {
           </div>
         </div>
           
+
+            <h5 class="card-title" style={{ fontSize: "45px" }}>
+              Ingredients
+            </h5>
+
             {ingredientData.map((singleData) => {
               return (
                 <div class=" mb-3">
@@ -170,95 +142,57 @@ class ViewRecipe extends Component {
                         }
                         style={{ height: "70px", width:"70px" }}
                       ></img>
->>>>>>> Stashed changes
+
+                    </div>
+                    <div class="col-md-4 ml-3">
+                      <div class="body">
+                        <label className="m-0 mt-3">{singleData.quantity}</label>
+                        <br/>
+                        <label className="m-0">{singleData.name}</label>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-
-              <div class=" mb-3" style={{ maxwidth: "540px" }}>
-                <div class="row no-gutters">
-                  <div>
-                    <img
-                      src="images/sriracha.jpg"
-                      style={{ height: "110px" }}
-                    ></img>
-                  </div>
-                  <div class="col-md-4" style={{ marginTop: "20px" }}>
-                    <div class="body">
-                      <p>3/4 cups</p>
-                      <p>Rice</p>
+              );
+            })}
+          </div>
+        </div>
+        <div
+          className="container card"
+          style={{
+            marginTop: "10px",
+            marginBottom: "10px",
+          }}
+        >
+          <div className="card-body">
+            <h5>Steps</h5>
+            <div>
+              {steps.map((steps, indexOf)=>{
+                return(
+                  <div
+                      className="d-flex align-items-center ml-5 "
+                      key={steps}
+                    >
+                      <label
+                        className="report-options mr-2"
+                        style={{ fontWeight: "bold"}}
+                      >
+                        {indexOf + 1}
+                        {"."}
+                      </label>
+                      <br />
+                      <label className="report-options">{steps}</label>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Utensils */}
-          <div
-            className="card"
-            style={{ marginTop: "10px", width: "1300px", marginLeft: "110px" }}
-          >
-            <div className="card-body">
-              <h5>Utensils</h5>
-              <div>
-                <a style={{ marginRight: "80px" }}>•Eggs</a>
-                <a style={{ marginRight: "80px" }}>• Milk </a>
-                <a style={{ marginRight: "80px" }}>• Wheat </a>
-                <a style={{ marginRight: "0px" }}>• Soya</a>
-              </div>
-            </div>
-          </div>
-
-          {/* Steps */}
-          <div
-            className="card"
-            style={{
-              marginTop: "10px",
-              width: "1300px",
-              marginLeft: "110px",
-              marginBottom: "10px",
-            }}
-          >
-            <div className="card-body">
-              <h5>Instruction</h5>
-              <div>
-                <p>
-                  1. In a small pot, combine rice, 1¼ cups water (2¼ cups for 4
-                  servings), and a big pinch of salt. Bring to a boil, then
-                  cover and reduce to a low simmer. Cook until rice is tender,
-                  15-18 minutes. Keep covered off heat until ready to serve.
-                </p>
-                <hr />
-                <p>
-                  2. In a small pot, combine rice, 1¼ cups water (2¼ cups for 4
-                  servings), and a big pinch of salt. Bring to a boil, then
-                  cover and reduce to a low simmer. Cook until rice is tender,
-                  15-18 minutes. Keep covered off heat until ready to serve.
-                </p>
-                <hr />
-                <p>
-                  3. In a small pot, combine rice, 1¼ cups water (2¼ cups for 4
-                  servings), and a big pinch of salt. Bring to a boil, then
-                  cover and reduce to a low simmer. Cook until rice is tender,
-                  15-18 minutes. Keep covered off heat until ready to serve.
-                </p>
-                <hr />
-                <p>
-                  4. In a small pot, combine rice, 1¼ cups water (2¼ cups for 4
-                  servings), and a big pinch of salt. Bring to a boil, then
-                  cover and reduce to a low simmer. Cook until rice is tender,
-                  15-18 minutes. Keep covered off heat until ready to serve.
-                </p>
-                <hr />
-              </div>
+                )
+              })}
+              <hr />
             </div>
           </div>
         </div>
-        <Footer></Footer>
-      </>
-    );
-  }
-}
+      </div>
+      <Footer></Footer>
+    </>
+  );
+};
+
 export default ViewRecipe;
