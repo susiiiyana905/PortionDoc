@@ -38,6 +38,14 @@ const ReviewRoute = require("./router/reviewRoute");
 app.use(ReviewRoute);
 
 
+const OrderRoute = require("./router/orderRoute");
+app.use(OrderRoute);
+
+
+const CartRoute = require("./router/cartRoute");
+app.use(CartRoute);
+
+
 app.use(express.static(__dirname+'/images/'));
 
 app.listen(4001);

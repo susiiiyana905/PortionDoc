@@ -69,13 +69,32 @@ const ViewRecipe = () => {
           ></img>
         </div>
 
+
+              <div class=" mb-3" style={{ maxwidth: "540px" }}>
+                <div class="row no-gutters">
+                  <div>
+                    <img
+                      src="images/vinegar.jpg"
+                      style={{ height: "110px" }}
+                    ></img>
+                  </div>
+                  <div class="col-md-4" style={{ marginTop: "20px" }}>
+                    <div class="body">
+                      <p>3/4 cups</p>
+                      <p>Rice</p>
+
+
         <div class="container card">
           <div class="card-body">
             <h5 class="card-title" style={{ fontSize: "55px" }}>
               {mealName}
             </h5>
             <hr />
+
+            <div style={{fontSize: "20px" }}>
+
             <div style={{fontSize: "30px" }}>
+
               <p>{mealDescription}</p>
             </div>
             <div>
@@ -90,9 +109,27 @@ const ViewRecipe = () => {
           style={{ marginTop: "10px" }}
         >
           <div class="card-body">
+
+          <div id="front">
+          <div>
+          <h5 class="card-title" style={{ fontSize: "45px" }}>
+              Ingredients
+            </h5>
+          </div>
+          <div id="two">
+          <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
+            <h6 style={{marginRight:"20px", marginTop:"15px"}}>Serving Amount</h6>
+            <button type="button" class="btn btn-success serving">2</button>
+            <button type="button" class="btn btn-success serving">4</button>
+          </div>
+          </div>
+        </div>
+          
+
             <h5 class="card-title" style={{ fontSize: "45px" }}>
               Ingredients
             </h5>
+
             {ingredientData.map((singleData) => {
               return (
                 <div class=" mb-3">
@@ -106,6 +143,7 @@ const ViewRecipe = () => {
                         }
                         style={{ height: "70px", width:"70px" }}
                       ></img>
+
                     </div>
                     <div class="col-md-4 ml-3">
                       <div class="body">

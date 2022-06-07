@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Button } from "bootstrap";
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import React from "react"
@@ -152,6 +153,15 @@ const ViewMeals = () => {
                                   >
                                     Delete
                                   </button>
+                                  <NavLink to="/addIngredient">
+                                  <button className="btn btn-primary mb-2"
+                                   style={{
+                                    backgroundColor: "#FF7800",
+                                    border: "none",
+                                    marginLeft: "10px",
+                                  }}
+                                  >Add Ingredients</button>
+                                  </NavLink>
                                 </div>
                               </td>
                             </tr>

@@ -61,11 +61,11 @@ class AddIngredient extends Component {
         Authorization: "Bearer " + localStorage.getItem("adminToken"),
       },
     };
-
+    console.log(this.state.quantity);
     axios
       .post("http://localhost:4001/add/ingredients", ingredientData, config)
       .then((result) => {
-        console.log(result.data);
+        console.log(ingredientData);
       })
       .catch();
   };
