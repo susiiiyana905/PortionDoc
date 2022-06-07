@@ -96,6 +96,16 @@ router.put("/update/preference/image/:did", auth.verifyAdmin, upload.single("die
         })
     
     })
+    router.get("/preference/:preference", auth.verifyUser, function(req, res){
+        const preference=req.params.preference;
+        dietPreference.find({preference:preference})
+        .then(function(result){
+            res.status(200).send({success:true, data:result, message: "User Preference"})
+        })
+        .catch(function(){
+            res.status(400).send({message: "Something went wrong!"})
+        })
+    })
     
     module.exports = router;
 
