@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // import { Link } from "react-router-dom";
 class Header extends Component {
   render() {
@@ -75,26 +75,26 @@ class Header extends Component {
             >
               <ul className="navbar-nav nav-item">
                 <li className="nav-item active">
-                  <a className="nav-link" href="#">
+                  <Link className="nav-link" to="/">
                     Home <span className="sr-only">(current)</span>
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
-                    Dieatery
-                  </a>
+                  <Link className="nav-link" to="/requestDiet">
+                    Dietary
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
+                  <Link className="nav-link" to="/ourmenu">
                     Our Menu
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/addRecipe">Recipes</Link>
                 </li>
 
                 <li className="nav-item">
-                  <a className="nav-link">Contact Us</a>
+                  <Link className="nav-link" to="/review">Contact Us</Link>
                 </li>
                 <li className="nav-item dropdown">
                   <li

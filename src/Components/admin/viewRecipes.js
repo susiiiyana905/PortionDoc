@@ -1,4 +1,4 @@
-const ViewRecipies = () => {
+const ViewRecipes = () => {
   return (
     <>
       <nav className="navbar navbar-expand-lg ">
@@ -23,12 +23,8 @@ const ViewRecipies = () => {
             </div>
             <div class="col-md-8">
               <div class="card-body">
-                <h5 class="card-title">
-                  PASTO PIZZA WITH FILLAS CHEEZ TOPPINGS
-                </h5>
-                <p class="card-text">
-                  with White Cheddar & Thyme Mashed Potatoes.
-                </p>
+                <h5 class="card-title">title</h5>
+                <p class="card-text">description</p>
                 <p class="card-text">
                   <small class="text-muted">50 min|Fair Climate Score</small>
                 </p>
@@ -116,4 +112,4 @@ const ViewRecipies = () => {
     </>
   );
 };
-export default ViewRecipies;
+export default ViewRecipes;

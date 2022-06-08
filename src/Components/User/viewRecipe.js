@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Footer from "../footer";
 import Header from "../header";
 import { useParams } from "react-router-dom";
+
 const ViewRecipe = () => {
   const [mealImage, setMealImage] = useState([]);
   const [mealName, setMealName] = useState("");
@@ -14,6 +15,7 @@ const ViewRecipe = () => {
   const [difficulty, setDifficulty] = useState("");
   const [ingredientData, setIngredientData] = useState([]);
   const [message, setMessage] = useState("");
+
   const config = {
     headers: {
       Authorization: "Bearer " + localStorage.getItem("userToken"),
@@ -38,6 +40,7 @@ const ViewRecipe = () => {
         console.log(e);
       });
   }, []);
+
   useEffect(() => {
     axios
       .get("http://localhost:4001/get/all/ingredients/users/" + mid, config)
@@ -49,6 +52,7 @@ const ViewRecipe = () => {
         console.log(e);
       });
   }, []);
+
   return (
     <>
       <Header></Header>
@@ -69,7 +73,11 @@ const ViewRecipe = () => {
               {mealName}
             </h5>
             <hr />
+
             <div style={{fontSize: "20px" }}>
+
+            <div style={{fontSize: "30px" }}>
+
               <p>{mealDescription}</p>
             </div>
             <div>
@@ -84,6 +92,7 @@ const ViewRecipe = () => {
           style={{ marginTop: "10px" }}
         >
           <div class="card-body">
+
           <div id="front">
           <div>
           <h5 class="card-title" style={{ fontSize: "45px" }}>
@@ -98,6 +107,12 @@ const ViewRecipe = () => {
           </div>
           </div>
         </div>
+
+
+            <h5 class="card-title" style={{ fontSize: "45px" }}>
+              Ingredients
+            </h5>
+
             {ingredientData.map((singleData) => {
               return (
                 <div class=" mb-3">
@@ -158,8 +173,11 @@ const ViewRecipe = () => {
           </div>
         </div>
       </div>
+      </div>
       <Footer></Footer>
     </>
   );
 };
+
 export default ViewRecipe;
+
