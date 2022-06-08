@@ -68,22 +68,6 @@ const ViewRecipe = () => {
             style={{ height: "500px" }}
           ></img>
         </div>
-
-
-              <div class=" mb-3" style={{ maxwidth: "540px" }}>
-                <div class="row no-gutters">
-                  <div>
-                    <img
-                      src="images/vinegar.jpg"
-                      style={{ height: "110px" }}
-                    ></img>
-                  </div>
-                  <div class="col-md-4" style={{ marginTop: "20px" }}>
-                    <div class="body">
-                      <p>3/4 cups</p>
-                      <p>Rice</p>
-
-
         <div class="container card">
           <div class="card-body">
             <h5 class="card-title" style={{ fontSize: "55px" }}>
@@ -124,7 +108,7 @@ const ViewRecipe = () => {
           </div>
           </div>
         </div>
-          
+
 
             <h5 class="card-title" style={{ fontSize: "45px" }}>
               Ingredients
@@ -143,7 +127,6 @@ const ViewRecipe = () => {
                         }
                         style={{ height: "70px", width:"70px" }}
                       ></img>
-
                     </div>
                     <div class="col-md-4 ml-3">
                       <div class="body">
@@ -191,9 +174,11 @@ const ViewRecipe = () => {
           </div>
         </div>
       </div>
+      </div>
       <Footer></Footer>
     </>
   );
 };
 
 export default ViewRecipe;
+
