@@ -46,7 +46,7 @@ const ShowCategory = () => {
     <div>
     
       {/* <Navbar></Navbar> */}
-      <AdminDashboard></AdminDashboard>
+      {/* <AdminDashboard></AdminDashboard> */}
 
       <div className="container">
         <div className="row">

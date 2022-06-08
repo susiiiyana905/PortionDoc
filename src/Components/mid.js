@@ -33,12 +33,9 @@ import AdminPrivateRoute from "./AdminProtectedRoute";
 import AdminDashboard from "../Components/adminDashboard";
 
 import RequestDietary from "./User/requestDiet";
-<<<<<<< Updated upstream
-import AdminDashboard from "./adminDashbaord";
 
-=======
 import OrderMeal from "./User/orderMeal";
->>>>>>> Stashed changes
+
 
 class Mid extends Component {
   render() {
@@ -178,11 +175,7 @@ class Mid extends Component {
           <Route path="/viewDietRequest" element={<Table></Table>}></Route>
           <Route path="/updateDiet" element={<UpdateDiet></UpdateDiet>}></Route>
           <Route path="/requestDiet" element={<RequestDietary></RequestDietary>}></Route>
-<<<<<<< Updated upstream
-
-=======
           <Route path="/orderMeal" element={<OrderMeal></OrderMeal>}></Route>
->>>>>>> Stashed changes
         </Routes>
       </div>
     );
