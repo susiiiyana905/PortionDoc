@@ -6,7 +6,7 @@ const Ingredients = require("../models/ingredientsModel");
 const upload = require("../uploads/ingredientsFile");
 
 router.post(
-  "/add/ingredients",
+  "/add/ingredients/:meals_id",
   auth.verifyAdmin,
   upload.single("image"),
   async (req, res) => {
@@ -17,7 +17,7 @@ router.post(
     const name = req.body.name;
     const quantity = req.body.quantity;
     const image = req.file.filename;
-    const meals_id = req.body.meals_id;
+    const meals_id = req.params.meals_id;
 
     const ingredientsData = new Ingredients({
       name: name,
