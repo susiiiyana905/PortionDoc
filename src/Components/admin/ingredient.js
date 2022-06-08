@@ -1,10 +1,6 @@
 import axios from "axios";
 import { Component } from "react";
-<<<<<<< Updated upstream
-import React from "react"
-=======
 import { withRouter } from "react-router";
->>>>>>> Stashed changes
 
 class AddIngredient extends Component {
   constructor(props) {
@@ -68,10 +64,7 @@ class AddIngredient extends Component {
         Authorization: "Bearer " + localStorage.getItem("adminToken"),
       },
     };
-<<<<<<< Updated upstream
-=======
     console.log(meals_id);
->>>>>>> Stashed changes
     console.log(this.state.quantity);
     axios
       .post("http://localhost:4001/add/ingredients/"+meals_id, ingredientData, config)

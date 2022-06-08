@@ -109,103 +109,6 @@ const Meals = () => {
                       {singleData.mealName}
                     </p>
                   </div>
-<<<<<<< Updated upstream
-                  {/* <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style={{width:"1500px"}}>
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                        <div class="modal-header">
-
-                          <img
-                            src="images/Bulgogi.jpg"
-                            style={{ height: "300px", width: "600px" }}
-                          ></img>
-
-                          <button
-                            type="button"
-                            class="close"
-                            data-dismiss="modal"
-                            aria-label="Close"
-                          >
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                   
-
-                            <img src={"http://localhost:4001/meal/"+singleData.mealImage} style={{height:"300px", width:"600px"}}></img>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>                      
-
-                        <div class="modal-body">
-                        <div className="info">
-                                <div>
-                                <a style={{marginRight:"100px", fontWeight:"bold"}}>Time:</a>
-                                <a style={{marginRight:"80px", fontWeight:"bold"}}>Calories:</a>
-                                <a style={{marginRight:"80px", fontWeight:"bold"}}>Difficulties: </a>
-                                </div>
-                                <div>
-                                <a style={{marginRight:"100px"}}>{singleData.time}</a>
-                                <a style={{marginRight:"80px"}}>{singleData.calory}</a>
-                                <a style={{marginRight:"80px"}}>{singleData.difficulty}</a>
-                                </div>
-                            </div>
-                            <hr/>
-                            <div>
-                                <h5>Description</h5>
-                                <p>{singleData.mealDescription}</p>
-                            </div>
-                            <hr/>
-                            <div>
-                                <h5>Ingredients</h5>
-                                <div class="mb-3" style={{"max-width": "540px"}}>
-                                <div class="row no-gutters">
-                                <div>
-                                <img src="images/rice.jpg" style={{height:"100px"}}></img>
-                                </div>
-                                <div class="col-md-4" style={{marginTop:"20px"}}>
-                                    <div class="body">
-                                    <p>3/4 cups</p>
-                                <p>Rice</p>
-                                    </div>
-                                </div>
-                                </div>
-                                </div>
-                                <div class="mb-3" style={{"max-width": "540px"}}>
-                                <div class="row no-gutters">
-                                <div>
-                                <img src="images/rice.jpg" style={{height:"100px"}}></img>
-                                </div>
-                                <div class="col-md-4" style={{marginTop:"20px"}}>
-                                    <div class="body">
-                                    <p>3/4 cups</p>
-                                <p>Rice</p>
-                                    </div>
-                                </div>
-                                </div>
-                                </div>
-                                <div class="mb-3" style={{"max-width": "540px"}}>
-                                <div class="row no-gutters">
-                                <div>
-                                <img src="images/rice.jpg" style={{height:"100px"}}></img>
-                                </div>
-                                <div class="col-md-4" style={{marginTop:"20px"}}>
-                                    <div class="body">
-                                    <p>3/4 cups</p>
-                                <p>Rice</p>
-                                    </div>
-                                </div>
-                                </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                           <Link className="col-md-8 d-flex flex-column justify-content-center" to={"/viewRecipe/"+singleData._mid} >See Full Recipe</Link>
-                        </div>
-                        </div>
-                    </div>
-                    </div> */}
-=======
                 </NavLink>
                 <div className="card-footer">
                   <p class="card-text" style={{ fontWeight: "bold" }}>
@@ -220,7 +123,6 @@ const Meals = () => {
                       Time: {singleData.time}
                     </label>
                   </p>
->>>>>>> Stashed changes
                 </div>
               </div>
             </div>
