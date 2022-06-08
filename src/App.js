@@ -5,12 +5,13 @@ import Mid from './Components/mid';
 
 
 
+
 function App(){
   return(
   <div>
     <BrowserRouter>
 
-
+   
     <Mid></Mid>
    
 

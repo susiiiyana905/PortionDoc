@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 // import { Link } from 'react-router-dom';
 import axios from "axios";
-import React from "react"
 
-// import Navbar from "./Navbar";
+
+
 
 const ShowCategory = () => {
   const [categoryData, setcategoryData] = useState([]);
@@ -44,7 +44,9 @@ const ShowCategory = () => {
 
   return (
     <div>
+    
       {/* <Navbar></Navbar> */}
+      <AdminDashboard></AdminDashboard>
 
       <div className="container">
         <div className="row">

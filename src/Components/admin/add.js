@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import React from "react"
 import { BrowserRouter as Router, Link, useNavigate } from "react-router-dom";
+
 const AddMeal = () => {
   const [mealImage, setMealImage] = useState("");
   const [mealName, setMealName] = useState("");
@@ -76,6 +77,7 @@ const AddMeal = () => {
   };
   return (
     <>
+    {/* <AdminDashboard></AdminDashboard> */}
       <div className="container">
         <h2 className="heading-h2-all">Add Meal:</h2>
         <form>
