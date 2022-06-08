@@ -153,7 +153,7 @@ const ViewMeals = () => {
                                   >
                                     Delete
                                   </button>
-                                  <NavLink to="/addIngredient">
+                                  <NavLink to={"/addIngredient/"+singleData._id}>
                                   <button className="btn btn-primary mb-2"
                                    style={{
                                     backgroundColor: "#FF7800",
