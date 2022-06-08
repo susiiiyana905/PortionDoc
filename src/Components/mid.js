@@ -10,17 +10,16 @@ import OtpPage from "./User/otppage";
 import AddMeal from "./admin/add";
 import Menu1 from "./User/ourmenu";
 import Menu from "./User/viewMenu";
-import UpdateMeal from "./admin/updateMeal";
+import UpdateMeal from "./admin/updateMeals";
 import ShowCategory from "./admin/CategoryList";
 import AddCategory from "./admin/Category";
-
 import AddRecipes from "./User/addRecipe";
 import AddIngredient from "./admin/ingredient";
 import ListMeals from "./admin/listViewMeal";
 
 import UpdateMeals from "./admin/updateMeals";
 import ViewRecipe from "./User/viewRecipe";
-import Contact from "./User/review";
+
 import Review from "./User/review";
 
 class Mid extends Component {
@@ -73,8 +72,8 @@ class Mid extends Component {
             element={<UpdateMeals></UpdateMeals>}
           ></Route>
           <Route path="/viewRecipe" element={<ViewRecipe></ViewRecipe>}></Route>
-          {/* <Route path="contact" element={<Contact></Contact>}></Route> */}
-          <Route path="review" element={<Review></Review>}></Route>
+        
+          <Route path="/review" element={<Review></Review>}></Route>
         </Routes>
       </div>
     );
