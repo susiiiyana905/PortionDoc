@@ -1,5 +1,7 @@
 import { Component } from "react";
 // import { Link } from "react-router-dom";
+import React from "react"
+
 
 class Footer extends Component {
   render() {

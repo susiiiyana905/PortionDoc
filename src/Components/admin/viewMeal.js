@@ -2,6 +2,7 @@ import axios from "axios";
 import { Button } from "bootstrap";
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import React from "react"
 // import Navbar from "./navbar";
 
 const ViewMeals = () => {

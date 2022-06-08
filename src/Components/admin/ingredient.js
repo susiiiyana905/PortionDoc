@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Component } from "react";
+import React from "react"
 
 class AddIngredient extends Component {
   constructor(props) {

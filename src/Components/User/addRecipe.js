@@ -3,6 +3,7 @@ import { Component, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "../footer";
 import Header from "../header";
+import React from "react"
 
 const AddRecipes = () => {
   const [title, setTitle] = useState("");

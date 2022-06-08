@@ -1,7 +1,10 @@
 // import React from 'react';
 import { useState } from "react";
 import axios from "axios";
+
 import AdminDashboard from "../adminDashbaord";
+
+
 
 const AddCategory = () => {
   const [categoryName, setcategoryName] = useState("");
@@ -37,7 +40,9 @@ const AddCategory = () => {
 
   return (
     <>
-    {/* <AdminDashboard></AdminDashboard> */}
+
+    <AdminDashboard></AdminDashboard>
+
     <div>
       <div className="container">
         <div className="row">

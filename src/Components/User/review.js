@@ -2,6 +2,7 @@ import axios from "axios";
 import { Component, useState } from "react";
 import Footer from "../footer";
 import Header from "../header";
+import React from "react"
 
 const Review = ()=> {
     

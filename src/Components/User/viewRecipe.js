@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Footer from "../footer";
 import Header from "../header";
 import { useParams } from "react-router-dom";
+import React from "react"
 
 const ViewRecipe = () => {
   const [mealImage, setMealImage] = useState([]);
