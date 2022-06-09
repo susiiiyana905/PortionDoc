@@ -1,6 +1,11 @@
+import axios from "axios";
+import React, { Component } from "react";
 import Header from "../header";
 
+
+
 const OrderMeal = () => {
+
   return (
     <>
       <Header></Header>
@@ -17,8 +22,11 @@ const OrderMeal = () => {
                   style={{ backgroundColor: "blue" }}
                   name="exampleRadios"
                   id="exampleRadios1"
-                  value="option1"
+                  value="Inside Ringroad"
                   checked
+                  // onChange={(e) =>
+                  //   this.setState({ delivery: e.target.value })
+                  // }
                 />
                 <label class="form-check-label" for="exampleRadios1">
                   Inside Valley
@@ -30,7 +38,10 @@ const OrderMeal = () => {
                   type="radio"
                   name="exampleRadios"
                   id="exampleRadios2"
-                  value="option2"
+                  value="Outside Ringroad"
+                  // onChange={(e) =>
+                  //   this.setState({ delivery: e.target.value })
+                  // }
                 />
                 <label class="form-check-label" for="exampleRadios2">
                   Outside Valley
@@ -99,11 +110,18 @@ const OrderMeal = () => {
                   className="col"
                   style={{ float: "right", fontSize: "20px" }}
                 >
-                  Rs. 1050
+                  Rs.1050
+                  {/* {
+                    this.state.carts.map(cart => {
+                      total += cart.total
+                    })
+                  }
+                  {total} */}
                 </h6>
               </div>
               <button
-                className="btn btn-primary m-4"
+                className="btn btn-primary m-4" 
+                // onClick={() => this.checkout(total)}
                 style={{ float: "right", backgroundColor: "#FF7800", border:"none" }}
               >
                 Proceed To Payment
@@ -114,6 +132,7 @@ const OrderMeal = () => {
       </div>
     </>
   );
-};
+  }
+
 
 export default OrderMeal;

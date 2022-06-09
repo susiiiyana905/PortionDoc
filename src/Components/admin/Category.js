@@ -1,4 +1,4 @@
-// import React from 'react';
+import React from 'react';
 import { useState } from "react";
 import axios from "axios";
 
@@ -43,6 +43,7 @@ const AddCategory = () => {
     <>
       {/* <AdminDashboard></AdminDashboard> */}
 
+
       <div>
         <div className="container mt-5">
           <div className="row">
@@ -53,6 +54,9 @@ const AddCategory = () => {
                             <div className="success-message text-center" style={{color:"green", fontWeight:"bold"}}>{sMessage}</div>  
                         </div> 
               <h2 className="heading-h2-all">Add Category Details </h2>
+
+    <AdminDashboard>
+
 
               <form id="addCategoryForm">
                 <div className="form-group">
@@ -91,6 +95,10 @@ const AddCategory = () => {
           </div>
         </div>
       </div>
+
+    </div>
+    </AdminDashboard>
+
     </>
   );
 };

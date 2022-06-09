@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import React from "react"
+import AdminDashboard from "../adminDashbaord";
 const UpdateMeal = () => {
   const [mealImage, setMealImage] = useState("");
   const [mealName, setMealName] = useState("");
@@ -150,6 +151,7 @@ const UpdateMeal = () => {
   };
   return (
     <div>
+      <AdminDashboard>
       <div className="container">
         <div className="row">
         <div
@@ -437,6 +439,7 @@ const UpdateMeal = () => {
           </div>
         </div>
       </div>
+      </AdminDashboard>
     </div>
   );
 };

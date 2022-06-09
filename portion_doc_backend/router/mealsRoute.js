@@ -129,6 +129,7 @@ router.get("/meals/category/:category", auth.verifyUser, function(req,res){
     Meals.find({mealCategory : _category})
     .then(function(result){
         res.status(200).send({success:true, data:result, message: "Meals by category"})
+
     })
     .catch(function(){
         res.status(400).send({message: "Something went wrong!"})
