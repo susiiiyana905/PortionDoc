@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import UpdateMeals from "./updateMeals";
 import React from "react"
+import AdminDashboard from "../adminDashbaord"
 
 const ViewRecipies = () => {
   const [mealData, setMealData] = useState([]);
@@ -40,6 +41,7 @@ const ViewRecipies = () => {
 
   return (
     <>
+    <AdminDashboard>
       <nav
         className="navbar navbar-expand-lg mainNav"
         style={{ height: "35px" }}
@@ -113,6 +115,7 @@ const ViewRecipies = () => {
           );
         })}
       </div>
+      </AdminDashboard>
     </>
   );
 };

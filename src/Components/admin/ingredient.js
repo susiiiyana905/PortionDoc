@@ -1,7 +1,9 @@
+import React from "react";
 import axios from "axios";
 import { Component } from "react";
 import { useLocation } from "react-router-dom";
 import { withRouter } from "react-router";
+import AdminDashboard from "../adminDashbaord";
 
 class AddIngredient extends Component {
   constructor(props) {
@@ -82,30 +84,7 @@ class AddIngredient extends Component {
   render() {
     return (
       <>
-        <nav
-          className="navbar navbar-expand-lg mainNav"
-          style={{ height: "35px" }}
-        >
-          <i
-            class="fas fa-solid fa-envelope fa-lg"
-            style={{ height: "40px", color: "white", marginTop: "20px" }}
-          ></i>
-          <p className="i-1" style={{ marginLeft: "10px", marginTop: "10px" }}>
-            portiondoc@gmail.com
-          </p>
-          <i
-            class="fas fa-solid fa-phone"
-            style={{
-              height: "40px",
-              marginLeft: "100px",
-              color: "white",
-              marginTop: "20px",
-            }}
-          ></i>
-          <p className="i-1" style={{ marginLeft: "10px", marginTop: "10px" }}>
-            +977 983142567
-          </p>
-        </nav>
+       <AdminDashboard>
         <div
           className="col-md-6 d-flex justify-content-center mx-auto"
           style={{ marginTop: "50px", marginBottom: "50px" }}
@@ -239,6 +218,7 @@ class AddIngredient extends Component {
             </div>
           </div>
         </div>
+        </AdminDashboard>
       </>
     );
   }

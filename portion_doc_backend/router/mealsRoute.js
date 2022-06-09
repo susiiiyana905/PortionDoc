@@ -125,10 +125,10 @@ router.get("/meals/single/:mid", auth.verifyAdmin, function(req,res){
 })
 
 router.get("/meals/category/:category", auth.verifyUser, function(req,res){
-    const _category = req.params.category;
-    Meals.find({mealCategory : _category})
+    const Category = req.params.category;
+    Meals.find({mealCategory : Category})
     .then(function(){
-        res.status(200).send({success:true, message: "Meals by category"})
+        res.status(200).send({success:true, message: "Meals by category", data:Category})
     })
     .catch(function(){
         res.status(400).send({message: "Something went wrong!"})

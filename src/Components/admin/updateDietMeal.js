@@ -1,10 +1,11 @@
 import {Component} from "react";
-import Footer from "../footer";
-import Header from "../header";
+
 import React from "react"
+import AdminDashboard from "../adminDashbaord";
 const UpdateDiet =()=> {
     return (
         <>
+        <AdminDashboard>
         <div className="container">
 
           <h2 className="heading-h2-all">Update Meal:</h2>
@@ -200,6 +201,7 @@ const UpdateDiet =()=> {
             </p>
           </form>
         </div>
+        </AdminDashboard>
       </>
     );
   };

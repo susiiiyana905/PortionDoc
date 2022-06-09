@@ -1,7 +1,9 @@
 import React from "react"
+import AdminDashboard from "../adminDashbaord";
 const ViewRecipes = () => {
   return (
     <>
+    <AdminDashboard>
       <nav className="navbar navbar-expand-lg ">
         <i
           className="fas fa-solid fa-envelope fa-lg"
@@ -110,6 +112,7 @@ const ViewRecipes = () => {
           </div>
         </div>
       </div>
+      </AdminDashboard>
     </>
   );
 };
