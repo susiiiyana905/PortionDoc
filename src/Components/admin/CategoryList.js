@@ -3,7 +3,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import React from "react"
 
-// import Navbar from "./Navbar";
+import Navbar from "./navbar";
+import AdminDashboard from "../adminDashboard";
 
 const ShowCategory = () => {
   const [categoryData, setcategoryData] = useState([]);
@@ -44,7 +45,7 @@ const ShowCategory = () => {
 
   return (
     <div>
-      {/* <Navbar></Navbar> */}
+      <AdminDashboard>
 
       <div className="container">
         <div className="row">
@@ -97,6 +98,7 @@ const ShowCategory = () => {
           </div>
         </div>
       </div>
+    </AdminDashboard>
     </div>
   );
 };

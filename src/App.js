@@ -10,7 +10,6 @@ function App(){
   <div>
     <BrowserRouter>
 
-
     <Mid></Mid>
    
 

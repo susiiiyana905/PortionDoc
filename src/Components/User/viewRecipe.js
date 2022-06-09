@@ -2,9 +2,8 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import Footer from "../footer";
 import Header from "../header";
+import React from "react";
 import { useParams } from "react-router-dom";
-import React from "react"
-
 const ViewRecipe = () => {
   const [mealImage, setMealImage] = useState([]);
   const [mealName, setMealName] = useState("");
@@ -16,7 +15,6 @@ const ViewRecipe = () => {
   const [difficulty, setDifficulty] = useState("");
   const [ingredientData, setIngredientData] = useState([]);
   const [message, setMessage] = useState("");
-
   const config = {
     headers: {
       Authorization: "Bearer " + localStorage.getItem("userToken"),
@@ -41,7 +39,6 @@ const ViewRecipe = () => {
         console.log(e);
       });
   }, []);
-
   useEffect(() => {
     axios
       .get("http://localhost:4001/get/all/ingredients/users/" + mid, config)
@@ -53,7 +50,6 @@ const ViewRecipe = () => {
         console.log(e);
       });
   }, []);
-
   return (
     <>
       <Header></Header>
@@ -68,33 +64,13 @@ const ViewRecipe = () => {
             style={{ height: "500px" }}
           ></img>
         </div>
-
-
-              <div class=" mb-3" style={{ maxwidth: "540px" }}>
-                <div class="row no-gutters">
-                  <div>
-                    <img
-                      src="images/vinegar.jpg"
-                      style={{ height: "110px" }}
-                    ></img>
-                  </div>
-                  <div class="col-md-4" style={{ marginTop: "20px" }}>
-                    <div class="body">
-                      <p>3/4 cups</p>
-                      <p>Rice</p>
-
-
         <div class="container card">
           <div class="card-body">
             <h5 class="card-title" style={{ fontSize: "55px" }}>
               {mealName}
             </h5>
             <hr />
-
             <div style={{fontSize: "20px" }}>
-
-            <div style={{fontSize: "30px" }}>
-
               <p>{mealDescription}</p>
             </div>
             <div>
@@ -109,7 +85,6 @@ const ViewRecipe = () => {
           style={{ marginTop: "10px" }}
         >
           <div class="card-body">
-
           <div id="front">
           <div>
           <h5 class="card-title" style={{ fontSize: "45px" }}>
@@ -124,12 +99,6 @@ const ViewRecipe = () => {
           </div>
           </div>
         </div>
-          
-
-            <h5 class="card-title" style={{ fontSize: "45px" }}>
-              Ingredients
-            </h5>
-
             {ingredientData.map((singleData) => {
               return (
                 <div class=" mb-3">
@@ -143,7 +112,6 @@ const ViewRecipe = () => {
                         }
                         style={{ height: "70px", width:"70px" }}
                       ></img>
-
                     </div>
                     <div class="col-md-4 ml-3">
                       <div class="body">
@@ -195,5 +163,4 @@ const ViewRecipe = () => {
     </>
   );
 };
-
 export default ViewRecipe;
