@@ -55,8 +55,7 @@ const AddCategory = () => {
                         </div> 
               <h2 className="heading-h2-all">Add Category Details </h2>
 
-    <AdminDashboard>
-
+    
 
               <form id="addCategoryForm">
                 <div className="form-group">
@@ -96,8 +95,7 @@ const AddCategory = () => {
         </div>
       </div>
 
-    </div>
-    </AdminDashboard>
+    
 
     </>
   );
