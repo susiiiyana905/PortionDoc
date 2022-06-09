@@ -6,6 +6,9 @@ const auth = require("../auth/auth");
 const res = require("express/lib/response");
 const Order = require("../models/orderModels");
 
+
+
+
 router.post("/order/insert", auth.verifyUser, async function (req, res) {
     const delivery = req.body.delivery;
     const total = req.body.total;

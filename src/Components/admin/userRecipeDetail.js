@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import React from "react"
+import AdminDashboard from "../adminDashbaord";
 
 const UserRecipeDetail = () => {
   const [recipeData, setRecipeData] = useState([]);
@@ -26,6 +27,7 @@ const UserRecipeDetail = () => {
   }, []);
   return (
     <>
+    <AdminDashboard>
       <nav
         className="navbar navbar-expand-lg mainNav"
         style={{ height: "35px" }}
@@ -115,6 +117,7 @@ const UserRecipeDetail = () => {
           </div>
         );
       })}
+      </AdminDashboard>
     </>
   );
 };
