@@ -1,3 +1,4 @@
+import React from 'react';
 import { Component } from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./User/home";
@@ -26,6 +27,7 @@ import UserRecipeDetail from "./admin/userRecipeDetail";
 import ViewReview from "./admin/viewReview";
 import UserPrivateRoute from "./UserProtectedRoute";
 import AdminPrivateRoute from "./AdminProtectedRoute";
+
 import RequestDietary from "./User/requestDiet";
 import OrderMeal from "./User/orderMeal";
 
