@@ -2,6 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import React from "react"
 import { BrowserRouter as Router, Link, useNavigate } from "react-router-dom";
+import AdminDashboard from "../adminDashbaord";
+
 
 const AddMeal = () => {
   const [mealImage, setMealImage] = useState("");
@@ -110,14 +112,17 @@ const AddMeal = () => {
   }, []);
   return (
     <>
-    {/* <AdminDashboard></AdminDashboard> */}
+      <AdminDashboard>
+  
       <div className="container">
+
       <div
           className="suggestion-message text-center mb-2"
           style={{ color: "red", fontWeight: "bold" }}
         >
           {message}
         </div>
+
         <h2 className="heading-h2-all">Add Meal:</h2>
         <form>
           <div class="form-group row">
@@ -264,6 +269,7 @@ const AddMeal = () => {
           </p>
         </form>
       </div>
+      </AdminDashboard>
     </>
   );
 };

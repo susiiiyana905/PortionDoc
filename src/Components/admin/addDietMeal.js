@@ -1,6 +1,8 @@
 import axios from "axios";
+import React from 'react';
 import { useState } from "react";
 import { BrowserRouter as Router, Link, useNavigate } from "react-router-dom";
+import AdminDashboard from "../adminDashbaord";
 
 const AddDiet = () => {
   const [dietMealImage, setDietMealImage] = useState("");
@@ -92,6 +94,7 @@ const AddDiet = () => {
 
   return (
     <>
+    <AdminDashboard>
       <div className="container">
       <div
           className="suggestion-message text-center mb-2"
@@ -230,6 +233,7 @@ const AddDiet = () => {
           </p>
         </form>
       </div>
+      </AdminDashboard>
     </>
   );
 };

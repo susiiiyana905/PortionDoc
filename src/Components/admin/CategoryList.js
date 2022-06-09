@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 // import { Link } from 'react-router-dom';
 import axios from "axios";
+import React from 'react';
+import AdminDashboard from "../adminDashbaord";
 
 const ShowCategory = () => {
   const [categoryData, setcategoryData] = useState([]);
@@ -46,8 +48,10 @@ const ShowCategory = () => {
 
   return (
     <div>
-      {/* <Navbar></Navbar> */}
-      {/* <AdminDashboard></AdminDashboard> */}
+
+    
+     <AdminDashboard>
+
 
       <div className="container mt-5">
         <div className="row">
@@ -109,6 +113,7 @@ const ShowCategory = () => {
           </div>
         </div>
       </div>
+      </AdminDashboard>
     </div>
   );
 };
