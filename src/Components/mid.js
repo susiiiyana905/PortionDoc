@@ -20,22 +20,14 @@ import AddDiet from "./admin/addDietMeal";
 import UpdateDiet from "./admin/updateDietMeal";
 import Table from "./admin/viewDietRequest";
 import ViewRecipe from "./User/viewRecipe";
-
 import Review from "./User/review";
 import ViewUserRecipe from "./admin/viewUserRecipe";
 import UserRecipeDetail from "./admin/userRecipeDetail";
 import ViewReview from "./admin/viewReview";
 import UserPrivateRoute from "./UserProtectedRoute";
 import AdminPrivateRoute from "./AdminProtectedRoute";
-
-
-
-import AdminDashboard from "../Components/adminDashboard";
-
 import RequestDietary from "./User/requestDiet";
-
 import OrderMeal from "./User/orderMeal";
-
 
 class Mid extends Component {
   render() {
@@ -89,7 +81,7 @@ class Mid extends Component {
               </AdminPrivateRoute>
             }
           ></Route>
-        
+
           <Route
             path="/addCategory"
             element={
@@ -97,9 +89,8 @@ class Mid extends Component {
                 <AddCategory />
               </AdminPrivateRoute>
             }
-          
           ></Route>
-   
+
           <Route
             path="/viewCategory"
             element={
@@ -169,12 +160,12 @@ class Mid extends Component {
 
           <Route path="/add" element={<AddDiet></AddDiet>}></Route>
 
-                    <Route path="/admindashboard" element={<AdminDashboard></AdminDashboard>}></Route>
-
-
           <Route path="/viewDietRequest" element={<Table></Table>}></Route>
           <Route path="/updateDiet" element={<UpdateDiet></UpdateDiet>}></Route>
-          <Route path="/requestDiet" element={<RequestDietary></RequestDietary>}></Route>
+          <Route
+            path="/requestDiet"
+            element={<RequestDietary></RequestDietary>}
+          ></Route>
           <Route path="/orderMeal" element={<OrderMeal></OrderMeal>}></Route>
         </Routes>
       </div>
