@@ -2,12 +2,15 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import UpdateMeals from "./updateMeals";
+
 import React from "react"
 import AdminDashboard from "../adminDashbaord"
+
 
 const ViewRecipies = () => {
   const [mealData, setMealData] = useState([]);
   const [message, setMessage] = useState("");
+  const [sMessage, setSMessage] = useState("");
 
   const config = {
     headers: {
@@ -31,12 +34,16 @@ const ViewRecipies = () => {
     axios
       .delete("http://localhost:4001/meals/delete/" + mid, config)
       .then((result) => {
-        axios.get(`http://localhost:4001/meals/all`, config).then((result1) => {
+        axios.get(`http://localhost:4001/meals/all`, config)
+        .then((result1) => {
           setMealData(result1.data.data);
         });
-        // console.log(result.data);
+        console.log(result.data.message);
+        setSMessage(result.data.message);
       })
-      .catch();
+      .catch((e) => {
+        setMessage(e.response.data.message);
+      });
   };
 
   return (
@@ -83,6 +90,15 @@ const ViewRecipies = () => {
       </div>
       <div className="container">
         <h1 style={{ textAlign: "center" }}> Meals </h1>
+        <div className="mb-2">
+          <div className="suggestion-message text-center">{message}</div>
+          <div
+            className="success-message text-center"
+            style={{ color: "green", fontWeight: "bold" }}
+          >
+            {sMessage}
+          </div>
+        </div>
 
         {mealData.map((singleData) => {
           return (
@@ -96,18 +112,27 @@ const ViewRecipies = () => {
                 </div>
                 <div class="col-md-8">
                   <div class="card-body">
-                  <NavLink to={"/updateMeal/" + singleData._id}>
-                    <h5 class="card-title">{singleData.mealName}</h5></NavLink>
-                    <i class="fas fa-solid fa-trash" style={{marginLeft:"600px", marginTop:"0px"}} onClick={() => {
-                                      deleteMeal(singleData._id);
-                                    }}></i>
-                     <hr />
+                    <NavLink to={"/updateMeal/" + singleData._id}>
+                      <h5 class="card-title">{singleData.mealName}</h5>
+                    </NavLink>
+                    <i
+                      class="fas fa-solid fa-trash"
+                      style={{ marginLeft: "600px", marginTop: "0px" }}
+                      onClick={() => {
+                        deleteMeal(singleData._id);
+                      }}
+                    ></i>
+                    <hr />
                     <p class="card-text">{singleData.mealDescription}</p>
-                    
+
                     <NavLink to="/addIngredient">
-                   <button className="btn btn-primary" style={{marginLeft:"600px"}}>
-                                    Add Ingredient
-                                  </button></NavLink>
+                      <button
+                        className="btn btn-primary"
+                        style={{ marginLeft: "600px" }}
+                      >
+                        Add Ingredient
+                      </button>
+                    </NavLink>
                   </div>
                 </div>
               </div>

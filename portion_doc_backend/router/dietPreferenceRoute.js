@@ -36,7 +36,7 @@ router.post("/add/dietPreference", auth.verifyAdmin,upload.single('dietImage'), 
     .then(function(){
         res.status(200).send({success: true, data:dietData, message: "Preference added successfully!"});
     }).catch(function(e){
-        res.status(400).send({message: e});
+        res.status(400).send({message: "Empty Fields Found. Fill up the form completely!!"});
     })
 
 })

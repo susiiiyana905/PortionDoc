@@ -18,7 +18,7 @@ const router = new express.Router();
 router.post('/signup', async(req,res)=>{
     const email = req.body.email;
     if(!validator.isEmail(email)) {
-        return res.json({message: "Provide a valid email address."});
+        return res.status(400).json({message: "Provide a valid email address."});
     }
     const user = await User.findOne({
         email: email
@@ -76,7 +76,7 @@ router.post('/user/verify', async(req,res)=>{
         });
     }
     else{
-        return res.status(400).send("Your OTP was wrong!")
+        return res.status(400).send({message: "Your OTP was wrong!"})
     }
 })
 

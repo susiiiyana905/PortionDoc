@@ -53,25 +53,31 @@ const AddRecipes = () => {
     .then((result)=>{
       if(result.data.success) {
         console.log(result.data)
-        setMessage(result.data.message);
-      }
-      else {
-        console.log(result.data);
+        navigate('/');
         setMessage(result.data.message);
       }
     })
-    .catch(e);
+    .catch((e)=>{
+      console.log(e.response.data);
+      setMessage(e.response.data.message);
+    });
   }
 
   return (
     <>
       <Header></Header>
       {/* <div style={{backgroundColor:"#FAFAFA"}}> */}
-
+      <div
+          className="suggestion-message text-center mt-3"
+          style={{ color: "red", fontWeight: "bold" }}
+        >
+          {message}
+        </div>
       <div
         className="col-md-6 d-flex justify-content-center mx-auto"
         style={{ marginTop: "50px", marginBottom: "50px" }}
       >
+        
         <div class="card w-100">
           <div class="card-body">
             <h2 style={{ textAlign: "center" }}>Add Recipes</h2>
@@ -117,10 +123,28 @@ const AddRecipes = () => {
                   </div>
                   
                 </div>
+                
                 <div class="form-group row">
                   <label class="col-sm-2 col-form-label">Steps</label>
-
-                  <div class="col-sm-9">
+                  <div className="col-sm-10">
+                  <div style={{ display: "flex", flexDirection: "column" }}>
+                  {steps.map((steps) => {
+                    return (
+                      <div className="d-flex align-items-center" key={steps}>
+                        <span
+                          className="remove-report bi bi-dash-circle-fill fw-bold me-2"
+                          onClick={() => {
+                            removeSteps(steps);
+                          }}
+                        />
+                        <label className="report-options">{steps}</label>
+                      </div>
+                    );
+                  })}
+                </div>
+                </div>
+                <div className="col-sm-2"></div>
+                  <div class="col-sm-10">
                     <textarea
                       type="text"
                       class="form-control"
@@ -136,21 +160,7 @@ const AddRecipes = () => {
                     />
                   </div>
                 </div>
-                <div style={{ display: "flex", flexDirection: "column" }}>
-                  {steps.map((steps) => {
-                    return (
-                      <div className="d-flex align-items-center" key={steps}>
-                        <span
-                          className="remove-report bi bi-dash-circle-fill fw-bold me-2"
-                          onClick={() => {
-                            removeSteps(steps);
-                          }}
-                        />
-                        <label className="report-options">{steps}</label>
-                      </div>
-                    );
-                  })}
-                </div>
+                
                 <button
               type="submit"
               className="btn btn-primary addMeal"

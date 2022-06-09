@@ -62,13 +62,15 @@ const UpdateProfile = () => {
       // .then(result=>console.log(result))
       .then((result) => {
         if (result.data.success) {
-          setMessage("Profile Edited Successfully!");
+          setMessage(result.data.message);
           navigate("/viewProfile");
         } else {
           setMessage(e);
         }
       })
-      .catch(e);
+      .catch((e)=>{
+        setMessage(e.response.data.message);
+      });
   };
   const profilePicUpdate = (e) => {
     // e.preventDefault();
@@ -83,7 +85,9 @@ const UpdateProfile = () => {
           setMessage(e);
         }
       })
-      .catch(e);
+      .catch((e)=>{
+        setMessage(e.response.data.message);
+      });
   };
 
   return (
@@ -94,7 +98,9 @@ const UpdateProfile = () => {
           <h3 className="mt-5 mb-3" style={{ textAlign: "center" }}>
             Update Profile
           </h3>
-          {message}
+          <div className="mb-2">        
+                        <div className="success-message text-center" style={{color:"red", fontWeight:"bold"}}>{message}</div>  
+                    </div>
           <div className="row">
             <div className="col-md-4"></div>
             <div className="col-md-6">

@@ -32,6 +32,9 @@ const mealsSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    category_id : {
+        type : mongoose.Types.ObjectId, ref : "Category"
+    },
     calory : {
         type: String,
         required: true

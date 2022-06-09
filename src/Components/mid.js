@@ -30,6 +30,7 @@ import AdminPrivateRoute from "./AdminProtectedRoute";
 
 import RequestDietary from "./User/requestDiet";
 import OrderMeal from "./User/orderMeal";
+import CategoryMeal from "./User/categoryMealView";
 
 class Mid extends Component {
   render() {
@@ -169,6 +170,7 @@ class Mid extends Component {
             element={<RequestDietary></RequestDietary>}
           ></Route>
           <Route path="/orderMeal" element={<OrderMeal></OrderMeal>}></Route>
+          <Route path="/categoryMeals/:category" element={<CategoryMeal></CategoryMeal>}></Route>
         </Routes>
       </div>
     );

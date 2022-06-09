@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { Component } from "react";
+import { Component, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { withRouter } from "react-router";
 import AdminDashboard from "../adminDashbaord";
@@ -45,6 +45,8 @@ class AddIngredient extends Component {
   };
 
   addIngredient = () => {
+    const [message, setMessage] = useState("");
+    const [sMessage, setSMessage] = useState("");
     const meals_id = localStorage.getItem("meals_id");
     const ingredientData = new FormData();
     ingredientData.append("name", this.state.name);
@@ -75,10 +77,12 @@ class AddIngredient extends Component {
         config
       )
       .then((result) => {
-        console.log(result.data);
+        if (result.data.success) {
+          setSMessage(result.data.message);
+        }
       })
       .catch((e) => {
-        console.log(e);
+        setMessage(e.response.data.message);
       });
   };
   render() {
@@ -89,6 +93,7 @@ class AddIngredient extends Component {
           className="col-md-6 d-flex justify-content-center mx-auto"
           style={{ marginTop: "50px", marginBottom: "50px" }}
         >
+          
           <div class="card w-100">
             <div class="card-body">
               <h2 style={{ textAlign: "center" }}>Add Ingredient</h2>

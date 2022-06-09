@@ -8,7 +8,7 @@ const upload = require("../uploads/recipeFile");
 
 router.post("/add/recipe", auth.verifyUser,upload.single('recipePic'), async(req,res)=>{
     if(req.file===undefined){
-        return res.status(400).json({msg : "Invalid!!"})
+        return res.status(400).json({message : "Invalid Image Type!!"})
     }
     
     const title = req.body.title;
@@ -27,7 +27,7 @@ router.post("/add/recipe", auth.verifyUser,upload.single('recipePic'), async(req
     .then(function(){
         res.status(200).send({success: true, message: "Recipe added successfully"})
     }).catch(function(e){
-        res.status(400).send({message: e});
+        res.status(400).send({message: "Empty Field Found!! Fill up the form completely."});
     })
 })
 
