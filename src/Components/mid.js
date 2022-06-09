@@ -1,3 +1,4 @@
+import React from 'react';
 import { Component } from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./User/home";
@@ -30,7 +31,7 @@ import AdminPrivateRoute from "./AdminProtectedRoute";
 
 
 
-import AdminDashboard from "../Components/adminDashboard";
+
 
 import RequestDietary from "./User/requestDiet";
 import AdminDashboard from "./adminDashbaord";

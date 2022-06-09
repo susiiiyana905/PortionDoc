@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 // import { Link } from 'react-router-dom';
 import axios from "axios";
+import React from 'react';
 
 
 
@@ -46,7 +47,7 @@ const ShowCategory = () => {
     <div>
     
       {/* <Navbar></Navbar> */}
-      <AdminDashboard></AdminDashboard>
+      {/* <AdminDashboard></AdminDashboard> */}
 
       <div className="container">
         <div className="row">
