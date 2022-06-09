@@ -1,13 +1,13 @@
 import axios from "axios";
 import { Button } from "bootstrap";
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
-import React from "react"
+import { NavLink, useNavigate } from "react-router-dom";
 // import Navbar from "./navbar";
 
 const ViewMeals = () => {
   const [mealData, setMealData] = useState([]);
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
   const config = {
     headers: {
@@ -37,6 +37,11 @@ const ViewMeals = () => {
         // console.log(result.data);
       })
       .catch();
+  };
+
+  const addIngredient = (meals_id) => {
+    localStorage.setItem('meals_id', meals_id);
+    navigate("/addIngredient");
   };
 
   return (
@@ -153,15 +158,20 @@ const ViewMeals = () => {
                                   >
                                     Delete
                                   </button>
-                                  <NavLink to="/addIngredient">
-                                  <button className="btn btn-primary mb-2"
-                                   style={{
-                                    backgroundColor: "#FF7800",
-                                    border: "none",
-                                    marginLeft: "10px",
-                                  }}
-                                  >Add Ingredients</button>
-                                  </NavLink>
+
+                                  <button
+                                    className="btn btn-primary mb-2"
+                                    style={{
+                                      backgroundColor: "#FF7800",
+                                      border: "none",
+                                      marginLeft: "10px",
+                                    }}
+                                    onClick={() => {
+                                      addIngredient(singleData._id);
+                                    }}
+                                  >
+                                    Add Ingredients
+                                  </button>
                                 </div>
                               </td>
                             </tr>

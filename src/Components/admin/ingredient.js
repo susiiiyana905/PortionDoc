@@ -1,6 +1,7 @@
 import axios from "axios";
 import { Component } from "react";
-import React from "react"
+import { useLocation } from "react-router-dom";
+import { withRouter } from "react-router";
 
 class AddIngredient extends Component {
   constructor(props) {
@@ -42,10 +43,12 @@ class AddIngredient extends Component {
   };
 
   addIngredient = () => {
+    const meals_id = localStorage.getItem("meals_id");
     const ingredientData = new FormData();
     ingredientData.append("name", this.state.name);
     ingredientData.append("image", this.state.image);
-    ingredientData.append("meals_id", localStorage.getItem("_id"));
+    ingredientData.append("meals_id", meals_id);
+    // ingredientData.append("meals_id", localStorage.getItem("_id"));
 
     if (this.state.unit === undefined) {
       ingredientData.append("quantity", this.state.quantity + " Unit");
@@ -61,13 +64,20 @@ class AddIngredient extends Component {
         Authorization: "Bearer " + localStorage.getItem("adminToken"),
       },
     };
+    console.log(meals_id);
     console.log(this.state.quantity);
     axios
-      .post("http://localhost:4001/add/ingredients", ingredientData, config)
+      .post(
+        "http://localhost:4001/add/ingredients/" + meals_id,
+        ingredientData,
+        config
+      )
       .then((result) => {
-        console.log(ingredientData);
+        console.log(result.data);
       })
-      .catch();
+      .catch((e) => {
+        console.log(e);
+      });
   };
   render() {
     return (
