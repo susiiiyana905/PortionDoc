@@ -41,8 +41,7 @@ const AddCategory = () => {
 
   return (
     <>
-      {/* <AdminDashboard></AdminDashboard> */}
-
+    <AdminDashboard>
 
       <div>
         <div className="container mt-5">
@@ -96,7 +95,7 @@ const AddCategory = () => {
       </div>
 
     
-
+      </AdminDashboard>
     </>
   );
 };
