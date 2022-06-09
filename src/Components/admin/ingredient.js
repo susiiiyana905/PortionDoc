@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Component } from "react";
+import { useLocation } from "react-router-dom";
 import { withRouter } from "react-router";
 
 class AddIngredient extends Component {
@@ -42,22 +43,21 @@ class AddIngredient extends Component {
   };
 
   addIngredient = () => {
-    const { meals_id } = this.props.match.params.id;
+    const meals_id = localStorage.getItem("meals_id");
     const ingredientData = new FormData();
     ingredientData.append("name", this.state.name);
     ingredientData.append("image", this.state.image);
-    ingredientData.append("meals_is", {meals_id});
+    ingredientData.append("meals_id", meals_id);
     // ingredientData.append("meals_id", localStorage.getItem("_id"));
-    ingredientData.append("quantity", this.state.quantity);
 
-    // if (this.state.unit === undefined) {
-    //   ingredientData.append("quantity", this.state.quantity + " Unit");
-    // } else {
-    //   ingredientData.append(
-    //     "quantity",
-    //     this.state.quantity + " " + this.state.unit
-    //   );
-    // }
+    if (this.state.unit === undefined) {
+      ingredientData.append("quantity", this.state.quantity + " Unit");
+    } else {
+      ingredientData.append(
+        "quantity",
+        this.state.quantity + " " + this.state.unit
+      );
+    }
 
     const config = {
       headers: {
@@ -67,11 +67,15 @@ class AddIngredient extends Component {
     console.log(meals_id);
     console.log(this.state.quantity);
     axios
-      .post("http://localhost:4001/add/ingredients/"+meals_id, ingredientData, config)
+      .post(
+        "http://localhost:4001/add/ingredients/" + meals_id,
+        ingredientData,
+        config
+      )
       .then((result) => {
-        console.log(ingredientData);
+        console.log(result.data);
       })
-      .catch(e=>{
+      .catch((e) => {
         console.log(e);
       });
   };

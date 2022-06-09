@@ -118,7 +118,7 @@ class Mid extends Component {
           ></Route>
 
           <Route
-            path="/addIngredient/:meals_id"
+            path="/addIngredient"
             element={
               <AdminPrivateRoute>
                 <AddIngredient />
