@@ -8,7 +8,7 @@ const { fstat } = require("fs");
 
 router.post("/add/meals", auth.verifyAdmin, upload.single('mealImage'), async(req,res)=>{
     if(req.file===undefined){
-        return res.status(400).json({msg : "Invalid!!"})
+        return res.status(400).json({message : "Invalid Image Type!!"})
     }
     const mealImage = req.file.filename;
     const mealName = req.body.mealName;
@@ -35,7 +35,7 @@ router.post("/add/meals", auth.verifyAdmin, upload.single('mealImage'), async(re
     .then(function(){
         res.status(200).send({success: true,data:mealData, message: "New meal added successfully!"});
     }).catch(function(e){
-        res.status(400).send({message: e});
+        res.status(400).send({message: "Empty field found. Fill up the form completely!!"});
     })
 })
 
@@ -127,8 +127,8 @@ router.get("/meals/single/:mid", auth.verifyAdmin, function(req,res){
 router.get("/meals/category/:category", auth.verifyUser, function(req,res){
     const _category = req.params.category;
     Meals.find({mealCategory : _category})
-    .then(function(){
-        res.status(200).send({success:true, message: "Meals by category"})
+    .then(function(result){
+        res.status(200).send({success:true, data:result, message: "Meals by category"})
     })
     .catch(function(){
         res.status(400).send({message: "Something went wrong!"})
@@ -166,10 +166,10 @@ router.delete("/meals/delete/:mid", auth.verifyAdmin, function(req,res){
     const mid = req.params.mid;
     Meals.deleteOne({_id : mid})
     .then(function(){
-        res.status(200).send({success:true, message: "Meal has been deleted!"})
+        res.status(200).send({success:true, message: "Meal has been deleted!"});
     })
     .catch(function(){
-        res.status(400).send({message: "Something went wrong!"})
+        res.status(400).send({message: "Something went wrong!"});
     })
 
 })

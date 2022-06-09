@@ -85,8 +85,11 @@ const UpdateMeal = () => {
         // .then((result1)=> {
         //   setIngredientData(result.data.data);
         // })
+        
       })
-      .catch();
+      .catch((e)=>{
+        setMessage(e.response.data.message);
+      });
   };
   const updateMealImage = (e) => {
     e.preventDefault();
@@ -149,9 +152,19 @@ const UpdateMeal = () => {
     <div>
       <div className="container">
         <div className="row">
+        <div
+          className="suggestion-message text-center mb-2"
+          style={{ color: "red", fontWeight: "bold" }}
+        >
+          {message}
+        </div>
           <div className="col-md-2"></div>
           <div className="col-md-8">
+          <div className="mb-2">         
+                        <div className="success-message text-center">{message}</div>  
+                    </div>
             <h2 className="heading-h2-all">Update Meal</h2>
+
             <form id="updateMealForm">
               <div className="form-group row">
                 <label htmlFor="mealImage" className="col-sm-3 col-form-label">

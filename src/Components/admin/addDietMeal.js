@@ -44,6 +44,27 @@ const AddDiet = () => {
 
   const addDietMeal = (e) => {
     e.preventDefault();
+    const mealNameRegex = new RegExp('^[a-zA-Z0-9]+$');
+    const priceRegex = new RegExp('^(?:[+0]9)?[0-9]{10}$');
+    if (
+      dietMealName.trim() === "" ||
+      preference.trim() === "" ||
+      dietMealPrice.trim() === "" ||
+      time.trim() === "" ||
+      calory.trim() === "" ||
+      dietMealDescription.trim() === "" ||
+      difficulty.trim() === "" 
+    ) {
+      setMessage("Empty field found. Fill up the form completely.");
+      return;
+    }  else if (!mealNameRegex.test(dietMealName)) {
+      setMessage("Special characters and white spaces not allowed in name.");
+      return;
+    } 
+    // else if (!priceRegex.test(dietMealPrice)) {
+    //   setMessage("Invalid meal price.");
+    //   return;
+    // }
 
     const dietMealData = new FormData();
     dietMealData.append("dietImage", dietMealImage);
@@ -63,16 +84,21 @@ const AddDiet = () => {
         if(result.data.success){
           setMessage(result.data.message);
         }
-        else {
-          setMessage(result.data.message);
-        }
       })
-      .catch(e);
+      .catch((e)=>{
+        setMessage(e.response.data.message);
+      });
   };
 
   return (
     <>
       <div className="container">
+      <div
+          className="suggestion-message text-center mb-2"
+          style={{ color: "red", fontWeight: "bold" }}
+        >
+          {message}
+        </div>
         <h2 className="heading-h2-all">Add Diet Meal</h2>
         <form>
           <div class="form-group row">

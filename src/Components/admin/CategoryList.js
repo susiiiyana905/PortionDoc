@@ -2,11 +2,10 @@ import { useState, useEffect } from "react";
 // import { Link } from 'react-router-dom';
 import axios from "axios";
 
-
-
-
 const ShowCategory = () => {
   const [categoryData, setcategoryData] = useState([]);
+  const [message, setMessage] = useState("");
+  const [sMessage, setSMessage] = useState("");
 
   const config = {
     headers: {
@@ -37,21 +36,32 @@ const ShowCategory = () => {
           .then((category) => {
             setcategoryData(category.data.data);
           });
-        console.log(result.data);
+          
+          setSMessage(result.data.message);
       })
-      .catch();
+      .catch((e) => {
+        setMessage(e.response.data.message);
+      });
   };
 
   return (
     <div>
-    
       {/* <Navbar></Navbar> */}
       {/* <AdminDashboard></AdminDashboard> */}
 
-      <div className="container">
+      <div className="container mt-5">
         <div className="row">
-          <div className="col-md-2"></div>
+          <div className="col-md-3"></div>
           <div className="col-md-8">
+            <div className="mb-2">
+              <div className="suggestion-message text-center">{message}</div>
+              <div
+                className="success-message text-center"
+                style={{ color: "green", fontWeight: "bold" }}
+              >
+                {sMessage}
+              </div>
+            </div>
             <div class="container">
               <div class="row">
                 <div>
@@ -85,7 +95,7 @@ const ShowCategory = () => {
                                   deleteCategory(singleData._id);
                                 }}
                               >
-                                Delete Product
+                                Delete Category
                               </button>
                             </td>
                           </tr>

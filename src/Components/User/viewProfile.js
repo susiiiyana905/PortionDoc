@@ -13,7 +13,6 @@ const ViewProfile = () => {
   const [dob, setDoB] = useState("");
   const [gender, setGender] = useState("");
   const [_id, setID] = useState("");
-  const [message, setMessage] = useState("");
 
   const editProfile = (e) => {
     e.preventDefault();
@@ -66,7 +65,6 @@ const ViewProfile = () => {
           <h3 className="mt-5 mb-3" style={{ textAlign: "center" }}>
             My Profile
           </h3>
-          {message}
           <div className="row">
             <div className="col-md-4"></div>
             <div className="col-md-6">
@@ -103,7 +101,7 @@ const ViewProfile = () => {
                       First Name
                     </label>
                     <div className="col-sm-9">
-                      <p className="form-control border-dark">{firstName}</p>
+                      <span className="">{firstName}</span>
                     </div>
                   </div>
                   <div className="form-group editProfileForm row">
@@ -111,9 +109,7 @@ const ViewProfile = () => {
                       Last Name
                     </label>
                     <div className="col-sm-9">
-                      <p className="form-control border-dark" id="inputLname">
-                        {lastName}
-                      </p>
+                      <span>{lastName}</span>
                     </div>
                   </div>
                   <div className="form-group editProfileForm row">
@@ -124,9 +120,7 @@ const ViewProfile = () => {
                       Email
                     </label>
                     <div className="col-sm-9">
-                      <p className="form-control border-dark" id="inputEmail3">
-                        {email}
-                      </p>
+                      <span>{email}</span>
                     </div>
                   </div>
                   <div className="form-group editProfileForm row">
@@ -134,9 +128,7 @@ const ViewProfile = () => {
                       Bio
                     </label>
                     <div className="col-sm-9">
-                      <p className="form-control border-dark" id="inputBio">
-                        {bio}
-                      </p>
+                      <span>{bio}</span>
                     </div>
                   </div>
                   <div className="form-group editProfileForm row">
@@ -144,9 +136,7 @@ const ViewProfile = () => {
                       DoB
                     </label>
                     <div className="col-sm-9">
-                      <p className="form-control border-dark" id="inputDob">
-                        {dob}
-                      </p>
+                      <span>{dob}</span>
                     </div>
                   </div>
                   <div className="form-group editProfileForm row">
@@ -157,7 +147,7 @@ const ViewProfile = () => {
                       Gender
                     </label>
                     <div className="col-sm-9">
-                      <p className="form-control border-dark">{gender}</p>
+                      <span>{gender}</span>
                     </div>
                   </div>
                   <div className="form-group editProfileForm row">
@@ -165,9 +155,7 @@ const ViewProfile = () => {
                       Phone No.
                     </label>
                     <div className="col-sm-9">
-                      <p className="form-control border-dark" id="inputPhone">
-                        {phone_no}
-                      </p>
+                      <span>{phone_no}</span>
                     </div>
                   </div>
                   <div className="form-group editProfileForm row">
@@ -178,14 +166,7 @@ const ViewProfile = () => {
                       Address
                     </label>
                     <div className="col-sm-9">
-                      <p
-                        type="text"
-                        maxLength="10"
-                        className="form-control border-dark"
-                        id="inputAddress"
-                      >
-                        {address}
-                      </p>
+                      <span>{address}</span>
                     </div>
                   </div>
 

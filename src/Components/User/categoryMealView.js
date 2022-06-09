@@ -1,10 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import Footer from "../footer";
 import Header from "../header";
-import React from "react";
-const Meals = () => {
+
+const CategoryMeal = () => {
   const [mealData, setMealData] = useState([]);
   const [categoryData, setCategoryData] = useState([]);
   const config = {
@@ -12,9 +12,11 @@ const Meals = () => {
       Authorization: "Bearer " + localStorage.getItem("userToken"),
     },
   };
+  const { category } = useParams();
+  console.log(category);
   useEffect(() => {
     axios
-      .get("http://localhost:4001/meal/all", config)
+      .get("http://localhost:4001/meals/category/" + category, config)
       .then((result) => {
         console.log(result.data);
         setMealData(result.data.data);
@@ -23,67 +25,14 @@ const Meals = () => {
         console.log(e);
       });
   }, []);
-  useEffect(() => {
-    axios
-      .get("http://localhost:4001/category/all", config)
-      .then((category) => {
-        console.log(category.data.data);
-        setCategoryData(category.data.data);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  }, []);
   return (
     <>
       <Header></Header>
-      {/* <div> */}
-      <div className="container">
-        <div id="front">
-          <div id="one">
-            <div class="dropdown">
-              <button
-                id="search"
-                class="btn btn-secondary dropdown-toggle"
-                type="button"
-                data-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Categories
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                {categoryData.map((category) => {
-                  return (
-                    <Link
-                      class="dropdown-item"
-                      to={"/categoryMeals/" + category.categoryName}
-                    >
-                      {category.categoryName}
-                    </Link>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-          <div id="two">
-            <form class="d-flex">
-              <input
-                class="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              ></input>
-              <button class="btn btn-outline-success" type="submit">
-                Search
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
+
       <div className="container py-5">
         <div className="row">
           <div className="col-12 text-center">
-            <h1>Meals</h1>
+            <h1>{category}</h1>
             <hr />
           </div>
         </div>
@@ -152,4 +101,5 @@ const Meals = () => {
     </>
   );
 };
-export default Meals;
+
+export default CategoryMeal;
