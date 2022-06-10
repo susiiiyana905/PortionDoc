@@ -7,7 +7,7 @@ const { fstat } = require("fs");
 const dietPreference = require("../models/dietPreferenceModels");
 
 
-router.post("/add/dietPreference", auth.verifyAdmin,upload.single('dietImage'), async(req,res)=>{
+router.post("/add/dietMeal", auth.verifyAdmin,upload.single('dietImage'), async(req,res)=>{
     if(req.file===undefined){
         return res.status(400).json({msg: "Invalid!!"})
     }
@@ -106,7 +106,8 @@ router.put("/update/preference/image/:did", auth.verifyAdmin, upload.single("die
             res.status(400).send({message: "Something went wrong!"})
         })
     })
-    
+   
+  
     module.exports = router;
 
  
