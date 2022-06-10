@@ -24,9 +24,7 @@ const OrderMeal = () => {
                   id="exampleRadios1"
                   value="Inside Ringroad"
                   checked
-                  // onChange={(e) =>
-                  //   this.setState({ delivery: e.target.value })
-                  // }
+               
                 />
                 <label class="form-check-label" for="exampleRadios1">
                   Inside Valley
@@ -39,9 +37,7 @@ const OrderMeal = () => {
                   name="exampleRadios"
                   id="exampleRadios2"
                   value="Outside Ringroad"
-                  // onChange={(e) =>
-                  //   this.setState({ delivery: e.target.value })
-                  // }
+                
                 />
                 <label class="form-check-label" for="exampleRadios2">
                   Outside Valley
