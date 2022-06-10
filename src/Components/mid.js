@@ -1,3 +1,4 @@
+import React from 'react';
 import { Component } from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./User/home";
@@ -13,7 +14,6 @@ import Menu from "./User/viewMenu";
 import UpdateMeal from "./admin/updateMeals";
 import ShowCategory from "./admin/CategoryList";
 import AddCategory from "./admin/Category";
-
 import AddRecipes from "./User/addRecipe";
 import AddIngredient from "./admin/ingredient";
 import ListMeals from "./admin/listViewMeal";
@@ -21,14 +21,16 @@ import AddDiet from "./admin/addDietMeal";
 import UpdateDiet from "./admin/updateDietMeal";
 import Table from "./admin/viewDietRequest";
 import ViewRecipe from "./User/viewRecipe";
-
 import Review from "./User/review";
 import ViewUserRecipe from "./admin/viewUserRecipe";
 import UserRecipeDetail from "./admin/userRecipeDetail";
 import ViewReview from "./admin/viewReview";
 import UserPrivateRoute from "./UserProtectedRoute";
 import AdminPrivateRoute from "./AdminProtectedRoute";
+
 import RequestDietary from "./User/requestDiet";
+import OrderMeal from "./User/orderMeal";
+import CategoryMeal from "./User/categoryMealView";
 
 class Mid extends Component {
   render() {
@@ -82,6 +84,7 @@ class Mid extends Component {
               </AdminPrivateRoute>
             }
           ></Route>
+
           <Route
             path="/addCategory"
             element={
@@ -90,6 +93,7 @@ class Mid extends Component {
               </AdminPrivateRoute>
             }
           ></Route>
+
           <Route
             path="/viewCategory"
             element={
@@ -101,9 +105,9 @@ class Mid extends Component {
           <Route
             path="/addRecipe"
             element={
-              <AdminPrivateRoute>
+              <UserPrivateRoute>
                 <AddRecipes />
-              </AdminPrivateRoute>
+              </UserPrivateRoute>
             }
           ></Route>
 
@@ -121,6 +125,7 @@ class Mid extends Component {
             path="/viewRecipe/:mid"
             element={<ViewRecipe></ViewRecipe>}
           ></Route>
+
           {/* <Route path="contact" element={<Contact></Contact>}></Route> */}
           <Route
             path="/review"
@@ -157,9 +162,15 @@ class Mid extends Component {
           ></Route>
 
           <Route path="/add" element={<AddDiet></AddDiet>}></Route>
+
           <Route path="/viewDietRequest" element={<Table></Table>}></Route>
           <Route path="/updateDiet" element={<UpdateDiet></UpdateDiet>}></Route>
-          <Route path="/requestDiet" element={<RequestDietary></RequestDietary>}></Route>
+          <Route
+            path="/requestDiet"
+            element={<RequestDietary></RequestDietary>}
+          ></Route>
+          <Route path="/orderMeal" element={<OrderMeal></OrderMeal>}></Route>
+          <Route path="/categoryMeals/:category" element={<CategoryMeal></CategoryMeal>}></Route>
         </Routes>
       </div>
     );

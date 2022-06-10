@@ -2,12 +2,14 @@ import axios from "axios";
 import { Component, useState } from "react";
 import Footer from "../footer";
 import Header from "../header";
+import React from "react"
 
 const Review = ()=> {
     
     const [subject, setSubject] = useState("");
     const [reviewMessage, setReviewMessage] = useState("");
     const [message, setMessage]= useState("");
+    const [sMessage, setSMessage] = useState("");
 
     const config ={
         headers: {
@@ -27,15 +29,12 @@ const Review = ()=> {
             console.log(result.data);
             if(result.data.success){
               
-                setMessage("Review Send Successfully");
-            }else{
-             
-                setMessage("Something went wrong!!");
+                setSMessage(result.data.message);
             }
         })
-        .catch (e =>{
-            setMessage("Error!!");
-        })
+        .catch((e)=>{
+            setMessage(e.response.data.message);
+          });
 
     }
 
@@ -85,9 +84,19 @@ const Review = ()=> {
             </div>
 
             <div style={{marginTop:"10px"}}>
+            
                 <h1>
-                <p style={{textAlign:"center"}}>Write Us</p>
+                <p style={{textAlign:"center"}}>Write To Us</p>
                 </h1>
+                <div className="mb-2">
+              <div className="suggestion-message text-center" style={{color: "red", fontWeight: "bold"}}>{message}</div>
+              <div
+                className="success-message text-center"
+                style={{ color: "green", fontWeight: "bold" }}
+              >
+                {sMessage}
+              </div>
+            </div>
             <div className="card" style={{marginBottom:"20px"}}>
                 <div className="card-body">
             <form style={{marginLeft:"30px", marginRight:"30px"}}>
@@ -96,17 +105,15 @@ const Review = ()=> {
             <div class="form-group">
                 <label for="exampleInputEmail1">Subject</label>
                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                // value={subject}
                 onChange={(e)=>{setSubject(e.target.value)}}
                 ></input>
                 
             </div>
            
            
-            <div className="form-group col-md-4" >
+            <div className="form-group " >
                     <label>Your Message</label>
-                <textarea style={{height:"200px", width:"1010px"}} 
-                // value={message}
+                <textarea style={{height:"200px", width:"100%"}} 
                 onChange={(e)=>setReviewMessage(e.target.value)}
                 ></textarea>
             </div>

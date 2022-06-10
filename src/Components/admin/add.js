@@ -1,6 +1,10 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import React from "react"
 import { BrowserRouter as Router, Link, useNavigate } from "react-router-dom";
+import AdminDashboard from "../adminDashbaord";
+
+
 const AddMeal = () => {
   const [mealImage, setMealImage] = useState("");
   const [mealName, setMealName] = useState("");
@@ -15,6 +19,7 @@ const AddMeal = () => {
   const [response, setResponse] = useState("");
   const [sResponse, setSResponse] = useState("");
   const [message, setMessage] = useState("");
+  const [categoryData, setCategoryData] = useState([])
   const navigate = useNavigate();
   const config = {
     headers: {
@@ -44,6 +49,27 @@ const AddMeal = () => {
 
   const addMeal = (e) => {
     e.preventDefault();
+    const mealNameRegex = new RegExp('^[a-zA-Z0-9]+$');
+    const priceRegex = new RegExp('/^(\d+(\.\d+)?)$/');
+    if (
+      mealName.trim() === "" ||
+      mealCategory.trim() === "" ||
+      mealPrice.trim() === "" ||
+      time.trim() === "" ||
+      calory.trim() === "" ||
+      mealDescription.trim() === "" ||
+      difficulty.trim() === "" 
+    ) {
+      setMessage("Empty field found. Fill up the form completely.");
+      return;
+    }  else if (!mealNameRegex.test(mealName)) {
+      setMessage("Special characters and white spaces not allowed in name.");
+      return;
+    }
+    //  else if (!priceRegex.test(mealPrice)) {
+    //   setMessage("Invalid meal price.");
+    //   return;
+    // }
 
     const mealData = new FormData();
     mealData.append("mealImage", mealImage);
@@ -67,15 +93,36 @@ const AddMeal = () => {
           setSteps([]);
           setMessage(result.data.message);
           navigate("/viewMeal", { state: { _id: result.data.data._id } });
-        } else {
-          setMessage(result.data.message);
         }
       })
-      .catch(e);
+      .catch((e)=>{
+        setMessage(e.response.data.message);
+      });
   };
+  useEffect(() => {
+    axios
+      .get("http://localhost:4001/category/single", config)
+      .then((category) => {
+        console.log(category.data.data);
+        setCategoryData(category.data.data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }, []);
   return (
     <>
+      <AdminDashboard>
+  
       <div className="container">
+
+      <div
+          className="suggestion-message text-center mb-2"
+          style={{ color: "red", fontWeight: "bold" }}
+        >
+          {message}
+        </div>
+
         <h2 className="heading-h2-all">Add Meal:</h2>
         <form>
           <div class="form-group row">
@@ -103,7 +150,7 @@ const AddMeal = () => {
             <label class="col-sm-2 col-form-label">Meal Price</label>
             <div class="col-sm-10">
               <input
-                type="text"
+                type="number"
                 class="form-control"
                 value={mealPrice}
                 onChange={(e) => setMealPrice(e.target.value)}
@@ -119,9 +166,11 @@ const AddMeal = () => {
                 value={mealCategory}
                 onChange={(e) => setMealCategory(e.target.value)}
               >
-                <option value="Veg">Veg</option>
-                <option value="Non-Veg">Non-Veg</option>
-                <option value="Vegan">Vegan</option>
+                {categoryData.map((category) => {
+                  return (
+                    <option value="Veg">{category.categoryName}</option>
+                  )
+                })}
               </select>
             </div>
           </div>
@@ -220,6 +269,7 @@ const AddMeal = () => {
           </p>
         </form>
       </div>
+      </AdminDashboard>
     </>
   );
 };

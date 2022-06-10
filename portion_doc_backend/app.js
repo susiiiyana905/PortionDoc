@@ -37,6 +37,11 @@ app.use(DietPreferenceRoute);
 const ReviewRoute = require("./router/reviewRoute");
 app.use(ReviewRoute);
 
+
+const OrderRoute = require("./router/orderRoute");
+app.use(OrderRoute);
+
+
 const CartRoute = require("./router/cartRoute");
 app.use(CartRoute);
 
@@ -45,6 +50,7 @@ app.use(PreferenceCategory);
 
 const SendDiet = require("./router/sendDietRoute");
 app.use(SendDiet);
+
 
 
 

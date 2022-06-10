@@ -1,8 +1,11 @@
+import React from 'react';
 import axios from "axios";
 import { Component, useEffect, useState } from "react";
+import AdminDashboard from "../adminDashbaord"
 const Table = () => {
   const [dietaryData, setDietaryData] = useState([]);
   const [message, setMessage] = useState("");
+
 
   const config = {
     headers: {
@@ -23,6 +26,7 @@ const Table = () => {
   }, []);
   return (
     <>
+    <AdminDashboard>
       <div>
         <div class="ip">
           <p id="iq">Images</p>
@@ -62,6 +66,7 @@ const Table = () => {
           );
         })}
       </div>
+      </AdminDashboard>
     </>
   );
 };

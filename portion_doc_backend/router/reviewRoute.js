@@ -18,7 +18,7 @@ router.post("/add/review", auth.verifyUser, async(req,res)=>{
     .then(function(){
         res.status(200).send({ success: true, message:"Review send Successfully"})
     }).catch(function(e){
-        res.status(400).send({message: e})
+        res.status(400).send({message: "Empty Field Found! Fill up the form completely."})
     
     })
 })

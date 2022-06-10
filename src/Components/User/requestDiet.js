@@ -1,8 +1,10 @@
+import React from 'react';
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "../footer";
 import Header from "../header";
+
 const RequestDietary = () => {
   const [gender, setGender] = useState("Male");
   const [weight, setWeight] = useState("");
@@ -30,11 +32,10 @@ const RequestDietary = () => {
         navigate("/");
         setMessage(result.data.message);
       }
-      else {
-        setMessage(result.data.message);
-      }
     })
-    .catch(e);
+    .catch((e)=>{
+      setMessage(e.response.data.message);
+    });
   }
   return (
     <>
@@ -59,6 +60,12 @@ const RequestDietary = () => {
 
         <div>
           <h3 id="hi">Dietary Form</h3>
+          <div
+          className="suggestion-message text-center mb-2"
+          style={{ color: "red", fontWeight: "bold" }}
+        >
+          {message}
+        </div>
 
           <select placeholder="Gender" id="s"
           value={gender}
@@ -100,3 +107,4 @@ const RequestDietary = () => {
 };
 
 export default RequestDietary;
+

@@ -1,5 +1,8 @@
 import { Component } from "react";
+import React from 'react';
+
 import { Link, useNavigate } from "react-router-dom";
+
 // import { Link } from "react-router-dom";
 class Header extends Component {
   render() {
@@ -90,7 +93,7 @@ class Header extends Component {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link">Packages</a>
+                  <Link className="nav-link" to="/addRecipe">Recipes</Link>
                 </li>
 
                 <li className="nav-item">
