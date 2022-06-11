@@ -40,6 +40,9 @@ const AdminDashboard = ({children}) => {
                             <li className="w-100">
                                 <Link to="/add" className="nav-link px-0"> <span className="d-none d-sm-inline">Add Diet Meal</span></Link>
                             </li>
+                            <li className="w-100">
+                                <Link to="/viewDietMeal" className="nav-link px-0"> <span className="d-none d-sm-inline">View Diet Meal</span></Link>
+                            </li>
                             <li>
                                 <Link to="/viewDietRequest" className="nav-link px-0"> <span className="d-none d-sm-inline">Requested Diet</span> </Link>
                             </li>

@@ -174,9 +174,9 @@ class Mid extends Component {
           ></Route>
           <Route path="/orderMeal" element={<OrderMeal></OrderMeal>}></Route>
           <Route path="/categoryMeals/:category" element={<CategoryMeal></CategoryMeal>}></Route>
-          <Route path="/viewDietMeal" element={<ViewDietMeals></ViewDietMeals>}></Route>
-                    <Route path="/viewUserDietMeal" element={<ViewUserDietMeal></ViewUserDietMeal>}></Route>
-                    <Route path="/cart" element={<Cart></Cart>}></Route>
+          <Route path="/viewDietMeal" element={<AdminPrivateRoute><ViewDietMeals></ViewDietMeals></AdminPrivateRoute>}></Route>
+          <Route path="/viewUserDietMeal" element={<ViewUserDietMeal></ViewUserDietMeal>}></Route>
+          <Route path="/cart" element={<Cart></Cart>}></Route>
         </Routes>
       </div>
     );

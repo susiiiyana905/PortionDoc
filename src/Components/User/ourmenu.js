@@ -108,7 +108,7 @@ const Meals = () => {
                       class="first"
                       style={{
                         fontWeight: "bold",
-                        fontSize: "17px",
+                        fontSize: "12px",
                         color: "black",
                         textDecoration: "none",
                       }}
@@ -118,7 +118,7 @@ const Meals = () => {
                   </div>
                 </NavLink>
                 <div className="card-footer">
-                  <p class="card-text" style={{ fontWeight: "bold" }}>
+                  <p class="card-text" style={{ fontWeight: "bold", fontSize:"12px" }}>
                     <label class="text mr-5">
                       Price: {singleData.mealPrice}
                     </label>

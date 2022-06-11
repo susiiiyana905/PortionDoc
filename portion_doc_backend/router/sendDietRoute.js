@@ -1,7 +1,9 @@
 const express = require("express");
 const router = new express.Router();
 const auth = require("../auth/auth");
-const SendDiet = require("../models/sendDietModel")
+const SendDiet = require("../models/sendDietModel");
+
+
 
 router.post("/send/dietMeal_id", auth.verifyAdmin, async(req, res)=>{
     const dietMeal_id = req.params.dietMeal_id;
@@ -13,6 +15,7 @@ router.post("/send/dietMeal_id", auth.verifyAdmin, async(req, res)=>{
        dietNames: dietNames,
     })
     console.log(sendDietData)
+
     sendDietData.save()
     .then(function () {
         res.json({ success: true, message: "diet send successfully!" });
@@ -21,4 +24,7 @@ router.post("/send/dietMeal_id", auth.verifyAdmin, async(req, res)=>{
         res.json({message:"something went wrong"});
       })
 })
- module.exports = SendDiet;
+
+
+
+module.exports = SendDiet;
