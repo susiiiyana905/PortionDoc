@@ -1222,4 +1222,20 @@ font-family: 'Times New Roman', Times, serif;
 }
 
 
+.dietmeal-data{
 
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}
+
+.sendMeal{
+ 
+background: #ff944d;
+  font:white;
+  margin-top:15px;
+  border: #d2d3d5;
+
+  margin-left: 60px;
+}

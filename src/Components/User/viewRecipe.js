@@ -3,8 +3,7 @@ import { useState, useEffect } from "react";
 import Footer from "../footer";
 import Header from "../header";
 import { useParams } from "react-router-dom";
-import React from "react";
-
+import React from "react"
 const ViewRecipe = () => {
   const [mealImage, setMealImage] = useState([]);
   const [mealName, setMealName] = useState("");
@@ -16,7 +15,7 @@ const ViewRecipe = () => {
   const [difficulty, setDifficulty] = useState("");
   const [ingredientData, setIngredientData] = useState([]);
   const [message, setMessage] = useState("");
-
+  const [serving, setServing] = useState(1);
   const config = {
     headers: {
       Authorization: "Bearer " + localStorage.getItem("userToken"),
@@ -41,7 +40,6 @@ const ViewRecipe = () => {
         console.log(e);
       });
   }, []);
-
   useEffect(() => {
     axios
       .get("http://localhost:4001/get/all/ingredients/users/" + mid, config)
@@ -53,7 +51,6 @@ const ViewRecipe = () => {
         console.log(e);
       });
   }, []);
-
   return (
     <>
       <Header></Header>
@@ -74,94 +71,85 @@ const ViewRecipe = () => {
               {mealName}
             </h5>
             <hr />
-
-            <div style={{ fontSize: "20px" }}>
-              <div style={{ fontSize: "30px" }}>
-                <p>{mealDescription}</p>
-              </div>
-              <div>
-                <label>Time: {time}</label>
-                <br />
-                <label>Cooking Difficulty: {difficulty}</label>
-              </div>
+            <div style={{fontSize: "20px" }}>
+            <div style={{fontSize: "30px" }}>
+              <p>{mealDescription}</p>
+            </div>
+            <div>
+              <label>Time: {time}</label>
+              <br />
+              <label>Cooking Difficulty: {difficulty}</label>
             </div>
           </div>
-          <div
-            class="container card text-align-center"
-            style={{ marginTop: "10px" }}
-          >
-            <div class="card-body">
-              <div id="front">
-                <div>
-                  <h5 class="card-title" style={{ fontSize: "45px" }}>
-                    Ingredients
-                  </h5>
-                </div>
-                <div id="two">
-                  <div
-                    class="btn-group btn-group-lg"
-                    role="group"
-                    aria-label="Basic example"
-                  >
-                    <h6 style={{ marginRight: "20px" }}>Serving Amount</h6>
-                    <button type="button" class="btn btn-success serving">
-                      2
-                    </button>
-                    <button type="button" class="btn btn-success serving">
-                      4
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              {ingredientData.map((singleData) => {
-                return (
-                  <div class=" mb-3">
-                    <div class="row no-gutters">
-                      <div>
-                        <img
-                          className="rounded-circle"
-                          src={
-                            "http://localhost:4001/ingredients/" +
-                            singleData.image
-                          }
-                          style={{ height: "70px", width: "70px" }}
-                        ></img>
-                      </div>
-                      <div class="col-md-4 ml-3">
-                        <div class="body">
-                          <label className="m-0 mt-3">
-                            {singleData.quantity}
-                          </label>
-                          <br />
-                          <label className="m-0">{singleData.name}</label>
-                        </div>
+        </div>
+        <div
+          class="container card text-align-center"
+          style={{ marginTop: "10px" }}
+        >
+          <div class="card-body">
+          <div id="front">
+          <div>
+          <h5 class="card-title" style={{ fontSize: "45px" }}>
+              Ingredients
+            </h5>
+          </div>
+          <div id="two">
+          <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
+            <h6 style={{marginRight:"20px", marginTop:"15px"}}>Serving Amount</h6>
+            <button onClick={()=>{setServing(1)}} type="button" class="btn btn-success serving">2</button>
+            <button onClick={()=>{setServing(2)}} type="button" class="btn btn-success serving">4</button>
+          </div>
+          </div>
+        </div>
+            <h5 class="card-title" style={{ fontSize: "45px" }}>
+              Ingredients
+            </h5>
+            {ingredientData.map((singleData) => {
+              return (
+                <div class=" mb-3">
+                  <div class="row no-gutters">
+                    <div>
+                      <img
+                        className="rounded-circle"
+                        src={
+                          "http://localhost:4001/ingredients/" +
+                          singleData.image
+                        }
+                        style={{ height: "70px", width:"70px" }}
+                      ></img>
+                    </div>
+                    <div class="col-md-4 ml-3">
+                      <div class="body">
+                        <label className="m-0 mt-3">{singleData.quantity*serving}</label>
+                        <br/>
+                        <label className="m-0">{singleData.name}</label>
                       </div>
                     </div>
                   </div>
-                );
-              })}
-            </div>
+                </div>
+              );
+            })}
           </div>
-          <div
-            className="container card"
-            style={{
-              marginTop: "10px",
-              marginBottom: "10px",
-            }}
-          >
-            <div className="card-body">
-              <h5>Steps</h5>
-              <div>
-                {steps.map((steps, indexOf) => {
-                  return (
-                    <div
+        </div>
+        <div
+          className="container card"
+          style={{
+            marginTop: "10px",
+            marginBottom: "10px",
+          }}
+        >
+          <div className="card-body">
+            <h5>Steps</h5>
+            <div>
+              {steps.map((steps, indexOf)=>{
+                return(
+                  <div
                       className="d-flex align-items-center ml-5 "
                       key={steps}
                     >
                       <label
                         className="report-options mr-2"
-                        style={{ fontWeight: "bold" }}
+                        style={{ fontWeight: "bold"}}
                       >
                         {indexOf + 1}
                         {"."}
@@ -169,17 +157,16 @@ const ViewRecipe = () => {
                       <br />
                       <label className="report-options">{steps}</label>
                     </div>
-                  );
-                })}
-                <hr />
-              </div>
+                )
+              })}
+              <hr />
             </div>
           </div>
         </div>
+      </div>
       </div>
       <Footer></Footer>
     </>
   );
 };
-
 export default ViewRecipe;

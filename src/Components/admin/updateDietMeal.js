@@ -1,8 +1,48 @@
-import {Component} from "react";
-
-import React from "react"
+import React, { useState } from "react"
 import AdminDashboard from "../adminDashbaord";
 const UpdateDiet =()=> {
+  // const [dietImage, setDietImage] = useState("");
+  // const[dietName, setDietName] = useState("");
+  // const[dietPrice, setDietPrice] = useState("");
+  // const[dietDescription, setDietDescription] = useState("");
+  // const[time, setTime] = useState("");
+  // const[calory,setCalory]=useState("");
+  // const[difficulty, setDifficulty] = useState("");
+  // const [steps, setSteps] = useState([]);
+  // const [singleStep, setSingleStep] = useState("");
+  // const [response, setResponse] = useState("");
+  // const [sResponse, setSResponse] = useState("");
+  // const [_id, setID] = useState("");
+  // const [dietMealData, setDietMealData] = useState("");
+  // const [message, setMessage] = useState("");
+  // const navigate = useNavigate();
+
+  // const config = {
+  //   headers: {
+  //     Authorization: "Bearer " + localStorage.getItem("adminToken"),
+  //   },
+  // };
+
+  // const { did } = useParams();
+  // function addSteps(step) {
+  //   setResponse("");
+  //   setSResponse("");
+
+  //   var tempSteps = steps;
+  //   tempSteps.push(step);
+
+  //   setSteps(tempSteps);
+  //   console.log(steps);
+  // }
+
+  // function removeSteps(step) {
+  //   setResponse("");
+  //   setSResponse("");
+
+  //   var tempSteps = steps;
+  //   tempSteps.splice(tempSteps.indexOf(step), 1);
+  //   setSteps(tempSteps);
+  // }
     return (
         <>
         <AdminDashboard>
@@ -10,7 +50,6 @@ const UpdateDiet =()=> {
 
           <h2 className="heading-h2-all">Update Meal:</h2>
 
-          <h2 className="heading-h2-all">Add Meal:</h2>
 
           <form>
             <div class="form-group row">
@@ -49,9 +88,9 @@ const UpdateDiet =()=> {
                   style={{ width: "100%" }}
                   
                 >
-                  <option value="Weight Loss">Veg</option>
-                  <option value="Weight Gain">Non-Veg</option>
-                  <option value="Weight Loss">Vegan</option>
+                  <option value="Weight Loss">Weight Loss</option>
+                  <option value="Weight Gain">Weight Gain</option>
+                  <option value="Muscle Gain">Muscle Gain</option>
                 </select>
               </div>
             </div>
