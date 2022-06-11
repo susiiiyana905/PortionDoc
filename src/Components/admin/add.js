@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import React from "react"
+import React from "react";
 import { BrowserRouter as Router, Link, useNavigate } from "react-router-dom";
 
 const AddMeal = () => {

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import React from "react"
+import React from "react";
 const UpdateMeal = () => {
   const [mealImage, setMealImage] = useState("");
   const [mealName, setMealName] = useState("");

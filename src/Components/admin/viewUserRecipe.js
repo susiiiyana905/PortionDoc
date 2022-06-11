@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import React from "react"
+import React from "react";
 
 const ViewUserRecipe = () => {
   const [recipeData, setRecipeData] = useState([]);

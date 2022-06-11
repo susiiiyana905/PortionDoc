@@ -3,6 +3,7 @@ import { Button } from "bootstrap";
 import { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 // import Navbar from "./navbar";
+import React from "react";
 
 const ViewMeals = () => {
   const [mealData, setMealData] = useState([]);

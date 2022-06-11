@@ -121,7 +121,7 @@ class Mid extends Component {
           <Route path="/listMeal" element={<ListMeals></ListMeals>}></Route>
 
           <Route
-            path="/viewRecipe/:mid"
+            path="/viewRecipe"
             element={<ViewRecipe></ViewRecipe>}
           ></Route>
 

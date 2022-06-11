@@ -17,6 +17,8 @@ const ViewRecipe = () => {
   const [ingredientData, setIngredientData] = useState([]);
   const [message, setMessage] = useState("");
 
+  const [serving, setServing] = useState(1);
+
   const config = {
     headers: {
       Authorization: "Bearer " + localStorage.getItem("userToken"),
@@ -103,8 +105,8 @@ const ViewRecipe = () => {
           <div id="two">
           <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
             <h6 style={{marginRight:"20px", marginTop:"15px"}}>Serving Amount</h6>
-            <button type="button" class="btn btn-success serving">2</button>
-            <button type="button" class="btn btn-success serving">4</button>
+            <button onClick={()=>{setServing(1)}} type="button" class="btn btn-success serving">2</button>
+            <button onClick={()=>{setServing(2)}} type="button" class="btn btn-success serving">4</button>
           </div>
           </div>
         </div>
@@ -130,7 +132,7 @@ const ViewRecipe = () => {
                     </div>
                     <div class="col-md-4 ml-3">
                       <div class="body">
-                        <label className="m-0 mt-3">{singleData.quantity}</label>
+                        <label className="m-0 mt-3">{singleData.quantity*serving}</label>
                         <br/>
                         <label className="m-0">{singleData.name}</label>
                       </div>
