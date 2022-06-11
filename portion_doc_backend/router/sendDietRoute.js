@@ -5,24 +5,26 @@ const SendDiet = require("../models/sendDietModel");
 
 
 
-router.post("/send/diet/", auth.verifyAdmin, async(req, res)=>{
-    const dietMeal_id = req.body.dietMeal_id;
-    const user_id = req.body.user_id;
+router.post("/send/dietMeal_id", auth.verifyAdmin, async(req, res)=>{
+    const dietMeal_id = req.params.dietMeal_id;
+    const dietNames = req.body.dietNames;
+  
     const sendDietData = new SendDiet({
         dietMeal_id: dietMeal_id,
-        user_id: user_id,
-    });
+       user_id : req.userInfo._id,
+       dietNames: dietNames,
+    })
+    console.log(sendDietData)
+
     sendDietData.save()
     .then(function () {
-        res
-          .status(200)
-          .send({ success: true, message: "diet send successfully!" });
+        res.json({ success: true, message: "diet send successfully!" });
       })
-      .catch(function (e) {
-        res.status(400).send({ message: e });
-      });
-
+      .catch(function(e) {
+        res.json({message:"something went wrong"});
+      })
 })
+
 
 
 module.exports = SendDiet;
