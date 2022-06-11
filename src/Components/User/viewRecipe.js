@@ -16,9 +16,13 @@ const ViewRecipe = () => {
   const [difficulty, setDifficulty] = useState("");
   const [ingredientData, setIngredientData] = useState([]);
   const [message, setMessage] = useState("");
+<<<<<<< Updated upstream
 
   const [serving, setServing] = useState(1);
 
+=======
+  const [serving, setServing] = useState(1);
+>>>>>>> Stashed changes
   const config = {
     headers: {
       Authorization: "Bearer " + localStorage.getItem("userToken"),
@@ -105,8 +109,13 @@ const ViewRecipe = () => {
           <div id="two">
           <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
             <h6 style={{marginRight:"20px", marginTop:"15px"}}>Serving Amount</h6>
+<<<<<<< Updated upstream
             <button onClick={()=>{setServing(1)}} type="button" class="btn btn-success serving">2</button>
             <button onClick={()=>{setServing(2)}} type="button" class="btn btn-success serving">4</button>
+=======
+            <button onClick={()=>{ setServing(1) }} type="button" class="btn btn-success serving">2</button>
+            <button onClick={()=>{ setServing(2) }} type="button" class="btn btn-success serving">4</button>
+>>>>>>> Stashed changes
           </div>
           </div>
         </div>
@@ -132,7 +141,11 @@ const ViewRecipe = () => {
                     </div>
                     <div class="col-md-4 ml-3">
                       <div class="body">
+<<<<<<< Updated upstream
                         <label className="m-0 mt-3">{singleData.quantity*serving}</label>
+=======
+                        <label className="m-0 mt-3">{parseInt(singleData.quantity)*serving}</label>
+>>>>>>> Stashed changes
                         <br/>
                         <label className="m-0">{singleData.name}</label>
                       </div>
