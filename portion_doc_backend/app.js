@@ -51,7 +51,8 @@ app.use(PreferenceCategory);
 const SendDiet = require("./router/sendDietRoute");
 app.use(SendDiet);
 
-
+const DietIngredients =  require("./router/dietIngredientsRoute");
+app.use(DietIngredients);
 
 
 app.use(express.static(__dirname+'/images/'));

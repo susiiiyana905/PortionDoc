@@ -4,24 +4,23 @@ import { NavLink } from "react-router-dom";
 import axios from "axios";
 import AdminDashboard from "../adminDashbaord";
 const ViewDietMeals =()=> {
-    const [dietMealData, setdietMealData] = useState([]);
+  const [dietMealData, setdietMealData] = useState([]);
+   const config = {
+      headers:{
+          Authorization: "Bearer " + localStorage.getItem("adminToken"),
+      }
+  }
 
-    const config = {
-        headers:{
-            Authorization: "Bearer " + localStorage.getItem("adminToken"),
-        }
-    }
-
-    useEffect(() => {
-        axios.get("http://localhost:4001/diet/all",config)
-        .then((result) => {
-            console.log(result.data);
-            setdietMealData(result.data.data);
-          })
-          .catch((e) => {
-            console.log(e);
-          });
-    }, [])
+  useEffect(() => {
+      axios.get("http://localhost:4001/diet/all",config)
+      .then((result) => {
+          console.log(result.data);
+          setdietMealData(result.data.data);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+  }, [])
         return(
             <>
         <AdminDashboard>
@@ -40,8 +39,8 @@ const ViewDietMeals =()=> {
             <div className="container py-3 " style={{width:"270px"}}>
         <div class="card-deck">
         <div class="card">
-            <NavLink to={"/updateDiet"+singleData._id}>
-            <img src={"http://localhost:4001/dietPreference/"+singleData.dietImage}></img>
+           
+            <img src={"http://localhost:4001/preference/"+singleData.dietImage}></img>
             <div class="card-body">
             <h5 class="card-title">
                 {singleData.dietName}
@@ -60,7 +59,7 @@ const ViewDietMeals =()=> {
                         </p>
            
             </div>
-            </NavLink>
+        
 
         <div className="card-footer ">
         <button className="btn sendMeal"

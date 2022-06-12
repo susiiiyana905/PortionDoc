@@ -41,16 +41,16 @@ router.get("/cart",auth.verifyUser, async function(req,res){
     var cart = await Cart.find({user_id : req.userInfo._id}).populate("meals_id").exec()
     res.json({message: "Cart", data: cart});
 })
-router.put("/cartminus/update/:id", auth.verifyUser, async function(req,res){
+router.put("/cart/update/:id", auth.verifyUser, async function(req,res){
     const cartId = req.body.cardId;
     const serving = req.body.serving;
     console.log(cartId, serving);
     Cart.findByIdAndUpdate({_id: cartId},{
-        serving:2,
+        serving: serving,
     },{new:true})
     .then(function(data){
         Meals.findById(data.meals_id).then(k=>{
-            data.total = parseInt(k.mealsPrice.split('Rs. ')[1])  * 2
+            data.total = parseInt(k.mealsPrice.split('Rs. ')[1])  * serving
             data.save() 
         })
         res.json({success: true, message:"Cart Updated"})
@@ -59,24 +59,24 @@ router.put("/cartminus/update/:id", auth.verifyUser, async function(req,res){
         res.json({success: false, message: "Something went wrong"})
     })  
 })
-router.put("/cartplus/update/:id", auth.verifyUser, async function(req,res){
-    const cartId = req.body.cardId;
-    const serving = req.body.serving;
-    console.log(cartId, serving);
-    Cart.findByIdAndUpdate({_id: cartId},{
-        serving:4,
-    },{new:true})
-    .then(function(data){
-        Meals.findById(data.meals_id).then(k=>{
-            data.total = parseInt(k.mealsPrice.split('Rs. ')[1])  * 4
-            data.save() 
-        })
-        res.json({success: true, message:"Cart Updated"})
-    })
-    .catch(function(){
-        res.json({success: false, message: "Something went wrong"})
-    })  
-})
+// router.put("/cartplus/update/:id", auth.verifyUser, async function(req,res){
+//     const cartId = req.body.cardId;
+//     const serving = req.body.serving;
+//     console.log(cartId, serving);
+//     Cart.findByIdAndUpdate({_id: cartId},{
+//         serving:4,
+//     },{new:true})
+//     .then(function(data){
+//         Meals.findById(data.meals_id).then(k=>{
+//             data.total = parseInt(k.mealsPrice.split('Rs. ')[1])  * 4
+//             data.save() 
+//         })
+//         res.json({success: true, message:"Cart Updated"})
+//     })
+//     .catch(function(){
+//         res.json({success: false, message: "Something went wrong"})
+//     })  
+// })
 router.delete('/cart/delete/:id',auth.verifyUser, function(req,res){
     const id = req.params.id;
     Cart.deleteOne({_id : id})

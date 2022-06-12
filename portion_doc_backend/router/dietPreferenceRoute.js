@@ -52,8 +52,8 @@ router.put("/update/preference/image/:did", auth.verifyAdmin, upload.single("die
     dietPreference.findOne({_id: did})
     .then((dietData)=>{
         if(!dietData.dietImage){
-            const diet_image_path = `./uploads/diet/${dietData.dietImage}`;
-            fstat.unlinkSync(meal_image_path);
+            const diet_image_path = `./uploads/preference/${dietData.dietImage}`;
+            fstat.unlinkSync(diet_image_path);
         }
          dietPreference.updateOne({_id: did},{
              dietImage: dietImage
@@ -69,6 +69,38 @@ router.put("/update/preference/image/:did", auth.verifyAdmin, upload.single("die
         res.status(400).send({message: e});
     })
     })
+
+    router.put("/update/preference/image/:did", auth.verifyAdmin, upload.single("dietImage"), async(req,res)=>{
+        const did = req.params.did;
+        if(req.file === undefined){
+            return res.json({message: " Invalid"})
+        }
+        const dietImage = req.file.filename;
+        dietPreference.findOne({_id: did})
+        .then((dietData)=>{
+            if(!dietData.dietImage){
+                const diet_image_path = `./uploads/preference/${dietData.dietImage}`;
+                fstat.unlinkSync(diet_image_path);
+            }
+             dietPreference.updateOne({_id: did},{
+                 dietImage: dietImage
+             })
+             .then(function(){
+                 res.status(200).send({success: true, message:"Image Updated!!"});  
+             })
+             .catch(function(){
+                res.status(400).send({message: e});
+            });
+    
+        })
+    
+        .catch((e)=>{
+    
+            res.status(400).send({message: e});
+    
+        })
+    
+        })
 
     router.get('/diet/all', auth.verifyAdmin, async(req,res)=>{
         const DietData = await dietPreference.find()
@@ -105,36 +137,6 @@ router.put("/update/preference/image/:did", auth.verifyAdmin, upload.single("die
             res.status(400).send({message: "Something went wrong!"})
         })
     }) 
-    router.put("/update/preference/image/:did", auth.verifyAdmin, upload.single("dietImage"), async(req,res)=>{
-        const did = req.params.did;
-    
-        if(req.file === undefined){
-            return res.json({message: "Invalid!!"})
-        }
-    
-        const dietImage = req.file.filename;
-    
-        dietPreference.findOne({_id: did})
-        .then((preferenceData)=>{
-            if(!preferenceData.dietImage){
-                const preference_image_path = `./uploads/preference/${preferenceData.preferenceImage}`;
-                fs.unlinkSync(preference_image_path);
-            }
-    
-            dietPreference.updateOne({_id: did}, {
-                dietImage: dietImage
-            })
-            .then(function(){
-                res.status(200).send({success: true, message: "preference meal Image Updated!"});
-            })
-            .catch(function(){
-                res.status(400).send({message: e});
-            });
-        })
-        .catch((e)=>{
-            res.status(400).send({message: e});
-        })
-    })
     
     
 router.put("/update/dietMeals/:did", auth.verifyAdmin, upload.single("dietImage"), async(req,res)=>{

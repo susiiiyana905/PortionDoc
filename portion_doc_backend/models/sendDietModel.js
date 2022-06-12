@@ -10,11 +10,7 @@ const preferenceSendSchema = new mongoose.Schema({
         type : mongoose.Types.ObjectId, ref : "dietPreferenceMeal"
     },
 
-    dietNames : {
-        
-        type: String,
-        required: true
-    },
+
 },
 
 {

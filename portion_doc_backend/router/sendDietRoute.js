@@ -3,18 +3,15 @@ const router = new express.Router();
 const auth = require("../auth/auth");
 const SendDiet = require("../models/sendDietModel");
 
-
-
-router.post("/send/dietMeal_id", auth.verifyAdmin, async(req, res)=>{
+router.post("/send/dietMeal/:user_id", auth.verifyAdmin, async(req, res)=>{
     const dietMeal_id = req.params.dietMeal_id;
-    const dietNames = req.body.dietNames;
-  
+   console.log("a")
     const sendDietData = new SendDiet({
         dietMeal_id: dietMeal_id,
        user_id : req.userInfo._id,
-       dietNames: dietNames,
     })
-    console.log(sendDietData)
+    console.log("b")
+
 
     sendDietData.save()
     .then(function () {
@@ -25,6 +22,12 @@ router.post("/send/dietMeal_id", auth.verifyAdmin, async(req, res)=>{
       })
 })
 
+router.get("/get/all/sendDiet", auth.verifyUser,async (req, res)=>{
+  const sendDietData = await SendDiet.find()
+  res.json({success:true,message:"get all details",data:sendDietData})
+}
+);
+
+module.exports = router;
 
 
-module.exports = SendDiet;
