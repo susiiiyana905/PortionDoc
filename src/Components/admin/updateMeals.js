@@ -123,7 +123,6 @@ const UpdateMeal = () => {
     mealData.append("mealName", mealName);
     mealData.append("mealPrice", mealPrice);
     mealData.append("mealDescription", mealDescription);
-    mealData.append("time", time);
     mealData.append("mealCategory", mealCategory);
     mealData.append("calory", calory);
     mealData.append("difficulty", difficulty);

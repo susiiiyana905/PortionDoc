@@ -167,7 +167,9 @@ class Mid extends Component {
           <Route path="/add" element={<AddDiet></AddDiet>}></Route>
 
           <Route path="/viewDietRequest" element={<Table></Table>}></Route>
-          <Route path="/updateDiet" element={<UpdateDiet></UpdateDiet>}></Route>
+          <Route path="/updateDiet/:did" element={
+          <AdminPrivateRoute>
+          <UpdateDiet></UpdateDiet></AdminPrivateRoute>}></Route>
           <Route
             path="/requestDiet"
             element={<RequestDietary></RequestDietary>}
