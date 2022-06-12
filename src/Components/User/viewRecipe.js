@@ -110,9 +110,11 @@ const ViewRecipe = () => {
         </div>
 
 
+
             <h5 class="card-title" style={{ fontSize: "45px" }}>
               Ingredients
             </h5>
+
 
             {ingredientData.map((singleData) => {
               return (
@@ -181,3 +183,5 @@ const ViewRecipe = () => {
 };
 
 export default ViewRecipe;
+
+
