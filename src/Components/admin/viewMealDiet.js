@@ -7,7 +7,7 @@ import AdminDashboard from "../adminDashbaord";
 import { findRenderedComponentWithType } from "react-dom/test-utils";
 
 
-const ViewDietRequest=()=>{
+const ViewMealDiet=()=>{
 
   return (
     <>
@@ -16,6 +16,20 @@ const ViewDietRequest=()=>{
       <br />
     
       <br />
+      <div className="container">
+       
+          <button
+            className="btn btn-primary mb-2"
+            style={{
+              backgroundColor: "#FF7800",
+              border: "none",
+              float: "right",
+            }}
+          >
+            Add New Meal
+          </button>
+       
+      </div>
       <div style={{ marginTop: "50px" }}>
         <div className="container">
           <div className="row">
@@ -33,22 +47,22 @@ const ViewDietRequest=()=>{
                             Name
                           </th>
                           <th scope="col" colSpan="6">
-                            Gender
+                            Price
                           </th>
                           <th scope="col" colSpan="6">
-                            Height
-                          </th>
-                          <th scope="col " colSpan="6">
-                            Weight
-                          </th>
-                          <th scope="col " colSpan="6">
                             Preferences
                           </th>
                           <th scope="col " colSpan="6">
-                            Food Allergy
+                            Time
+                          </th>
+                          <th scope="col " colSpan="6">
+                            Calory
+                          </th>
+                          <th scope="col " colSpan="6">
+                            Difficulty
                           </th>
                           <th scope="col" colSpan="6">
-                            Approve
+                            Edit
                           </th>
                         </tr>
                       </thead>
@@ -73,27 +87,39 @@ const ViewDietRequest=()=>{
                                 <div style={{ float: "left" }}>
                                  
                                     <button
-                                      className="btn btn-success mb-2"
+                                      className="btn btn-primary mb-2"
                                       style={{
-                                        backgroundColor: "green",
+                                        backgroundColor: "#FF7800",
                                         border: "none",
                                       }}
                                     >
-                                      Accept
+                                      Update
                                     </button>
                                  
 
                                   <button
-                                    className="btn btn-warning mb-2"
+                                    className="btn btn-primary mb-2"
                                     style={{
-                                      backgroundColor: "red",
+                                      backgroundColor: "#FF7800",
                                       color:"white",
                                       border: "none",
                                       marginLeft: "10px",
                                     }}
                                     
                                   >
-                                    Deny
+                                    Delete
+                                  </button>
+
+                                  <button
+                                    className="btn btn-primary mb-2"
+                                    style={{
+                                      backgroundColor: "#FF7800",
+                                      border: "none",
+                                      marginLeft: "10px",
+                                    }}
+                                
+                                  >
+                                    Add Ingredients
                                   </button>
 
                                   
@@ -116,4 +142,4 @@ const ViewDietRequest=()=>{
   );
 }
 
-export default ViewDietRequest;
+export default ViewMealDiet;

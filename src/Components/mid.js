@@ -34,6 +34,8 @@ import CategoryMeal from "./User/categoryMealView";
 import ViewDietMeals from './admin/viewDietMeal';
 import ViewUserDietMeal from './User/viewUserDietMeal';
 import Cart from './User/cart';
+import ViewDietRequest from './admin/viewDietRequest';
+import ViewMealDiet from './admin/viewMealDiet';
 
 class Mid extends Component {
   render() {
@@ -166,7 +168,7 @@ class Mid extends Component {
 
           <Route path="/add" element={<AddDiet></AddDiet>}></Route>
 
-          <Route path="/viewDietRequest" element={<Table></Table>}></Route>
+          <Route path="/viewDietRequest" element={<ViewDietRequest></ViewDietRequest>}></Route>
           <Route path="/updateDiet/:did" element={
           <AdminPrivateRoute>
           <UpdateDiet></UpdateDiet></AdminPrivateRoute>}></Route>
@@ -179,6 +181,7 @@ class Mid extends Component {
           <Route path="/viewDietMeal" element={<AdminPrivateRoute><ViewDietMeals></ViewDietMeals></AdminPrivateRoute>}></Route>
           <Route path="/viewUserDietMeal" element={<ViewUserDietMeal></ViewUserDietMeal>}></Route>
           <Route path="/cart" element={<Cart></Cart>}></Route>
+          <Route path="/viewMealDiet" element={<ViewMealDiet></ViewMealDiet>}></Route>
         </Routes>
       </div>
     );
