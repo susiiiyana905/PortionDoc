@@ -8,6 +8,27 @@ import { findRenderedComponentWithType } from "react-dom/test-utils";
 
 
 const ViewDietRequest=()=>{
+  const [dietaryData, setDietaryData] = useState([]);
+  const [message, setMessage] = useState("");
+
+
+  const config = {
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("adminToken"),
+    },
+  };
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:4001/get/all/user/diet", config)
+      .then((result) => {
+        console.log(result.data.data);
+        setDietaryData(result.data.data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }, []);
 
   return (
     <>
@@ -53,21 +74,27 @@ const ViewDietRequest=()=>{
                         </tr>
                       </thead>
                       <tbody>
+                        {dietaryData.map((singleData)=>{
+                          return(
+
                         
                             <tr>
                               <th scope="row"></th>
                               <td>
                                 <img
-                                  src="images/1.png"
+                                  src={
+                                    "http://localhost:4001/user/" +
+                                    singleData.user_id.profile_pic
+                                  }
                                   height="100px"
                                 />
                               </td>
-                              <td colSpan="6">Isha Pokharel</td>
-                              <td colSpan="6"> Female</td>
-                              <td colSpan="6"> 5.11</td>
-                              <td colSpan="6">45kg</td>
-                              <td colSpan="6"> Weight Gain</td>
-                              <td colSpan="6"> Meat</td>
+                              <td colSpan="6">{singleData.user_id.firstName}</td>
+                              <td colSpan="6">{singleData.gender}</td>
+                              <td colSpan="6"> {singleData.height}</td>
+                              <td colSpan="6">{singleData.weight}</td>
+                              <td colSpan="6"> {singleData.preference}</td>
+                              <td colSpan="6">{singleData.foodAllergies}</td>
 
                               <td colSpan="6">
                                 <div style={{ float: "left" }}>
@@ -100,7 +127,9 @@ const ViewDietRequest=()=>{
                                 </div>
                               </td>
                             </tr>
-                          
+                            );
+
+                          })}
                       
                       </tbody>
                     </table>

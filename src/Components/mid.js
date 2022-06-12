@@ -36,6 +36,7 @@ import Cart from './User/cart';
 import PreferenceCategory from './admin/preferenceCategory';
 import ViewDietRequest from './admin/viewDietRequest';
 import ViewMealDiet from './admin/viewMealDiet';
+import AddDietIngredient from './admin/dietIngredient';
 
 
 class Mid extends Component {
@@ -186,6 +187,12 @@ class Mid extends Component {
                     <Route path ="/preferenceCategory" element={<PreferenceCategory></PreferenceCategory>}></Route>
 
           <Route path="/viewMealDiet" element={<ViewMealDiet></ViewMealDiet>}></Route>
+
+          <Route path="/diet/addIngredients" element={
+          <AdminPrivateRoute>
+          <AddDietIngredient></AddDietIngredient>
+          </AdminPrivateRoute>
+          }></Route>
 
         </Routes>
         
