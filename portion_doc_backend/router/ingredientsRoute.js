@@ -6,18 +6,18 @@ const Ingredients = require("../models/ingredientsModel");
 const upload = require("../uploads/ingredientsFile");
 
 router.post(
-  "/add/ingredients/:meals_id",
+  "/add/ingredients",
   auth.verifyAdmin,
   upload.single("image"),
   async (req, res) => {
     if (req.file === undefined) {
-      return res.status(400).json({ msg: "Invalid!!" });
+      return res.status(400).json({ message: "Invalid!!" });
     }
 
     const name = req.body.name;
     const quantity = req.body.quantity;
     const image = req.file.filename;
-    const meals_id = req.params.meals_id;
+    const meals_id = req.body.meals_id;
 
     const ingredientsData = new Ingredients({
       name: name,
@@ -33,7 +33,7 @@ router.post(
           .send({ success: true, message: "Ingredients added successfully!" });
       })
       .catch(function (e) {
-        res.status(400).send({ message: e });
+        res.status(400).send({ message: "Empty field found. Fill up the form completely!!" });
       });
   }
 );
@@ -53,13 +53,11 @@ router.get("/get/all/ingredients/:mid", auth.verifyAdmin, function (req, res) {
   const meals_id = req.params.mid;
   Ingredients.find({ meals_id: meals_id })
     .then(function (result) {
-      res
-        .status(200)
-        .send({
-          success: true,
-          data: result,
-          message: "Ingredients details by Id",
-        });
+      res.status(200).send({
+        success: true,
+        data: result,
+        message: "Ingredients details by Id",
+      });
     })
     .catch(function () {
       res.status(400).send({ message: "Something went wrong!" });
@@ -73,13 +71,11 @@ router.get(
     const meals_id = req.params.mid;
     Ingredients.find({ meals_id: meals_id })
       .then(function (result) {
-        res
-          .status(200)
-          .send({
-            success: true,
-            data: result,
-            message: "Ingredients details by Id",
-          });
+        res.status(200).send({
+          success: true,
+          data: result,
+          message: "Ingredients details by Id",
+        });
       })
       .catch(function () {
         res.status(400).send({ message: "Something went wrong!" });
