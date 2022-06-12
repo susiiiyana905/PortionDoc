@@ -52,8 +52,6 @@ const SendDiet = require("./router/sendDietRoute");
 app.use(SendDiet);
 
 
-
-
 app.use(express.static(__dirname+'/images/'));
 
 app.listen(4001);
