@@ -33,10 +33,12 @@ import CategoryMeal from "./User/categoryMealView";
 import ViewDietMeals from './admin/viewDietMeal';
 import ViewUserDietMeal from './User/viewUserDietMeal';
 import Cart from './User/cart';
-import PreferenceCategory from './admin/preferenceCategory';
+
 import ViewDietRequest from './admin/viewDietRequest';
 import ViewMealDiet from './admin/viewMealDiet';
 import AddDietIngredient from './admin/dietIngredient';
+import ShowPreferenceCategory from './admin/preferenceCategory';
+import AddPreferenceCategory from './admin/addPreferenceCategory';
 
 
 class Mid extends Component {
@@ -168,25 +170,37 @@ class Mid extends Component {
             }
           ></Route>
 
-          <Route path="/add" element={<AddDiet></AddDiet>}></Route>
+          <Route path="/add" element={
+          <AdminPrivateRoute>
+          <AddDiet></AddDiet>
+          </AdminPrivateRoute>
+          }></Route>
 
-          <Route path="/viewDietRequest" element={<ViewDietRequest></ViewDietRequest>}></Route>
+          <Route path="/viewDietRequest" element={
+          <AdminPrivateRoute>
+            <ViewDietRequest></ViewDietRequest>
+            </AdminPrivateRoute>}>
+            </Route>
+
           <Route path="/updateDiet/:did" element={
           <AdminPrivateRoute>
-          <UpdateDiet></UpdateDiet></AdminPrivateRoute>}></Route>
+          <UpdateDiet></UpdateDiet>
+          </AdminPrivateRoute>}>
+          </Route>
+
           <Route
             path="/requestDiet"
-            element={<RequestDietary></RequestDietary>}
+            element={<UserPrivateRoute><RequestDietary></RequestDietary></UserPrivateRoute>}
           ></Route>
-          <Route path="/orderMeal" element={<OrderMeal></OrderMeal>}></Route>
+          <Route path="/orderMeal" element={<UserPrivateRoute><OrderMeal></OrderMeal></UserPrivateRoute>}></Route>
           <Route path="/categoryMeals/:category" element={<CategoryMeal></CategoryMeal>}></Route>
 
-          <Route path="/viewDietMeal" element={<ViewDietMeals></ViewDietMeals>}></Route>
-                    <Route path="/viewUserDietMeal" element={<ViewUserDietMeal></ViewUserDietMeal>}></Route>
-                    <Route path="/cart" element={<Cart></Cart>}></Route>
-                    <Route path ="/preferenceCategory" element={<PreferenceCategory></PreferenceCategory>}></Route>
-
-          <Route path="/viewMealDiet" element={<ViewMealDiet></ViewMealDiet>}></Route>
+          <Route path="/viewDietMeal" element={<AdminPrivateRoute><ViewDietMeals></ViewDietMeals></AdminPrivateRoute>}></Route>
+          <Route path="/viewUserDietMeal" element={<UserPrivateRoute><ViewUserDietMeal></ViewUserDietMeal></UserPrivateRoute>}></Route>
+          <Route path="/cart" element={<UserPrivateRoute><Cart></Cart></UserPrivateRoute>}></Route>
+          <Route path ="/showPreferenceCategory" element={<AdminPrivateRoute><ShowPreferenceCategory></ShowPreferenceCategory></AdminPrivateRoute>}></Route>
+          <Route path ="/addPreferenceCategory" element={<AdminPrivateRoute><AddPreferenceCategory></AddPreferenceCategory></AdminPrivateRoute>}></Route>
+          <Route path="/viewMealDiet" element={<AdminPrivateRoute><ViewMealDiet></ViewMealDiet></AdminPrivateRoute>}></Route>
 
           <Route path="/diet/addIngredients" element={
           <AdminPrivateRoute>

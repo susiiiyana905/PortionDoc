@@ -140,9 +140,9 @@ const AddDiet = () => {
                 value={preference}
                 onChange={(e) => setPreference(e.target.value)}
               >
-                <option value="Weight Loss">Veg</option>
-                <option value="Weight Gain">Non-Veg</option>
-                <option value="Weight Loss">Vegan</option>
+                <option value="Weight Loss">Weight Loss</option>
+                <option value="Weight Gain">Weight Gain</option>
+                <option value="Weight Loss">Muscle Gain</option>
               </select>
             </div>
           </div>
