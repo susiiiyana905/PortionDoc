@@ -29,6 +29,19 @@ const AdminDashboard = ({children}) => {
                             </li>
                         </ul>
                     </li>
+
+                    <li>
+                        <Link to="#submenu1" data-bs-toggle="collapse" className="nav-link px-0 align-middle">
+                            <i className="fs-4 bi-speedometer2"></i> <span className="ms-1 d-none d-sm-inline">Preference Category</span> </Link>
+                        <ul className="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+                            <li className="w-100">
+                                <Link to="/addPreferenceCategory" className="nav-link px-0"> <span className="d-none d-sm-inline">Add Category</span> </Link>
+                            </li>
+                            <li>
+                                <Link to ="/showPreferenceCategory" className="nav-link px-0"> <span className="d-none d-sm-inline">View Category</span> </Link>
+                            </li>
+                        </ul>
+                    </li>
                     <li>
                         <Link to="" className="nav-link px-0 align-middle">
                             <i className="fs-4 bi-table"></i> <span className="ms-1 d-none d-sm-inline">Orders</span></Link>
