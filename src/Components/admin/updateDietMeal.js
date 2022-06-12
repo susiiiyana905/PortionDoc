@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import AdminDashboard from "../adminDashbaord";
 const UpdateDiet =()=> {
   const [dietImage, setDietImage] = useState("");
@@ -16,9 +16,10 @@ const UpdateDiet =()=> {
   const [response, setResponse] = useState("");
   const [sResponse, setSResponse] = useState("");
   const [_id, setID] = useState("");
+  const [ingredientData, setIngredientData] = useState([]);
   const [dietMealData, setDietMealData] = useState("");
   const [message, setMessage] = useState("");
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const config = {
     headers: {
@@ -67,6 +68,33 @@ const UpdateDiet =()=> {
     });
   },[]);
 
+  useEffect(() => {
+    axios
+      .get("http://localhost:4001/get/all/dietingredients/" + did, config)
+      .then((result) => {
+        // console.log(result.data.data.name);
+        setIngredientData(result.data.data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }, []);
+
+  const deleteDietIngredient = (diid) => {
+    axios
+      .delete("http://localhost:4001//delete/dietingredient/" + diid, config)
+      .then((result) => {
+        // axios.get(`http://localhost:4001/get/all/ingredients/`+mid, config)
+        // .then((result1)=> {
+        //   setIngredientData(result.data.data);
+        // })
+        
+      })
+      .catch((e)=>{
+        setMessage(e.response.data.message);
+      });
+  };
+
   const updateDietMeal = (e) =>{
     e.preventDefault();
 
@@ -98,9 +126,34 @@ const UpdateDiet =()=> {
       }
     })
     .catch(e);
+    navigate("/viewMealDiet")
+  };
 
+  const updateDietImage = (e) => {
+    e.preventDefault();
 
-  }
+    const dietData = new FormData();
+    dietData.append("dietImage", dietImage);
+
+    axios
+      .put("http://localhost:4001/update/preference/image/" + did, dietData, config)
+      .then((result) => {
+        // console.log(result.data)
+        if (result.data.success) {
+          setMessage(result.data.message);
+          axios
+            .get("http://localhost:4001/diet/single/" + did, config)
+            .then((result) => {
+              setDietImage(result.data.data.dietImage);
+            });
+        } else {
+          setMessage("Something is wrong!!!");
+        }
+      })
+      .catch(e);
+  };
+
+  
     return (
         <>
         <AdminDashboard>
@@ -110,16 +163,67 @@ const UpdateDiet =()=> {
 
 
           <form>
-            <div class="form-group row">
-              <label class="col-sm-2 col-form-label">Meal Image</label>
-              <div class="col-sm-10">
-                <input
-                  type="file"
-                  class="form-control"
-                 
-                ></input>
+          <div className="form-group row">
+                <label htmlFor="mealImage" className="col-sm-2 col-form-label">
+                  Meal Image
+                </label>
+                <img
+                  src={"http://localhost:4001/preference/" + dietImage}
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                  height="200px"
+                />
+
+                <div
+                  class="modal fade"
+                  id="exampleModal"
+                  tabindex="-1"
+                  aria-labelledby="exampleModalLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                          Modal title
+                        </h5>
+                        <button
+                          type="button"
+                          class="close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        >
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <input
+                          type="file"
+                          className="form-control"
+                          onChange={(e) => setDietImage(e.target.files[0])}
+                        />
+                      </div>
+                      <div class="modal-footer">
+                        <button
+                          type="button"
+                          class="btn btn-secondary"
+                          data-bs-dismiss="modal"
+                        >
+                          Close
+                        </button>
+                        <button
+                          type="submit"
+                          class="btn btn-primary"
+                          data-bs-dismiss="modal"
+                          onClick={updateDietImage}
+                        >
+                          Save changes
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
             <div class="form-group row">
               <label class="col-sm-2 col-form-label">Meal Name</label>
               <div class="col-sm-10">
@@ -203,22 +307,6 @@ const UpdateDiet =()=> {
                   />
                 </div>
               </div>
-            <div class="form-group row">
-              <label class="col-sm-2 col-form-label">Steps</label>
-  
-              <div class="col-sm-10">
-                <textarea
-                  type="text"
-                  class="form-control"
-                  style={{ float: "left", width: "880px", marginRight: "5px" }}
-                  
-                ></textarea>
-                <span
-                  className="add-report bi bi-plus-circle-fill fw-bold me-2 fa-2x"
-                  
-                />
-              </div>
-            </div>
             <div>
           <label>Ingredient</label>
           <table className="table">
@@ -236,18 +324,23 @@ const UpdateDiet =()=> {
               </tr>
             </thead>
             <tbody>
+              {ingredientData.map((singleData)=>{
+                return(
               <tr>
                 <td>
-                  <img src="images/1.png" height="100px" />
+                  <img src={"http://localhost:4001/dietIngredients/" +
+                                singleData.image}/>
                 </td>
-                <td colSpan="2">Vegetables</td>
-                <td colSpan="2">1kg</td>
+                <td colSpan="2">{singleData.name}</td>
+                <td colSpan="2">{singleData.quantity}</td>
                 <td>
                   <button className="btn btn-primary mb-3">
                     Delete Ingredient
                   </button>
                 </td>
               </tr>
+              );
+            })}
             </tbody>
           </table>
         </div>

@@ -4,10 +4,47 @@ import { Button } from "bootstrap";
 import { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import AdminDashboard from "../adminDashbaord";
-import { findRenderedComponentWithType } from "react-dom/test-utils";
+
 
 
 const ViewMealDiet=()=>{
+  const [dietMealData, setdietMealData] = useState([]);
+  const [message, setMessage] = useState("");
+  const navigate = useNavigate();
+
+    const config = {
+        headers:{
+            Authorization: "Bearer " + localStorage.getItem("adminToken"),
+        }
+    }
+
+    useEffect(() => {
+        axios.get("http://localhost:4001/diet/all",config)
+        .then((result) => {
+            console.log(result.data);
+            setdietMealData(result.data.data);
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+    }, []);
+
+    const deleteDiet= (did) => {
+      axios
+        .delete("http://localhost:4001/diet/delete/" + did, config)
+        .then((result) => {
+          axios.get(`http://localhost:4001/diet/all`, config).then((result1) => {
+            setdietMealData(result1.data.data);
+          });
+       
+        })
+        .catch();
+    };
+
+    const addDietIngredient = (dietMeals_id) =>{
+      localStorage.setItem('dietMeals_id', dietMeals_id);
+      navigate("/diet/addIngredients");
+    }
 
   return (
     <>
@@ -17,7 +54,7 @@ const ViewMealDiet=()=>{
     
       <br />
       <div className="container">
-       
+       <NavLink to = {"/add"}>
           <button
             className="btn btn-primary mb-2"
             style={{
@@ -28,7 +65,7 @@ const ViewMealDiet=()=>{
           >
             Add New Meal
           </button>
-       
+          </NavLink>
       </div>
       <div style={{ marginTop: "50px" }}>
         <div className="container">
@@ -67,25 +104,28 @@ const ViewMealDiet=()=>{
                         </tr>
                       </thead>
                       <tbody>
-                        
-                            <tr>
+                        {dietMealData.map((singleData)=>{
+                          return(
+                            <tr key={singleData._id}>
                               <th scope="row"></th>
                               <td>
                                 <img
-                                  src="images/1.png"
-                                  height="100px"
+                                  src={
+                                    "http://localhost:4001/preference/" +
+                                    singleData.dietImage
+                                  }
                                 />
                               </td>
-                              <td colSpan="6">Isha Pokharel</td>
-                              <td colSpan="6"> Female</td>
-                              <td colSpan="6"> 5.11</td>
-                              <td colSpan="6">45kg</td>
-                              <td colSpan="6"> Weight Gain</td>
-                              <td colSpan="6"> Meat</td>
+                              <td colSpan="6">{singleData.dietName}</td>
+                              <td colSpan="6">{singleData.dietPice}</td>
+                              <td colSpan="6">{singleData.preference}</td>
+                              <td colSpan="6">{singleData.time}</td>
+                              <td colSpan="6"> {singleData.calory}</td>
+                              <td colSpan="6"> {singleData.difficulty}</td>
 
                               <td colSpan="6">
                                 <div style={{ float: "left" }}>
-                                 
+                                 <NavLink to ={"/updateDiet"+singleData._id}>
                                     <button
                                       className="btn btn-primary mb-2"
                                       style={{
@@ -95,7 +135,7 @@ const ViewMealDiet=()=>{
                                     >
                                       Update
                                     </button>
-                                 
+                                    </NavLink>
 
                                   <button
                                     className="btn btn-primary mb-2"
@@ -104,6 +144,9 @@ const ViewMealDiet=()=>{
                                       color:"white",
                                       border: "none",
                                       marginLeft: "10px",
+                                    }}
+                                    onClick={() => {
+                                      deleteDiet(singleData._id);
                                     }}
                                     
                                   >
@@ -117,7 +160,9 @@ const ViewMealDiet=()=>{
                                       border: "none",
                                       marginLeft: "10px",
                                     }}
-                                
+                                    onClick={() => {
+                                      addDietIngredient(singleData._id);
+                                    }}
                                   >
                                     Add Ingredients
                                   </button>
@@ -127,7 +172,8 @@ const ViewMealDiet=()=>{
                               </td>
                             </tr>
                           
-                      
+                          );
+                        })}
                       </tbody>
                     </table>
                   </div>
