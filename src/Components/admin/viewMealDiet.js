@@ -4,55 +4,20 @@ import { Button } from "bootstrap";
 import { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import AdminDashboard from "../adminDashbaord";
-// import Navbar from "./navbar";
+import { findRenderedComponentWithType } from "react-dom/test-utils";
 
-const ViewMeals = () => {
-  const [mealData, setMealData] = useState([]);
-  const [message, setMessage] = useState("");
-  const navigate = useNavigate();
 
-  const config = {
-    headers: {
-      Authorization: "Bearer " + localStorage.getItem("adminToken"),
-    },
-  };
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:4001/meals/all", config)
-      .then((result) => {
-        // console.log(result.data.data);
-        setMealData(result.data.data);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  }, []);
-
-  const deleteMeal = (mid) => {
-    axios
-      .delete("http://localhost:4001/meals/delete/" + mid, config)
-      .then((result) => {
-        axios.get(`http://localhost:4001/meals/all`, config).then((result1) => {
-          setMealData(result1.data.data);
-        });
-        // console.log(result.data);
-      })
-      .catch();
-  };
-
-  const addIngredient = (meals_id) => {
-    localStorage.setItem('meals_id', meals_id);
-    navigate("/addIngredient");
-  };
+const ViewMealDiet=()=>{
 
   return (
     <>
     <AdminDashboard>
     
       <br />
+    
+      <br />
       <div className="container">
-        <NavLink to={"/addMeal"}>
+       
           <button
             className="btn btn-primary mb-2"
             style={{
@@ -63,9 +28,8 @@ const ViewMeals = () => {
           >
             Add New Meal
           </button>
-        </NavLink>
+       
       </div>
-      <br />
       <div style={{ marginTop: "50px" }}>
         <div className="container">
           <div className="row">
@@ -86,7 +50,7 @@ const ViewMeals = () => {
                             Price
                           </th>
                           <th scope="col" colSpan="6">
-                            Category
+                            Preferences
                           </th>
                           <th scope="col " colSpan="6">
                             Time
@@ -103,29 +67,25 @@ const ViewMeals = () => {
                         </tr>
                       </thead>
                       <tbody>
-                        {mealData.map((singleData) => {
-                          return (
-                            <tr key={singleData._id}>
+                        
+                            <tr>
                               <th scope="row"></th>
                               <td>
                                 <img
-                                  src={
-                                    "http://localhost:4001/meal/" +
-                                    singleData.mealImage
-                                  }
+                                  src="images/1.png"
                                   height="100px"
                                 />
                               </td>
-                              <td colSpan="6"> {singleData.mealName}</td>
-                              <td colSpan="6"> {singleData.mealPrice}</td>
-                              <td colSpan="6"> {singleData.mealCategory}</td>
-                              <td colSpan="6">{singleData.time}</td>
-                              <td colSpan="6"> {singleData.calory}</td>
-                              <td colSpan="6"> {singleData.difficulty}</td>
+                              <td colSpan="6">Isha Pokharel</td>
+                              <td colSpan="6"> Female</td>
+                              <td colSpan="6"> 5.11</td>
+                              <td colSpan="6">45kg</td>
+                              <td colSpan="6"> Weight Gain</td>
+                              <td colSpan="6"> Meat</td>
 
                               <td colSpan="6">
                                 <div style={{ float: "left" }}>
-                                  <NavLink to={"/updateMeal/" + singleData._id}>
+                                 
                                     <button
                                       className="btn btn-primary mb-2"
                                       style={{
@@ -135,18 +95,17 @@ const ViewMeals = () => {
                                     >
                                       Update
                                     </button>
-                                  </NavLink>
+                                 
 
                                   <button
                                     className="btn btn-primary mb-2"
                                     style={{
                                       backgroundColor: "#FF7800",
+                                      color:"white",
                                       border: "none",
                                       marginLeft: "10px",
                                     }}
-                                    onClick={() => {
-                                      deleteMeal(singleData._id);
-                                    }}
+                                    
                                   >
                                     Delete
                                   </button>
@@ -158,17 +117,17 @@ const ViewMeals = () => {
                                       border: "none",
                                       marginLeft: "10px",
                                     }}
-                                    onClick={() => {
-                                      addIngredient(singleData._id);
-                                    }}
+                                
                                   >
                                     Add Ingredients
                                   </button>
+
+                                  
                                 </div>
                               </td>
                             </tr>
-                          );
-                        })}
+                          
+                      
                       </tbody>
                     </table>
                   </div>
@@ -181,5 +140,6 @@ const ViewMeals = () => {
       </AdminDashboard>
     </>
   );
-};
-export default ViewMeals;
+}
+
+export default ViewMealDiet;

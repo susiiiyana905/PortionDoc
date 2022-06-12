@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import React from "react"
+import Header from "../header";
+import Footer from "../footer";
 
 const ViewProfile = () => {
   const [profile_pic, setProfilePic] = useState("");
@@ -48,18 +50,8 @@ const ViewProfile = () => {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg ">
-        <i
-          className="fas fa-solid fa-envelope fa-lg"
-          style={{ height: "40px", color: "white" }}
-        ></i>
-        <p className="i-1">portiondoc@gmail.com</p>
-        <i
-          className="fas fa-solid fa-phone"
-          style={{ height: "40px", marginLeft: "100px", color: "white" }}
-        ></i>
-        <p className="i-1">+977 983142567</p>
-      </nav>
+ 
+      <Header></Header>
       <div>
         <div className="container" style={{ marginBottom: "50px" }}>
           <h3 className="mt-5 mb-3" style={{ textAlign: "center" }}>
@@ -189,6 +181,7 @@ const ViewProfile = () => {
           </div>
         </div>
       </div>
+      <Footer></Footer>
     </>
   );
 };

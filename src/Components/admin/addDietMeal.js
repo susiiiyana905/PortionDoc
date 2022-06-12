@@ -228,6 +228,7 @@ const AddDiet = () => {
             <button type="submit" className="btn btn-primary addMeal"
             onClick={addDietMeal}
             >
+            
               Add Meal
             </button>
           </p>
