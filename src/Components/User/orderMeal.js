@@ -1,11 +1,77 @@
 import axios from "axios";
-import React, { Component } from "react";
+import React, { Component, useEffect, useState } from "react";
 import Header from "../header";
 
 
 
 const OrderMeal = () => {
+  const [delivery, setDelivery] = useState("");
+  const [total,setTotal] = useState("");
+  const [address, setAddress] = useState("");
+  const [phone_no, setPhoneNo] = useState("");
+  const [message, setMessage] = useState("");
+  const [sMessage, setSMessage] = useState("");
+  const [_id, setID] = useState("");
 
+  const config = {
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("userToken"),
+    },
+  };
+  
+  const sendOrder = (e) => {
+    e.preventDefault();
+
+    const orderData = new FormData();
+    orderData.append("delivery", delivery);
+    orderData.append("total",total);
+
+    axios.post("http://localhost:4001/order/insert", orderData, config)
+    .then((result) => {
+      if(result.data.success){
+        setSMessage(result.data.message);
+      }
+    })
+    .catch((e) => {
+      setMessage(e.response.data.message);
+    });
+  }
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:4001/profile", config)
+      .then((result) => {
+        console.log(result.data);
+        setAddress(result.data.address);
+        setPhoneNo(result.data.phone_no);
+        setID(result.data._id);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }, []);
+
+  // const editProfile = (e) => {
+  //   e.preventDefault();
+  //   const profileData = {
+  //     phone_no,
+  //     address,
+  //   };
+  //   axios
+  //     .put("http://localhost:4001/user/update", profileData, config)
+  //     // .then(result=>console.log(result))
+  //     .then((result) => {
+  //       if (result.data.success) {
+  //         setMessage(result.data.message);
+  //         navigate("/viewProfile");
+  //       } else {
+  //         setMessage(e);
+  //       }
+  //     })
+  //     .catch((e)=>{
+  //       setMessage(e.response.data.message);
+  //     });
+  // };
   return (
     <>
       <Header></Header>
@@ -22,11 +88,13 @@ const OrderMeal = () => {
                   style={{ backgroundColor: "blue" }}
                   name="exampleRadios"
                   id="exampleRadios1"
-                  value="Inside Ringroad"
+                  // value="Inside Ringroad"
+                  value={delivery}
+                  onChange={(e) => {
+                    setDelivery(e.target.value);
+                  }}
                   checked
-                  // onChange={(e) =>
-                  //   this.setState({ delivery: e.target.value })
-                  // }
+               
                 />
                 <label class="form-check-label" for="exampleRadios1">
                   Inside Valley
@@ -38,10 +106,12 @@ const OrderMeal = () => {
                   type="radio"
                   name="exampleRadios"
                   id="exampleRadios2"
-                  value="Outside Ringroad"
-                  // onChange={(e) =>
-                  //   this.setState({ delivery: e.target.value })
-                  // }
+                  // value="Outside Ringroad"
+                  value={delivery}
+                  onChange={(e) => {
+                    setDelivery(e.target.value);
+                  }}
+                
                 />
                 <label class="form-check-label" for="exampleRadios2">
                   Outside Valley
@@ -58,6 +128,8 @@ const OrderMeal = () => {
                   id="exampleInputEmail1"
                   aria-describedby="emailHelp"
                   placeholder="Enter your address"
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
                 />
               </div>
               <div class="form-group">
@@ -73,6 +145,8 @@ const OrderMeal = () => {
                   class="form-control"
                   id="exampleInputPassword1"
                   placeholder="Enter your phone number"
+                  value={phone_no}
+                  onChange={(e) => setPhoneNo(e.target.value)}
                 />
               </div>
             </form>
@@ -123,6 +197,7 @@ const OrderMeal = () => {
                 className="btn btn-primary m-4" 
                 // onClick={() => this.checkout(total)}
                 style={{ float: "right", backgroundColor: "#FF7800", border:"none" }}
+              onClick={sendOrder}
               >
                 Proceed To Payment
               </button>

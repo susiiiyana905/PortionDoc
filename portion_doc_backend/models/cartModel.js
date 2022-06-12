@@ -7,10 +7,10 @@ const cartSchema = new mongoose.Schema({
       meals_id : {
         type : mongoose.Types.ObjectId, ref : "Meals"
     },
-  quantity: {
+   serving: {
     type: Number,
     required: true,
-    default: 1,
+    default: 2,
   },
   total: {
     type: Number,

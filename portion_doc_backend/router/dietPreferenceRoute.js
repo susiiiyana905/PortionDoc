@@ -1,13 +1,12 @@
 const express = require("express");
 const router = new express.Router();
-
 const auth = require("../auth/auth");
 const upload = require("../uploads/dietPreferenceFile");
 const { fstat } = require("fs");
 const dietPreference = require("../models/dietPreferenceModels");
 
 
-router.post("/add/dietPreference", auth.verifyAdmin,upload.single('dietImage'), async(req,res)=>{
+router.post("/add/dietMeal", auth.verifyAdmin,upload.single('dietImage'), async(req,res)=>{
     if(req.file===undefined){
         return res.status(400).json({msg: "Invalid!!"})
     }
@@ -105,8 +104,76 @@ router.put("/update/preference/image/:did", auth.verifyAdmin, upload.single("die
         .catch(function(){
             res.status(400).send({message: "Something went wrong!"})
         })
+    }) 
+    router.put("/update/preference/image/:did", auth.verifyAdmin, upload.single("dietImage"), async(req,res)=>{
+        const did = req.params.did;
+    
+        if(req.file === undefined){
+            return res.json({message: "Invalid!!"})
+        }
+    
+        const dietImage = req.file.filename;
+    
+        dietPreference.findOne({_id: did})
+        .then((preferenceData)=>{
+            if(!preferenceData.dietImage){
+                const preference_image_path = `./uploads/preference/${preferenceData.preferenceImage}`;
+                fs.unlinkSync(preference_image_path);
+            }
+    
+            dietPreference.updateOne({_id: did}, {
+                dietImage: dietImage
+            })
+            .then(function(){
+                res.status(200).send({success: true, message: "preference meal Image Updated!"});
+            })
+            .catch(function(){
+                res.status(400).send({message: e});
+            });
+        })
+        .catch((e)=>{
+            res.status(400).send({message: e});
+        })
     })
     
+    
+router.put("/update/dietMeals/:did", auth.verifyAdmin, upload.single("dietImage"), async(req,res)=>{
+    const did = req.params.did;
+    const dietName = req.body.dietName;
+    const dietPrice = req.body.dietPrice;
+    const dietDescription = req.body.dietDescription;
+    const steps = req.body.steps;
+    const time = req.body.time;
+    const calory = req.body.calory;
+    const preference= req.body.preference;
+    const difficulty = req.body.difficulty;
+
+    dietPreference.findOne({_id: did})
+    .then((dietData)=>{
+
+        dietPreference.updateOne({_id:did}, {
+            dietName: dietName,
+            dietPrice: dietPrice,
+            dietDescription: dietDescription,
+            steps:steps,
+            time: time,
+            calory:calory,  
+            preference:preference,
+            difficulty: difficulty
+        })
+        .then(function(){
+            res.status(200).send({success:true, message: "Meal details has been updated!"})
+        })
+        .catch(function(){
+            res.status(400).send({message: e})
+        });
+    })
+    .catch((e)=>{
+        res.status(400).send({message:e });
+    })
+})
+
+  
     module.exports = router;
 
  
