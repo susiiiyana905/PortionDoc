@@ -49,7 +49,6 @@ const AddMeal = () => {
 
   const addMeal = (e) => {
     e.preventDefault();
-    const mealNameRegex = new RegExp('^[a-zA-Z0-9]+$');
     const priceRegex = new RegExp('/^(\d+(\.\d+)?)$/');
     if (
       mealName.trim() === "" ||
@@ -62,10 +61,7 @@ const AddMeal = () => {
     ) {
       setMessage("Empty field found. Fill up the form completely.");
       return;
-    }  else if (!mealNameRegex.test(mealName)) {
-      setMessage("Special characters and white spaces not allowed in name.");
-      return;
-    }
+    } 
     //  else if (!priceRegex.test(mealPrice)) {
     //   setMessage("Invalid meal price.");
     //   return;

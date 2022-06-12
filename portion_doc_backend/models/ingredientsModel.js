@@ -3,15 +3,15 @@ const mongoose = require('mongoose');
 const ingredientsSchema = new mongoose.Schema({
     name: {
         type: String,
-        default: ''
+        required: true
     },
     quantity: {
         type: String,
-        default: ''
+        required: true
     },
     image: {
         type: String,
-        default: ''
+        required: true
     },
     meals_id : {
         type : mongoose.Types.ObjectId, ref : "Meals"
