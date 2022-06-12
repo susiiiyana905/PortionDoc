@@ -55,8 +55,6 @@ const DietIngredients =  require("./router/dietIngredientsRoute");
 app.use(DietIngredients);
 
 
-
-
 app.use(express.static(__dirname+'/images/'));
 
 app.listen(4001);
