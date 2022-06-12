@@ -27,22 +27,22 @@ const Table = () => {
   return (
     <>
     <AdminDashboard>
-      <div>
-        <div class="ip">
+      <div className='container'>
+        <div className="ip">
           <p id="iq">Images</p>
-          <p class="i0">Name</p>
-          <p class="ir">Gender</p>
-          <p class="ir">Height</p>
-          <p class="ir">Weight</p>
-          <p class="ir">Prefereces</p>
-          <p class="ir">Food Allergy</p>
-          <p class="ir">Approve</p>
+          <p className="i0">Name</p>
+          <p className="ir">Gender</p>
+          <p className="ir">Height</p>
+          <p className="ir">Weight</p>
+          <p className="ir">Prefereces</p>
+          <p className="ir">Food Allergy</p>
+          <p className="ir">Approve</p>
         </div>
 
         <hr id="hr"></hr>
         {dietaryData.map((singleData) => {
           return (
-            <div class="ip">
+            <div className="ip">
               <div>
                 <img
                   src={
@@ -52,15 +52,15 @@ const Table = () => {
                   id="img"
                 ></img>
               </div>
-              <p class="iz">{singleData.user_id.firstName}</p>
-              <p class="i1">{singleData.gender}</p>
-              <p class="i2">{singleData.height}</p>
-              <p class="i3">{singleData.weight}</p>
-              <p class="i4">{singleData.preference}</p>
-              <p class="i5">{singleData.foodAllergies}</p>
+              <p className="iz">{singleData.user_id.firstName}</p>
+              <p className="i1">{singleData.gender}</p>
+              <p className="i2">{singleData.height}</p>
+              <p className="i3">{singleData.weight}</p>
+              <p className="i4">{singleData.preference}</p>
+              <p className="i5">{singleData.foodAllergies}</p>
               <div>
-                <button class="acc">Accept</button>
-                <button class="dcc">Decline</button>
+                <button className="acc">Accept</button>
+                <button className="dcc">Decline</button>
               </div>
             </div>
           );

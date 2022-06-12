@@ -65,9 +65,9 @@ const ViewRecipe = () => {
             style={{ height: "500px" }}
           ></img>
         </div>
-        <div class="container card">
-          <div class="card-body">
-            <h5 class="card-title" style={{ fontSize: "55px" }}>
+        <div className="container card">
+          <div className="card-body">
+            <h5 className="card-title" style={{ fontSize: "55px" }}>
               {mealName}
             </h5>
             <hr />
@@ -81,48 +81,57 @@ const ViewRecipe = () => {
               <label>Cooking Difficulty: {difficulty}</label>
             </div>
           </div>
-        </div>
-        <div
-          class="container card text-align-center"
-          style={{ marginTop: "10px" }}
-        >
-          <div class="card-body">
-          <div id="front">
-          <div>
-          <h5 class="card-title" style={{ fontSize: "45px" }}>
-              Ingredients
-            </h5>
-          </div>
-          <div id="two">
-          <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
-            <h6 style={{marginRight:"20px", marginTop:"15px"}}>Serving Amount</h6>
-            <button onClick={()=>{setServing(1)}} type="button" class="btn btn-success serving">2</button>
-            <button onClick={()=>{setServing(2)}} type="button" class="btn btn-success serving">4</button>
-          </div>
-          </div>
-        </div>
-            <h5 class="card-title" style={{ fontSize: "45px" }}>
-              Ingredients
-            </h5>
-            {ingredientData.map((singleData) => {
-              return (
-                <div class=" mb-3">
-                  <div class="row no-gutters">
-                    <div>
-                      <img
-                        className="rounded-circle"
-                        src={
-                          "http://localhost:4001/ingredients/" +
-                          singleData.image
-                        }
-                        style={{ height: "70px", width:"70px" }}
-                      ></img>
-                    </div>
-                    <div class="col-md-4 ml-3">
-                      <div class="body">
-                        <label className="m-0 mt-3">{singleData.quantity*serving}</label>
-                        <br/>
-                        <label className="m-0">{singleData.name}</label>
+          <div
+            className="container card text-align-center"
+            style={{ marginTop: "10px" }}
+          >
+            <div className="card-body">
+              <div id="front">
+                <div>
+                  <h5 className="card-title" style={{ fontSize: "45px" }}>
+                    Ingredients
+                  </h5>
+                </div>
+                <div id="two">
+                  <div
+                    className="btn-group btn-group-lg"
+                    role="group"
+                    aria-label="Basic example"
+                  >
+                    <h6 style={{ marginRight: "20px" }}>Serving Amount</h6>
+                    <button type="button" className="btn btn-success serving">
+                      2
+                    </button>
+                    <button type="button" className="btn btn-success serving">
+                      4
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {ingredientData.map((singleData) => {
+                return (
+                  <div className=" mb-3">
+                    <div className="row no-gutters">
+                      <div>
+                        <img
+                          className="rounded-circle"
+                          src={
+                            "http://localhost:4001/ingredients/" +
+                            singleData.image
+                          }
+                          style={{ height: "70px", width: "70px" }}
+                        ></img>
+                      </div>
+                      <div className="col-md-4 ml-3">
+                        <div className="body">
+                          <label className="m-0 mt-3">
+                            {singleData.quantity}
+                          </label>
+                          <br />
+                          <label className="m-0">{singleData.name}</label>
+                        </div>
+
                       </div>
                     </div>
                   </div>

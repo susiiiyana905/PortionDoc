@@ -70,10 +70,10 @@ const ViewMeals = () => {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <div class="container">
-                <div class="row">
+              <div className="container">
+                <div className="row">
                   <div>
-                    <table class="table">
+                    <table className="table">
                       <thead>
                         <tr>
                           <th scope="col" colSpan="6">
