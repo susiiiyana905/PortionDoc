@@ -34,28 +34,28 @@ router.post("/cart/insert",auth.verifyUser, async function(req,res){
         res.json({success: false, message: "Cart Error"});
     }
 })
-// router.get("/cart",auth.verifyUser, async function(req,res){
-//     var cart = await Cart.find({userId : req.userInfo._id}).populate("productId").exec()
-//     res.json({message: "Cart", data: cart});
-// })
-// router.put("/cart/update/:id", auth.verifyUser, async function(req,res){
-//     const cartId = req.params.id;
-//     const quantity = req.body.quantity;
-//     console.log(cartId, quantity);
-//     Cart.findByIdAndUpdate({_id: cartId},{
-//         quantity: quantity,
-//     },{new:true})
-//     .then(function(data){
-//         Product.findById(data.productId).then(k=>{
-//             data.total = parseInt(k.productPrice.split('Rs. ')[1])  * quantity
-//             data.save() 
-//         })
-//         res.json({success: true, message:"Cart Updated"})
-//     })
-//     .catch(function(){
-//         res.json({success: false, message: "Something went wrong"})
-//     })  
-// })
+router.get("/cart",auth.verifyUser, async function(req,res){
+    var cart = await Cart.find({userId : req.userInfo._id}).populate("meals_id", "id mealName").exec()
+    res.json({message: "Cart", data: cart});
+})
+router.put("/cart/update/:id", auth.verifyUser, async function(req,res){
+    const cartId = req.params.id;
+    const quantity = req.body.quantity;
+    console.log(cartId, quantity);
+    Cart.findByIdAndUpdate({_id: cartId},{
+        quantity: quantity,
+    },{new:true})
+    .then(function(data){
+        Product.findById(data.productId).then(k=>{
+            data.total = parseInt(k.productPrice.split('Rs. ')[1])  * quantity
+            data.save() 
+        })
+        res.json({success: true, message:"Cart Updated"})
+    })
+    .catch(function(){
+        res.json({success: false, message: "Something went wrong"})
+    })  
+})
 // router.delete('/cart/delete/:id',auth.verifyUser, function(req,res){
 //     const id = req.params.id;
 //     Cart.deleteOne({_id : id})
