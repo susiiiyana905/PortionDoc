@@ -5,16 +5,19 @@ const auth = require("../auth/auth");
 
 router.post("/preferenceCategory/insert",auth.verifyAdmin, async(req,res)=>{
     const  dietCategoryName = req.body.dietCategoryName;
+    const dietCategory = await PreferenceCategory.findOne({
+        dietCategoryName: dietCategoryName
+    })
+    if(dietCategory) return res.status(400).send({message:'Category already registered with given name'})
     const data = new PreferenceCategory({
         dietCategoryName : dietCategoryName,
         
     })
-
     data.save()
     .then(function(){
         res.status(200).send({success: true, message: "New Category added successfully!"});
     }).catch(function(e){
-        res.status(400).send({message: "Something went wrong!"});
+        res.status(400).send({message:  "Empty Field Found!! Fill the form completely"});
     })
     // return res.json({success: true, message:"Category Inserted Successfully"});
 })

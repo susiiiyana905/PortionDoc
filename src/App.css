@@ -1239,3 +1239,16 @@ background: #ff944d;
 
   margin-left: 60px;
 }
+
+.cart{
+  margin:20px;
+  padding:20px;
+  background-color: orange;
+  color: white;
+  border:orange;
+  font-size: 30px;
+  margin-left:500px;
+  border-radius: 10%;
+  font-size: 20px;
+  margin-top :30px;
+}

@@ -4,6 +4,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 import AdminDashboard from "../adminDashbaord";
+import { NavLink } from "react-router-dom";
 
 
 
@@ -98,7 +99,7 @@ const ViewDietRequest=()=>{
 
                               <td colSpan="6">
                                 <div style={{ float: "left" }}>
-                                 
+                                 <NavLink to ="/showPreferenceCategory">
                                     <button
                                       className="btn btn-success mb-2"
                                       style={{
@@ -108,6 +109,7 @@ const ViewDietRequest=()=>{
                                     >
                                       Accept
                                     </button>
+                                    </NavLink>
                                  
 
                                   <button
