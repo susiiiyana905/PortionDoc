@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const dietSchema = new mongoose.Schema({
+const dietPreferenceMealSchema = new mongoose.Schema({
     dietImage:{
         type: String,
         default:"",
@@ -42,5 +42,5 @@ const dietSchema = new mongoose.Schema({
     }
 
 });
-const dietCategory = mongoose.model("dietCategory",dietSchema);
-module.exports = dietCategory;
+const dietPreferenceMeal = mongoose.model("dietPreferenceMeal",dietPreferenceMealSchema);
+module.exports = dietPreferenceMeal;

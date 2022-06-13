@@ -32,15 +32,14 @@ const OtpPage = () => {
     axios
       .post("http://localhost:4001/user/verify", otpData)
       .then((result) => {
-        console.log(result);
         if (result.status === 200) {
           setMessage("User Verification successfully!!!");
           window.location.replace("/login");
-        } else {
-          setMessage(result.data.message);
-        }
+        } 
       })
-      .catch();
+      .catch((e)=>{
+        setMessage(e.response.data.message);
+      });
   };
 
   return (
@@ -69,14 +68,20 @@ const OtpPage = () => {
           +977 983142567
         </p>
       </nav>
+      <div className="mb-2" style={{color: "red",
+                fontWeight: "bold",
+                marginTop: "100px",}}>   
+                        <div className="success-message text-center">{message}</div>  
+                    </div>
       <div
         className="col-md-6 d-flex justify-content-center mx-auto "
-        style={{ marginTop: "80px" }}
+        style={{ marginTop: "40px" }}
       >
+      
         <div className="panel panel-info">
           <div className="panel-heading">
             <div
-              className="panel-title"
+              className="panel-title text-center"
               style={{
                 fontSize: "30px",
                 fontWeight: "bold",
@@ -108,7 +113,7 @@ const OtpPage = () => {
                     name="authenticate"
                     value="Submit"
                     className="btn-success"
-                    style={{ borderRadius: "10px" }}
+                    style={{ borderRadius: "10px", textAlign:"center" }}
                     onClick={verifyOtp}
                   />
                 </div>

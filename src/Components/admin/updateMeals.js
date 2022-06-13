@@ -1,7 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import React from "react";
+import React from "react"
+import AdminDashboard from "../adminDashbaord";
+
 const UpdateMeal = () => {
   const [mealImage, setMealImage] = useState("");
   const [mealName, setMealName] = useState("");
@@ -85,8 +87,11 @@ const UpdateMeal = () => {
         // .then((result1)=> {
         //   setIngredientData(result.data.data);
         // })
+        
       })
-      .catch();
+      .catch((e)=>{
+        setMessage(e.response.data.message);
+      });
   };
   const updateMealImage = (e) => {
     e.preventDefault();
@@ -119,7 +124,6 @@ const UpdateMeal = () => {
     mealData.append("mealName", mealName);
     mealData.append("mealPrice", mealPrice);
     mealData.append("mealDescription", mealDescription);
-    mealData.append("time", time);
     mealData.append("mealCategory", mealCategory);
     mealData.append("calory", calory);
     mealData.append("difficulty", difficulty);
@@ -147,11 +151,22 @@ const UpdateMeal = () => {
   };
   return (
     <div>
+      <AdminDashboard>
       <div className="container">
         <div className="row">
+        <div
+          className="suggestion-message text-center mb-2"
+          style={{ color: "red", fontWeight: "bold" }}
+        >
+          {message}
+        </div>
           <div className="col-md-2"></div>
           <div className="col-md-8">
+          <div className="mb-2">         
+                        <div className="success-message text-center">{message}</div>  
+                    </div>
             <h2 className="heading-h2-all">Update Meal</h2>
+
             <form id="updateMealForm">
               <div className="form-group row">
                 <label htmlFor="mealImage" className="col-sm-3 col-form-label">
@@ -424,6 +439,7 @@ const UpdateMeal = () => {
           </div>
         </div>
       </div>
+      </AdminDashboard>
     </div>
   );
 };

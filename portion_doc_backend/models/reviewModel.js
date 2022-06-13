@@ -6,11 +6,13 @@ const reviewSchema = new mongoose.Schema({
     },
 
     subject:{
-        type: String
+        type: String,
+        required: true
     },
 
     reviewMessage:{
-        type: String
+        type: String,
+        required: true
     },
     createdAt: {
         type: Date,

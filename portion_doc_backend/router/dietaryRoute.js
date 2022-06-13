@@ -23,7 +23,7 @@ router.post("/request/diet", auth.verifyUser,async(req,res)=>{
     .then(function(){
         res.status(200).send({success: true, message: "Dietary Requested!!"})
     }).catch(function(e){
-        res.status(400).send({message: e});
+        res.status(400).send({message: "Empty field found!! Fill up the form completely."});
     })
 })
 

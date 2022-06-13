@@ -6,9 +6,8 @@ import axios from "axios";
 import AdminDashboard from "../adminDashbaord";
 import { useNavigate } from "react-router-dom";
 
-const AddCategory = () => {
-  const [categoryName, setcategoryName] = useState("");
-  const [categoryImage, setcategoryImage] = useState("");
+const AddPreferenceCategory = () => {
+  const [dietCategoryName, setdietCategoryName] = useState("");
   const [message, setMessage] = useState("");
   const [sMessage, setSMessage] = useState("");
   const navigate = useNavigate();
@@ -18,20 +17,20 @@ const AddCategory = () => {
       Authorization: "Bearer " + localStorage.getItem("adminToken"),
     },
   };
-  const addcategory = (e) => {
+  const addpreferencecategory = (e) => {
     e.preventDefault();
 
-    const categoryData = new FormData();
-    categoryData.append("categoryName", categoryName);
-    categoryData.append("categoryImage", categoryImage);
+    const dietCategoryData = new FormData();
+    dietCategoryData.append("dietCategoryName", dietCategoryName);
+  
 
     axios
-      .post("http://localhost:4001/category/insert", categoryData, config)
+      .post("http://localhost:4001/preferenceCategory/insert", dietCategoryData, config)
       .then((result) => {
         console.log(result.data);
         if (result.data.success) {
           setSMessage(result.data.message);
-          navigate('/viewCategory')
+          navigate('/showPreferenceCategory')
         }
       })
       .catch((e) => {
@@ -63,28 +62,18 @@ const AddCategory = () => {
                     type="text"
                     className="form-control"
                     id="categoryName"
-                    value={categoryName}
+                    value={dietCategoryName}
                     onChange={(e) => {
-                      setcategoryName(e.target.value);
+                      setdietCategoryName(e.target.value);
                     }}
                   />
                 </div>
-
-                <div className="form-group">
-                  <label>Category Image</label>
-                  <input
-                    type="file"
-                    className="form-control"
-                    onChange={(e) => setcategoryImage(e.target.files[0])}
-                  />
-                </div>
-
                 <p>
                   <input
                     type="submit"
                     id="addCategoryButton"
                     className="btn btn-primary"
-                    onClick={addcategory}
+                    onClick={addpreferencecategory}
                   />
                 </p>
               </form>
@@ -100,4 +89,4 @@ const AddCategory = () => {
   );
 };
 
-export default AddCategory;
+export default AddPreferenceCategory;

@@ -1,7 +1,13 @@
-import React from 'react';
+import React from "react";
 import axios from "axios";
-import { Component, useEffect, useState } from "react";
-const Table = () => {
+
+import { useEffect, useState } from "react";
+
+import AdminDashboard from "../adminDashbaord";
+
+
+
+const ViewDietRequest=()=>{
   const [dietaryData, setDietaryData] = useState([]);
   const [message, setMessage] = useState("");
 
@@ -23,49 +29,120 @@ const Table = () => {
         console.log(e);
       });
   }, []);
+
   return (
     <>
-      <div>
-        <div class="ip">
-          <p id="iq">Images</p>
-          <p class="i0">Name</p>
-          <p class="ir">Gender</p>
-          <p class="ir">Height</p>
-          <p class="ir">Weight</p>
-          <p class="ir">Prefereces</p>
-          <p class="ir">Food Allergy</p>
-          <p class="ir">Approve</p>
-        </div>
+    <AdminDashboard>
+    
+      <br />
+    
+      <br />
+      <div style={{ marginTop: "50px" }}>
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12">
+              <div className="container">
+                <div className="row">
+                  <div>
+                    <table className="table">
+                      <thead>
+                        <tr>
+                          <th scope="col" colSpan="6">
+                            Image
+                          </th>
+                          <th scope="col" colSpan="6">
+                            Name
+                          </th>
+                          <th scope="col" colSpan="6">
+                            Gender
+                          </th>
+                          <th scope="col" colSpan="6">
+                            Height
+                          </th>
+                          <th scope="col " colSpan="6">
+                            Weight
+                          </th>
+                          <th scope="col " colSpan="6">
+                            Preferences
+                          </th>
+                          <th scope="col " colSpan="6">
+                            Food Allergy
+                          </th>
+                          <th scope="col" colSpan="6">
+                            Approve
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {dietaryData.map((singleData)=>{
+                          return(
 
-        <hr id="hr"></hr>
-        {dietaryData.map((singleData) => {
-          return (
-            <div class="ip">
-              <div>
-                <img
-                  src={
-                    "http://localhost:4001/user/" +
-                    singleData.user_id.profile_pic
-                  }
-                  id="img"
-                ></img>
-              </div>
-              <p class="iz">{singleData.user_id.firstName}</p>
-              <p class="i1">{singleData.gender}</p>
-              <p class="i2">{singleData.height}</p>
-              <p class="i3">{singleData.weight}</p>
-              <p class="i4">{singleData.preference}</p>
-              <p class="i5">{singleData.foodAllergies}</p>
-              <div>
-                <button class="acc">Accept</button>
-                <button class="dcc">Decline</button>
+                        
+                            <tr>
+                              <th scope="row"></th>
+                              <td>
+                                <img
+                                  src={
+                                    "http://localhost:4001/user/" +
+                                    singleData.user_id.profile_pic
+                                  }
+                                  height="100px"
+                                />
+                              </td>
+                              <td colSpan="6">{singleData.user_id.firstName}</td>
+                              <td colSpan="6">{singleData.gender}</td>
+                              <td colSpan="6"> {singleData.height}</td>
+                              <td colSpan="6">{singleData.weight}</td>
+                              <td colSpan="6"> {singleData.preference}</td>
+                              <td colSpan="6">{singleData.foodAllergies}</td>
+
+                              <td colSpan="6">
+                                <div style={{ float: "left" }}>
+                                 
+                                    <button
+                                      className="btn btn-success mb-2"
+                                      style={{
+                                        backgroundColor: "green",
+                                        border: "none",
+                                      }}
+                                    >
+                                      Accept
+                                    </button>
+                                 
+
+                                  <button
+                                    className="btn btn-warning mb-2"
+                                    style={{
+                                      backgroundColor: "red",
+                                      color:"white",
+                                      border: "none",
+                                      marginLeft: "10px",
+                                    }}
+                                    
+                                  >
+                                    Deny
+                                  </button>
+
+                                  
+                                </div>
+                              </td>
+                            </tr>
+                            );
+
+                          })}
+                      
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
               </div>
             </div>
-          );
-        })}
+          </div>
+        </div>
       </div>
+      </AdminDashboard>
     </>
   );
-};
+}
 
-export default Table;
+export default ViewDietRequest;

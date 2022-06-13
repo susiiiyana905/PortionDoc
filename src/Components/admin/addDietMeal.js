@@ -2,6 +2,7 @@ import axios from "axios";
 import React from 'react';
 import { useState } from "react";
 import { BrowserRouter as Router, Link, useNavigate } from "react-router-dom";
+import AdminDashboard from "../adminDashbaord";
 
 const AddDiet = () => {
   const [dietMealImage, setDietMealImage] = useState("");
@@ -45,6 +46,23 @@ const AddDiet = () => {
 
   const addDietMeal = (e) => {
     e.preventDefault();
+    const priceRegex = new RegExp('^(?:[+0]9)?[0-9]{10}$');
+    if (
+      dietMealName.trim() === "" ||
+      preference.trim() === "" ||
+      dietMealPrice.trim() === "" ||
+      time.trim() === "" ||
+      calory.trim() === "" ||
+      dietMealDescription.trim() === "" ||
+      difficulty.trim() === "" 
+    ) {
+      setMessage("Empty field found. Fill up the form completely.");
+      return;
+    } 
+    // else if (!priceRegex.test(dietMealPrice)) {
+    //   setMessage("Invalid meal price.");
+    //   return;
+    // }
 
     const dietMealData = new FormData();
     dietMealData.append("dietImage", dietMealImage);
@@ -64,16 +82,22 @@ const AddDiet = () => {
         if(result.data.success){
           setMessage(result.data.message);
         }
-        else {
-          setMessage(result.data.message);
-        }
       })
-      .catch(e);
+      .catch((e)=>{
+        setMessage(e.response.data.message);
+      });
   };
 
   return (
     <>
+    <AdminDashboard>
       <div className="container">
+      <div
+          className="suggestion-message text-center mb-2"
+          style={{ color: "red", fontWeight: "bold" }}
+        >
+          {message}
+        </div>
         <h2 className="heading-h2-all">Add Diet Meal</h2>
         <form>
           <div class="form-group row">
@@ -112,9 +136,9 @@ const AddDiet = () => {
                 value={preference}
                 onChange={(e) => setPreference(e.target.value)}
               >
-                <option value="Weight Loss">Veg</option>
-                <option value="Weight Gain">Non-Veg</option>
-                <option value="Weight Loss">Vegan</option>
+                <option value="Weight Loss">Weight Loss</option>
+                <option value="Weight Gain">Weight Gain</option>
+                <option value="Weight Loss">Muscle Gain</option>
               </select>
             </div>
           </div>
@@ -200,11 +224,13 @@ const AddDiet = () => {
             <button type="submit" className="btn btn-primary addMeal"
             onClick={addDietMeal}
             >
+            
               Add Meal
             </button>
           </p>
         </form>
       </div>
+      </AdminDashboard>
     </>
   );
 };

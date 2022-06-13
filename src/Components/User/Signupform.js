@@ -56,13 +56,12 @@ const SignupForm = () => {
         console.log(result);
         if (result.data.success) {
           localStorage.setItem("email", email);
-          // window.location.replace('/otpPage');
           navigate("/otpPage", { state: { email: email } });
-        } else {
-          setMessage();
         }
       })
-      .catch(e);
+      .catch((e)=>{
+        setMessage(e.response.data.message);
+      });
   };
   return (
     <>
@@ -75,7 +74,7 @@ const SignupForm = () => {
           style={{ height: "40px", color: "white", marginTop: "20px" }}
         ></i>
         <p className="i-1" style={{ marginLeft: "10px", marginTop: "10px" }}>
-          portiondoc@gmail.com
+          portiondoc77@gmail.com
         </p>
         <i
           class="fas fa-solid fa-phone"
