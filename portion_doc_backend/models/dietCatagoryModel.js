@@ -3,7 +3,8 @@ const mongoose = require("mongoose")
 const PreferenceCategorySchema = new mongoose.Schema({
     dietCategoryName:{
         type: String,
-        unique :  true
+        unique :  true,
+        required: true
     },
     
     createdAt: {

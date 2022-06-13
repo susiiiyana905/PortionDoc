@@ -159,7 +159,6 @@ const AddMeal = () => {
               <select
                 className="custom-select custom-select-lg"
                 style={{ width: "100%" }}
-                value={mealCategory}
                 onChange={(e) => setMealCategory(e.target.value)}
               >
                 {categoryData.map((category) => {

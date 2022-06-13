@@ -38,12 +38,12 @@ const AdminDashboard = ({children}) => {
                                 <Link to="/addPreferenceCategory" className="nav-link px-0"> <span className="d-none d-sm-inline">Add Category</span> </Link>
                             </li>
                             <li>
-                                <Link to ="/showPreferenceCategory" className="nav-link px-0"> <span className="d-none d-sm-inline">View Category</span> </Link>
+                                <Link to ="/viewPreferenceCategory" className="nav-link px-0"> <span className="d-none d-sm-inline">View Category</span> </Link>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <Link to="" className="nav-link px-0 align-middle">
+                        <Link to="/viewOrders" className="nav-link px-0 align-middle">
                             <i className="fs-4 bi-table"></i> <span className="ms-1 d-none d-sm-inline">Orders</span></Link>
                     </li>
                     <li>

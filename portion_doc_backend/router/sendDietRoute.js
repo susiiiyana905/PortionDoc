@@ -3,12 +3,13 @@ const router = new express.Router();
 const auth = require("../auth/auth");
 const SendDiet = require("../models/sendDietModel");
 
-router.post("/send/dietMeal/:user_id", auth.verifyAdmin, async(req, res)=>{
-    const dietMeal_id = req.params.dietMeal_id;
+router.post("/send/dietMeal", auth.verifyAdmin, async(req, res)=>{
+    const dietMeal_id = req.body.dietMeal_id;
+    const user_id = req.body.user_id
    console.log("a")
     const sendDietData = new SendDiet({
         dietMeal_id: dietMeal_id,
-       user_id : req.userInfo._id,
+       user_id : user_id,
     })
     console.log("b")
 

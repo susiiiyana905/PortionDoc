@@ -108,14 +108,6 @@ const ViewRecipe = () => {
           </div>
           </div>
         </div>
-
-
-
-            <h5 class="card-title" style={{ fontSize: "45px" }}>
-              Ingredients
-            </h5>
-
-
             {ingredientData.map((singleData) => {
               return (
                 <div class=" mb-3">
@@ -175,8 +167,18 @@ const ViewRecipe = () => {
             </div>
           </div>
         </div>
+
+        <div>
+          <button
+            className="btn cart"
+          >
+            Add To Cart
+          </button>
+        </div>
+       
       </div>
       </div>
+      <br/>
       <Footer></Footer>
     </>
   );
