@@ -25,9 +25,21 @@ router.post("/send/dietMeal", auth.verifyAdmin, async(req, res)=>{
 
 router.get("/get/all/sendDiet", auth.verifyUser,async (req, res)=>{
   const sendDietData = await SendDiet.find()
+  .populate("dietMeal_id","dietImage dietName dietPrice time")
   res.json({success:true,message:"get all details",data:sendDietData})
 }
 );
+
+router.get("/diet/single/view/:did", auth.verifyUser, async(req,res)=>{
+  const did = req.params.did;
+  SendDiet.findOne({_id : did})
+  .then(function(result){
+      res.status(200).send({success:true, data:result, message: "Meal details by Id"})
+  })
+  .catch(function(){
+      res.status(400).send({message: "Something went wrong!"})
+  })
+})
 
 module.exports = router;
 

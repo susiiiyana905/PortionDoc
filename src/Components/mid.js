@@ -41,6 +41,7 @@ import ShowPreferenceCategory from './admin/preferenceCategory';
 import AddPreferenceCategory from './admin/addPreferenceCategory';
 import ViewOrders from './admin/viewOrder';
 import ViewPrefrenceCategory from './admin/viewPreferenceCategory';
+import ViewDetailDiet from './User/viewDetailDietMeal';
 
 
 class Mid extends Component {
@@ -200,6 +201,7 @@ class Mid extends Component {
           <Route path ="/viewPreferenceCategory" element={<AdminPrivateRoute><ViewPrefrenceCategory></ViewPrefrenceCategory></AdminPrivateRoute>}></Route>
           <Route path ="/addPreferenceCategory" element={<AdminPrivateRoute><AddPreferenceCategory></AddPreferenceCategory></AdminPrivateRoute>}></Route>
           <Route path="/viewMealDiet" element={<AdminPrivateRoute><ViewMealDiet></ViewMealDiet></AdminPrivateRoute>}></Route>
+          <Route path='/viewDetailDiet/:did' element={<AdminPrivateRoute><ViewDetailDiet></ViewDetailDiet></AdminPrivateRoute>}></Route>
           <Route path="/diet/addIngredients" element={<AdminPrivateRoute><AddDietIngredient></AddDietIngredient></AdminPrivateRoute>}></Route>
           <Route path ="/viewOrders" element={<AdminPrivateRoute><ViewOrders></ViewOrders></AdminPrivateRoute>}></Route>
 

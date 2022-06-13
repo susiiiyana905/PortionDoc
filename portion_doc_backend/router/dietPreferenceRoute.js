@@ -116,6 +116,17 @@ router.put("/update/preference/image/:did", auth.verifyAdmin, upload.single("die
             res.status(400).send({message: "Something went wrong!"})
         })
     })
+
+    router.get("/diet/single/view/:did", auth.verifyUser, function(req,res){
+        const did = req.params.did;
+        dietPreference.findOne({_id : did})
+        .then(function(result){
+            res.status(200).send({success:true, data:result, message: "diet details by Id"})
+        })
+        .catch(function(){
+            res.status(400).send({message: "Something went wrong!"})
+        })
+    })
     router.delete("/diet/delete/:did", auth.verifyAdmin, function(req,res){
         const did = req.params.did;
         dietPreference.deleteOne({_id : did})
@@ -127,16 +138,16 @@ router.put("/update/preference/image/:did", auth.verifyAdmin, upload.single("die
         })
     
     })
-    router.get("/preference/:preference", auth.verifyUser, function(req, res){
-        const preference=req.params.preference;
-        dietPreference.find({preference:preference})
-        .then(function(result){
-            res.status(200).send({success:true, data:result, message: "User Preference"})
-        })
-        .catch(function(){
-            res.status(400).send({message: "Something went wrong!"})
-        })
-    }) 
+    // router.get("/preference/:preference", auth.verifyAdmin, function(req, res){
+    //     const preference=req.params.preference;
+    //     dietPreference.find({preference:preference})
+    //     .then(function(result){
+    //         res.status(200).send({success:true, data:result, message: "User Preference"})
+    //     })
+    //     .catch(function(){
+    //         res.status(400).send({message: "Something went wrong!"})
+    //     })
+    // }) 
     
     
 router.put("/update/dietMeals/:did", auth.verifyAdmin, upload.single("dietImage"), async(req,res)=>{
@@ -174,6 +185,19 @@ router.put("/update/dietMeals/:did", auth.verifyAdmin, upload.single("dietImage"
         res.status(400).send({message:e });
     })
 })
+
+router.get("/preference/:preference", auth.verifyAdmin, function(req,res){
+    const _preference = req.params.preference;
+    dietPreference.find({preference : _preference})
+    .then(function(result){
+        res.status(200).send({success:true, data:result, message: "Meals by category"})
+
+    })
+    .catch(function(){
+        res.status(400).send({message: "Something went wrong!"})
+    })
+})
+
 
   
     module.exports = router;
