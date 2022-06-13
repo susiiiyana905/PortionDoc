@@ -27,6 +27,18 @@ const ShowPreferenceCategory =()=>{
     // getProduct()
   }, []);
 
+  useEffect(() => {
+    axios
+      .get("http://localhost:4001/preference/category/all", config)
+      .then((dietcategory) => {
+        console.log(dietcategory.data.data);
+        setDietCategoryData(dietcategory.data.data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }, []);
+
     return(
         <>
         <AdminDashboard>

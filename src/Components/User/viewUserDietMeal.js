@@ -1,67 +1,94 @@
-import {Component} from "react";
+import {Component, useEffect, useState} from "react";
 import React from "react";
-import Footer from "../footer";
-import Header from "../header";
-const ViewUserDietMeal =()=> {
+import { NavLink } from "react-router-dom";
+import axios from "axios";
+
+const ViewUserDietMeals =()=> {
+  const [dietMealData, setdietMealData] = useState([]);
+   const config = {
+      headers:{
+          Authorization: "Bearer " + localStorage.getItem("userToken"),
+      }
+  }
+
+  useEffect(() => {
+      axios.get("http://localhost:4001/get/all/sendDiet",config)
+      .then((result) => {
+          console.log(result.data);
+          setdietMealData(result.data.data);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+  }, [])
         return(
             <>
-          
-            <Header></Header>
+  
+                <div className="container py-5">
+            <div className="row">
+            <div className="col-12 text-center" style={{marginTop:"2px"}}>
+                <h1>Diet Meals</h1>
+                <hr />
+            </div>
+            </div>
+        </div>
 
-            <div>
-
-                <div>
-                    <h3 id="lf">Meals</h3>
-                </div>
-
-            <div id="content">
-         <div class="contents">
-             
-             <img src="images/Bulgogi.jpg" id="content-a"></img>
-             <p class="first">Grilling Tikka Masala</p>
-             <div class="ff">
-             <p class="second">Rs.1000</p>
-             <p class="third" >40 min</p>
-             
-             </div>
+        <div className="dietmeal-data container">
+        {dietMealData.map((singleData) => {
+          return (
+            <div className="container py-3 " style={{width:"270px"}}>
+        <div class="card-deck">
+        <div class="card">
            
-         </div>
-         <div class="contents">
-             <img src="images/Bulgogi.jpg" id="content-b"></img>
-             <p class="first">Cruchy Chicken Bowl</p>
-             <div class="ff">
-             <p class="second">Rs.500</p>
-             <p class="third">60min</p>
-             </div>
-         </div>
+            <img src={"http://localhost:4001/preference/"+singleData.dietMeal_id.dietImage}></img>
+           
+            <div class="card-body">
+            <NavLink to = {"/viewDetailDiet"+singleData._id}>
+            <div>
+            
+            <h5 class="card-title">
+                
+                {singleData.dietMeal_id.dietName}
+            </h5> <hr/>
+            </div>
+            </NavLink>
+            
+            <p class="card-text" style={{ fontWeight: "bold", fontSize:"12px" }}>
+                            <label class="text mr-5">
+                            Price: {singleData.dietMeal_id.dietPrice}
+                            </label>
+                            <label
+                            class="text"
+                            style={{ float: "right", marginTop: "1px" }}
+                            >
+                            <i class="fas fa-solid fa-timer"></i>
+                            Time: {singleData.dietMeal_id.time}
+                           
+                            </label>
+                        </p>
+           
+            </div>
+        
 
-         <div class="contents">
-             <img src="images/Bulgogi.jpg" id="content-c"></img>
-             <p class="first">Apple Bire Snadwiches</p>
-             <div class="ff">
-             <p class="second">Rs.800</p>
-             <p class="third">40min</p>
-             </div>
-         </div>
-         <div class="contents">
-             <img src="images/Bulgogi.jpg" id="content-d"></img>
-             <p class="first">Beef Bibimbap</p>
-             <div class="ff">
-             <p class="second">Rs. 1000</p>
-             <p class="third">50min</p>
-             </div>
-         </div>
-     </div>
+        <div className="card-footer ">
+        <button className="btn sendMeal"
+          >
+            Add to Cart
+          </button>
+                        </div>
+        </div>
+ 
+ 
 
+        </div>
+        </div>
+           )
+        })} 
+</div>
 
-
-
-           </div>
-
-            <Footer></Footer>
             </>
 
             )
             }
 
-export default ViewUserDietMeal;
+export default ViewUserDietMeals;

@@ -6,13 +6,13 @@ import { useParams } from "react-router-dom";
 import React from "react"
 import Header from "../header";
 
-const ViewRecipe = () => {
-  const [mealImage, setMealImage] = useState([]);
-  const [mealName, setMealName] = useState("");
-  const [mealDescription, setMealDescription] = useState("");
+const ViewDetailDiet = () => {
+  const [dietImage, setDietImage] = useState([]);
+  const [dietName, setDietName] = useState("");
+  const [dietDescription, setDietDescription] = useState("");
   const [steps, setSteps] = useState([]);
   const [time, setTime] = useState("");
-  const [mealCategory, setMealCategory] = useState("");
+  const [preference, setPreference] = useState("");
   const [calory, setCalory] = useState("");
   const [difficulty, setDifficulty] = useState("");
   const [ingredientData, setIngredientData] = useState([]);
@@ -23,17 +23,17 @@ const ViewRecipe = () => {
       Authorization: "Bearer " + localStorage.getItem("userToken"),
     },
   };
-  const { mid } = useParams();
+  const { did } = useParams();
   useEffect(() => {
     axios
-      .get("http://localhost:4001/meals/single/view/" + mid, config)
+      .get("http://localhost:4001/diet/single/view/" + did, config)
       .then((result) => {
         console.log(result.data.data);
-        setMealImage(result.data.data.mealImage);
-        setMealName(result.data.data.mealName);
-        setMealDescription(result.data.data.mealDescription);
+        setDietImage(result.data.data.dietImage);
+        setDietName(result.data.data.dietName);
+        setDietDescription(result.data.data.dietDescription);
         setSteps(result.data.data.steps);
-        setMealCategory(result.data.data.mealCategory);
+        setPreference(result.data.data.preference);
         setCalory(result.data.data.calory);
         setDifficulty(result.data.data.difficulty);
         setTime(result.data.data.time);
@@ -45,7 +45,7 @@ const ViewRecipe = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4001/get/all/ingredients/users/" + mid, config)
+      .get("http://localhost:4001//get/all/dietingredients/" + did, config)
       .then((result) => {
         console.log(result.data.data);
         setIngredientData(result.data.data);
@@ -64,7 +64,7 @@ const ViewRecipe = () => {
           style={{ textAlign: "center", margin: "auto" }}
         >
           <img
-            src={"http://localhost:4001/meal/" + mealImage}
+            src={"http://localhost:4001/preference/" + dietImage}
             alt=""
             style={{ height: "500px" }}
           ></img>
@@ -72,7 +72,7 @@ const ViewRecipe = () => {
         <div class="container card">
           <div class="card-body">
             <h5 class="card-title" style={{ fontSize: "55px" }}>
-              {mealName}
+              {dietName}
             </h5>
             <hr />
 
@@ -80,7 +80,7 @@ const ViewRecipe = () => {
 
             <div style={{fontSize: "30px" }}>
 
-              <p>{mealDescription}</p>
+              <p>{dietDescription}</p>
             </div>
             <div>
               <label>Time: {time}</label>
@@ -169,13 +169,13 @@ const ViewRecipe = () => {
           </div>
         </div>
 
-        <div>
+        {/* <div>
           <button
             className="btn cart"
           >
             Add To Cart
           </button>
-        </div>
+        </div> */}
        
       </div>
       </div>
@@ -185,6 +185,6 @@ const ViewRecipe = () => {
   );
 };
 
-export default ViewRecipe;
+export default ViewDetailDiet;
 
 
