@@ -1,8 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { Component, useState } from "react";
-import { useLocation } from "react-router-dom";
-import { withRouter } from "react-router";
+import { Component } from "react";
 import AdminDashboard from "../adminDashbaord";
 
 class AddIngredient extends Component {
