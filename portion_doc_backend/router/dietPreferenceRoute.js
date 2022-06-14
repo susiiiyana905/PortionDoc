@@ -69,6 +69,7 @@ router.put("/update/preference/image/:did", auth.verifyAdmin, upload.single("die
         res.status(400).send({message: e});
     })
     })
+<<<<<<< Updated upstream
 
     router.put("/update/preference/image/:did", auth.verifyAdmin, upload.single("dietImage"), async(req,res)=>{
         const did = req.params.did;
@@ -102,6 +103,8 @@ router.put("/update/preference/image/:did", auth.verifyAdmin, upload.single("die
     
         })
 
+=======
+>>>>>>> Stashed changes
     router.get('/diet/all', auth.verifyAdmin, async(req,res)=>{
         const DietData = await dietPreference.find()
         res.json({success: true, message:"Diet Data", data:DietData});
