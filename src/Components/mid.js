@@ -42,7 +42,12 @@ import AddPreferenceCategory from './admin/addPreferenceCategory';
 import ViewOrders from './admin/viewOrder';
 import ViewPrefrenceCategory from './admin/viewPreferenceCategory';
 import ViewDetailDiet from './User/viewDetailDietMeal';
+
 import RecipeDetail from './User/viewDetailRecipe';
+import AddRecipeIngredient from './admin/recipeIngredient';
+
+import RecipeDetail from './User/viewDetailRecipe';
+
 
 
 class Mid extends Component {
@@ -205,7 +210,12 @@ class Mid extends Component {
           <Route path='/viewDetailDiet/:did' element={<AdminPrivateRoute><ViewDetailDiet></ViewDetailDiet></AdminPrivateRoute>}></Route>
           <Route path="/diet/addIngredients" element={<AdminPrivateRoute><AddDietIngredient></AddDietIngredient></AdminPrivateRoute>}></Route>
           <Route path ="/viewOrders" element={<AdminPrivateRoute><ViewOrders></ViewOrders></AdminPrivateRoute>}></Route>
+
           <Route path = "/viewDetailRecipe/:rid" element={<UserPrivateRoute><RecipeDetail></RecipeDetail></UserPrivateRoute>}></Route>
+           <Route path = "/addRecipeIngredient" element={<AdminPrivateRoute><AddRecipeIngredient></AddRecipeIngredient></AdminPrivateRoute>}></Route> 
+
+          <Route path = "/viewDetailRecipe/:rid" element={<UserPrivateRoute><RecipeDetail></RecipeDetail></UserPrivateRoute>}></Route>
+
         </Routes>
         
       </div>

@@ -8,6 +8,9 @@ import Footer from "../footer";
 const RecipeDetail = () => {
   const [recipeData, setRecipeData] = useState([]);
   const [message, setMessage] = useState("");
+
+  const[ingredientData,setIngredientData] = useState("");
+
   const { rid } = useParams();
   const config = {
     headers: {
@@ -26,6 +29,19 @@ const RecipeDetail = () => {
         console.log(e);
       });
   }, []);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:4001/get/recipe/ingredients/users/" + rid, config)
+      .then((result) => {
+        // console.log(result.data.data.name);
+        setIngredientData(result.data.data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }, []);
+
   return (
     <>
     <Header></Header>
@@ -67,6 +83,46 @@ const RecipeDetail = () => {
                   <p>{singleData.description}</p>
                 </div>
                 <hr />
+
+                <div className="form-group row">
+                
+                <table className="table col-sm-12">
+                  <thead>
+                    <tr>
+                      <th scope="col" colSpan="2">
+                        Ingredient Image
+                      </th>
+                      <th scope="col" colSpan="2">
+                        Ingredient Name
+                      </th>
+                      <th scope="col" colSpan="2">
+                        Quantity
+                      </th>
+                      
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {ingredientData.map((singleData) => {
+                      return (
+                        <tr>
+                          <td>
+                            <img
+                              src={
+                                "http://localhost:4001/recipeIngredients/" +
+                                singleData.image
+                              }
+                              height="100px"
+                            />
+                          </td>
+                          <td colSpan="2">{singleData.name}</td>
+                          <td colSpan="2">{singleData.quantity}</td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+
 
                 <div style={{ fontSize: "22px", fontWeight: "bold" }}>
                   Steps
