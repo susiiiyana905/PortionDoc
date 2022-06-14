@@ -2,22 +2,23 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import React from "react"
-import AdminDashboard from "../adminDashbaord";
+import Header from "../header";
+import Footer from "../footer";
 
-const UserRecipeDetail = () => {
+const RecipeDetail = () => {
   const [recipeData, setRecipeData] = useState([]);
   const [message, setMessage] = useState("");
-  const [ingredientData, setIngredientData] = useState([]);
+  const[ingredientData,setIngredientData] = useState("");
   const { rid } = useParams();
   const config = {
     headers: {
-      Authorization: "Bearer " + localStorage.getItem("adminToken"),
+      Authorization: "Bearer " + localStorage.getItem("userToken"),
     },
   };
 
   useEffect(() => {
     axios
-      .get("http://localhost:4001/get/single/recipe/" + rid, config)
+      .get("http://localhost:4001/get/recipe/detail/" + rid, config)
       .then((result) => {
         setRecipeData(result.data.data);
         setMessage(result.data.message);
@@ -29,7 +30,7 @@ const UserRecipeDetail = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4001/get/all/recipe/ingredients/" + rid, config)
+      .get("http://localhost:4001/get/recipe/ingredients/users/" + rid, config)
       .then((result) => {
         // console.log(result.data.data.name);
         setIngredientData(result.data.data);
@@ -38,48 +39,9 @@ const UserRecipeDetail = () => {
         console.log(e);
       });
   }, []);
-
-  const deleteIngredient = (riid) => {
-    axios
-      .delete("http://localhost:4001/delete/recipe/ingredient/" + riid, config)
-      .then((result) => {
-        // axios.get(`http://localhost:4001/get/all/ingredients/`+mid, config)
-        // .then((result1)=> {
-        //   setIngredientData(result.data.data);
-        // })
-        
-      })
-      .catch((e)=>{
-        setMessage(e.response.data.message);
-      });
-  };
   return (
     <>
-    <AdminDashboard>
-      <nav
-        className="navbar navbar-expand-lg mainNav"
-        style={{ height: "35px" }}
-      >
-        <i
-          class="fas fa-solid fa-envelope fa-lg"
-          style={{ height: "40px", color: "white", marginTop: "20px" }}
-        ></i>
-        <p className="i-1" style={{ marginLeft: "10px", marginTop: "10px" }}>
-          portiondoc@gmail.com
-        </p>
-        <i
-          class="fas fa-solid fa-phone"
-          style={{
-            height: "40px",
-            marginLeft: "100px",
-            color: "white",
-            marginTop: "20px",
-          }}
-        ></i>
-        <p className="i-1" style={{ marginLeft: "10px", marginTop: "10px" }}>
-          +977 983142567
-        </p>
-      </nav>
+    <Header></Header>
       {recipeData.map((singleData) => {
         return (
           <div
@@ -118,7 +80,6 @@ const UserRecipeDetail = () => {
                   <p>{singleData.description}</p>
                 </div>
                 <hr />
-
                 <div className="form-group row">
                 
                 <table className="table col-sm-12">
@@ -133,9 +94,7 @@ const UserRecipeDetail = () => {
                       <th scope="col" colSpan="2">
                         Quantity
                       </th>
-                      <th scope="col" colSpan="2">
-                        Edit
-                      </th>
+                      
                     </tr>
                   </thead>
                   <tbody>
@@ -153,14 +112,6 @@ const UserRecipeDetail = () => {
                           </td>
                           <td colSpan="2">{singleData.name}</td>
                           <td colSpan="2">{singleData.quantity}</td>
-                          <td colSpan="2">
-                            <span
-                              className="remove-report bi bi-dash-circle-fill fw-bold me-2"
-                              onClick={() => {
-                                deleteIngredient(singleData._id);
-                              }}
-                            />
-                          </td>
                         </tr>
                       );
                     })}
@@ -194,9 +145,10 @@ const UserRecipeDetail = () => {
           </div>
         );
       })}
-      </AdminDashboard>
+      <br/>
+      <Footer></Footer>
     </>
   );
 };
 
-export default UserRecipeDetail;
+export default RecipeDetail;
