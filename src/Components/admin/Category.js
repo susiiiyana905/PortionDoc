@@ -7,8 +7,8 @@ import AdminDashboard from "../adminDashbaord";
 import { useNavigate } from "react-router-dom";
 
 const AddCategory = () => {
-  const [categoryName, setcategoryName] = useState("");
-  const [categoryImage, setcategoryImage] = useState("");
+  const [categoryName, setCategoryName] = useState("");
+  const [categoryImage, setCategoryImage] = useState("");
   const [message, setMessage] = useState("");
   const [sMessage, setSMessage] = useState("");
   const navigate = useNavigate();
@@ -18,8 +18,27 @@ const AddCategory = () => {
       Authorization: "Bearer " + localStorage.getItem("adminToken"),
     },
   };
-  const addcategory = (e) => {
+  const addCategory = (e) => {
     e.preventDefault();
+
+    const numberRegex = new RegExp("[0-9]");
+    const specialCharacterRegex = new RegExp('[!@#$%^&*(),.?":{}|<>]');
+
+    if (
+      categoryName.trim() === "" 
+    ) {
+      setMessage("Empty field found. Fill up the form completely.");
+      return;
+    } else if (categoryName.length < 2) {
+      setMessage("Title most contain at least two characters.");
+      return;
+    } else if (numberRegex.test(categoryName) || specialCharacterRegex.test(categoryName)) {
+      setMessage(
+        "Any numbers or special characters are not allowed in the name."
+      );
+      console.log("numbers");
+      return;
+    }
 
     const categoryData = new FormData();
     categoryData.append("categoryName", categoryName);
@@ -49,7 +68,7 @@ const AddCategory = () => {
             <div className="col-md-4"></div>
             <div className="col-md-4">
             <div className="mb-2">
-                            <div className="suggestion-message text-center">{message}</div>           
+                            <div className="suggestion-message text-center" style={{color:"red", fontWeight:"bold"}}>{message}</div>           
                             <div className="success-message text-center" style={{color:"green", fontWeight:"bold"}}>{sMessage}</div>  
                         </div> 
               <h2 className="heading-h2-all">Add Category Details </h2>
@@ -65,7 +84,7 @@ const AddCategory = () => {
                     id="categoryName"
                     value={categoryName}
                     onChange={(e) => {
-                      setcategoryName(e.target.value);
+                      setCategoryName(e.target.value);
                     }}
                   />
                 </div>
@@ -75,7 +94,7 @@ const AddCategory = () => {
                   <input
                     type="file"
                     className="form-control"
-                    onChange={(e) => setcategoryImage(e.target.files[0])}
+                    onChange={(e) => setCategoryImage(e.target.files[0])}
                   />
                 </div>
 
@@ -84,7 +103,7 @@ const AddCategory = () => {
                     type="submit"
                     id="addCategoryButton"
                     className="btn btn-primary"
-                    onClick={addcategory}
+                    onClick={addCategory}
                   />
                 </p>
               </form>

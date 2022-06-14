@@ -46,7 +46,11 @@ const AddDiet = () => {
 
   const addDietMeal = (e) => {
     e.preventDefault();
+
+    const numberRegex = new RegExp("[0-9]");
     const priceRegex = new RegExp('^(?:[+0]9)?[0-9]{10}$');
+    const specialCharacterRegex = new RegExp('[!@#$%^&*(),.?":{}|<>]');
+
     if (
       dietMealName.trim() === "" ||
       preference.trim() === "" ||
@@ -58,11 +62,28 @@ const AddDiet = () => {
     ) {
       setMessage("Empty field found. Fill up the form completely.");
       return;
-    } 
-    // else if (!priceRegex.test(dietMealPrice)) {
-    //   setMessage("Invalid meal price.");
-    //   return;
-    // }
+    } else if (dietMealName.length < 2) {
+      setMessage("Diet Meal Name most contain at least two characters.");
+      return;
+    } else if (dietMealDescription.length < 2) {
+      setMessage("Description most contain at least two characters.");
+      return;
+    } else if (numberRegex.test(dietMealName) || specialCharacterRegex.test(dietMealName)) {
+      setMessage(
+        "Any numbers or special characters are not allowed in the meal name."
+      );
+      return;
+    } else if (specialCharacterRegex.test(time)) {
+      setMessage(
+        "Any numbers or special characters are not allowed in the time."
+      );
+      return;
+    } else if (specialCharacterRegex.test(calory)) {
+      setMessage(
+        "Any numbers or special characters are not allowed in the calory."
+      );
+      return;
+    }
 
     const dietMealData = new FormData();
     dietMealData.append("dietImage", dietMealImage);
