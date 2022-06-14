@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import React from "react"
 import Header from "../header";
 import Footer from "../footer";
+import { NavLink } from "react-router-dom";
 
 const ViewProfile = () => {
   const [profile_pic, setProfilePic] = useState("");
@@ -15,6 +16,7 @@ const ViewProfile = () => {
   const [dob, setDoB] = useState("");
   const [gender, setGender] = useState("");
   const [_id, setID] = useState("");
+  const [recipeData, setRecipeData]=useState([]);
 
   const editProfile = (e) => {
     e.preventDefault();
@@ -42,6 +44,18 @@ const ViewProfile = () => {
         setGender(result.data.gender);
         setPhoneNo(result.data.phone_no);
         setID(result.data._id);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:4001/get/all/recipes", config)
+      .then((result) => {
+        console.log(result.data.data);
+        setRecipeData(result.data.data);
       })
       .catch((e) => {
         console.log(e);
@@ -77,110 +91,35 @@ const ViewProfile = () => {
               <span style={{ "font-size": "15px", "margin-top": "0px" }}>
                 {bio}
               </span>
-            </div>
-          </div>
-          <div className="container mt-3">
-            <div className="row">
-              <div className="col-md-2"></div>
-
-              <div className="col-md-6">
-                <div
-                  className="container editProfile"
-                  style={{ "margin-left": "100px" }}
-                >
-                  <div className="form-group editProfileForm row">
-                    <label for="inputFname" className="col-sm-3 col-form-label">
-                      First Name
-                    </label>
-                    <div className="col-sm-9">
-                      <span className="">{firstName}</span>
-                    </div>
-                  </div>
-                  <div className="form-group editProfileForm row">
-                    <label for="inputLname" className="col-sm-3 col-form-label">
-                      Last Name
-                    </label>
-                    <div className="col-sm-9">
-                      <span>{lastName}</span>
-                    </div>
-                  </div>
-                  <div className="form-group editProfileForm row">
-                    <label
-                      for="inputEmail3"
-                      className="col-sm-3 col-form-label"
-                    >
-                      Email
-                    </label>
-                    <div className="col-sm-9">
-                      <span>{email}</span>
-                    </div>
-                  </div>
-                  <div className="form-group editProfileForm row">
-                    <label for="inputBio" className="col-sm-3 col-form-label">
-                      Bio
-                    </label>
-                    <div className="col-sm-9">
-                      <span>{bio}</span>
-                    </div>
-                  </div>
-                  <div className="form-group editProfileForm row">
-                    <label for="inputDob" className="col-sm-3 col-form-label">
-                      DoB
-                    </label>
-                    <div className="col-sm-9">
-                      <span>{dob}</span>
-                    </div>
-                  </div>
-                  <div className="form-group editProfileForm row">
-                    <label
-                      for="inputGender"
-                      className="col-sm-3 col-form-label"
-                    >
-                      Gender
-                    </label>
-                    <div className="col-sm-9">
-                      <span>{gender}</span>
-                    </div>
-                  </div>
-                  <div className="form-group editProfileForm row">
-                    <label for="inputPhone" className="col-sm-3 col-form-label">
-                      Phone No.
-                    </label>
-                    <div className="col-sm-9">
-                      <span>{phone_no}</span>
-                    </div>
-                  </div>
-                  <div className="form-group editProfileForm row">
-                    <label
-                      for="inputAddress"
-                      className="col-sm-3 col-form-label"
-                    >
-                      Address
-                    </label>
-                    <div className="col-sm-9">
-                      <span>{address}</span>
-                    </div>
-                  </div>
-
-                  <div className="form-group row">
-                    <div className="col-sm-3"></div>
-                    <div className="col-sm-9">
-                      <button
+              <p>
+              <button
                         type="submit"
                         className="btn btn-primary mt-4"
                         style={{ backgroundColor: "#FF7800", border: "none" }}
                         onClick={editProfile}
                       >
                         Edit Profile
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                      </button></p>
             </div>
           </div>
+         
+          <div class="row row-cols-1 row-cols-md-3">
+          {recipeData.map((singleData)=>{
+                return(
+                  <NavLink to= {"/viewDetailRecipe/"+ singleData._id}>
+            <div class="col mb-4">
+                  <div class="card">
+                  <img src={"http://localhost:4001/recipe/" + singleData.recipePic}></img>
+                </div>
+            </div>
+            </NavLink>
+               );
+              })} 
+</div>
+
         </div>
       </div>
+      <br/>
       <Footer></Footer>
     </>
   );

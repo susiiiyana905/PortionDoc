@@ -70,4 +70,15 @@ router.get("/get/single/recipe/:rid", auth.verifyAdmin, async(req,res)=>{
     })
 })
 
+router.get("/get/recipe/detail/:rid", auth.verifyUser, async(req,res)=>{
+    const rid = req.params.rid;
+    Recipe.find({_id: rid})
+    .then(function(result){
+        res.status(200).send({success:true, data:result, message: "Single Recipe details"})
+    })
+    .catch(function(){
+        res.status(400).send({message: "Something went wrong!"})
+    })
+})
+
 module.exports = router;
