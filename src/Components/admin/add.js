@@ -19,7 +19,7 @@ const AddMeal = () => {
   const [response, setResponse] = useState("");
   const [sResponse, setSResponse] = useState("");
   const [message, setMessage] = useState("");
-  const [categoryData, setCategoryData] = useState([])
+  const [categoryData, setCategoryData] = useState([]);
   const navigate = useNavigate();
   const config = {
     headers: {

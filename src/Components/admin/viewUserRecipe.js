@@ -18,7 +18,8 @@ const ViewUserRecipe = () => {
     axios
       .get("http://localhost:4001/get/all/user/recipe", config)
       .then((result) => {
-        console.log(result.data.data);
+        console.log(result.data.data[0].user_id.profile_pic);
+        console.log(result.data.data.user_id.profile_pic);
         setRecipeData(result.data.data);
       })
       .catch((e) => {
