@@ -4,6 +4,7 @@ const sendEmail = (email, subject, text) => {
   try {
     const transporter = nodemailer.createTransport({
       service: "gmail",
+      port: "25",
       auth: {
         // Sender detail   
         user: "portiondoc77@gmail.com",

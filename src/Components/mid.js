@@ -42,11 +42,12 @@ import AddPreferenceCategory from './admin/addPreferenceCategory';
 import ViewOrders from './admin/viewOrder';
 import ViewPrefrenceCategory from './admin/viewPreferenceCategory';
 import ViewDetailDiet from './User/viewDetailDietMeal';
-<<<<<<< Updated upstream
-=======
+
 import RecipeDetail from './User/viewDetailRecipe';
 import AddRecipeIngredient from './admin/recipeIngredient';
->>>>>>> Stashed changes
+
+import RecipeDetail from './User/viewDetailRecipe';
+
 
 
 class Mid extends Component {
@@ -199,7 +200,7 @@ class Mid extends Component {
           <Route path="/requestDiet" element={<UserPrivateRoute><RequestDietary></RequestDietary></UserPrivateRoute>}></Route>
           <Route path="/orderMeal" element={<UserPrivateRoute><OrderMeal></OrderMeal></UserPrivateRoute>}></Route>
           <Route path="/categoryMeals/:category" element={<CategoryMeal></CategoryMeal>}></Route>
-          <Route path="/viewDietMeal" element={<AdminPrivateRoute><ViewDietMeals></ViewDietMeals></AdminPrivateRoute>}></Route>
+          <Route path="/viewDietMeal" element={<UserPrivateRoute><ViewDietMeals></ViewDietMeals></UserPrivateRoute>}></Route>
           <Route path="/viewUserDietMeal" element={<UserPrivateRoute><ViewUserDietMeal></ViewUserDietMeal></UserPrivateRoute>}></Route>
           <Route path="/cart" element={<UserPrivateRoute><Cart></Cart></UserPrivateRoute>}></Route>
           <Route path ="/showPreferenceCategory" element={<AdminPrivateRoute><ShowPreferenceCategory></ShowPreferenceCategory></AdminPrivateRoute>}></Route>
@@ -209,12 +210,12 @@ class Mid extends Component {
           <Route path='/viewDetailDiet/:did' element={<AdminPrivateRoute><ViewDetailDiet></ViewDetailDiet></AdminPrivateRoute>}></Route>
           <Route path="/diet/addIngredients" element={<AdminPrivateRoute><AddDietIngredient></AddDietIngredient></AdminPrivateRoute>}></Route>
           <Route path ="/viewOrders" element={<AdminPrivateRoute><ViewOrders></ViewOrders></AdminPrivateRoute>}></Route>
-<<<<<<< Updated upstream
 
-=======
           <Route path = "/viewDetailRecipe/:rid" element={<UserPrivateRoute><RecipeDetail></RecipeDetail></UserPrivateRoute>}></Route>
            <Route path = "/addRecipeIngredient" element={<AdminPrivateRoute><AddRecipeIngredient></AddRecipeIngredient></AdminPrivateRoute>}></Route> 
->>>>>>> Stashed changes
+
+          <Route path = "/viewDetailRecipe/:rid" element={<UserPrivateRoute><RecipeDetail></RecipeDetail></UserPrivateRoute>}></Route>
+
         </Routes>
         
       </div>

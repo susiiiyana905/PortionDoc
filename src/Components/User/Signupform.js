@@ -21,6 +21,7 @@ const SignupForm = () => {
     const emailRegex = new RegExp(
       "^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+.[a-zA-Z]+"
     );
+    const numberRegex = new RegExp('[0-9]');
 
     if (
       email.trim() === "" ||
@@ -36,8 +37,11 @@ const SignupForm = () => {
     } else if (lastName.length <= 2 || lastName.length >= 16) {
       setMessage("LastName most contain 3 to 15 characters.");
       return;
-    } else if (!nameRegex.test(firstName, lastName)) {
+    } else if (!nameRegex.test(firstName) || !nameRegex.test(lastName) ) {
       setMessage("Special characters and white spaces not allowed in name.");
+      return;
+    } else if( numberRegex.test(firstName) || numberRegex.test(lastName)){
+      setMessage("Numbers not allowed");
       return;
     } else if (!passwordRegex.test(password)) {
       setMessage(

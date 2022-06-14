@@ -8,7 +8,9 @@ import Footer from "../footer";
 const RecipeDetail = () => {
   const [recipeData, setRecipeData] = useState([]);
   const [message, setMessage] = useState("");
+
   const[ingredientData,setIngredientData] = useState("");
+
   const { rid } = useParams();
   const config = {
     headers: {
@@ -39,6 +41,7 @@ const RecipeDetail = () => {
         console.log(e);
       });
   }, []);
+
   return (
     <>
     <Header></Header>
@@ -80,6 +83,7 @@ const RecipeDetail = () => {
                   <p>{singleData.description}</p>
                 </div>
                 <hr />
+
                 <div className="form-group row">
                 
                 <table className="table col-sm-12">
@@ -118,6 +122,7 @@ const RecipeDetail = () => {
                   </tbody>
                 </table>
               </div>
+
 
                 <div style={{ fontSize: "22px", fontWeight: "bold" }}>
                   Steps
