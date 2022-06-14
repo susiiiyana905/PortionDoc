@@ -54,6 +54,9 @@ app.use(SendDiet);
 const DietIngredients =  require("./router/dietIngredientsRoute");
 app.use(DietIngredients);
 
+const RecipeIngredients = require("./router/recipeIngredientsRoute");
+app.use(RecipeIngredients);
+
 
 app.use(express.static(__dirname+'/images/'));
 

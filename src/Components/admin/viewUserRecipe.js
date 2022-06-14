@@ -1,12 +1,13 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import React from "react"
 import AdminDashboard from "../adminDashbaord";
 
 const ViewUserRecipe = () => {
   const [recipeData, setRecipeData] = useState([]);
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
   const config = {
     headers: {
@@ -27,6 +28,11 @@ const ViewUserRecipe = () => {
       });
   }, []);
 
+  const addRecipeIngredient = (recipe_id) => {
+    localStorage.setItem('recipe_id', recipe_id);
+    navigate("/addRecipeIngredient");
+  };
+
   return (
     <>
     <AdminDashboard>
@@ -34,7 +40,7 @@ const ViewUserRecipe = () => {
         <h1 style={{ textAlign: "center" }}> User Recipes </h1>
         {recipeData.map((singleData) => {
           return (
-            <NavLink to={"/userRecipeDetail/" + singleData._id} style={{textDecoration:"none"}}>
+            
             <div
               class="card mb-3 text-align-center"
               //   style={{  height: "260px" }}
@@ -70,18 +76,36 @@ const ViewUserRecipe = () => {
                     }}
                   >
                     <div class="card-body">
+                    <NavLink to={"/userRecipeDetail/" + singleData._id} style={{textDecoration:"none"}}>
                       <div>
                         <h5>{singleData.title}</h5>
                       </div>
+                      </NavLink>
                       <div>
                         <p>{singleData.description}</p>
                       </div>
                     </div>
+                    
                   </div>
+                  <button
+                                    className="btn btn-primary mb-2"
+                                    style={{
+                                      backgroundColor: "#FF7800",
+                                      border: "none",
+                                      marginLeft: "10px",
+                                      marginTop:"10px",
+
+                                    }}
+                                    onClick={() => {
+                                      addRecipeIngredient(singleData._id);
+                                    }}
+                                  >
+                                    Add Ingredients
+                                  </button>
                 </div>
               </div>
             </div>
-            </NavLink>
+            
           );
         })}
       </div>
