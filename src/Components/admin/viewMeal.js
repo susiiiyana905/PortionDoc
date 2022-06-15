@@ -50,20 +50,7 @@ const ViewMeals = () => {
     <AdminDashboard>
     
       <br />
-      <div className="container">
-        <NavLink to={"/addMeal"}>
-          <button
-            className="btn btn-primary mb-2"
-            style={{
-              backgroundColor: "#FF7800",
-              border: "none",
-              float: "right",
-            }}
-          >
-            Add New Meal
-          </button>
-        </NavLink>
-      </div>
+      
       <br />
       <div style={{ marginTop: "50px" }}>
         <div className="container">

@@ -3,36 +3,30 @@ import { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import React from "react"
 import AdminDashboard from "../adminDashbaord";
-
 const ViewUserRecipe = () => {
   const [recipeData, setRecipeData] = useState([]);
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
-
   const config = {
     headers: {
       Authorization: "Bearer " + localStorage.getItem("adminToken"),
     },
   };
-
   useEffect(() => {
     axios
       .get("http://localhost:4001/get/all/user/recipe", config)
       .then((result) => {
-        console.log(result.data.data[0].user_id.profile_pic);
-        console.log(result.data.data.user_id.profile_pic);
+        console.log(result.data.data);
         setRecipeData(result.data.data);
       })
       .catch((e) => {
         console.log(e);
       });
   }, []);
-
   const addRecipeIngredient = (recipe_id) => {
     localStorage.setItem('recipe_id', recipe_id);
     navigate("/addRecipeIngredient");
   };
-
   return (
     <>
     <AdminDashboard>
@@ -40,7 +34,6 @@ const ViewUserRecipe = () => {
         <h1 style={{ textAlign: "center" }}> User Recipes </h1>
         {recipeData.map((singleData) => {
           return (
-            
             <div
               class="card mb-3 text-align-center"
               //   style={{  height: "260px" }}
@@ -57,7 +50,6 @@ const ViewUserRecipe = () => {
                     height="200px"
                     style={{ marginLeft: "30px" }}
                   />
-
                   <div>
                     <p style={{ marginLeft: "35px", fontSize: "20px" }}>
                       {singleData.user_id.firstName}{" "}
@@ -65,7 +57,6 @@ const ViewUserRecipe = () => {
                     </p>
                   </div>
                 </div>
-
                 <div class="col-md-8">
                   <div
                     className="card"
@@ -85,7 +76,6 @@ const ViewUserRecipe = () => {
                         <p>{singleData.description}</p>
                       </div>
                     </div>
-                    
                   </div>
                   <button
                                     className="btn btn-primary mb-2"
@@ -94,7 +84,6 @@ const ViewUserRecipe = () => {
                                       border: "none",
                                       marginLeft: "10px",
                                       marginTop:"10px",
-
                                     }}
                                     onClick={() => {
                                       addRecipeIngredient(singleData._id);
@@ -105,7 +94,6 @@ const ViewUserRecipe = () => {
                 </div>
               </div>
             </div>
-            
           );
         })}
       </div>

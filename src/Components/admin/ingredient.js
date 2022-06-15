@@ -59,6 +59,28 @@ class AddIngredient extends Component {
         this.state.quantity + " " + this.state.unit
       );
     }
+    const numberRegex = new RegExp("[0-9]");
+    const specialCharacterRegex = new RegExp('[!@#$%^&*(),.?":{}|<>]');
+
+    if (
+      this.state.name.trim() === "" ||
+      this.state.quantity.trim() === "" 
+    ) {
+      this.setState({message: "Empty field found. Fill up the form completely."});
+      return;
+    } else if (this.state.name.length < 2) {
+      this.setState({message: "Meal Name most contain at least two characters."});
+      return;
+    } else if (
+      numberRegex.test(this.state.name) ||
+      specialCharacterRegex.test(this.state.name)
+    ) {
+      this.setState({message:
+        "Any numbers or special characters are not allowed in the meal name."
+    });
+      return;
+    } 
+
 
     const config = {
       headers: {
@@ -89,7 +111,7 @@ class AddIngredient extends Component {
             style={{ marginTop: "50px", marginBottom: "50px" }}
           >
             <div className="container">
-            <div class="card" style={{width: "100%"}}>
+            <div className="card" style={{width: "100%"}}>
               <div className="mb-2">
                 <div
                   className="suggestion-message text-center"
@@ -104,7 +126,7 @@ class AddIngredient extends Component {
                   {this.state.sMessage}
                 </div>
               </div>
-              <div class="card-body">
+              <div className="card-body">
                 <h2 style={{ textAlign: "center" }}>Add Ingredient</h2>
                 <hr />
                 <div className="container">
@@ -113,16 +135,16 @@ class AddIngredient extends Component {
                   <form onSubmit={this.handleSubmit}>
                     {this.state.formValues.map((element, index) => (
                       <div>
-                        <div class="form-group row">
-                          <div class="col-sm-11">
+                        <div className="form-group row">
+                          <div className="col-sm-11">
                             <form>
-                              <div class="row">
-                                <div class="col">
+                              <div className="row">
+                                <div className="col">
                                   <form>
-                                    <div class="form-group">
+                                    <div className="form-group">
                                       <input
                                         type="file"
-                                        class="form-control-file"
+                                        className="form-control-file"
                                         id="exampleFormControlFile1"
                                         onChange={(e) =>
                                           this.setState({
@@ -133,10 +155,10 @@ class AddIngredient extends Component {
                                     </div>
                                   </form>
                                 </div>
-                                <div class="col">
+                                <div className="col">
                                   <input
                                     type="text"
-                                    class="form-control"
+                                    className="form-control"
                                     placeholder="Enter Ingredient Name"
                                     value={this.state.name}
                                     onChange={(e) =>
@@ -157,7 +179,7 @@ class AddIngredient extends Component {
                               float: "right",
                             }}
                           >
-                            <i class="fas fa-solid fa-trash"></i>
+                            <i className="fas fa-solid fa-trash"></i>
                           </button>
                           <button
                             type="button"
@@ -169,7 +191,7 @@ class AddIngredient extends Component {
                               float: "right",
                             }}
                           >
-                            <i class="fas fa-solid fa-plus"></i>
+                            <i className="fas fa-solid fa-plus"></i>
                           </button>
                         </div>
 
@@ -177,21 +199,21 @@ class AddIngredient extends Component {
                           <div>
                             <label>Quantity</label>
                           </div>
-                          <div class="form-row">
-                            <div class="form-group col-md-6">
+                          <div className="form-row">
+                            <div className="form-group col-md-6">
                               <input
                                 type="text"
-                                class="form-control"
+                                className="form-control"
                                 id="inputCity"
                                 onChange={(e) =>
                                   this.setState({ quantity: e.target.value })
                                 }
                               ></input>
                             </div>
-                            <div class="form-group col-md-4">
+                            <div className="form-group col-md-4">
                               <select
                                 id="inputState"
-                                class="form-control"
+                                className="form-control"
                                 onChange={(e) =>
                                   this.setState({ unit: e.target.value })
                                 }
@@ -224,7 +246,7 @@ class AddIngredient extends Component {
                           color: "white",
                         }}
                       >
-                        <i class="fas fa-solid fa-plus"></i>
+                        <i className="fas fa-solid fa-plus"></i>
                       </button>
                     </div>
                   </form>
