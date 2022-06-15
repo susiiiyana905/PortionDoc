@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
-import React from "react"
 import AdminDashboard from "../adminDashbaord";
 const UpdateDiet =()=> {
   const [dietImage, setDietImage] = useState("");

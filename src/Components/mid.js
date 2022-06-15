@@ -45,7 +45,7 @@ import ViewDetailDiet from './User/viewDetailDietMeal';
 import RecipeDetail from './User/viewDetailRecipe';
 import AddRecipeIngredient from './admin/recipeIngredient';
 
-import RecipeDetail from './User/viewDetailRecipe';
+
 
 
 class Mid extends Component {
