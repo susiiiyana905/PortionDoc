@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import AdminDashboard from "../adminDashbaord";
 const UpdateDiet =()=> {
@@ -21,29 +20,23 @@ const UpdateDiet =()=> {
   const [dietMealData, setDietMealData] = useState("");
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
-
   const config = {
     headers: {
       Authorization: "Bearer " + localStorage.getItem("adminToken"),
     },
   };
-
   const { did } = useParams();
   function addSteps(step) {
     setResponse("");
     setSResponse("");
-
     var tempSteps = steps;
     tempSteps.push(step);
-
     setSteps(tempSteps);
     console.log(steps);
   }
-
   function removeSteps(step) {
     setResponse("");
     setSResponse("");
-
     var tempSteps = steps;
     tempSteps.splice(tempSteps.indexOf(step), 1);
     setSteps(tempSteps);
@@ -62,13 +55,11 @@ const UpdateDiet =()=> {
       setDifficulty(result.data.data.difficulty);
       setID(result.data.data._id);
       setSteps(result.data.data.steps);
-
     })
     .catch((e)=>{
       console.log(e);
     });
   },[]);
-
   useEffect(() => {
     axios
       .get("http://localhost:4001/get/all/dietingredients/" + did, config)
@@ -80,7 +71,6 @@ const UpdateDiet =()=> {
         console.log(e);
       });
   }, []);
-
   const deleteDietIngredient = (diid) => {
     axios
       .delete("http://localhost:4001/delete/dietingredient/" + diid, config)
@@ -95,14 +85,12 @@ const UpdateDiet =()=> {
         setMessage(e.response.data.message);
       });
   };
-
   const updateDietMeal = (e) =>{
     e.preventDefault();
     console.log("update");
     const numberRegex = new RegExp("[0-9]");
     const priceRegex = new RegExp("^[0-9]+$");
     const specialCharacterRegex = new RegExp('[!@#$%^&*(),.?":{}|<>]');
-
     if (
       dietName.trim() === "" ||
       preference.trim() === "" ||
@@ -139,9 +127,7 @@ const UpdateDiet =()=> {
       setMessage("Invalid meal price.");
       return;
     }
-
     const dietData = new FormData();
-
     dietData.append("dietName",dietName);
     dietData.append("dietPrice",dietPrice);
     dietData.append("dietDescription",dietDescription);
@@ -171,13 +157,10 @@ const UpdateDiet =()=> {
     .catch(e);
     navigate("/viewMealDiet")
   };
-
   const updateDietImage = (e) => {
     e.preventDefault();
-
     const dietData = new FormData();
     dietData.append("dietImage", dietImage);
-
     axios
       .put("http://localhost:4001/update/preference/image/" + did, dietData, config)
       .then((result) => {
@@ -195,16 +178,12 @@ const UpdateDiet =()=> {
       })
       .catch(e);
   };
-
   
     return (
         <>
         <AdminDashboard>
         <div className="container">
-
           <h2 className="heading-h2-all">Update Diet Meal:</h2>
-
-
           <form>
           <div className="form-group row">
                 <label htmlFor="mealImage" className="col-sm-2 col-form-label">
@@ -216,7 +195,6 @@ const UpdateDiet =()=> {
                   data-bs-target="#exampleModal"
                   height="200px"
                 />
-
                 <div
                   class="modal fade"
                   id="exampleModal"
@@ -450,6 +428,4 @@ const UpdateDiet =()=> {
       </>
     );
   };
-
 export default UpdateDiet;
-
