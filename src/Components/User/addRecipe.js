@@ -47,7 +47,11 @@ const AddRecipes = () => {
     recipeData.append("title", title);
     recipeData.append("description", description);
     recipeData.append("recipePic", recipePic);
-    recipeData.append("steps", steps);
+    for(let i=0; i<steps.length; i++){
+
+      recipeData.append("steps[" + i +"]", steps[i]);
+
+    }
     
     axios.post("http://localhost:4001/add/recipe", recipeData, config)
     .then((result)=>{

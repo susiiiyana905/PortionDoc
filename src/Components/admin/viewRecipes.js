@@ -4,18 +4,6 @@ const ViewRecipes = () => {
   return (
     <>
     <AdminDashboard>
-      <nav className="navbar navbar-expand-lg ">
-        <i
-          className="fas fa-solid fa-envelope fa-lg"
-          style={{ height: "40px", color: "white" }}
-        ></i>
-        <p className="i-1">portiondoc@gmail.com</p>
-        <i
-          className="fas fa-solid fa-phone"
-          style={{ height: "40px", marginLeft: "100px", color: "white" }}
-        ></i>
-        <p className="i-1">+977 983142567</p>
-      </nav>
       <div className="container">
         <h1> Recent Recipies </h1>
 

@@ -19,7 +19,6 @@ import AddIngredient from "./admin/ingredient";
 import ListMeals from "./admin/listViewMeal";
 import AddDiet from "./admin/addDietMeal";
 import UpdateDiet from "./admin/updateDietMeal";
-import Table from "./admin/viewDietRequest";
 import ViewRecipe from "./User/viewRecipe";
 import Review from "./User/review";
 import ViewUserRecipe from "./admin/viewUserRecipe";
@@ -33,7 +32,6 @@ import CategoryMeal from "./User/categoryMealView";
 import ViewDietMeals from './admin/viewDietMeal';
 import ViewUserDietMeal from './User/viewUserDietMeal';
 import Cart from './User/cart';
-
 import ViewDietRequest from './admin/viewDietRequest';
 import ViewMealDiet from './admin/viewMealDiet';
 import AddDietIngredient from './admin/dietIngredient';
@@ -42,12 +40,8 @@ import AddPreferenceCategory from './admin/addPreferenceCategory';
 import ViewOrders from './admin/viewOrder';
 import ViewPrefrenceCategory from './admin/viewPreferenceCategory';
 import ViewDetailDiet from './User/viewDetailDietMeal';
-<<<<<<< Updated upstream
-=======
 import RecipeDetail from './User/viewDetailRecipe';
 import AddRecipeIngredient from './admin/recipeIngredient';
->>>>>>> Stashed changes
-
 
 class Mid extends Component {
   render() {
@@ -209,12 +203,8 @@ class Mid extends Component {
           <Route path='/viewDetailDiet/:did' element={<AdminPrivateRoute><ViewDetailDiet></ViewDetailDiet></AdminPrivateRoute>}></Route>
           <Route path="/diet/addIngredients" element={<AdminPrivateRoute><AddDietIngredient></AddDietIngredient></AdminPrivateRoute>}></Route>
           <Route path ="/viewOrders" element={<AdminPrivateRoute><ViewOrders></ViewOrders></AdminPrivateRoute>}></Route>
-<<<<<<< Updated upstream
-
-=======
           <Route path = "/viewDetailRecipe/:rid" element={<UserPrivateRoute><RecipeDetail></RecipeDetail></UserPrivateRoute>}></Route>
-           <Route path = "/addRecipeIngredient" element={<AdminPrivateRoute><AddRecipeIngredient></AddRecipeIngredient></AdminPrivateRoute>}></Route> 
->>>>>>> Stashed changes
+          <Route path = "/addRecipeIngredient" element={<AdminPrivateRoute><AddRecipeIngredient></AddRecipeIngredient></AdminPrivateRoute>}></Route> 
         </Routes>
         
       </div>
