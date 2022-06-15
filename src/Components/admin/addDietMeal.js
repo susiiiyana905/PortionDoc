@@ -18,6 +18,7 @@ const AddDiet = () => {
   const [response, setResponse] = useState("");
   const [sResponse, setSResponse] = useState("");
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
   const config = {
     headers: {
       Authorization: "Bearer " + localStorage.getItem("adminToken"),
@@ -48,7 +49,9 @@ const AddDiet = () => {
     e.preventDefault();
 
     const numberRegex = new RegExp("[0-9]");
-    const priceRegex = new RegExp('^(?:[+0]9)?[0-9]{10}$');
+
+    const priceRegex = new RegExp("^[0-9]+$");
+
     const specialCharacterRegex = new RegExp('[!@#$%^&*(),.?":{}|<>]');
 
     if (
@@ -83,6 +86,11 @@ const AddDiet = () => {
         "Any numbers or special characters are not allowed in the calory."
       );
       return;
+
+    } else if (!priceRegex.test(dietMealPrice)) {
+      setMessage("Invalid meal price.");
+      return;
+
     }
 
     const dietMealData = new FormData();
@@ -98,10 +106,12 @@ const AddDiet = () => {
       dietMealData.append("steps[" + i + "]", steps[i]);
     }
     axios
-      .post("http://localhost:4001/add/dietPreference", dietMealData, config)
+      .post("http://localhost:4001/add/dietMeal", dietMealData, config)
       .then((result) => {
         if(result.data.success){
           setMessage(result.data.message);
+          navigate("/viewMealDiet");
+        
         }
       })
       .catch((e)=>{

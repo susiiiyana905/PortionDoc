@@ -46,7 +46,9 @@ import ViewDetailDiet from './User/viewDetailDietMeal';
 import RecipeDetail from './User/viewDetailRecipe';
 import AddRecipeIngredient from './admin/recipeIngredient';
 
+
 import OrderView from './User/viewOrder';
+
 
 
 class Mid extends Component {
@@ -140,7 +142,10 @@ class Mid extends Component {
 
           <Route
             path="/viewRecipe/:mid"
-            element={<ViewRecipe></ViewRecipe>}
+            element={
+            <UserPrivateRoute>
+            <ViewRecipe></ViewRecipe>
+            </UserPrivateRoute>}
           ></Route>
 
         

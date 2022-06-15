@@ -3,12 +3,15 @@ const router = new express.Router();
 const auth = require("../auth/auth");
 const upload = require("../uploads/dietPreferenceFile");
 const { fstat } = require("fs");
-const dietPreference = require("../models/dietPreferenceModels");
+const dietPreferenceMeal = require("../models/dietPreferenceModels");
 
-
-router.post("/add/dietMeal", auth.verifyAdmin,upload.single('dietImage'), async(req,res)=>{
-    if(req.file===undefined){
-        return res.status(400).json({msg: "Invalid!!"})
+router.post(
+  "/add/dietMeal",
+  auth.verifyAdmin,
+  upload.single("dietImage"),
+  async (req, res) => {
+    if (req.file === undefined) {
+      return res.status(400).json({ message: "Invalid File Type!!" });
     }
     const dietImage = req.file.filename;
     const dietName = req.body.dietName;
@@ -17,143 +20,151 @@ router.post("/add/dietMeal", auth.verifyAdmin,upload.single('dietImage'), async(
     const steps = req.body.steps;
     const time = req.body.time;
     const calory = req.body.calory;
-    const preference= req.body.preference;
+    const preference = req.body.preference;
     const difficulty = req.body.difficulty;
 
-    const dietData = new dietPreference({
-        dietImage: dietImage,
-        dietName: dietName,
-        dietPrice: dietPrice,
-        dietDescription: dietDescription,
-        steps:steps,
-        time: time,
-        calory:calory,  
-        preference:preference,
-        difficulty: difficulty
-    })
-    dietData.save()
-    .then(function(){
-        res.status(200).send({success: true, data:dietData, message: "Preference added successfully!"});
-    }).catch(function(e){
-        res.status(400).send({message: "Empty Fields Found. Fill up the form completely!!"});
-    })
+    const dietData = new dietPreferenceMeal({
+      dietImage: dietImage,
+      dietName: dietName,
+      dietPrice: dietPrice,
+      dietDescription: dietDescription,
+      steps: steps,
+      time: time,
+      calory: calory,
+      preference: preference,
+      difficulty: difficulty,
+    });
+    dietData
+      .save()
+      .then(function () {
+        res.status(200).send({
+          success: true,
+          data: dietData,
+          message: "Preference added successfully!",
+        });
+      })
+      .catch(function (e) {
+        res.status(400).send({
+          message: "Empty Fields Found. Fill up the form completely!!",
+        });
+      });
+  }
+);
 
-})
-
-router.put("/update/preference/image/:did", auth.verifyAdmin, upload.single("dietImage"), async(req,res)=>{
+router.put(
+  "/update/preference/image/:did",
+  auth.verifyAdmin,
+  upload.single("dietImage"),
+  async (req, res) => {
     const did = req.params.did;
 
-    if(req.file === undefined){
-        return res.json({message: " Invalid"})
+    if (req.file === undefined) {
+      return res.json({ message: " Invalid" });
     }
 
     const dietImage = req.file.filename;
 
-    dietPreference.findOne({_id: did})
-    .then((dietData)=>{
-        if(!dietData.dietImage){
-            const diet_image_path = `./uploads/preference/${dietData.dietImage}`;
-            fstat.unlinkSync(diet_image_path);
+    dietPreferenceMeal
+      .findOne({ _id: did })
+      .then((dietData) => {
+        if (!dietData.dietImage) {
+          const diet_image_path = `./uploads/preference/${dietData.dietImage}`;
+          fstat.unlinkSync(diet_image_path);
         }
-         dietPreference.updateOne({_id: did},{
-             dietImage: dietImage
-         })
-         .then(function(){
-             res.status(200).send({success: true, message:"Image Updated!!"});   
-         })
-         .catch(function(){
-            res.status(400).send({message: e});
-        });
-    })
-    .catch((e)=>{
-        res.status(400).send({message: e});
-    })
-    })
-<<<<<<< Updated upstream
 
-    router.put("/update/preference/image/:did", auth.verifyAdmin, upload.single("dietImage"), async(req,res)=>{
-        const did = req.params.did;
-        if(req.file === undefined){
-            return res.json({message: " Invalid"})
-        }
-        const dietImage = req.file.filename;
-        dietPreference.findOne({_id: did})
-        .then((dietData)=>{
-            if(!dietData.dietImage){
-                const diet_image_path = `./uploads/preference/${dietData.dietImage}`;
-                fstat.unlinkSync(diet_image_path);
+        dietPreferenceMeal
+          .updateOne(
+            { _id: did },
+            {
+              dietImage: dietImage,
             }
-             dietPreference.updateOne({_id: did},{
-                 dietImage: dietImage
-             })
-             .then(function(){
-                 res.status(200).send({success: true, message:"Image Updated!!"});  
-             })
-             .catch(function(){
-                res.status(400).send({message: e});
-            });
+          )
+          .then(function () {
+            res.status(200).send({ success: true, message: "Image Updated!!" });
+          })
+          .catch(function () {
+            res.status(400).send({ message: e });
+          });
+      })
+      .catch((e) => {
+        res.status(400).send({ message: e });
+      });
+  }
+);
+
+
+
+router.get("/diet/all", auth.verifyAdmin, async (req, res) => {
+  const DietData = await dietPreferenceMeal.find();
+  res.json({ success: true, message: "Diet Data", data: DietData });
+});
+router.get("/diet/single/:did", auth.verifyAdmin, function (req, res) {
+  const did = req.params.did;
+  dietPreferenceMeal
+    .findOne({ _id: did })
+    .then(function (result) {
+      res
+        .status(200)
+        .send({ success: true, data: result, message: "diet details by Id" });
+
+             
+
+
+
     
         })
-    
-        .catch((e)=>{
-    
-            res.status(400).send({message: e});
-    
-        })
-    
+        .catch(function(){
+            res.status(400).send({message: "Something went wrong!"})
         })
 
-=======
->>>>>>> Stashed changes
-    router.get('/diet/all', auth.verifyAdmin, async(req,res)=>{
-        const DietData = await dietPreference.find()
-        res.json({success: true, message:"Diet Data", data:DietData});
     })
-    router.get("/diet/single/:did", auth.verifyAdmin, function(req,res){
-        const did = req.params.did;
-        dietPreference.findOne({_id : did})
-        .then(function(result){
-            res.status(200).send({success:true, data:result, message: "diet details by Id"})
-        })
-        .catch(function(){
-            res.status(400).send({message: "Something went wrong!"})
-        })
-    })
+    .catch(function () {
+      res.status(400).send({ message: "Something went wrong!" });
+    });
+});
 
-    router.get("/diet/single/view/:did", auth.verifyUser, function(req,res){
-        const did = req.params.did;
-        dietPreference.findOne({_id : did})
-        .then(function(result){
-            res.status(200).send({success:true, data:result, message: "diet details by Id"})
-        })
-        .catch(function(){
-            res.status(400).send({message: "Something went wrong!"})
-        })
+router.get("/diet/single/view/:did", auth.verifyUser, function (req, res) {
+  const did = req.params.did;
+  dietPreferenceMeal
+    .findOne({ _id: did })
+    .then(function (result) {
+      res
+        .status(200)
+        .send({ success: true, data: result, message: "diet details by Id" });
     })
-    router.delete("/diet/delete/:did", auth.verifyAdmin, function(req,res){
-        const did = req.params.did;
-        dietPreference.deleteOne({_id : did})
-        .then(function(){
-            res.status(200).send({success:true, message: "Diet Preference has been deleted!"})
-        })
-        .catch(function(){
-            res.status(400).send({message: "Something went wrong!"})
-        })
-    
+    .catch(function () {
+      res.status(400).send({ message: "Something went wrong!" });
+    });
+});
+router.delete("/diet/delete/:did", auth.verifyAdmin, function (req, res) {
+  const did = req.params.did;
+  dietPreferenceMeal
+    .deleteOne({ _id: did })
+    .then(function () {
+      res
+        .status(200)
+        .send({ success: true, message: "Diet Preference has been deleted!" });
     })
-    // router.get("/preference/:preference", auth.verifyAdmin, function(req, res){
-    //     const preference=req.params.preference;
-    //     dietPreference.find({preference:preference})
-    //     .then(function(result){
-    //         res.status(200).send({success:true, data:result, message: "User Preference"})
-    //     })
-    //     .catch(function(){
-    //         res.status(400).send({message: "Something went wrong!"})
-    //     })
-    // }) 
-    
-    
-router.put("/update/dietMeals/:did", auth.verifyAdmin, upload.single("dietImage"), async(req,res)=>{
+    .catch(function () {
+      res.status(400).send({ message: "Something went wrong!" });
+    });
+});
+// router.get("/preference/:preference", auth.verifyAdmin, function(req, res){
+//     const preference=req.params.preference;
+//     dietPreference.find({preference:preference})
+//     .then(function(result){
+//         res.status(200).send({success:true, data:result, message: "User Preference"})
+//     })
+//     .catch(function(){
+//         res.status(400).send({message: "Something went wrong!"})
+//     })
+// })
+
+router.put(
+  "/update/dietMeals/:did",
+  auth.verifyAdmin,
+  upload.single("dietImage"),
+  async (req, res) => {
     const did = req.params.did;
     const dietName = req.body.dietName;
     const dietPrice = req.body.dietPrice;
@@ -161,48 +172,54 @@ router.put("/update/dietMeals/:did", auth.verifyAdmin, upload.single("dietImage"
     const steps = req.body.steps;
     const time = req.body.time;
     const calory = req.body.calory;
-    const preference= req.body.preference;
+    const preference = req.body.preference;
     const difficulty = req.body.difficulty;
 
-    dietPreference.findOne({_id: did})
-    .then((dietData)=>{
+    dietPreferenceMeal
+      .findOne({ _id: did })
+      .then((dietData) => {
+        dietPreferenceMeal
+          .updateOne(
+            { _id: did },
+            {
+              dietName: dietName,
+              dietPrice: dietPrice,
+              dietDescription: dietDescription,
+              steps: steps,
+              time: time,
+              calory: calory,
+              preference: preference,
+              difficulty: difficulty,
+            }
+          )
+          .then(function () {
+            res.status(200).send({
+              success: true,
+              message: "Meal details has been updated!",
+            });
+          })
+          .catch(function () {
+            res.status(400).send({ message: e });
+          });
+      })
+      .catch((e) => {
+        res.status(400).send({ message: e });
+      });
+  }
+);
 
-        dietPreference.updateOne({_id:did}, {
-            dietName: dietName,
-            dietPrice: dietPrice,
-            dietDescription: dietDescription,
-            steps:steps,
-            time: time,
-            calory:calory,  
-            preference:preference,
-            difficulty: difficulty
-        })
-        .then(function(){
-            res.status(200).send({success:true, message: "Meal details has been updated!"})
-        })
-        .catch(function(){
-            res.status(400).send({message: e})
-        });
+router.get("/preference/:preference", auth.verifyAdmin, function (req, res) {
+  const _preference = req.params.preference;
+  dietPreferenceMeal
+    .find({ preference: _preference })
+    .then(function (result) {
+      res
+        .status(200)
+        .send({ success: true, data: result, message: "Meals by category" });
     })
-    .catch((e)=>{
-        res.status(400).send({message:e });
-    })
-})
+    .catch(function () {
+      res.status(400).send({ message: "Something went wrong!" });
+    });
+});
 
-router.get("/preference/:preference", auth.verifyAdmin, function(req,res){
-    const _preference = req.params.preference;
-    dietPreference.find({preference : _preference})
-    .then(function(result){
-        res.status(200).send({success:true, data:result, message: "Meals by category"})
-
-    })
-    .catch(function(){
-        res.status(400).send({message: "Something went wrong!"})
-    })
-})
-
-
-  
-    module.exports = router;
-
- 
+module.exports = router;

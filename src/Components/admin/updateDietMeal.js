@@ -82,7 +82,7 @@ const UpdateDiet =()=> {
 
   const deleteDietIngredient = (diid) => {
     axios
-      .delete("http://localhost:4001//delete/dietingredient/" + diid, config)
+      .delete("http://localhost:4001/delete/dietingredient/" + diid, config)
       .then((result) => {
         // axios.get(`http://localhost:4001/get/all/ingredients/`+mid, config)
         // .then((result1)=> {
@@ -97,6 +97,47 @@ const UpdateDiet =()=> {
 
   const updateDietMeal = (e) =>{
     e.preventDefault();
+    console.log("update");
+    const numberRegex = new RegExp("[0-9]");
+    const priceRegex = new RegExp("^[0-9]+$");
+    const specialCharacterRegex = new RegExp('[!@#$%^&*(),.?":{}|<>]');
+
+    if (
+      dietName.trim() === "" ||
+      preference.trim() === "" ||
+      dietPrice.trim() === "" ||
+      time.trim() === "" ||
+      calory.trim() === "" ||
+      dietDescription.trim() === "" ||
+      difficulty.trim() === "" 
+    ) {
+      setMessage("Empty field found. Fill up the form completely.");
+      return;
+    } else if (dietName.length < 2) {
+      setMessage("Diet Meal Name most contain at least two characters.");
+      return;
+    } else if (dietDescription.length < 2) {
+      setMessage("Description most contain at least two characters.");
+      return;
+    } else if (numberRegex.test(dietName) || specialCharacterRegex.test(dietName)) {
+      setMessage(
+        "Any numbers or special characters are not allowed in the meal name."
+      );
+      return;
+    } else if (specialCharacterRegex.test(time)) {
+      setMessage(
+        "Any numbers or special characters are not allowed in the time."
+      );
+      return;
+    } else if (specialCharacterRegex.test(calory)) {
+      setMessage(
+        "Any numbers or special characters are not allowed in the calory."
+      );
+      return;
+    } else if (!priceRegex.test(dietPrice)) {
+      setMessage("Invalid meal price.");
+      return;
+    }
 
     const dietData = new FormData();
 
@@ -110,6 +151,7 @@ const UpdateDiet =()=> {
     for (let i = 0; i < steps.length; i++) {
       dietData.append("steps[" + i + "]", steps[i]);
     }
+    console.log(dietData);
     axios
     .put("http://localhost:4001/update/dietMeals/" + did, dietData, config)
     .then((result) => {
@@ -308,8 +350,9 @@ const UpdateDiet =()=> {
                 </div>
               </div>
             <div>
-          <label>Ingredient</label>
-          <table className="table">
+            <div className="form-group row">    
+          <label className="col-sm-2">Ingredient</label>
+          <table className="table col-sm-10">
             <thead>
               <tr>
                 <th scope="col" colSpan="2">
@@ -333,20 +376,24 @@ const UpdateDiet =()=> {
                 </td>
                 <td colSpan="2">{singleData.name}</td>
                 <td colSpan="2">{singleData.quantity}</td>
-                <td>
-                  <button className="btn btn-primary mb-3">
-                    Delete Ingredient
-                  </button>
-                </td>
+                <td colSpan="2">
+                            <span
+                              className="remove-report bi bi-dash-circle-fill fw-bold me-2"
+                              // onClick={() => {
+                              //   deleteIngredient(singleData._id);
+                              // }}
+                            />
+                          </td>
               </tr>
               );
             })}
             </tbody>
           </table>
-        </div>
+          </div>
+        
         <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Steps</label>
-                <div className="col-sm-9">
+                <label class="col-sm-2 col-form-label">Steps</label>
+                <div className="col-sm-10">
                   <div style={{ display: "flex", flexDirection: "column" }}>
                     {steps.map((steps) => {
                       return (
@@ -364,8 +411,8 @@ const UpdateDiet =()=> {
                   </div>
                 </div>
               
-                <div className="col-sm-3"></div>
-                <div class="col-sm-9">
+                <div className="col-sm-2"></div>
+                <div class="col-sm-10">
                   <textarea
                     type="text"
                     class="form-control"
@@ -381,10 +428,10 @@ const UpdateDiet =()=> {
                   />
                 </div>
               </div>
-    
+    </div>
               <div className="form-group row">
-                <div className="col-sm-3"></div>
-                <div className="col-sm-9">
+                <div className="col-sm-2"></div>
+                <div className="col-sm-10">
                   <button
                     type="button"
                     className="btn btn-primary"
