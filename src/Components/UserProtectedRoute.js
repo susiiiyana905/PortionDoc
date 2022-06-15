@@ -9,7 +9,7 @@ function UserPrivateRoute({ children }) {
   else{
       isAuth= false
   }
-  return isAuth ? children : <Navigate to="/" />;
+  return isAuth ? children : <Navigate to="/login" />;
 }
 
 export default UserPrivateRoute;

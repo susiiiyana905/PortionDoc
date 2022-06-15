@@ -4,7 +4,7 @@ import axios from "axios";
 import React from 'react';
 import AdminDashboard from "../adminDashbaord";
 
-const ViewPrefrenceCategory = () => {
+const ViewPreferenceCategory = () => {
     const [dietCategoryData,setDietCategoryData] = useState([]);
     const [message, setMessage] = useState("");
     const [sMessage, setSMessage] = useState("");
@@ -57,8 +57,14 @@ const ViewPrefrenceCategory = () => {
       <div className="container mt-5">
         <div className="row">
           <div className="col-md-3"></div>
+          
           <div className="col-md-8">
-            <div className="mb-2">
+            
+            <div class="container">
+              <div class="row">
+                
+                <div>
+                <div className="mb-2">
               <div className="suggestion-message text-center">{message}</div>
               <div
                 className="success-message text-center"
@@ -67,10 +73,8 @@ const ViewPrefrenceCategory = () => {
                 {sMessage}
               </div>
             </div>
-            <div class="container">
-              <div class="row">
-                <div>
                   <table className="table">
+                    
                     <thead>
                       <tr>
                         <th scope="col" colSpan="2">
@@ -113,4 +117,4 @@ const ViewPrefrenceCategory = () => {
   );
 };
 
-export default ViewPrefrenceCategory;
+export default ViewPreferenceCategory;

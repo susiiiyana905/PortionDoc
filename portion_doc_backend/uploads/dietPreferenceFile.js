@@ -3,7 +3,7 @@ const multer = require("multer");
 //to upload code
 const storage = multer.diskStorage({
     destination : function(req, file, cb){
-        cb(null, './images/preference')
+        cb(null, './images/preferences')
     },
     filename : function(req, file, cb){
         cb(null, Date.now() + file.originalname)
