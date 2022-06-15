@@ -206,8 +206,8 @@ router.put(
   }
 );
 
-router.get("/preference/:preference", auth.verifyAdmin, function (req, res) {
-  const _preference = req.params.preference;
+router.post("/preference", auth.verifyAdmin, function (req, res) {
+  const _preference = req.body.preference;
   dietPreferenceMeal
     .find({ preference: _preference })
     .then(function (result) {
