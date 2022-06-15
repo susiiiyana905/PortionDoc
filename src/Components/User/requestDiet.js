@@ -22,6 +22,11 @@ const RequestDietary = () => {
   const requestDietary=(e)=>{
     e.preventDefault();
 
+    if (gender.trim()==="" || weight.trim()==="" || height==="" || preference==="") {
+      setMessage("Empty field found. Fill up the form completely.");          
+      return;             
+  } 
+
     const dietaryData = {
       gender, weight, height, preference, foodAllergies
     }

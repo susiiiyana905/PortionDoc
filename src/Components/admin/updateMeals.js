@@ -117,6 +117,48 @@ const UpdateMeal = () => {
   };
   const updateMeal = (e) => {
     e.preventDefault();
+    const priceRegex = new RegExp("^[0-9]+$");
+    const numberRegex = new RegExp("[0-9]");
+    const specialCharacterRegex = new RegExp('[!@#$%^&*(),.?":{}|<>]');
+    if (
+      mealName.trim() === "" ||
+      mealCategory.trim() === "" ||
+      mealPrice.trim() === "" ||
+      time.trim() === "" ||
+      calory.trim() === "" ||
+      mealDescription.trim() === "" ||
+      difficulty.trim() === ""
+    ) {
+      setMessage("Empty field found. Fill up the form completely.");
+      return;
+    } else if (mealName.length < 2) {
+      setMessage("Meal Name most contain at least two characters.");
+      return;
+    } else if (mealDescription.length < 2) {
+      setMessage("Description most contain at least two characters.");
+      return;
+    } else if (
+      numberRegex.test(mealName) ||
+      specialCharacterRegex.test(mealName)
+    ) {
+      setMessage(
+        "Any numbers or special characters are not allowed in the meal name."
+      );
+      return;
+    } else if (specialCharacterRegex.test(time)) {
+      setMessage(
+        "Any numbers or special characters are not allowed in the time."
+      );
+      return;
+    } else if (specialCharacterRegex.test(calory)) {
+      setMessage(
+        "Any numbers or special characters are not allowed in the calory."
+      );
+      return;
+    } else if (!priceRegex.test(mealPrice)) {
+      setMessage("Invalid meal price.");
+      return;
+    }
 
     const mealData = new FormData();
 
@@ -133,7 +175,6 @@ const UpdateMeal = () => {
     axios
       .put("http://localhost:4001/update/meals/" + mid, mealData, config)
       .then((result) => {
-        console.log(result.data);
         if (result.data.success) {
           setMessage(result.data.message);
           navigate("/viewMeal");
@@ -157,12 +198,12 @@ const UpdateMeal = () => {
           className="suggestion-message text-center mb-2"
           style={{ color: "red", fontWeight: "bold" }}
         >
-          {message}
+         
         </div>
           <div className="col-md-2"></div>
           <div className="col-md-8">
           <div className="mb-2">         
-                        <div className="success-message text-center">{message}</div>  
+                        <div className="success-message text-center" style={{color:"red", fontWeight:"bold"}}>{message}</div>  
                     </div>
             <h2 className="heading-h2-all">Update Meal</h2>
 

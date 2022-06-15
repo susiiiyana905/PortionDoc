@@ -3,7 +3,7 @@ import { Component, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "../footer";
 import Header from "../header";
-import React from "react"
+import React from "react";
 
 const AddRecipes = () => {
   const [title, setTitle] = useState("");
@@ -40,74 +40,102 @@ const AddRecipes = () => {
     tempSteps.splice(tempSteps.indexOf(step), 1);
     setSteps(tempSteps);
   }
-  const addRecipe=(e)=>{
+  const addRecipe = (e) => {
     e.preventDefault();
+
+    const numberRegex = new RegExp("[0-9]");
+    const specialCharacterRegex = new RegExp('[!@#$%^&*(),.?":{}|<>]');
+
+    if (
+      title.trim() === "" ||
+      description.trim() === "" ||
+      recipePic === "" ||
+      steps === ""
+    ) {
+      setMessage("Empty field found. Fill up the form completely.");
+      return;
+    } else if (title.length < 2) {
+      setMessage("Title most contain at least two characters.");
+      return;
+    } else if (description.length < 2) {
+      setMessage("Description most contain at least two characters.");
+      return;
+    } else if (numberRegex.test(title) || specialCharacterRegex.test(title)) {
+      setMessage(
+        "Any numbers or special characters are not allowed in the name."
+      );
+      return;
+    }
 
     const recipeData = new FormData();
     recipeData.append("title", title);
     recipeData.append("description", description);
     recipeData.append("recipePic", recipePic);
+
+
     for(let i=0; i<steps.length; i++){
-
       recipeData.append("steps[" + i +"]", steps[i]);
-
     }
-    
-    axios.post("http://localhost:4001/add/recipe", recipeData, config)
-    .then((result)=>{
-      if(result.data.success) {
-        console.log(result.data)
-        navigate('/');
-        setMessage(result.data.message);
-      }
-    })
-    .catch((e)=>{
-      console.log(e.response.data);
-      setMessage(e.response.data.message);
-    });
-  }
+
+
+    axios
+      .post("http://localhost:4001/add/recipe", recipeData, config)
+      .then((result) => {
+        if (result.data.success) {
+          console.log(result.data);
+          navigate("/");
+          setMessage(result.data.message);
+        }
+      })
+      .catch((e) => {
+        console.log(e.response.data);
+        setMessage(e.response.data.message);
+      });
+  };
+
 
   return (
     <>
       <Header></Header>
       {/* <div style={{backgroundColor:"#FAFAFA"}}> */}
       <div
-          className="suggestion-message text-center mt-3"
-          style={{ color: "red", fontWeight: "bold" }}
-        >
-          {message}
-        </div>
+        className="suggestion-message text-center mt-3"
+        style={{ color: "red", fontWeight: "bold" }}
+      >
+        {message}
+      </div>
       <div
         className="col-md-6 d-flex justify-content-center mx-auto"
         style={{ marginTop: "50px", marginBottom: "50px" }}
       >
-        
         <div class="card w-100">
           <div class="card-body">
             <h2 style={{ textAlign: "center" }}>Add Recipes</h2>
             <div className="container">
               <form style={{ marginTop: "20px" }}>
-              <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Recipe Image</label>
-            <div class="col-sm-10">
-              <input
-                type="file"
-                class="form-control"
-                onChange={(e) => setRecipePic (e.target.files[0])}
-              ></input>
-            </div>
-          </div>
                 <div class="form-group row">
-                  <label className="col-sm-2" for="exampleFormControlInput1">Recipe Title</label>
+                  <label class="col-sm-2 col-form-label">Recipe Image</label>
+                  <div class="col-sm-10">
+                    <input
+                      type="file"
+                      class="form-control"
+                      onChange={(e) => setRecipePic(e.target.files[0])}
+                    ></input>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label className="col-sm-2" for="exampleFormControlInput1">
+                    Recipe Title
+                  </label>
                   <div className="col-sm-10">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="exampleFormControlInput1"
-                    placeholder="Enter Recipe Title"
-                    value={title}
-                    onChange={(e)=>setTitle(e.target.value)}
-                  ></input>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="exampleFormControlInput1"
+                      placeholder="Enter Recipe Title"
+                      value={title}
+                      onChange={(e) => setTitle(e.target.value)}
+                    ></input>
                   </div>
                 </div>
 
@@ -116,38 +144,40 @@ const AddRecipes = () => {
                     Short Description
                   </label>
                   <div className="col-sm-10">
-                  <textarea
-                    class="form-control"
-                    id="exampleFormControlTextarea1"
-                    rows="3"
-                    placeholder="Write short description of recipe"
-                    value={description}
-                    onChange={(e)=>setDescription(e.target.value)}
-                  ></textarea>
+                    <textarea
+                      class="form-control"
+                      id="exampleFormControlTextarea1"
+                      rows="3"
+                      placeholder="Write short description of recipe"
+                      value={description}
+                      onChange={(e) => setDescription(e.target.value)}
+                    ></textarea>
                   </div>
-                  
                 </div>
-                
+
                 <div class="form-group row">
                   <label class="col-sm-2 col-form-label">Steps</label>
                   <div className="col-sm-10">
-                  <div style={{ display: "flex", flexDirection: "column" }}>
-                  {steps.map((steps) => {
-                    return (
-                      <div className="d-flex align-items-center" key={steps}>
-                        <span
-                          className="remove-report bi bi-dash-circle-fill fw-bold me-2"
-                          onClick={() => {
-                            removeSteps(steps);
-                          }}
-                        />
-                        <label className="report-options">{steps}</label>
-                      </div>
-                    );
-                  })}
-                </div>
-                </div>
-                <div className="col-sm-2"></div>
+                    <div style={{ display: "flex", flexDirection: "column" }}>
+                      {steps.map((steps) => {
+                        return (
+                          <div
+                            className="d-flex align-items-center"
+                            key={steps}
+                          >
+                            <span
+                              className="remove-report bi bi-dash-circle-fill fw-bold me-2"
+                              onClick={() => {
+                                removeSteps(steps);
+                              }}
+                            />
+                            <label className="report-options">{steps}</label>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                  <div className="col-sm-2"></div>
                   <div class="col-sm-10">
                     <textarea
                       type="text"
@@ -164,14 +194,14 @@ const AddRecipes = () => {
                     />
                   </div>
                 </div>
-                
+
                 <button
-              type="submit"
-              className="btn btn-primary addMeal"
-              onClick={addRecipe}
-            >
-              Add Recipe
-            </button>
+                  type="submit"
+                  className="btn btn-primary addMeal"
+                  onClick={addRecipe}
+                >
+                  Add Recipe
+                </button>
                 {/* <form onSubmit={this.handleSubmit}>
                     <div>
                       <label>Steps</label>

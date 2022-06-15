@@ -21,7 +21,7 @@ const ViewMealDiet=()=>{
     useEffect(() => {
         axios.get("http://localhost:4001/diet/all",config)
         .then((result) => {
-            console.log(result.data);
+            console.log(result.data.data[0].dietImage);
             setdietMealData(result.data.data);
           })
           .catch((e) => {
@@ -53,20 +53,7 @@ const ViewMealDiet=()=>{
       <br />
     
       <br />
-      <div className="container">
-       <NavLink to = {"/add"}>
-          <button
-            className="btn btn-primary mb-2"
-            style={{
-              backgroundColor: "#FF7800",
-              border: "none",
-              float: "right",
-            }}
-          >
-            Add New Meal
-          </button>
-          </NavLink>
-      </div>
+      
       <div style={{ marginTop: "50px" }}>
         <div className="container">
           <div className="row">
@@ -117,7 +104,7 @@ const ViewMealDiet=()=>{
                                 />
                               </td>
                               <td colSpan="6">{singleData.dietName}</td>
-                              <td colSpan="6">{singleData.dietPice}</td>
+                              <td colSpan="6">{singleData.dietPrice}</td>
                               <td colSpan="6">{singleData.preference}</td>
                               <td colSpan="6">{singleData.time}</td>
                               <td colSpan="6"> {singleData.calory}</td>
@@ -125,7 +112,7 @@ const ViewMealDiet=()=>{
 
                               <td colSpan="6">
                                 <div style={{ float: "left" }}>
-                                 <NavLink to ={"/updateDiet"+singleData._id}>
+                                 <NavLink to ={"/updateDiet/"+singleData._id}>
                                     <button
                                       className="btn btn-primary mb-2"
                                       style={{

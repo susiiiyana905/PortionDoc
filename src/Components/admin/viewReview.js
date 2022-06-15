@@ -2,23 +2,19 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import React from "react"
 import AdminDashboard from "../adminDashbaord";
-
 const ViewReview =()=>{
     const [reviewData,setReviewData] = useState([]);
     const [message, setMessage] = useState('');
-
     const config = {
         headers :{
             Authorization : "Bearer " + localStorage.getItem('adminToken')
         }
     }
-
     useEffect(()=>{
         axios.get("http://localhost:4001/get/all/reviews", config)
         .then(review=>{
             setReviewData(review.data.data);
             // console.log(result.data.data)
-         
         })
         .catch(e=>{
             console.log(e)
@@ -28,7 +24,6 @@ const ViewReview =()=>{
         <>
         <AdminDashboard>
         <br/>
-
         <div className="container">
             <h1 style={{textAlign:"center"}}> Reviews </h1>
             {reviewData.map((singleData)=>{
@@ -51,14 +46,11 @@ const ViewReview =()=>{
                          </div>
                      </div>
                      </div>
-
                 )
             })}
-
         </div>
         </AdminDashboard>
         </>
-
     )
 }
 export default ViewReview;

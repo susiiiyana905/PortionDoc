@@ -18,6 +18,7 @@ const AddDiet = () => {
   const [response, setResponse] = useState("");
   const [sResponse, setSResponse] = useState("");
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
   const config = {
     headers: {
       Authorization: "Bearer " + localStorage.getItem("adminToken"),
@@ -46,7 +47,13 @@ const AddDiet = () => {
 
   const addDietMeal = (e) => {
     e.preventDefault();
-    const priceRegex = new RegExp('^(?:[+0]9)?[0-9]{10}$');
+
+    const numberRegex = new RegExp("[0-9]");
+
+    const priceRegex = new RegExp("^[0-9]+$");
+
+    const specialCharacterRegex = new RegExp('[!@#$%^&*(),.?":{}|<>]');
+
     if (
       dietMealName.trim() === "" ||
       preference.trim() === "" ||
@@ -58,11 +65,33 @@ const AddDiet = () => {
     ) {
       setMessage("Empty field found. Fill up the form completely.");
       return;
-    } 
-    // else if (!priceRegex.test(dietMealPrice)) {
-    //   setMessage("Invalid meal price.");
-    //   return;
-    // }
+    } else if (dietMealName.length < 2) {
+      setMessage("Diet Meal Name most contain at least two characters.");
+      return;
+    } else if (dietMealDescription.length < 2) {
+      setMessage("Description most contain at least two characters.");
+      return;
+    } else if (numberRegex.test(dietMealName) || specialCharacterRegex.test(dietMealName)) {
+      setMessage(
+        "Any numbers or special characters are not allowed in the meal name."
+      );
+      return;
+    } else if (specialCharacterRegex.test(time)) {
+      setMessage(
+        "Any numbers or special characters are not allowed in the time."
+      );
+      return;
+    } else if (specialCharacterRegex.test(calory)) {
+      setMessage(
+        "Any numbers or special characters are not allowed in the calory."
+      );
+      return;
+
+    } else if (!priceRegex.test(dietMealPrice)) {
+      setMessage("Invalid meal price.");
+      return;
+
+    }
 
     const dietMealData = new FormData();
     dietMealData.append("dietImage", dietMealImage);
@@ -77,10 +106,12 @@ const AddDiet = () => {
       dietMealData.append("steps[" + i + "]", steps[i]);
     }
     axios
-      .post("http://localhost:4001/add/dietPreference", dietMealData, config)
+      .post("http://localhost:4001/add/dietMeal", dietMealData, config)
       .then((result) => {
         if(result.data.success){
           setMessage(result.data.message);
+          navigate("/viewMealDiet");
+        
         }
       })
       .catch((e)=>{
