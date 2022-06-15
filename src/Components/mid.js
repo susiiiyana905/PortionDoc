@@ -196,6 +196,7 @@ class Mid extends Component {
             }
           ></Route>
 
+
           <Route
             path="/updateDiet/:did"
             element={

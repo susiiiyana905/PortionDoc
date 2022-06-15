@@ -10,8 +10,35 @@ const Home = () => {
         className="container-fluid"
         style={{ paddingRight: "0px!important" }}
       >
+        {/* -------------------------Image carasouel -------------------------------------------------------------*/}
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="images/first.JPG" class="d-block w-100" alt="..."></img>
+    </div>
+    <div class="carousel-item">
+      <img src="images/second.jpg" class="d-block w-100" style={{height:"550px"}} alt="..."></img>
+    </div>
+    <div class="carousel-item">
+      <img src="images/third.png" class="d-block w-100" style={{height:"550px"}} alt="..."></img>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-target="#carouselExampleIndicators" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-target="#carouselExampleIndicators" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </button>
+</div>
         {/* ------------------top content-------------------------------------------------------------------------- */}
-        <div className="container-fluid">
+        {/* <div className="container-fluid">
           <div className="card  top">
             <div className="row">
               <div className="card-body">
@@ -38,7 +65,7 @@ const Home = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
         <br />
 
         {/* --------------------------midcontent--------------------------------------------- */}
