@@ -22,13 +22,11 @@ const ViewProfile = () => {
     e.preventDefault();
     window.location.replace("/updateProfile");
   };
-
   const config = {
     headers: {
       Authorization: "Bearer " + localStorage.getItem("userToken"),
     },
   };
-
   useEffect(() => {
     axios
       .get("http://localhost:4001/profile", config)
@@ -64,7 +62,7 @@ const ViewProfile = () => {
 
   return (
     <>
- 
+
       <Header></Header>
       <div>
         <div className="container" style={{ marginBottom: "50px" }}>
@@ -91,7 +89,7 @@ const ViewProfile = () => {
               <span style={{ "font-size": "15px", "margin-top": "0px" }}>
                 {bio}
               </span>
-              <p>
+                <div>
               <button
                         type="submit"
                         className="btn btn-primary mt-4"
@@ -99,10 +97,15 @@ const ViewProfile = () => {
                         onClick={editProfile}
                       >
                         Edit Profile
-                      </button></p>
+
+                      </button>
+                      </div>
+            </div>
+          </div>
             </div>
           </div>
          
+
           <div class="row row-cols-1 row-cols-md-3">
           {recipeData.map((singleData)=>{
                 return(
@@ -116,9 +119,6 @@ const ViewProfile = () => {
                );
               })} 
 </div>
-
-        </div>
-      </div>
       <br/>
       <Footer></Footer>
     </>

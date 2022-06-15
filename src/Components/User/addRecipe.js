@@ -72,6 +72,7 @@ const AddRecipes = () => {
     recipeData.append("description", description);
     recipeData.append("recipePic", recipePic);
 
+
     for(let i=0; i<steps.length; i++){
       recipeData.append("steps[" + i +"]", steps[i]);
     }
@@ -91,6 +92,7 @@ const AddRecipes = () => {
         setMessage(e.response.data.message);
       });
   };
+
 
   return (
     <>

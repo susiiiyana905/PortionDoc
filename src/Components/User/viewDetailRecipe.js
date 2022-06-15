@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import React from "react"
 import Header from "../header";
 import Footer from "../footer";
-
 const RecipeDetail = () => {
   const [recipeData, setRecipeData] = useState([]);
   const [message, setMessage] = useState("");
@@ -17,7 +16,6 @@ const RecipeDetail = () => {
       Authorization: "Bearer " + localStorage.getItem("userToken"),
     },
   };
-
   useEffect(() => {
     axios
       .get("http://localhost:4001/get/recipe/detail/" + rid, config)
@@ -75,7 +73,6 @@ const RecipeDetail = () => {
                   </p>
                 </div>
                 <hr />
-
                 <div>
                   <p style={{ fontSize: "22px", fontWeight: "bold" }}>
                     Description
@@ -85,7 +82,7 @@ const RecipeDetail = () => {
                 <hr />
 
                 <div className="form-group row">
-                
+
                 <table className="table col-sm-12">
                   <thead>
                     <tr>
@@ -98,7 +95,7 @@ const RecipeDetail = () => {
                       <th scope="col" colSpan="2">
                         Quantity
                       </th>
-                      
+
                     </tr>
                   </thead>
                   <tbody>
@@ -155,5 +152,4 @@ const RecipeDetail = () => {
     </>
   );
 };
-
 export default RecipeDetail;
