@@ -47,7 +47,7 @@ class AddRecipeIngredient extends Component {
   };
 
   addRecipeIngredient = () => {
-    const recipe_id = localStorage.getItem("meals_id");
+    const recipe_id = localStorage.getItem("recipe_id");
     const ingredientData = new FormData();
     ingredientData.append("name", this.state.name);
     ingredientData.append("image", this.state.image);

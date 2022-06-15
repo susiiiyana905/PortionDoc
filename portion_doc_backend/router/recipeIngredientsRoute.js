@@ -16,7 +16,7 @@ router.post(
     const name = req.body.name;
     const quantity = req.body.quantity;
     const image = req.file.filename;
-    const recipe_id = req.params.recipe_id;                             
+    const recipe_id = req.body.recipe_id;                             
 
     const ingredientsData = new RecipeIngredients({
       name: name,

@@ -7,7 +7,7 @@ import Footer from "../footer";
 const RecipeDetail = () => {
   const [recipeData, setRecipeData] = useState([]);
   const [message, setMessage] = useState("");
-
+  const [serving, setServing] = useState(1);
   const[ingredientData,setIngredientData] = useState("");
 
   const { rid } = useParams();
@@ -81,44 +81,47 @@ const RecipeDetail = () => {
                 </div>
                 <hr />
 
-                <div className="form-group row">
-
-                <table className="table col-sm-12">
-                  <thead>
-                    <tr>
-                      <th scope="col" colSpan="2">
-                        Ingredient Image
-                      </th>
-                      <th scope="col" colSpan="2">
-                        Ingredient Name
-                      </th>
-                      <th scope="col" colSpan="2">
-                        Quantity
-                      </th>
-
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {ingredientData.map((singleData) => {
-                      return (
-                        <tr>
-                          <td>
-                            <img
-                              src={
-                                "http://localhost:4001/recipeIngredients/" +
-                                singleData.image
-                              }
-                              height="100px"
-                            />
-                          </td>
-                          <td colSpan="2">{singleData.name}</td>
-                          <td colSpan="2">{singleData.quantity}</td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
-              </div>
+                <div class="card-body">
+          <div id="front">
+          <div>
+          <h5 class="card-title" style={{ fontSize: "45px" }}>
+              Ingredients
+            </h5>
+          </div>
+          <div id="two">
+          <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
+            <h6 style={{marginRight:"20px", marginTop:"15px"}}>Serving Amount</h6>
+            <button onClick={()=>{ setServing(1) }} type="button" class="btn btn-success serving">2</button>
+            <button onClick={()=>{ setServing(2) }} type="button" class="btn btn-success serving">4</button>
+          </div>
+          </div>
+        </div>
+            {ingredientData.map((singleData) => {
+              return (
+                <div class=" mb-3">
+                  <div class="row no-gutters">
+                    <div>
+                      <img
+                        className="rounded-circle"
+                        src={
+                          "http://localhost:4001/recipeIngredients/" +
+                          singleData.image
+                        }
+                        style={{ height: "70px", width:"70px" }}
+                      ></img>
+                    </div>
+                    <div class="col-md-4 ml-3">
+                      <div class="body">
+                        <label className="m-0 mt-3">{parseInt(singleData.quantity)*serving}</label>
+                        <br/>
+                        <label className="m-0">{singleData.name}</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
 
 
                 <div style={{ fontSize: "22px", fontWeight: "bold" }}>
