@@ -97,10 +97,15 @@ const ViewProfile = () => {
                         onClick={editProfile}
                       >
                         Edit Profile
+
                       </button>
                       </div>
             </div>
           </div>
+            </div>
+          </div>
+         
+
           <div class="row row-cols-1 row-cols-md-3">
           {recipeData.map((singleData)=>{
                 return(
@@ -114,9 +119,6 @@ const ViewProfile = () => {
                );
               })} 
 </div>
-
-        </div>
-      </div>
       <br/>
       <Footer></Footer>
     </>

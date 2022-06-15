@@ -80,4 +80,5 @@ router.get("/get/recipe/detail/:rid", auth.verifyUser, async(req,res)=>{
         res.status(400).send({message: "Something went wrong!"})
     })
 })
+
 module.exports = router;
