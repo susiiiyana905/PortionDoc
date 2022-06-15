@@ -105,19 +105,20 @@ const ViewProfile = () => {
             </div>
           </div>
          
-
-          <div class="row row-cols-1 row-cols-md-3">
+          <div className="container">
+          <div class="row row-cols-1 row-cols-md-4">
           {recipeData.map((singleData)=>{
                 return(
                   <NavLink to= {"/viewDetailRecipe/"+ singleData._id}>
             <div class="col mb-4">
-                  <div class="card">
+                  <div class="card" style={{width:"200px"}}>
                   <img src={"http://localhost:4001/recipe/" + singleData.recipePic}></img>
                 </div>
             </div>
             </NavLink>
                );
               })} 
+</div>
 </div>
       <br/>
       <Footer></Footer>
