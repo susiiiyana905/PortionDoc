@@ -40,7 +40,6 @@ router.get("/order/get", auth.verifyAdmin, async function (req, res) {
     res.json({success: true, message:"Order Data", data:data});
 })
 
-<<<<<<< Updated upstream
 // router.get("/orders/get", auth.verifyAdmin, async function (req, res){
 //     try{
 //         const getOrders = await Order.find({}).populate(["user_id", {path : 'addToCart', populate : {
@@ -53,7 +52,6 @@ router.get("/order/get", auth.verifyAdmin, async function (req, res) {
 //     }
 // })
 
-=======
 
 router.get("/orders/get", auth.verifyAdmin.apply, async function (req, res){
     try{
@@ -66,7 +64,6 @@ router.get("/orders/get", auth.verifyAdmin.apply, async function (req, res){
         res.join({message:"Failed to retrieve order"});
     }
 })
->>>>>>> Stashed changes
 //for user
 router.get("/order/user/get", auth.verifyUser, async function (req, res) {
     const data = await Order.find() 
