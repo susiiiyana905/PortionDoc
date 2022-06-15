@@ -49,7 +49,9 @@ const AddDiet = () => {
     e.preventDefault();
 
     const numberRegex = new RegExp("[0-9]");
+
     const priceRegex = new RegExp("^[0-9]+$");
+
     const specialCharacterRegex = new RegExp('[!@#$%^&*(),.?":{}|<>]');
 
     if (
@@ -84,9 +86,11 @@ const AddDiet = () => {
         "Any numbers or special characters are not allowed in the calory."
       );
       return;
+
     } else if (!priceRegex.test(dietMealPrice)) {
       setMessage("Invalid meal price.");
       return;
+
     }
 
     const dietMealData = new FormData();

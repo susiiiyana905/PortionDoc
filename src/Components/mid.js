@@ -47,6 +47,9 @@ import RecipeDetail from './User/viewDetailRecipe';
 import AddRecipeIngredient from './admin/recipeIngredient';
 
 
+import OrderView from './User/viewOrder';
+
+
 
 class Mid extends Component {
   render() {
@@ -214,8 +217,8 @@ class Mid extends Component {
 
           <Route path = "/viewDetailRecipe/:rid" element={<UserPrivateRoute><RecipeDetail></RecipeDetail></UserPrivateRoute>}></Route>
            <Route path = "/addRecipeIngredient" element={<AdminPrivateRoute><AddRecipeIngredient></AddRecipeIngredient></AdminPrivateRoute>}></Route> 
-
-          <Route path = "/viewDetailRecipe/:rid" element={<UserPrivateRoute><RecipeDetail></RecipeDetail></UserPrivateRoute>}></Route>
+          <Route path="/viewMealDiet" element={<ViewMealDiet></ViewMealDiet>}></Route>
+          <Route path="/viewOrder" element={<OrderView></OrderView>}></Route>
 
         </Routes>
         
