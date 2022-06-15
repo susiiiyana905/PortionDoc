@@ -36,7 +36,6 @@ import Cart from './User/cart';
 
 import ViewDietRequest from './admin/viewDietRequest';
 import ViewMealDiet from './admin/viewMealDiet';
-<<<<<<< Updated upstream
 import AddDietIngredient from './admin/dietIngredient';
 import ShowPreferenceCategory from './admin/preferenceCategory';
 import AddPreferenceCategory from './admin/addPreferenceCategory';
@@ -47,11 +46,7 @@ import ViewDetailDiet from './User/viewDetailDietMeal';
 import RecipeDetail from './User/viewDetailRecipe';
 import AddRecipeIngredient from './admin/recipeIngredient';
 
-import RecipeDetail from './User/viewDetailRecipe';
-
-=======
 import OrderView from './User/viewOrder';
->>>>>>> Stashed changes
 
 
 class Mid extends Component {
@@ -217,13 +212,8 @@ class Mid extends Component {
 
           <Route path = "/viewDetailRecipe/:rid" element={<UserPrivateRoute><RecipeDetail></RecipeDetail></UserPrivateRoute>}></Route>
            <Route path = "/addRecipeIngredient" element={<AdminPrivateRoute><AddRecipeIngredient></AddRecipeIngredient></AdminPrivateRoute>}></Route> 
-
-<<<<<<< Updated upstream
-          <Route path = "/viewDetailRecipe/:rid" element={<UserPrivateRoute><RecipeDetail></RecipeDetail></UserPrivateRoute>}></Route>
-=======
           <Route path="/viewMealDiet" element={<ViewMealDiet></ViewMealDiet>}></Route>
           <Route path="/viewOrder" element={<OrderView></OrderView>}></Route>
->>>>>>> Stashed changes
 
         </Routes>
         
