@@ -205,7 +205,7 @@ class Mid extends Component {
           <Route path="/requestDiet" element={<UserPrivateRoute><RequestDietary></RequestDietary></UserPrivateRoute>}></Route>
           <Route path="/orderMeal" element={<UserPrivateRoute><OrderMeal></OrderMeal></UserPrivateRoute>}></Route>
           <Route path="/categoryMeals/:category" element={<CategoryMeal></CategoryMeal>}></Route>
-          <Route path="/viewDietMeal" element={<UserPrivateRoute><ViewDietMeals></ViewDietMeals></UserPrivateRoute>}></Route>
+          <Route path="/viewDietMeal" element={<AdminPrivateRoute><ViewDietMeals></ViewDietMeals></AdminPrivateRoute>}></Route>
           <Route path="/viewUserDietMeal" element={<UserPrivateRoute><ViewUserDietMeal></ViewUserDietMeal></UserPrivateRoute>}></Route>
           <Route path="/cart" element={<UserPrivateRoute><Cart></Cart></UserPrivateRoute>}></Route>
           <Route path ="/showPreferenceCategory" element={<AdminPrivateRoute><ShowPreferenceCategory></ShowPreferenceCategory></AdminPrivateRoute>}></Route>
