@@ -38,7 +38,7 @@ import AddDietIngredient from './admin/dietIngredient';
 import ShowPreferenceCategory from './admin/preferenceCategory';
 import AddPreferenceCategory from './admin/addPreferenceCategory';
 import ViewOrders from './admin/viewOrder';
-import ViewPrefrenceCategory from './admin/viewPreferenceCategory';
+import ViewPreferenceCategory from './admin/viewPreferenceCategory';
 import ViewDetailDiet from './User/viewDetailDietMeal';
 
 
@@ -209,7 +209,7 @@ class Mid extends Component {
           <Route path="/viewUserDietMeal" element={<UserPrivateRoute><ViewUserDietMeal></ViewUserDietMeal></UserPrivateRoute>}></Route>
           <Route path="/cart" element={<UserPrivateRoute><Cart></Cart></UserPrivateRoute>}></Route>
           <Route path ="/showPreferenceCategory" element={<AdminPrivateRoute><ShowPreferenceCategory></ShowPreferenceCategory></AdminPrivateRoute>}></Route>
-          <Route path ="/viewPreferenceCategory" element={<AdminPrivateRoute><ViewPrefrenceCategory></ViewPrefrenceCategory></AdminPrivateRoute>}></Route>
+          <Route path ="/viewPreferenceCategory" element={<AdminPrivateRoute><ViewPreferenceCategory></ViewPreferenceCategory></AdminPrivateRoute>}></Route>
           <Route path ="/addPreferenceCategory" element={<AdminPrivateRoute><AddPreferenceCategory></AddPreferenceCategory></AdminPrivateRoute>}></Route>
           <Route path="/viewMealDiet" element={<AdminPrivateRoute><ViewMealDiet></ViewMealDiet></AdminPrivateRoute>}></Route>
           <Route path='/viewDetailDiet/:did' element={<AdminPrivateRoute><ViewDetailDiet></ViewDetailDiet></AdminPrivateRoute>}></Route>

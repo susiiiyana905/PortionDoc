@@ -20,6 +20,11 @@ const Review = ()=> {
     const review = (e) => {
         e.preventDefault();
 
+        if (subject.trim()==="" || reviewMessage.trim()==="") {
+            setMessage("Empty field found. Fill up the form completely.");          
+            return;             
+        } 
+
         const reviewData = {
             subject, reviewMessage
         }

@@ -58,7 +58,7 @@ class Header extends Component {
             ></i>
           </nav>
           <nav className="navbar navbar-expand-lg navbar-light bg-light logoNav">
-            <a className="navbar-brand" href="#">
+            <Link className="navbar-brand" href="/">
               <img
                 src="images/logo.png"
                 className="card-img-top"
@@ -70,7 +70,7 @@ class Header extends Component {
                   marginTop: "15px",
                 }}
               ></img>
-            </a>
+            </Link>
             <div
               class="collapse navbar-collapse"
               style={{ marginLeft: "650px" }}
@@ -178,14 +178,14 @@ class Header extends Component {
           </nav>
 
           <nav className="navbar navbar-expand-lg navbar-light bg-light logoNav">
-            <a className="navbar-brand" href="#">
+            <Link className="navbar-brand" to="/">
               <img
                 src="images/logo.png"
                 className="card-img-top"
                 alt="..."
                 style={{ height: "80px", width: "160px", marginLeft: "30px" }}
               ></img>
-            </a>
+            </Link>
             <div
               class="collapse navbar-collapse"
               style={{ marginLeft: "650px" }}
@@ -193,25 +193,25 @@ class Header extends Component {
             >
               <ul className="navbar-nav nav-item">
                 <li className="nav-item active">
-                  <a className="nav-link" href="#">
+                  <Link className="nav-link" to="/">
                     HOME <span className="sr-only">(current)</span>
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
+                  <Link className="nav-link" to="/requestDiet">
                     DIETARY
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
+                  <Link className="nav-link" to="/ourmenu">
                     OUR MENU
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link">PACKAGES</a>
+                  <Link className="nav-link" to="">PACKAGES</Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link">CONTACT US</a>
+                  <Link className="nav-link" to="/review">CONTACT US</Link>
                 </li>
                 <button className="btn-sign" style={{ marginLeft: "10px" }}>
                   <Link

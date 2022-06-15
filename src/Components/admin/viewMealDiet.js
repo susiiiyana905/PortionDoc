@@ -19,7 +19,8 @@ const ViewMealDiet=()=>{
     }
 
     useEffect(() => {
-        axios.get("http://localhost:4001/diet/all",config)
+      console.log(config.headers.Authorization);
+        axios.get("http://localhost:4001/diet/all", config)
         .then((result) => {
             console.log(result.data.data[0].dietImage);
             setdietMealData(result.data.data);
@@ -98,9 +99,10 @@ const ViewMealDiet=()=>{
                               <td>
                                 <img
                                   src={
-                                    "http://localhost:4001/preference/" +
+                                    "http://localhost:4001/preferences/" +
                                     singleData.dietImage
                                   }
+                                  height="100px"
                                 />
                               </td>
                               <td colSpan="6">{singleData.dietName}</td>

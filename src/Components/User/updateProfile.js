@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import Footer from "../footer";
 import Header from "../header";
-import React from "react"
+import React from "react";
 
 const UpdateProfile = () => {
   const [profile_pic, setProfilePic] = useState("");
@@ -13,7 +13,6 @@ const UpdateProfile = () => {
   const [address, setAddress] = useState("");
   const [phone_no, setPhoneNo] = useState("");
   const [bio, setBio] = useState("");
-  const [dob, setDoB] = useState("");
   const [gender, setGender] = useState("");
   const [_id, setID] = useState("");
   const [message, setMessage] = useState("");
@@ -36,7 +35,6 @@ const UpdateProfile = () => {
         setLastName(result.data.lastName);
         setBio(result.data.bio);
         setAddress(result.data.address);
-        setDoB(result.data.dob);
         setGender(result.data.gender);
         setPhoneNo(result.data.phone_no);
         setID(result.data._id);
@@ -48,11 +46,32 @@ const UpdateProfile = () => {
 
   const editProfile = (e) => {
     e.preventDefault();
+    const nameRegex = new RegExp("^[a-zA-Z0-9]+$");
+    const phoneRegex = new RegExp("^(?:[+0]9)?[0-9]{10}$");
+    const numberRegex = new RegExp("[0-9]");
+    const specialCharacterRegex = new RegExp('[!@#$%^&*(),.?":{}|<>]');
+    if (firstName.length <= 2 || firstName.length >= 16) {
+      setMessage("FirstName most contain 3 to 15 characters.");
+      return;
+    } else if (lastName.length <= 2 || lastName.length >= 16) {
+      setMessage("LastName most contain 3 to 15 characters.");
+      return;
+    } else if (address.length <= 2) {
+      setMessage("Address must more than 3 characters");
+    } else if (!nameRegex.test(firstName) || !nameRegex.test(lastName)) {
+      setMessage("Special characters and white spaces not allowed in name.");
+      return;
+    } else if (numberRegex.test(firstName) || numberRegex.test(lastName)) {
+      setMessage("Numbers not allowed");
+      return;
+    } else if (!phoneRegex.test(phone_no)) {
+      setMessage("Invalid phone number.");
+      return;
+    }
     const profileData = {
       firstName,
       lastName,
       bio,
-      dob,
       gender,
       phone_no,
       address,
@@ -68,7 +87,7 @@ const UpdateProfile = () => {
           setMessage(e);
         }
       })
-      .catch((e)=>{
+      .catch((e) => {
         setMessage(e.response.data.message);
       });
   };
@@ -85,7 +104,7 @@ const UpdateProfile = () => {
           setMessage(e);
         }
       })
-      .catch((e)=>{
+      .catch((e) => {
         setMessage(e.response.data.message);
       });
   };
@@ -98,9 +117,14 @@ const UpdateProfile = () => {
           <h3 className="mt-5 mb-3" style={{ textAlign: "center" }}>
             Update Profile
           </h3>
-          <div className="mb-2">        
-                        <div className="success-message text-center" style={{color:"red", fontWeight:"bold"}}>{message}</div>  
-                    </div>
+          <div className="mb-2">
+            <div
+              className="success-message text-center"
+              style={{ color: "red", fontWeight: "bold" }}
+            >
+              {message}
+            </div>
+          </div>
           <div className="row">
             <div className="col-md-4"></div>
             <div className="col-md-6">
@@ -252,20 +276,6 @@ const UpdateProfile = () => {
                           id="bio"
                           value={bio}
                           onChange={(e) => setBio(e.target.value)}
-                        />
-                      </div>
-                    </div>
-                    <div className="form-group editProfileForm row">
-                      <label for="inputDob" className="col-sm-3 col-form-label">
-                        DoB
-                      </label>
-                      <div className="col-sm-9">
-                        <input
-                          type="date"
-                          className="form-control border-dark"
-                          id="dob"
-                          value={dob}
-                          onChange={(e) => setDoB(e.target.value)}
                         />
                       </div>
                     </div>

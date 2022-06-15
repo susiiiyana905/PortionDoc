@@ -144,7 +144,6 @@ router.put("/user/update", auth.verifyUser, function(req,res){
         firstName,
         lastName,
         bio,
-        dob,
         gender,
         address,
         phone_no
@@ -154,7 +153,6 @@ router.put("/user/update", auth.verifyUser, function(req,res){
         firstName,
         lastName,
         bio,
-        dob,
         gender,
         address,
         phone_no

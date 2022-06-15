@@ -184,13 +184,19 @@ const UpdateDiet =()=> {
         <AdminDashboard>
         <div className="container">
           <h2 className="heading-h2-all">Update Diet Meal:</h2>
+          <div
+            className="suggestion-message text-center mb-2"
+            style={{ color: "red", fontWeight: "bold" }}
+          >
+            {message}
+          </div>
           <form>
           <div className="form-group row">
                 <label htmlFor="mealImage" className="col-sm-2 col-form-label">
                   Meal Image
                 </label>
                 <img
-                  src={"http://localhost:4001/preference/" + dietImage}
+                  src={"http://localhost:4001/preferences/" + dietImage}
                   data-bs-toggle="modal"
                   data-bs-target="#exampleModal"
                   height="200px"
