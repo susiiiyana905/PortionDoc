@@ -118,10 +118,8 @@ router.get("/diet/single/:did", auth.verifyAdmin, function (req, res) {
         })
 
     })
-    .catch(function () {
-      res.status(400).send({ message: "Something went wrong!" });
-    });
-});
+ 
+
 
 router.get("/diet/single/view/:did", auth.verifyUser, function (req, res) {
   const did = req.params.did;
