@@ -58,7 +58,7 @@ class Header extends Component {
             ></i>
           </nav>
           <nav className="navbar navbar-expand-lg navbar-light bg-light logoNav">
-            <Link className="navbar-brand" href="/">
+            <Link className="navbar-brand" to="/">
               <img
                 src="images/logo.png"
                 className="card-img-top"

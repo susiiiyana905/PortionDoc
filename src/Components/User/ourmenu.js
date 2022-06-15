@@ -7,11 +7,25 @@ import React from "react";
 const Meals = () => {
   const [mealData, setMealData] = useState([]);
   const [categoryData, setCategoryData] = useState([]);
+  const [meals, setMeals] = useState([]);
   const config = {
     headers: {
       Authorization: "Bearer " + localStorage.getItem("userToken"),
     },
   };
+  function searchMeal(mealName){
+    if(mealName.trim()===""){
+      return
+    }
+    axios.post("http://localhost:4001/search/meal", {mealName}, config)
+    .then(result=>{
+      console.log(result)
+      setMeals(result.data)
+    })
+    .catch(e=>{
+      console.log(e);
+    })
+  }
   useEffect(() => {
     axios
       .get("http://localhost:4001/meal/all", config)
@@ -66,17 +80,31 @@ const Meals = () => {
             </div>
           </div>
           <div id="two">
-            <form class="d-flex">
+            <div class="d-flex">
               <input
                 class="form-control me-2"
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
+                style={{borderColor:"grey"}}
+                onChange={(e)=>searchMeal(e.target.value)}
               ></input>
-              <button class="btn btn-outline-success" type="submit">
-                Search
-              </button>
-            </form>
+              
+            </div>
+            <div className="d-flex flex-column">
+                {meals.map((singleData)=>{
+                  return(
+                    <div className="d-flex justify-content-between align-items-center">
+                      <NavLink to={"/viewRecipe/"+singleData._id}>
+                      <div className="d-flex justify-content-start align-items-center my-2" key={singleData._id}>
+                        <img src={"http://localhost:4001/meal/"+singleData.mealImage} className="me-3" style={{width:"100px", height:"100px", borderRadius:"50%"}} alt=""/>
+                        <label>{singleData.mealName}</label>
+                      </div>
+                      </NavLink>
+                      </div>
+                  )
+                })}
+            </div>
           </div>
         </div>
       </div>
@@ -136,15 +164,7 @@ const Meals = () => {
           );
         })}
 
-        <div>
-          <button
-            id="mybutton"
-            type="button"
-            class="btn btn-primary btn-medium"
-          >
-            Get Cooking
-          </button>
-        </div>
+        
       </div>
 
       {/* </div> */}

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import axios from "axios";
 import AdminDashboard from "../adminDashbaord";
 const ViewDietMeals = () => {
@@ -10,12 +10,11 @@ const ViewDietMeals = () => {
       Authorization: "Bearer " + localStorage.getItem("adminToken"),
     },
   };
-
+  const useParam = useParams();
   useEffect(() => {
-    console.log("ssssss");
     axios
-      .get("http://localhost:4001/diet/all", config)
-      
+      .post("http://localhost:4001/preference/" , {preference: useParam.preference.replace("+"," ")}, config)
+
       .then((result) => {
         console.log("ssssss");
         console.log(result.data.data.dietName);
@@ -31,7 +30,10 @@ const ViewDietMeals = () => {
         <div className="container py-5">
           <div className="row">
             <div className="col-12 text-center" style={{ marginTop: "2px" }}>
-              <h1>Diet Meals</h1>
+              
+                 <h1></h1>;
+              
+
               <hr />
             </div>
           </div>
@@ -45,7 +47,7 @@ const ViewDietMeals = () => {
                   <div class="card">
                     <img
                       src={
-                        "http://localhost:4001/preference/" +
+                        "http://localhost:4001/preferences/" +
                         singleData.dietImage
                       }
                     ></img>
