@@ -2,6 +2,8 @@ import {Component, useEffect, useState} from "react";
 import React from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
+import Header from "../header";
+import Footer from "../footer";
 
 const ViewUserDietMeals =()=> {
   const [dietMealData, setdietMealData] = useState([]);
@@ -23,7 +25,7 @@ const ViewUserDietMeals =()=> {
   }, [])
         return(
             <>
-  
+            <Header></Header>
                 <div className="container py-5">
             <div className="row">
             <div className="col-12 text-center" style={{marginTop:"2px"}}>
@@ -40,7 +42,7 @@ const ViewUserDietMeals =()=> {
         <div class="card-deck">
         <div class="card">
            
-            <img src={"http://localhost:4001/preference/"+singleData.dietMeal_id.dietImage}></img>
+            <img src={"http://localhost:4001/preferences/"+singleData.dietMeal_id.dietImage}></img>
            
             <div class="card-body">
             <NavLink to = {"/viewDetailDiet"+singleData._id}>
@@ -85,6 +87,7 @@ const ViewUserDietMeals =()=> {
            )
         })} 
 </div>
+<Footer></Footer>
 
             </>
 

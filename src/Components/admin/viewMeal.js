@@ -52,7 +52,7 @@ const ViewMeals = () => {
       <br />
       
       <br />
-      <div style={{ marginTop: "50px" }}>
+      <div style={{ marginTop: "0px" }}>
         <div className="container">
           <div className="row">
             <div className="col-md-12">
