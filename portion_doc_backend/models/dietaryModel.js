@@ -24,6 +24,10 @@ const dietarySchema = new mongoose.Schema(
     foodAllergies: {
       type: String,
     },
+    accepted:{
+      type: Boolean,
+      default: false
+    }
   },
   {
     timestamps: true,

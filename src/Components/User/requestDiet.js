@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -9,9 +9,10 @@ const RequestDietary = () => {
   const [gender, setGender] = useState("Male");
   const [weight, setWeight] = useState("");
   const [height, setHeight] = useState("");
-  const [preference, setPreference] = useState("");
-  const [foodAllergies, setFoodAllergies] = useState("");
+  const [preference, setPreference] = useState("Weight Loss");
+  const [foodAllergies, setFoodAllergies] = useState("None");
   const [message, setMessage] = useState("");
+  const [preferenceData, setPreferenceData] = useState([]);
   const navigate = useNavigate();
   const config = {
     headers: {
@@ -42,6 +43,17 @@ const RequestDietary = () => {
       setMessage(e.response.data.message);
     });
   }
+
+  useEffect(()=>{
+    axios.get("http://localhost:4001/preference/category/all",config)
+    .then((preference)=>{
+      console.log(preference.data.data);
+      setPreferenceData(preference.data.data);
+    })
+    .catch((e)=>{
+      console.log(e);
+    });
+  }, [])
   return (
     <>
       <Header></Header>
@@ -73,13 +85,14 @@ const RequestDietary = () => {
           onChange={(e) => setHeight(e.target.value)}
           ></input>
           <select placeholder="Choose your preferences" id="v"
-          value={preference}
           onChange={(e) => setPreference(e.target.value)}
+          className="custom-select custom-select-lg"
           >
-            <option>Choose Your Preferences</option>
-            <option>Weight Loss</option>
-            <option>Weight Gain</option>
-            <option>Muscle Gain</option>
+            {preferenceData.map((preference)=>{
+              return(
+                <option value={preference.dietCategoryName}>{preference.dietCategoryName}</option>
+              )
+            })}
           </select>
           <input placeholder="Food Allergy" id="w"
           value={foodAllergies}
