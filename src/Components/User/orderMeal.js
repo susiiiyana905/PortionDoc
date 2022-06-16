@@ -1,12 +1,6 @@
 import axios from "axios";
 import React, { Component, useEffect, useState } from "react";
 import Header from "../header";
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
-
-
 
 const OrderMeal = () => {
   const [delivery, setDelivery] = useState("");

@@ -64,7 +64,7 @@ const ViewDetailDiet = () => {
           style={{ textAlign: "center", margin: "auto" }}
         >
           <img
-            src={"http://localhost:4001/preference/" + dietImage}
+            src={"http://localhost:4001/preferences/" + dietImage}
             alt=""
             style={{ height: "500px" }}
           ></img>

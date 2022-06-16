@@ -1,13 +1,9 @@
 import React from "react";
 import axios from "axios";
-<<<<<<< Updated upstream
-import { Component } from "react";
-=======
 import { Component, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { withRouter } from "react-router";
 
->>>>>>> Stashed changes
 import AdminDashboard from "../adminDashbaord";
 
 class AddIngredient extends Component {
