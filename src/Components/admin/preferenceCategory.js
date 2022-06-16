@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useParams } from "react"
 import { Link } from "react-router-dom";
 import AdminDashboard from "../adminDashbaord";
 
@@ -7,13 +7,16 @@ const ShowPreferenceCategory =()=>{
   const [dietCategoryData,setDietCategoryData] = useState([]);
   const [message, setMessage] = useState("");
   const [sMessage, setSMessage] = useState("");
+  const {uid} = useParams();
 
   const config = {
     headers: {
       Authorization: "Bearer " + localStorage.getItem("adminToken"),
     },
   };
-  console.log(config);
+  console.log(uid);
+
+  
 
   useEffect(() => {
     axios

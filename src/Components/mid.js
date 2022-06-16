@@ -251,7 +251,7 @@ class Mid extends Component {
             }
           ></Route>
           <Route
-            path="/showPreferenceCategory"
+            path="/showPreferenceCategory/:uid"
             element={
               <AdminPrivateRoute>
                 <ShowPreferenceCategory></ShowPreferenceCategory>
