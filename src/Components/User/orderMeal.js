@@ -1,6 +1,10 @@
 import axios from "axios";
 import React, { Component, useEffect, useState } from "react";
 import Header from "../header";
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 
 
 
@@ -193,14 +197,16 @@ const OrderMeal = () => {
                   {total} */}
                 </h6>
               </div>
-              <button
-                className="btn btn-primary m-4" 
-                // onClick={() => this.checkout(total)}
-                style={{ float: "right", backgroundColor: "#FF7800", border:"none" }}
-              onClick={sendOrder}
-              >
-                Proceed To Payment
-              </button>
+              <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle"  type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Payment Method
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">Cash on Delivery</a>
+    <a class="dropdown-item" href="#">Pay Via Khalti</a>
+    
+  </div>
+</div>
             </div>
           </div>
         </div>
