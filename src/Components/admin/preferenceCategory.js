@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react"
+import { Link } from "react-router-dom";
 import AdminDashboard from "../adminDashbaord";
 
 const ShowPreferenceCategory =()=>{
@@ -23,20 +24,6 @@ const ShowPreferenceCategory =()=>{
       .catch((e) => {
         console.log(e);
       });
-
-    // getProduct()
-  }, []);
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:4001/preference/category/all", config)
-      .then((dietcategory) => {
-        console.log(dietcategory.data.data);
-        setDietCategoryData(dietcategory.data.data);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
   }, []);
 
     return(
@@ -49,9 +36,9 @@ const ShowPreferenceCategory =()=>{
             return(   
             <div class="card w-75 container">
         <div class="card-body">
-           
-    <h5 style={{ fontSize:"30px"}} class="card-title">{singleData.dietCategoryName}</h5>
-    
+      <Link to={"/viewDietMeal/"+singleData.dietCategoryName.replace(" ","+")}>   
+    <h5 style={{ fontSize:"30px", textDecoration:"none"}} class="card-title">{singleData.dietCategoryName}</h5>
+    </Link>
   </div>
   
 </div>

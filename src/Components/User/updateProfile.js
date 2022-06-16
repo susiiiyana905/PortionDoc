@@ -271,7 +271,6 @@ const UpdateProfile = () => {
                       <div className="col-sm-9">
                         <input
                           type="text"
-                          maxLength="10"
                           className="form-control border-dark"
                           id="bio"
                           value={bio}

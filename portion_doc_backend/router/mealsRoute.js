@@ -175,4 +175,15 @@ router.delete("/meals/delete/:mid", auth.verifyAdmin, function(req,res){
 
 })
 
+router.post("/search/meal", auth.verifyUser, async(req, res)=>{
+    
+    const keyMealName = req.body.mealName
+
+    ? {mealName: { $regex: req.body.mealName, $options: "i" }}
+
+    :{};
+    const meals = await Meals.find(keyMealName)
+    res.send(meals);
+})
+
 module.exports = router;

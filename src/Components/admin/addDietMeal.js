@@ -1,5 +1,5 @@
 import axios from "axios";
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from "react";
 import { BrowserRouter as Router, Link, useNavigate } from "react-router-dom";
 import AdminDashboard from "../adminDashbaord";
@@ -18,6 +18,7 @@ const AddDiet = () => {
   const [response, setResponse] = useState("");
   const [sResponse, setSResponse] = useState("");
   const [message, setMessage] = useState("");
+  const [preferenceData, setPreferenceData] = useState([]);
   const navigate = useNavigate();
   const config = {
     headers: {
@@ -119,6 +120,17 @@ const AddDiet = () => {
       });
   };
 
+  useEffect(()=>{
+    axios.get("http://localhost:4001/preference/category/single", config)
+    .then((preference)=>{
+      console.log(preference.data.data);
+      setPreferenceData(preference.data.data);
+    })
+    .catch((e)=>{
+      console.log(e);
+    });
+  }, []);
+
   return (
     <>
     <AdminDashboard>
@@ -164,12 +176,13 @@ const AddDiet = () => {
               <select
                 className="custom-select custom-select-lg"
                 style={{ width: "100%" }}
-                value={preference}
                 onChange={(e) => setPreference(e.target.value)}
               >
-                <option value="Weight Loss">Weight Loss</option>
-                <option value="Weight Gain">Weight Gain</option>
-                <option value="Weight Loss">Muscle Gain</option>
+                {preferenceData.map((preference)=>{
+                  return(
+                    <option value="">{preference.dietCategoryName}</option>
+                  )
+                })}
               </select>
             </div>
           </div>
