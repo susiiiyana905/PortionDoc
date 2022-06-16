@@ -24,8 +24,9 @@ router.post("/send/dietMeal", auth.verifyAdmin, async(req, res)=>{
 })
 
 router.get("/get/all/sendDiet", auth.verifyUser,async (req, res)=>{
-  const sendDietData = await SendDiet.find()
+  const sendDietData = await SendDiet.find({user_id: req.userInfo._id})
   .populate("dietMeal_id","dietImage dietName dietPrice time")
+  console.log(sendDietData);
   res.json({success:true,message:"get all details",data:sendDietData})
 }
 );

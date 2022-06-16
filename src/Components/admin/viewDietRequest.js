@@ -99,7 +99,7 @@ const ViewDietRequest=()=>{
 
                               <td colSpan="6">
                                 <div style={{ float: "left" }}>
-                                 <NavLink to ="/showPreferenceCategory">
+                                 <NavLink to ={"/showPreferenceCategory/"+singleData.user_id._id}>
                                     <button
                                       className="btn btn-success mb-2"
                                       style={{
