@@ -4,6 +4,10 @@ import { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import AdminDashboard from "../adminDashbaord";
 // import Navbar from "./navbar";
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 
 const ViewMeals = () => {
   const [mealData, setMealData] = useState([]);
