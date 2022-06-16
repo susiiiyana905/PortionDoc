@@ -38,7 +38,7 @@ const ViewDietRequest=()=>{
       <br />
     
       <br />
-      <div style={{ marginTop: "50px" }}>
+      <div>
         <div className="container">
           <div className="row">
             <div className="col-md-12">

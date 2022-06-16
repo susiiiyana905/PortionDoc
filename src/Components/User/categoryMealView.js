@@ -42,8 +42,9 @@ const CategoryMeal = () => {
       <div className="meal-data container">
         {mealData.map((singleData) => {
           return (
-            <div className="container py-3" style={{ width: "15.2rem" }}>
-              <div className="card-deck card">
+            <div className="container py-3" style={{ width: "270px" }}>
+              <div className="card-deck">
+                <div className="card">
                 <NavLink
                   to={"/viewRecipe/" + singleData._id}
                   style={{ textDecoration: "none" }}
@@ -53,48 +54,33 @@ const CategoryMeal = () => {
                     className="card-img-top"
                     style={{ height: "200px", width: "100%" }}
                   ></img>
-                  <div className="card-body">
-                    <p
-                      class="first"
-                      style={{
-                        fontWeight: "bold",
-                        fontSize: "17px",
-                        color: "black",
-                        textDecoration: "none",
-                      }}
-                    >
-                      {singleData.mealName}
-                    </p>
-                  </div>
+                 <div class="card-body">
+                      <p class="card-title" style={{fontSize:"14px"}}>{singleData.mealName}</p> <hr />
+                      <p
+                        class="card-text"
+                        style={{ fontWeight: "bold", fontSize: "12px" }}
+                      >
+                        <label class="text mr-5">
+                          Price: {singleData.mealPrice}
+                        </label>
+                        <label
+                          class="text"
+                          style={{ float: "right", marginTop: "1px" }}
+                        >
+                          <i class="fas fa-solid fa-timer"></i>
+                          Time: {singleData.time}
+                        </label>
+                      </p>
+                    </div>
                 </NavLink>
                 <div className="card-footer">
-                  <p class="card-text" style={{ fontWeight: "bold" }}>
-                    <label class="text mr-5">
-                      Price: {singleData.mealPrice}
-                    </label>
-                    <label
-                      class="text"
-                      style={{ float: "right", marginTop: "1px" }}
-                    >
-                      <i class="fas fa-solid fa-timer"></i>
-                      Time: {singleData.time}
-                    </label>
-                  </p>
+                <button className="btn sendMeal">Add To Cart</button>
                 </div>
+              </div>
               </div>
             </div>
           );
         })}
-
-        <div>
-          <button
-            id="mybutton"
-            type="button"
-            class="btn btn-primary btn-medium"
-          >
-            Get Cooking
-          </button>
-        </div>
       </div>
 
       {/* </div> */}

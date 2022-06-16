@@ -2,6 +2,7 @@ import { Component } from "react";
 import Header from "../header";
 import Footer from "../footer";
 import React from "react"
+import { NavLink } from "react-router-dom";
 const Home = () => {
   return (
     <>
@@ -12,31 +13,31 @@ const Home = () => {
       >
         {/* -------------------------Image carasouel -------------------------------------------------------------*/}
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="images/first.JPG" class="d-block w-100" alt="..."></img>
-    </div>
-    <div class="carousel-item">
-      <img src="images/second.jpg" class="d-block w-100" style={{height:"550px"}} alt="..."></img>
-    </div>
-    <div class="carousel-item">
-      <img src="images/third.png" class="d-block w-100" style={{height:"550px"}} alt="..."></img>
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-target="#carouselExampleIndicators" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-target="#carouselExampleIndicators" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </button>
-</div>
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="images/first.JPG" class="d-block w-100" alt="..."></img>
+          </div>
+          <div class="carousel-item">
+            <img src="images/second.jpg" class="d-block w-100" style={{height:"550px"}} alt="..."></img>
+          </div>
+          <div class="carousel-item">
+            <img src="images/third.png" class="d-block w-100" style={{height:"550px"}} alt="..."></img>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-target="#carouselExampleIndicators" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-target="#carouselExampleIndicators" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </button>
+      </div>
         {/* ------------------top content-------------------------------------------------------------------------- */}
         {/* <div className="container-fluid">
           <div className="card  top">
@@ -101,7 +102,9 @@ const Home = () => {
                       </p>
                     </p>
                   </h4>
+                  <NavLink to = "/ourmenu">
                   <button className="btn start">Get Started</button>
+                  </NavLink>
                 </div>
               </div>
               -
@@ -131,8 +134,10 @@ const Home = () => {
                       Add meals. Edit Servings. <br />
                       Plans and prefrences change.
                     </p>
-                    <div className="col-md-6 d-flex justify-content-center mx-auto ">
+                    <div className="col-md-6 d-flex">
+                    <NavLink to ="/ourmenu">
                       <button className="btn start c3-btn"> View Meals</button>
+                      </NavLink>
                     </div>
                   </div>
                 </div>
@@ -150,8 +155,10 @@ const Home = () => {
                       <br />
                       You're in control of your destiny.
                     </p>
-                    <div className="col-md-6 d-flex justify-content-center mx-auto ">
+                    <div className="col-md-6">
+                      <NavLink to ="/ourmenu">
                       <button className="btn start c3-btn"> View Meals</button>
+                      </NavLink>
                     </div>
                   </div>
                 </div>
@@ -291,7 +298,9 @@ const Home = () => {
                 </div>
 
                 <div className="col-md-6 d-flex justify-content-center mx-auto ">
-                  <button className="btn start meal-btn"> View Meals</button>
+                <NavLink to ="/ourmenu">
+                      <button className="btn start c3-btn"> View Meals</button>
+                </NavLink>
                 </div>
               </div>
             </div>

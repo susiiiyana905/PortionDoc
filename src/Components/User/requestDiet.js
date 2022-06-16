@@ -46,23 +46,7 @@ const RequestDietary = () => {
     <>
       <Header></Header>
       <div>
-        <div class="m">
-          <div class="n" style={{ width: "18rem" }}>
-            <img src="images/1.png" class="card-img-top" alt="..." />
-          </div>
-
-          <div>
-            <h3 id="head">
-              Your Goals That Match
-              <p>Your Lifestyle </p>
-            </h3>
-            <button id="o">I want to lose weight</button>
-            <button id="q">I need accelerated result</button>
-            <button id="p"> I am vegan </button>
-            <button id="bt">Start Program</button>
-          </div>
-        </div>
-
+        
         <div>
           <h3 id="hi">Dietary Form</h3>
           <div
@@ -93,8 +77,9 @@ const RequestDietary = () => {
           onChange={(e) => setPreference(e.target.value)}
           >
             <option>Choose Your Preferences</option>
-            <option>Veg</option>
-            <option>Non-veg</option>
+            <option>Weight Loss</option>
+            <option>Weight Gain</option>
+            <option>Muscle Gain</option>
           </select>
           <input placeholder="Food Allergy" id="w"
           value={foodAllergies}

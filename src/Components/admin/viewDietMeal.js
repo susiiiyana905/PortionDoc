@@ -45,7 +45,7 @@ const ViewDietMeals = () => {
                   <div class="card">
                     <img
                       src={
-                        "http://localhost:4001/preference/" +
+                        "http://localhost:4001/preferences/" +
                         singleData.dietImage
                       }
                     ></img>

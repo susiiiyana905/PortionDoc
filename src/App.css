@@ -151,15 +151,17 @@ height: 80px;
 }
  
 .start{
-    padding: 30px 70px;
     border: none;
     background-color: #FF7800;
     font-family: sans-serif;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 15px;
     color: #ffffff;
     border-radius: 10px;
     width: fit-content;
+    padding: 10px 40px;
+    border-radius: 10px;
+
 }
  /* content-3 */
 .card-1{
@@ -223,8 +225,17 @@ height: 80px;
 } */
 
 .c3-btn{
-  padding: 20px 50px;
+  padding: 10px 30px;
   border-radius: 10px;
+  border: none;
+  background-color: #FF7800;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  color: #ffffff;
+  border-radius: 10px;
+  width: fit-content;
+
 
  
 }
@@ -515,9 +526,9 @@ margin-bottom:20px;
 
 
 .meal-data {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .addMeal{

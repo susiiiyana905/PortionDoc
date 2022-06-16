@@ -111,7 +111,7 @@ const ViewProfile = () => {
                 return(
                   <NavLink to= {"/viewDetailRecipe/"+ singleData._id}>
             <div class="col mb-4">
-                  <div class="card" style={{width:"200px"}}>
+                  <div class="card" style={{width:"265px"}}>
                   <img src={"http://localhost:4001/recipe/" + singleData.recipePic}></img>
                 </div>
             </div>
