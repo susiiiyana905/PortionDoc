@@ -5,12 +5,11 @@ import React from "react"
 import { NavLink } from "react-router-dom";
 const Home = () => {
   return (
-    <>
-      <Header></Header>
-      <div
-        className="container-fluid"
-        style={{ paddingRight: "0px!important" }}
-      >
+    
+       
+      <div>
+        <Header></Header>
+       <div className="conatiner-fluid">
         {/* -------------------------Image carasouel -------------------------------------------------------------*/}
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -20,7 +19,7 @@ const Home = () => {
         </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="images/first.JPG" class="d-block w-100" alt="..."></img>
+            <img src="images/first.JPG" class="d-block w-100" style={{height:"550px"}} alt="..."></img>
           </div>
           <div class="carousel-item">
             <img src="images/second.jpg" class="d-block w-100" style={{height:"550px"}} alt="..."></img>
@@ -37,6 +36,7 @@ const Home = () => {
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="sr-only">Next</span>
         </button>
+      </div>
       </div>
         {/* ------------------top content-------------------------------------------------------------------------- */}
         {/* <div className="container-fluid">
@@ -181,71 +181,72 @@ const Home = () => {
         <br />
 
         {/*--------------------------facility--------------------------------------------------------*/}
+        <div className="container-fluid meal-data">
+       
+            <div className="container-fluid py-3" style={{ width: "1500px" }}>
+              <div className="card-deck">
+                <div className="card">
 
-        {/* <div className="col-md-6 d-flex justify-content mx-auto "> */}
-        <div className="container-fluid">
-          <div className="row row-cols-1 row-cols-md-4">
-            <div className="col mb-4">
-              <div className="card">
                 <img
                   src="images/organic.png"
                   className="card-img-top"
-                  style={{ height: "200px", width: "300px" }}
+                  style={{ height: "200px", width: "100%" }}
                   alt="..."
                 ></img>
                 <div className="card-body">
                   <h5 className="card-title">Organic Farm </h5>
                   <p className="card-text">Product Fresh Veggies</p>
                 </div>
+                
               </div>
-            </div>
-
-            <div className="col mb-4">
               <div className="card">
-                <img
+
+              <img
                   src="images/delivery.png"
                   className="card-img-top"
-                  style={{ height: "200px", width: "300px" }}
+                  style={{ height: "200px", width: "100%" }}
                   alt="..."
                 ></img>
                 <div className="card-body">
                   <h5 className="card-title">24 Hours Delivery</h5>
                   <p className="card-text">Fast Delivery Order</p>
                 </div>
+                
               </div>
-            </div>
-
-            <div className="col mb-4">
               <div className="card">
-                <img
+
+              <img
                   src="images/promotion.png"
                   className="card-img-top"
-                  style={{ height: "200px", width: "300px" }}
+                  style={{ height: "200px", width: "100%" }}
                   alt="..."
                 ></img>
                 <div className="card-body">
                   <h5 className="card-title">Promotion Week</h5>
                   <p className="card-text">Promotion and Discount</p>
                 </div>
+                
               </div>
-            </div>
-            <div className="col mb-4">
               <div className="card">
-                <img
+
+              <img
                   src="images/quality.png"
                   className="card-img-top"
-                  style={{ height: "200px", width: "300px" }}
+                  style={{ height: "200px", width: "100%" }}
                   alt="..."
                 ></img>
                 <div className="card-body">
                   <h5 className="card-title">Trusted & Quality</h5>
                   <p className="card-text">Best Quality Restaurant</p>
                 </div>
+                
+              </div>
               </div>
             </div>
-          </div>
-        </div>
-        {/* </div> */}
+       
+
+      </div>
+        
         <br />
         {/*------------------------------------------------Meals-----------------------------------------------------------------*/}
         <div className="container-fluid">
@@ -376,30 +377,16 @@ const Home = () => {
               <div className="col-md-6 d-flex justify-content-center mx-auto ">
                 <p className="e-1">
                   Cook It. Love It. Tag It #PortionDocsPics
-                  <p className="e-2">
-                    Follow & Subscribe <br />
-                    Get Updates
-                  </p>
+                  
                 </p>
               </div>
             </div>
-            <form>
-              <div className="form-row">
-                <div className="col-md-6 d-flex justify-content-center mx-auto ">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Email Address"
-                  ></input>
-                  <button className="go">Go</button>
-                </div>
-              </div>
-            </form>
           </div>
         </div>
+        <Footer></Footer>
       </div>
-      <Footer></Footer>
-    </>
+     
+    
   );
 };
 

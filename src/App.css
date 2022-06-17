@@ -81,7 +81,7 @@ height: 80px;
 }
   
 
-.nav-item{
+.topnav{
   text-align: center;
   font-size: 20px;
 }
@@ -167,7 +167,7 @@ height: 80px;
 .card-1{
 
     background-image: linear-gradient(#4CBA19, #B3E000);
-    height: 600px;
+   
  
 
 
@@ -234,7 +234,7 @@ height: 80px;
   font-size: 15px;
   color: #ffffff;
   border-radius: 10px;
-  width: fit-content;
+
 
 
  
@@ -245,7 +245,7 @@ height: 80px;
 /* meals CSS */
 .card-3{
   background-image: linear-gradient(#4CBA19, #B3E000);
-  height: 700px;
+  
 }
 .m-1{
   font-size: 30px;
@@ -682,14 +682,14 @@ margin-left: 350px;
   font-size: 18px;
 }
 
-#hi
+/* #hi
 {
   margin-left: 700px;
   font-family: 'Times New Roman', Times, serif;
   margin-top:50px;
   margin-bottom: 30px;
   color: green;
-}
+} */
 
 .up
 {
@@ -1262,4 +1262,16 @@ background: #ff944d;
   border-radius: 10%;
   font-size: 20px;
   margin-top :30px;
+}
+
+.diet{
+  padding: 10px 30px;
+  border-radius: 10px;
+  border: none;
+  background-color: #FF7800;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  color: #ffffff;
+  border-radius: 10px;
 }

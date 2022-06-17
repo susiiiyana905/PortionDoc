@@ -57,53 +57,86 @@ const RequestDietary = () => {
   return (
     <>
       <Header></Header>
-      <div>
-        
-        <div>
-          <h3 id="hi">Dietary Form</h3>
+      <div className='container'>
           <div
           className="suggestion-message text-center mb-2"
           style={{ color: "red", fontWeight: "bold" }}
         >
           {message}
         </div>
+        <h3>Dietary Form</h3>
+        <form>
+        <div class="form-group row">
+              <div class="col-sm-10">
+                <select
+                  className="custom-select custom-select-lg"
+                  style={{ width: "100%" }}
+                  value={gender}
+                  onChange={(e) => setGender(e.target.value)}
+                >
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+            </div>
 
-          <select placeholder="Gender" id="s"
-          value={gender}
-          onChange={(e) => setGender(e.target.value)}
-          >
-            <option>Male</option>
-            <option>Female</option>
-            <option>Other</option>
-          </select>
-          <input placeholder="Weight" id="t"
-          value={weight}
-          onChange={(e) => setWeight(e.target.value)}
-          ></input>
-          <input placeholder="Height" id="u"
-          value={height}
-          onChange={(e) => setHeight(e.target.value)}
-          ></input>
-          <select placeholder="Choose your preferences" id="v"
-          onChange={(e) => setPreference(e.target.value)}
-          className="custom-select custom-select-lg"
-          >
-            {preferenceData.map((preference)=>{
-              return(
-                <option value={preference.dietCategoryName}>{preference.dietCategoryName}</option>
-              )
-            })}
-          </select>
-          <input placeholder="Food Allergy" id="w"
-          value={foodAllergies}
-          onChange={(e) => setFoodAllergies(e.target.value)}
-          ></input>
-          <button id="z"
+            <div class="form-group row">
+              <div class="col-sm-10">
+                <input
+                placeholder='Weight'
+                  type="text"
+                  class="form-control"
+                  value={weight}
+                  onChange={(e) => setWeight(e.target.value)}
+                ></input>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-sm-10">
+                <input
+                placeholder='Height'
+                  type="text"
+                  class="form-control"
+                  value={height}
+                 onChange={(e) => setHeight(e.target.value)}
+                ></input>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-10">
+                <select
+                  className="custom-select custom-select-lg"
+                  style={{ width: "100%" }}
+                  value={preference}
+                  onChange={(e) => setPreference(e.target.value)}
+                >
+                  <option>Weight Loss</option>
+                  <option>Weight Gain</option>
+                  <option>Muscle Gain</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-sm-10">
+                <input
+                placeholder='Allergy'
+                  type="text"
+                  class="form-control"
+                  value={foodAllergies}
+                  onChange={(e) => setFoodAllergies(e.target.value)}
+                ></input>
+              </div>
+            </div>
+            <button className='diet'
+
           onClick={requestDietary}
           >Submit</button>
-        </div>
+        </form>
       </div>
-
+ <br/>
       <Footer></Footer>
     </>
   );
