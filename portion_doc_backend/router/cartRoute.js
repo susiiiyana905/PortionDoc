@@ -39,7 +39,6 @@ router.post("/cart/insert",auth.verifyUser, async function(req,res){
 })
 router.get("/cart",auth.verifyUser, async function(req,res){
 
-
     var cart = await Cart.find({userId : req.userInfo._id}).populate("meals_id", "id mealName mealPrice").exec()
     res.status(200).json({message: "Cart", data: cart});
 })

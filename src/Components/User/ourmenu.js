@@ -161,10 +161,10 @@ const Meals = () => {
                     style={{ height: "200px", width: "100%" }}
                   ></img>
                  <div class="card-body">
-                      <p class="card-title" style={{fontSize:"14px"}}>{singleData.mealName}</p> <hr />
+                      <p class="card-title" style={{fontSize:"14px", color:"black"}}>{singleData.mealName}</p> <hr />
                       <p
                         class="card-text"
-                        style={{ fontWeight: "bold", fontSize: "12px" }}
+                        style={{ fontWeight: "bold", fontSize: "12px", color:"black" }}
                       >
                         <label class="text mr-5">
                           Price: {singleData.mealPrice}

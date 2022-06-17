@@ -16,90 +16,82 @@ class Header extends Component {
         <>
           <nav
             className="navbar navbar-expand-lg mainNav"
-            style={{ height: "35px" }}
+            style={{ height: "34px",  }}
           >
             <i
               class="fas fa-solid fa-envelope fa-lg"
-              style={{ height: "40px", color: "white", marginTop: "20px" }}
+              style={{ height: "40px", color: "white", marginTop: "8px" }}
             ></i>
             <p
               className="i-1"
-              style={{ marginLeft: "10px", marginTop: "10px" }}
+              style={{ marginLeft: "10px" }}
             >
               portiondoc@gmail.com
             </p>
             <i
               class="fas fa-solid fa-phone"
-              style={{
-                height: "40px",
-                marginLeft: "100px",
-                color: "white",
-                marginTop: "20px",
-              }}
+              style={{ height: "40px", marginTop: "8px",marginLeft: "100px",
+              color: "white"
+            }}
             ></i>
             <p
               className="i-1"
-              style={{ marginLeft: "10px", marginTop: "10px" }}
+              style={{ marginLeft: "10px" }}
             >
               +977 983142567
             </p>
-            <i
-              class="fas fa-light fa-file-circle-plus"
-              style={{ height: "40px", color: "white", marginTop: "20px" }}
-            ></i>
-            <i
-              class="fas fa-light fa-cart-arrow-down"
-              style={{
-                height: "40px",
-                marginLeft: "1000px",
-                color: "white",
-                marginTop: "20px",
-              }}
-            ></i>
           </nav>
-          <nav className="navbar navbar-expand-lg navbar-light bg-light logoNav">
-            <Link className="navbar-brand" to="/">
-              <img
-                src="images/logo.png"
-                className="card-img-top"
-                alt="..."
-                style={{
-                  height: "100px",
-                  width: "146px",
-                  marginLeft: "30px",
-                  marginTop: "15px",
-                }}
-              ></img>
-            </Link>
-            <div
-              class="collapse navbar-collapse"
-              style={{ marginLeft: "650px" }}
-              id="navbarSupportedContent"
-            >
-              <ul className="navbar-nav nav-item">
-                <li className="nav-item active">
-                  <Link className="nav-link" to="/">
-                    Home <span className="sr-only">(current)</span>
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/requestDiet">
-                    Dietary
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/ourmenu">
+          
+          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <Link className="navbar-brand" to="/">
+                      <img
+                        src="images/logo.png"
+                        className="card-img-top"
+                        alt="..."
+                        style={{
+                          height: "80px",
+                          width: "140px",
+                          marginLeft: "30px",
+                          marginTop: "0px",
+                        }}
+                      ></img>
+                    </Link>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto" style={{fontSize:"28px"}}>
+    <li class="nav-item active">
+      <Link className="nav-link" to="/">
+             Home <span className="sr-only">(current)</span>
+              </Link>
+        </li>
+        <li class="nav-item">
+         <Link className="nav-link" to="/requestDiet">
+                Dietary
+                    </Link>
+              </li>
+              <li class="nav-item">
+                <Link className="nav-link" to="/ourmenu">
                     Our Menu
                   </Link>
                 </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/addRecipe">Recipes</Link>
+                <li class="nav-item">
+                <Link className="nav-link" to="/addRecipe">
+                  Recipes
+                </Link>
                 </li>
-
                 <li className="nav-item">
-                  <Link className="nav-link" to="/review">Contact Us</Link>
+                  <Link className="nav-link" to="/review">
+                    Contact Us
+                    </Link>
                 </li>
-                <li className="nav-item dropdown">
+                
+    </ul>
+    <div class="form-inline my-2 my-lg-0" >
+    <ul class="navbar-nav mr-auto" style={{fontSize:"28px"}}>
+    <li className="nav-item dropdown">
                   <li
                     className="nav-link dropdown-toggle"
                     to="/account"
@@ -125,106 +117,110 @@ class Header extends Component {
                       </button>
                     </li>
                   </ul>
-                </li>
-                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li>
-                    <li className="dropdown-item" to="/profile">
-                      Profile
-                    </li>
                   </li>
-                  <li>
-                    <button className="dropdown-item" onClick={logout} to="#">
-                      Logout
-                    </button>
-                  </li>
-                </ul>
-              </ul>
-            </div>
-          </nav>
+                  <li className="nav-item">
+                          <Link
+                            className="nav-link navbar-link-2 waves-effect"
+                            to="/cart"
+                          >
+                            {/* <span className="badge badge-pill red">3</span> */}
+                            <i className="fas fa-shopping-cart pl-0"></i>
+                          </Link>
+                        </li>
+                  </ul>
+    </div>
+  </div>
+</nav>         
         </>
       );
     } else {
       menu = (
         <>
-          <nav
+           <nav
             className="navbar navbar-expand-lg mainNav"
-            style={{ height: "35px" }}
+            style={{ height: "34px",  }}
           >
             <i
               class="fas fa-solid fa-envelope fa-lg"
-              style={{ height: "40px", color: "white", marginTop: "20px" }}
+              style={{ height: "40px", color: "white", marginTop: "8px" }}
             ></i>
             <p
               className="i-1"
-              style={{ marginLeft: "10px", marginTop: "10px" }}
+              style={{ marginLeft: "10px" }}
             >
               portiondoc@gmail.com
             </p>
             <i
               class="fas fa-solid fa-phone"
-              style={{
-                height: "40px",
-                marginLeft: "100px",
-                color: "white",
-                marginTop: "20px",
-              }}
+              style={{ height: "40px", marginTop: "8px",marginLeft: "100px",
+              color: "white"
+            }}
             ></i>
             <p
               className="i-1"
-              style={{ marginLeft: "10px", marginTop: "10px" }}
+              style={{ marginLeft: "10px" }}
             >
               +977 983142567
             </p>
           </nav>
 
-          <nav className="navbar navbar-expand-lg navbar-light bg-light logoNav">
-            <Link className="navbar-brand" to="/">
-              <img
-                src="images/logo.png"
-                className="card-img-top"
-                alt="..."
-                style={{ height: "80px", width: "160px", marginLeft: "30px" }}
-              ></img>
-            </Link>
-            <div
-              class="collapse navbar-collapse"
-              style={{ marginLeft: "650px" }}
-              id="navbarSupportedContent"
-            >
-              <ul className="navbar-nav nav-item">
-                <li className="nav-item active">
-                  <Link className="nav-link" to="/">
-                    HOME <span className="sr-only">(current)</span>
+          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <Link className="navbar-brand" to="/">
+                      <img
+                        src="images/logo.png"
+                        className="card-img-top"
+                        alt="..."
+                        style={{
+                          height: "80px",
+                          width: "140px",
+                          marginLeft: "30px",
+                          marginTop: "0px",
+                        }}
+                      ></img>
+                    </Link>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto" style={{fontSize:"28px"}}>
+    <li class="nav-item active">
+      <Link className="nav-link" to="/">
+             Home <span className="sr-only">(current)</span>
+              </Link>
+        </li>
+        <li class="nav-item">
+         <Link className="nav-link" to="/requestDiet">
+                Dietary
+                    </Link>
+              </li>
+              <li class="nav-item">
+                <Link className="nav-link" to="/ourmenu">
+                    Our Menu
                   </Link>
                 </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/requestDiet">
-                    DIETARY
-                  </Link>
+                <li class="nav-item">
+                <Link className="nav-link" to="/addRecipe">
+                  Recipes
+                </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/ourmenu">
-                    OUR MENU
-                  </Link>
+                  <Link className="nav-link" to="/review">
+                    Contact Us
+                    </Link>
                 </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="">PACKAGES</Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/review">CONTACT US</Link>
-                </li>
-                <button className="btn-sign" style={{ marginLeft: "10px" }}>
-                  <Link
+    </ul>
+    <div class="form-inline my-2 my-lg-0" >
+    <button class="btn btn-outline-success" type="submit" style={{fontSize:"28px"}}> <Link
                     className="link"
                     to="/login"
-                    style={{ color: "white", textDecoration: "none" }}
+                    style={{ color: "black" }}
                   >
                     Login
-                  </Link>
-                </button>
-              </ul>
-            </div>
-          </nav>
+                  </Link></button>
+    </div>
+  </div>
+</nav>     
         </>
       );
     }

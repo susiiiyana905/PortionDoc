@@ -180,7 +180,7 @@ const AddDiet = () => {
               >
                 {preferenceData.map((preference)=>{
                   return(
-                    <option value="">{preference.dietCategoryName}</option>
+                    <option value={preference.dietCategoryName}>{preference.dietCategoryName}</option>
                   )
                 })}
               </select>
