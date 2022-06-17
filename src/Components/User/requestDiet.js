@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -9,9 +9,10 @@ const RequestDietary = () => {
   const [gender, setGender] = useState("Male");
   const [weight, setWeight] = useState("");
   const [height, setHeight] = useState("");
-  const [preference, setPreference] = useState("");
-  const [foodAllergies, setFoodAllergies] = useState("");
+  const [preference, setPreference] = useState("Weight Loss");
+  const [foodAllergies, setFoodAllergies] = useState("None");
   const [message, setMessage] = useState("");
+  const [preferenceData, setPreferenceData] = useState([]);
   const navigate = useNavigate();
   const config = {
     headers: {
@@ -42,6 +43,17 @@ const RequestDietary = () => {
       setMessage(e.response.data.message);
     });
   }
+
+  useEffect(()=>{
+    axios.get("http://localhost:4001/preference/category/all",config)
+    .then((preference)=>{
+      console.log(preference.data.data);
+      setPreferenceData(preference.data.data);
+    })
+    .catch((e)=>{
+      console.log(e);
+    });
+  }, [])
   return (
     <>
       <Header></Header>
@@ -92,7 +104,6 @@ const RequestDietary = () => {
                 ></input>
               </div>
             </div>
-
             <div class="form-group row">
               <div class="col-sm-10">
                 <select
@@ -120,13 +131,10 @@ const RequestDietary = () => {
               </div>
             </div>
             <button className='diet'
+
           onClick={requestDietary}
           >Submit</button>
         </form>
-         
-        
-         
-       
       </div>
  <br/>
       <Footer></Footer>

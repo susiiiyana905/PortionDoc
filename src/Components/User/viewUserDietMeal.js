@@ -6,7 +6,7 @@ import Header from "../header";
 import Footer from "../footer";
 
 const ViewUserDietMeals =()=> {
-  const [dietMealData, setdietMealData] = useState([]);
+  const [dietMealData, setDietMealData] = useState([]);
    const config = {
       headers:{
           Authorization: "Bearer " + localStorage.getItem("userToken"),
@@ -17,7 +17,7 @@ const ViewUserDietMeals =()=> {
       axios.get("http://localhost:4001/get/all/sendDiet",config)
       .then((result) => {
           console.log(result.data);
-          setdietMealData(result.data.data);
+          setDietMealData(result.data.data);
         })
         .catch((e) => {
           console.log(e);
@@ -45,7 +45,7 @@ const ViewUserDietMeals =()=> {
             <img src={"http://localhost:4001/preferences/"+singleData.dietMeal_id.dietImage}></img>
            
             <div class="card-body">
-            <NavLink to = {"/viewDetailDiet"+singleData._id}>
+            <NavLink to = {"/viewDetailDiet/"+singleData.dietMeal_id._id}>
             <div>
             
             <h5 class="card-title">
