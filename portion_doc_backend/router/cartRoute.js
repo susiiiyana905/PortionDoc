@@ -38,6 +38,7 @@ router.post("/cart/insert",auth.verifyUser, async function(req,res){
     }
 })
 router.get("/cart",auth.verifyUser, async function(req,res){
+
     var cart = await Cart.find({userId : req.userInfo._id}).populate("meals_id", "id mealName mealPrice").exec()
     res.status(200).json({message: "Cart", data: cart});
 })
@@ -59,6 +60,7 @@ router.put("/cart/update/:id", auth.verifyUser, async function(req,res){
         res.json({success: false, message: "Something went wrong"})
     })  
 })
+
 router.delete('/cart/delete/:id',auth.verifyUser, function(req,res){
     const id = req.params.id;
     Cart.deleteOne({_id : id})
@@ -98,6 +100,7 @@ router.delete('/cart/delete/:id',auth.verifyUser, function(req,res){
 //         res.json({message: "Something went wrong"})
 //     })
 // })
+
 
 router.delete('/cart/delete/:id',auth.verifyUser, function(req,res){
     const id = req.params.id;
