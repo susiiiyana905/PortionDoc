@@ -4,10 +4,33 @@ import { Link, NavLink } from "react-router-dom";
 import Footer from "../footer";
 import Header from "../header";
 import React from "react";
+
+
 const Meals = () => {
   const [mealData, setMealData] = useState([]);
   const [categoryData, setCategoryData] = useState([]);
   const [meals, setMeals] = useState([]);
+
+  const [cartData, setCartData] = ('');
+  const [cart, setCart] = useState([]);
+
+
+  const addCart = () => {
+    if(!cartData) {
+      
+    } else {
+      setCart([...cart, cartData]);
+      setCartData('')
+    }
+  }
+
+  //add to localstorage
+
+  useEffect(() => {
+    localStorage.setItem('lists', JSON.stringify(cart))
+  }, [cart]);
+
+
   const config = {
     headers: {
       Authorization: "Bearer " + localStorage.getItem("userToken"),
@@ -48,6 +71,10 @@ const Meals = () => {
         console.log(e);
       });
   }, []);
+
+
+
+
   return (
     <>
       <Header></Header>
@@ -123,6 +150,7 @@ const Meals = () => {
             <div className="container py-3" style={{ width: "275px" }}>
               <div className="card-deck">
                 <div className="card">
+                  
                 <NavLink
                   to={"/viewRecipe/" + singleData._id}
                   style={{ textDecoration: "none" }}
@@ -151,8 +179,11 @@ const Meals = () => {
                       </p>
                     </div>
                 </NavLink>
+                
                 <div className="card-footer">
-                <button className="btn sendMeal">Add To Cart</button>
+                  <Link to="/cart">
+                <button className="btn sendMeal" onClick={addCart}>Add To Cart</button>
+                </Link>
                 </div>
               </div>
               </div>

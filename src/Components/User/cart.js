@@ -5,6 +5,24 @@ import Header from "../header";
 import axios from "axios";
 const Cart =()=> {
 
+    const [count, setCount] = useState(2);
+   
+
+    const incrementCount = () => {
+        // Update state with incremented value
+        if(count < 4) {
+        setCount(count + 2);
+        }
+      };
+
+
+      const decrementCount = () => {
+        // Update state with incremented value
+        if(count > 2) {
+        setCount(count - 2);
+        }
+      };
+
     const [cartItems, setCartItems] = useState([{
         serving: 0,
         total: 0,
@@ -47,11 +65,13 @@ const Cart =()=> {
                     <p class="cup">{item.meals_id.mealName}</p>
                     <label class="cups">{item.meals_id.mealPrice}</label>
                     </div>
+
                     <div  class="cc">
-                    <button class="dis">-</button>
-                     <p class="disss">{item.serving}</p>
-                     <button class="diss">+</button>
+                    <button class="dis" onClick={decrementCount}>-</button>
+                     <p class="disss">{count}</p>
+                     <button onClick={incrementCount} class="diss">+</button>
                      <button class="de">Delete</button>
+                    
                     </div>
                 </div>
 
