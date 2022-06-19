@@ -141,6 +141,10 @@ router.get('/meal/all', auth.verifyUser, async(req,res)=>{
     res.json({success: true, message:"Meals Data", data:MealData});
 })
 
+router.get('/meal/limit', auth.verifyUser, async(req,res)=>{
+    const MealData = await Meals.find().limit(3)
+    res.json({success: true, message:"Meals Data", data:MealData});
+})
 router.get("/meals/single/view/:mid", auth.verifyUser, async(req,res)=>{
     const mid = req.params.mid;
     Meals.findOne({_id : mid})

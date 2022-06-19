@@ -274,14 +274,7 @@ class Mid extends Component {
               </AdminPrivateRoute>
             }
           ></Route>
-          <Route
-            path="/viewMealDiet"
-            element={
-              <AdminPrivateRoute>
-                <ViewMealDiet></ViewMealDiet>
-              </AdminPrivateRoute>
-            }
-          ></Route>
+          
           <Route
             path="/viewDetailDiet/:did"
             element={

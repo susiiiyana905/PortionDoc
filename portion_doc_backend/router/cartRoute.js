@@ -9,8 +9,8 @@ router.post("/cart/insert",auth.verifyUser, async function(req,res){
     try{
         const user_id = req.userInfo._id;
         const meals_id = req.body.meals_id;
-        const _meals = await Meals.findOne({_id : meals_id}).exec()
-        const _cart = await Cart.findOne({user_id : user_id, meals_id: meals_id}).exec()
+        _meals = await Meals.findOne({_id : meals_id}).exec()
+        _cart = await Cart.findOne({user_id : user_id, meals_id: meals_id}).exec()
         if(_cart){
             
             _cart.serving = _cart.serving+2;
@@ -28,7 +28,7 @@ router.post("/cart/insert",auth.verifyUser, async function(req,res){
                 serving,
                 total: parseInt(total.split('Rs. ')[0])
             })
-            // // console.log
+            // console.log
             data.save()
         }
         res.json({success: true, message: "Cart inserted succesfully"});

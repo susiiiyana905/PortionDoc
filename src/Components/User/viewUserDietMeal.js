@@ -7,6 +7,7 @@ import Footer from "../footer";
 
 const ViewUserDietMeals =()=> {
   const [dietMealData, setDietMealData] = useState([]);
+  // const [serving, setServing] = useState(1);
    const config = {
       headers:{
           Authorization: "Bearer " + localStorage.getItem("userToken"),
@@ -23,6 +24,8 @@ const ViewUserDietMeals =()=> {
           console.log(e);
         });
   }, [])
+
+
         return(
             <>
             <Header></Header>

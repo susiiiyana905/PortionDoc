@@ -41,4 +41,12 @@ router.get("/get/all/reviews",auth.verifyAdmin, async(req,res)=>{
     res.json({success: true, message:"Review Data", data:reviewData});
 
 })
+
+router.get("/get/limit/reviews",auth.verifyUser, async(req,res)=>{
+    const reviewData = await Review.find().limit(3)
+    .populate("user_id","firstName lastName")
+    .sort({createdAt:-1});
+    res.json({success: true, message:"Review Data", data:reviewData});
+
+})
 module.exports = router
