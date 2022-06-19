@@ -354,54 +354,6 @@ const Home = () => {
         })}
 
       </div>
-
-              {/* <div className="card-deck">
-                <div className="card r-1">
-                  <div className="card-body">
-                    <h5 className="card-title">
-                      Italian Sausage and Roasted Tomato Cream
-                    </h5>
-                    <p className="card-text">
-                      This was a delicious and these meals make cooking healthy
-                      options for the family, so easy.
-                      <br />
-                      A+ to home chef every time!
-                      <br />
-                      -Madison J
-                    </p>
-                  </div>
-                </div>
-                <div className="card r-1">
-                  <div className="card-body">
-                    <h5 className="card-title">
-                      Italian Sausage and Roasted Tomato Cream
-                    </h5>
-                    <p className="card-text">
-                      This was a delicious and these meals make cooking healthy
-                      options for the family, so easy.
-                      <br />
-                      A+ to home chef every time!
-                      <br />
-                      -Madison J
-                    </p>
-                  </div>
-                </div>
-                <div className="card r-1">
-                  <div className="card-body">
-                    <h5 className="card-title">
-                      Italian Sausage and Roasted Tomato Cream
-                    </h5>
-                    <p className="card-text">
-                      This was a delicious and these meals make cooking healthy
-                      options for the family, so easy.
-                      <br />
-                      A+ to home chef every time!
-                      <br />
-                      -Madison J
-                    </p>
-                  </div>
-                </div>
-              </div> */}
             </div>
           </div>
         </div>
