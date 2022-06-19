@@ -13,6 +13,7 @@ const mealsSchema = new mongoose.Schema({
     mealPrice: {
         type: String,
         required: true
+       
     },
     mealDescription: {
         type: String,

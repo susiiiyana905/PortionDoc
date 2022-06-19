@@ -1,12 +1,39 @@
-import { Component } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import Header from "../header";
 import Footer from "../footer";
 import React from "react"
 import { NavLink } from "react-router-dom";
 const Home = () => {
+  const [mealData, setMealData] = useState([]);
+  const [reviewData,setReviewData] = useState([]);
+  const config = {
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("userToken"),
+    },
+  };
+  useEffect(() => {
+    axios
+      .get("http://localhost:4001/meal/limit", config)
+      .then((result) => {
+        console.log(result.data);
+        setMealData(result.data.data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }, []);
+
+  useEffect(()=>{
+    axios.get("http://localhost:4001/get/limit/reviews", config)
+    .then(review=>{
+        setReviewData(review.data.data);
+    })
+    .catch(e=>{
+        console.log(e)
+    })
+},[]);
   return (
-    
-       
       <div>
         <Header></Header>
        <div className="conatiner-fluid">
@@ -38,35 +65,6 @@ const Home = () => {
         </button>
       </div>
       </div>
-        {/* ------------------top content-------------------------------------------------------------------------- */}
-        {/* <div className="container-fluid">
-          <div className="card  top">
-            <div className="row">
-              <div className="card-body">
-                <h4 className="card-title my-1 t-2">
-                  <p className="t1">
-                    Discover Food
-                    <p className="t2">
-                      Our <span className="b">Best</span> Healthy &{" "}
-                    </p>
-                    <p className="t3">Tasty</p>
-                    <p className="t4">
-                      Get the best recipes at the best price.
-                    </p>
-                  </p>
-                </h4>
-              </div>
-              <div className="col-md-6 d-flex flex-column justify-content-center">
-                <img
-                  src={"images/t1.png"}
-                  alt=""
-                  style={{ height: "500px" }}
-                ></img>
-                <hr />
-              </div>
-            </div>
-          </div>
-        </div> */}
         <br />
 
         {/* --------------------------midcontent--------------------------------------------- */}
@@ -261,48 +259,56 @@ const Home = () => {
                     </p>
                   </p>
                 </div>
-
-                <div className="card-deck">
-                  <div className="card">
-                    <img
-                      src="images/m1.png"
-                      className="card-img-top"
-                      alt="..."
-                    ></img>
-                    <div className="card-body">
-                      <h5 className="card-title">Healthy Oatmeal</h5>
-                      <p className="card-text">$15.30</p>
+                <div className="meal-data container">
+        {mealData.map((singleData) => {
+          return (
+            <div className="container py-3" style={{ width: "350px" }}>
+              <div className="card-deck">
+                <div className="card">
+                <NavLink
+                  to={"/viewRecipe/" + singleData._id}
+                  style={{ textDecoration: "none" }}
+                >
+                  <img
+                    src={"http://localhost:4001/meal/" + singleData.mealImage}
+                    className="card-img-top"
+                    style={{ height: "200px", width: "100%" }}
+                  ></img>
+                 <div class="card-body">
+                      <p class="card-title" style={{fontSize:"14px", color:"black"}}>{singleData.mealName}</p> <hr />
+                      <p
+                        class="card-text"
+                        style={{ fontWeight: "bold", fontSize: "12px", color:"black" }}
+                      >
+                        <label class="text mr-5">
+                          Price: {singleData.mealPrice}
+                        </label>
+                        <label
+                          class="text"
+                          style={{ float: "right", marginTop: "1px" }}
+                        >
+                          <i class="fas fa-solid fa-timer"></i>
+                          Time: {singleData.time}
+                        </label>
+                      </p>
                     </div>
-                  </div>
-                  <div className="card">
-                    <img
-                      src="images/m2.png"
-                      className="card-img-top"
-                      alt="..."
-                    ></img>
-                    <div className="card-body">
-                      <h5 className="card-title">Chicken Galatine</h5>
-                      <p className="card-text">$16.00</p>
-                    </div>
-                  </div>
-                  <div className="card">
-                    <img
-                      src="images/m3.png"
-                      className="card-img-top"
-                      alt="..."
-                    ></img>
-                    <div className="card-body">
-                      <h5 className="card-title">Tomato Cucumber</h5>
-                      <p className="card-text">$12.30</p>
-                    </div>
-                  </div>
+                </NavLink>
+                <div className="card-footer">
+                <button className="btn sendMeal">Add To Cart</button>
                 </div>
+              </div>
+              </div>
+            </div>
+          );
+        })}
 
-                <div className="col-md-6 d-flex justify-content-center mx-auto ">
-                <NavLink to ="/ourmenu">
+      </div>
+            <div className="col-md-6 d-flex justify-content-center mx-auto ">
+               <NavLink to ="/ourmenu">
                       <button className="btn start c3-btn"> View Meals</button>
                 </NavLink>
                 </div>
+                
               </div>
             </div>
           </div>
@@ -318,54 +324,84 @@ const Home = () => {
               </div>
 
               <br />
-
+              <div className="meal-data container">
+        {reviewData.map((singleData) => {
+          return (
+            <div className="container py-3" style={{ width: "370px" }}>
               <div className="card-deck">
-                <div className="card r-1">
-                  <div className="card-body">
-                    <h5 className="card-title">
-                      Italian Sausage and Roasted Tomato Cream
-                    </h5>
-                    <p className="card-text">
-                      This was a delicious and these meals make cooking healthy
-                      options for the family, so easy.
-                      <br />
-                      A+ to home chef every time!
-                      <br />
-                      -Madison J
-                    </p>
-                  </div>
+                <div className="card" style={{backgroundColor: "#E5E5E5"}}>
+                
+                  
+                 <div class="card-body">
+                      <p class="card-title" style={{fontSize:"14px", color:"black", fontWeight:"bold"}}> <h5>{singleData.subject}</h5></p> <hr />
+                      <p
+                        class="card-text"
+                        style={{ fontSize: "12px", color:"black" }}
+                      >
+                        <p>{singleData.reviewMessage}</p>
+                       
+                      </p>
+                      <div>
+                <p style={{marginLeft:"0px",fontSize:"20px"}}>-{singleData.user_id.firstName} {singleData.user_id.lastName}</p>
                 </div>
-                <div className="card r-1">
-                  <div className="card-body">
-                    <h5 className="card-title">
-                      Italian Sausage and Roasted Tomato Cream
-                    </h5>
-                    <p className="card-text">
-                      This was a delicious and these meals make cooking healthy
-                      options for the family, so easy.
-                      <br />
-                      A+ to home chef every time!
-                      <br />
-                      -Madison J
-                    </p>
-                  </div>
-                </div>
-                <div className="card r-1">
-                  <div className="card-body">
-                    <h5 className="card-title">
-                      Italian Sausage and Roasted Tomato Cream
-                    </h5>
-                    <p className="card-text">
-                      This was a delicious and these meals make cooking healthy
-                      options for the family, so easy.
-                      <br />
-                      A+ to home chef every time!
-                      <br />
-                      -Madison J
-                    </p>
-                  </div>
-                </div>
+                    </div>
+               
+                
               </div>
+              </div>
+            </div>
+          );
+        })}
+
+      </div>
+
+              {/* <div className="card-deck">
+                <div className="card r-1">
+                  <div className="card-body">
+                    <h5 className="card-title">
+                      Italian Sausage and Roasted Tomato Cream
+                    </h5>
+                    <p className="card-text">
+                      This was a delicious and these meals make cooking healthy
+                      options for the family, so easy.
+                      <br />
+                      A+ to home chef every time!
+                      <br />
+                      -Madison J
+                    </p>
+                  </div>
+                </div>
+                <div className="card r-1">
+                  <div className="card-body">
+                    <h5 className="card-title">
+                      Italian Sausage and Roasted Tomato Cream
+                    </h5>
+                    <p className="card-text">
+                      This was a delicious and these meals make cooking healthy
+                      options for the family, so easy.
+                      <br />
+                      A+ to home chef every time!
+                      <br />
+                      -Madison J
+                    </p>
+                  </div>
+                </div>
+                <div className="card r-1">
+                  <div className="card-body">
+                    <h5 className="card-title">
+                      Italian Sausage and Roasted Tomato Cream
+                    </h5>
+                    <p className="card-text">
+                      This was a delicious and these meals make cooking healthy
+                      options for the family, so easy.
+                      <br />
+                      A+ to home chef every time!
+                      <br />
+                      -Madison J
+                    </p>
+                  </div>
+                </div>
+              </div> */}
             </div>
           </div>
         </div>

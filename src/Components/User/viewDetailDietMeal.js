@@ -45,7 +45,7 @@ const ViewDetailDiet = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4001//get/all/dietingredients/" + did, config)
+      .get("http://localhost:4001/get/diet/ingredients/users/" + did, config)
       .then((result) => {
         console.log(result.data.data);
         setIngredientData(result.data.data);
@@ -117,7 +117,7 @@ const ViewDetailDiet = () => {
                       <img
                         className="rounded-circle"
                         src={
-                          "http://localhost:4001/ingredients/" +
+                          "http://localhost:4001/dietIngredients/" +
                           singleData.image
                         }
                         style={{ height: "70px", width:"70px" }}

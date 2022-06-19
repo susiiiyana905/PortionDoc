@@ -364,9 +364,9 @@ const UpdateDiet =()=> {
                 <td colSpan="2">
                             <span
                               className="remove-report bi bi-dash-circle-fill fw-bold me-2"
-                              // onClick={() => {
-                              //   deleteIngredient(singleData._id);
-                              // }}
+                              onClick={() => {
+                                deleteDietIngredient(singleData._id);
+                              }}
                             />
                           </td>
               </tr>
