@@ -57,17 +57,24 @@ const RequestDietary = () => {
   return (
     <>
       <Header></Header>
-      <div className='container'>
+     
           <div
           className="suggestion-message text-center mb-2"
           style={{ color: "red", fontWeight: "bold" }}
         >
           {message}
         </div>
-        <h3>Dietary Form</h3>
-        <form>
+        <div
+        className="col-md-6 d-flex justify-content-center mx-auto"
+        style={{ marginTop: "50px", marginBottom: "50px" }}
+      >
+         <div class="card w-100">
+          <div class="card-body">
+        <h3 style={{ textAlign: "center" }}>Dietary Form</h3>
+        <div className="container">
+        <form style={{ marginTop: "20px" }}>
         <div class="form-group row">
-              <div class="col-sm-10">
+              <div class="col-sm-12">
                 <select
                   className="custom-select custom-select-lg"
                   style={{ width: "100%" }}
@@ -82,7 +89,7 @@ const RequestDietary = () => {
             </div>
 
             <div class="form-group row">
-              <div class="col-sm-10">
+              <div class="col-sm-12">
                 <input
                 placeholder='Weight'
                   type="text"
@@ -94,7 +101,7 @@ const RequestDietary = () => {
             </div>
 
             <div class="form-group row">
-              <div class="col-sm-10">
+              <div class="col-sm-12">
                 <input
                 placeholder='Height'
                   type="text"
@@ -105,7 +112,7 @@ const RequestDietary = () => {
               </div>
             </div>
             <div class="form-group row">
-              <div class="col-sm-10">
+              <div class="col-sm-12">
                 <select
                   className="custom-select custom-select-lg"
                   style={{ width: "100%" }}
@@ -120,7 +127,7 @@ const RequestDietary = () => {
             </div>
 
             <div class="form-group row">
-              <div class="col-sm-10">
+              <div class="col-sm-12">
                 <input
                 placeholder='Allergy'
                   type="text"
@@ -135,7 +142,12 @@ const RequestDietary = () => {
           onClick={requestDietary}
           >Submit</button>
         </form>
-      </div>
+        </div>
+        </div>
+        </div>
+        </div>
+
+   
  <br/>
       <Footer></Footer>
     </>

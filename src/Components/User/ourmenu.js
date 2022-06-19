@@ -82,16 +82,11 @@ const Meals = () => {
       <div className="container">
         <div id="front">
           <div id="one">
-            <div class="dropdown">
-              <button
-                id="search"
-                class="btn btn-secondary dropdown-toggle"
-                type="button"
-                data-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Categories
-              </button>
+          <div class="dropdown">
+          <button class="btn btn-primary dropdown-toggle" 
+          type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+            Categories 
+          </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 {categoryData.map((category) => {
                   return (
