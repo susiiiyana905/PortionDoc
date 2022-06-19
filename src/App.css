@@ -1275,3 +1275,8 @@ background: #ff944d;
   color: #ffffff;
   border-radius: 10px;
 }
+.category{
+  border-radius: 0px;
+  background-color: #bfbfbf;
+  border-color: black;
+}

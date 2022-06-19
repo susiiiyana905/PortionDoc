@@ -78,14 +78,14 @@ const ViewDetailDiet = () => {
 
             <div style={{fontSize: "20px" }}>
 
-            <div style={{fontSize: "30px" }}>
+            <div style={{fontSize: "20px" }}>
 
               <p>{dietDescription}</p>
             </div>
             <div>
-              <label>Time: {time}</label>
+              <label style={{fontWeight:"bold"}}>Time: <text style={{fontWeight:"normal"}}>{time}</text></label>
               <br />
-              <label>Cooking Difficulty: {difficulty}</label>
+              <label style={{fontWeight:"bold"}}>Cooking Difficulty: <text style={{fontWeight:"normal"}}>{difficulty}</text></label>
             </div>
           </div>
         </div>
