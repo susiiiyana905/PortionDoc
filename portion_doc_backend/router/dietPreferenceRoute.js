@@ -71,6 +71,7 @@ router.put(
           const diet_image_path = `./uploads/preference/${dietData.dietImage}`;
           fstat.unlinkSync(diet_image_path);
         }
+<<<<<<< Updated upstream
 
         dietPreferenceMeal
           .updateOne(
@@ -112,6 +113,31 @@ router.get("/diet/single/:did", auth.verifyAdmin, function (req, res) {
 
 
     
+=======
+         dietPreference.updateOne({_id: did},{
+             dietImage: dietImage
+         })
+         .then(function(){
+             res.status(200).send({success: true, message:"Image Updated!!"});   
+         })
+         .catch(function(){
+            res.status(400).send({message: e});
+        });
+    })
+    .catch((e)=>{
+        res.status(400).send({message: e});
+    })
+    })
+    router.get('/diet/all', auth.verifyAdmin, async(req,res)=>{
+        const DietData = await dietPreference.find()
+        res.json({success: true, message:"Diet Data", data:DietData});
+    })
+    router.get("/diet/single/:did", auth.verifyAdmin, function(req,res){
+        const did = req.params.did;
+        dietPreference.findOne({_id : did})
+        .then(function(result){
+            res.status(200).send({success:true, data:result, message: "diet details by Id"})
+>>>>>>> Stashed changes
         })
         .catch(function(){
             res.status(400).send({message: "Something went wrong!"})
