@@ -131,4 +131,15 @@ router.delete("/grocery/delete/:gid", auth.verifyAdmin, function(req,res){
 
 })
 
+router.post("/search/grocery", auth.verifyUser, async(req, res)=>{
+    
+    const keyGroceryName = req.body.groceryName
+
+    ? {groceryName: { $regex: req.body.groceryName, $options: "i" }}
+
+    :{};
+    const groceries = await Grocery.find(keyGroceryName)
+    res.send(groceries);
+})
+
 module.exports = router;
