@@ -44,6 +44,7 @@ const ViewGrocery =()=>{
         <>
         <AdminDashboard>
         <div className="container">
+          <NavLink to = "/addGrocery">
           <button
             className="btn btn-primary mb-2"
             style={{
@@ -54,6 +55,7 @@ const ViewGrocery =()=>{
           >
             Add New Grocery
           </button>
+          </NavLink>
       </div>
         <div className="container mt-5">
         <div className="row">

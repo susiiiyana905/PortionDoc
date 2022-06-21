@@ -28,6 +28,38 @@ router.post("/add/grocery", auth.verifyAdmin, upload.single('groceryImage'), asy
     })
 })
 
+router.put("/update/grocery/image/:gid", auth.verifyAdmin, upload.single("groceryImage"), async(req,res)=>{
+    const gid = req.params.gid;
+
+    if(req.file === undefined){
+        return res.json({message: "Invalid!!"})
+    }
+
+    const groceryImage = req.file.filename;
+
+    Grocery.findOne({_id: gid})
+    .then((groceryData)=>{
+        if(!groceryData.groceryImage){
+            const grocery_image_path = `./uploads/grocery/${groceryData.groceryImage}`;
+            fs.unlinkSync(grocery_image_path);
+        }
+
+        Grocery.updateOne({_id: gid}, {
+            groceryImage:groceryImage
+        })
+        .then(function(){
+            res.status(200).send({success: true, message: "Grocery Image Updated!"});
+        })
+        .catch(function(){
+            res.status(400).send({message: e});
+        });
+    })
+    .catch((e)=>{
+        res.status(400).send({message: e});
+    })
+})
+
+
 
 router.put("/update/grocery/:gid", auth.verifyAdmin, upload.single("groceryImage"), async(req,res)=>{
     const gid = req.params.gid;

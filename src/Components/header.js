@@ -82,6 +82,11 @@ class Header extends Component {
                   Recipes
                 </Link>
                 </li>
+                <li class="nav-item">
+                <Link className="nav-link" to="/ourGrocery">
+                  Grocery
+                </Link>
+                </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/review">
                     Contact Us
@@ -202,6 +207,11 @@ class Header extends Component {
                 <li class="nav-item">
                 <Link className="nav-link" to="/addRecipe">
                   Recipes
+                </Link>
+                </li>
+                <li class="nav-item">
+                <Link className="nav-link" to="/ourGrocery">
+                  Grocery
                 </Link>
                 </li>
                 <li className="nav-item">
