@@ -1241,6 +1241,12 @@ font-family: 'Times New Roman', Times, serif;
 
 }
 
+.grocery-data{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
 .sendMeal{
  
 background: #ff944d;

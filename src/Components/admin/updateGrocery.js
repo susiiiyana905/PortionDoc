@@ -39,6 +39,30 @@ const UpdateGrocery = () => {
       });
   }, []);
 
+  const updateGroceryImage = (e) => {
+    e.preventDefault();
+
+    const groceryData = new FormData();
+    groceryData.append("groceryImage", groceryImage);
+
+    axios
+      .put("http://localhost:4001/update/grocery/image/" + gid, groceryData, config)
+      .then((result) => {
+        // console.log(result.data)
+        if (result.data.success) {
+          setMessage(result.data.message);
+          axios
+            .get("http://localhost:4001/grocery/single/" + gid, config)
+            .then((result) => {
+              setGroceryImage(result.data.data.groceryImage);
+            });
+        } else {
+          setMessage("Something is wrong!!!");
+        }
+      })
+      .catch(e);
+  };
+
   const updateGrocery = (e) => {
     e.preventDefault();
     const priceRegex = new RegExp("^[0-9]+$");
@@ -152,6 +176,7 @@ const UpdateGrocery = () => {
                         <input
                           type="file"
                           className="form-control"
+                          onChange={(e) => setGroceryImage(e.target.files[0])}
                         />
                       </div>
                       <div class="modal-footer">
@@ -166,6 +191,7 @@ const UpdateGrocery = () => {
                           type="submit"
                           class="btn btn-primary"
                           data-bs-dismiss="modal"
+                          onClick={updateGroceryImage}
                         >
                           Save changes
                         </button>
