@@ -1,7 +1,45 @@
 import React from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import AdminDashboard from "../adminDashbaord";
 
+
 const ViewGrocery =()=>{
+  const[groceryData, setGroceryData] = useState([]);
+  const [message, setMessage] = useState("");
+  const navigate = useNavigate();
+
+  const config = {
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("adminToken"),
+    },
+  };
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:4001/grocery/all", config)
+      .then((result) => {
+        // console.log(result.data.data);
+        setGroceryData(result.data.data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }, []);
+
+  const deleteGrocery = (gid) => {
+    axios
+      .delete("http://localhost:4001/grocery/delete/" + gid, config)
+      .then((result) => {
+        axios.get(`http://localhost:4001/grocery/all`, config).then((result1) => {
+          setGroceryData(result1.data.data);
+        });
+        // console.log(result.data);
+      })
+      .catch();
+  };
+
     return(
         <>
         <AdminDashboard>
@@ -37,27 +75,29 @@ const ViewGrocery =()=>{
                             Price
                           </th>
                           <th scope="col" colSpan="6">
-                            Category
-                          </th>
-                          <th scope="col" colSpan="6">
                             Edit
                           </th>
                         </tr>
                       </thead>
                       <tbody>
-                            <tr>
+                        {groceryData.map((singleData)=>{
+                          return(
+                             <tr key={singleData._id}>
                               <th scope="row"></th>
                               <td>
                                 <img
-                                  src= "images/1.png"
+                                  src= {
+                                    "http://localhost:4001/grocery/" +
+                                    singleData.groceryImage
+                                  }
                                    height="100px"
                                 />
                               </td>
-                              <td colSpan="6">Chicken</td>
-                              <td colSpan="6">Rs.450</td>
-                              <td colSpan="6">meat</td>
+                              <td colSpan="6">{singleData.groceryName}</td>
+                              <td colSpan="6">{singleData.groceryPrice}</td>
                               <td colSpan="6">
                                 <div style={{ float: "left" }}>
+                                  <NavLink to = {"/updateGrocery/"+singleData._id}>
                                     <button
                                       className="btn btn-primary mb-2"
                                       style={{
@@ -67,7 +107,7 @@ const ViewGrocery =()=>{
                                     >
                                       Update
                                     </button>
-                                  
+                                    </NavLink>
 
                                   <button
                                     className="btn btn-primary mb-2"
@@ -76,6 +116,9 @@ const ViewGrocery =()=>{
                                       border: "none",
                                       marginLeft: "10px",
                                     }}
+                                    onClick={() => {
+                                      deleteGrocery(singleData._id);
+                                    }}
 
                                   >
                                     Delete
@@ -83,6 +126,8 @@ const ViewGrocery =()=>{
                                 </div>
                               </td>
                             </tr>
+                             );
+                            })}
                       </tbody>
                   </table>
                 </div>

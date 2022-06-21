@@ -104,7 +104,12 @@ const ViewProfile = () => {
           </div>
             </div>
           </div>
-         
+
+          <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-primary recipe-btn">Recipes</button>
+            <button type="button" class="btn btn-primary diet-btn">Diet Meals</button>
+          </div>
+          <br/><br/>
           <div className="container">
           <div class="row row-cols-1 row-cols-md-4">
           {recipeData.map((singleData)=>{

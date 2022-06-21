@@ -56,9 +56,6 @@ const AdminDashboard = ({children}) => {
                             <li className="w-100">
                                 <Link to="/viewMealDiet" className="nav-link px-0"> <span className="d-none d-sm-inline">View Diet Meal</span></Link>
                             </li>
-                            <li className="w-100">
-                                <Link to="/viewDietMeal" className="nav-link px-0"> <span className="d-none d-sm-inline">View Prefence Diet Meal</span></Link>
-                            </li>
                             <li>
                                 <Link to="/viewDietRequest" className="nav-link px-0"> <span className="d-none d-sm-inline">Requested Diet</span> </Link>
                             </li>
@@ -85,6 +82,19 @@ const AdminDashboard = ({children}) => {
                     <li>
                         <Link to="/viewReview" className="nav-link px-0 align-middle">
                             <i className="fs-4 bi-people"></i> <span className="ms-1 d-none d-sm-inline">Review</span> </Link>
+                    </li>
+
+                    <li>
+                        <Link to="#submenu3" data-bs-toggle="collapse" className="nav-link px-0 align-middle">
+                            <i className="fs-4 bi-grid"></i> <span className="ms-1 d-none d-sm-inline">Grocery</span> </Link>
+                            <ul className="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
+                            <li className="w-100">
+                                <Link to="/addGrocery" className="nav-link px-0"> <span className="d-none d-sm-inline">Add Grocery</span> </Link>
+                            </li>
+                            <li>
+                                <Link to="/viewGrocery" className="nav-link px-0"> <span className="d-none d-sm-inline">View Grocery</span> </Link>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             <hr />
