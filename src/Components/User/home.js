@@ -260,10 +260,10 @@ const Home = () => {
                   </p>
                 </div>
                 <div className="meal-data container">
-        {mealData.map((singleData) => {
-          return (
-            <div className="container py-3" style={{ width: "350px" }}>
-              <div className="card-deck">
+                  {mealData.map((singleData) => {
+                    return (
+                      <div className="container py-3" style={{ width: "350px" }}>
+                        <div className="card-deck">
                 <div className="card">
                 <NavLink
                   to={"/viewRecipe/" + singleData._id}

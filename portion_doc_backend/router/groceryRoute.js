@@ -66,6 +66,16 @@ router.get('/all/grocery', auth.verifyUser, async(req,res)=>{
     res.json({success: true, message:"Meals Data", data:GroceryData});
 })
 
+router.get("/grocery/single/:gid", auth.verifyAdmin, function(req,res){
+    const gid = req.params.gid;
+    Grocery.findOne({_id : gid})
+    .then(function(result){
+        res.status(200).send({success:true, data:result, message: "Grocery details by Id"})
+    })
+    .catch(function(){
+        res.status(400).send({message: "Something went wrong!"})
+    })
+})
 router.get("/grocery/single/view/:gid", auth.verifyUser, async(req,res)=>{
     const gid = req.params.gid;
     Grocery.findOne({_id : gid})

@@ -1280,3 +1280,27 @@ background: #ff944d;
   background-color: #bfbfbf;
   border-color: black;
 }
+
+.recipe-btn{
+  margin-left: 600px;
+  background-color: #FF7800;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  color: #ffffff;
+  border-radius: 10px;
+  width: 400px;
+ 
+}
+
+.diet-btn{
+  
+ 
+    background-color: #FF7800;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    color: #ffffff;
+    border-radius: 10px;
+    width: 400px;
+}
