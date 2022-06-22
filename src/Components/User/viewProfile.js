@@ -17,6 +17,7 @@ const ViewProfile = () => {
   const [gender, setGender] = useState("");
   const [_id, setID] = useState("");
   const [recipeData, setRecipeData]=useState([]);
+  const [dietMealData, setDietMealData] = useState([]);
 
   const editProfile = (e) => {
     e.preventDefault();
@@ -59,6 +60,17 @@ const ViewProfile = () => {
         console.log(e);
       });
   }, []);
+
+  useEffect(() => {
+    axios.get("http://localhost:4001/get/all/sendDiet",config)
+    .then((result) => {
+        console.log(result.data);
+        setDietMealData(result.data.data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+}, [])
 
   return (
     <>
@@ -104,13 +116,18 @@ const ViewProfile = () => {
           </div>
             </div>
           </div>
-
-          <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
-            <button type="button" class="btn btn-primary recipe-btn">Recipes</button>
-            <button type="button" class="btn btn-primary diet-btn">Diet Meals</button>
-          </div>
-          <br/><br/>
-          <div className="container">
+          {/* Tabs */}
+          <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <a className="nav-link active recipe" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Recipes</a>
+            </li>
+            <li class="nav-item" role="presentation">
+              <a class="nav-link diets" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Diet Meals</a>
+            </li>
+          </ul>
+          <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+            <div className="container">
           <div class="row row-cols-1 row-cols-md-4">
           {recipeData.map((singleData)=>{
                 return(
@@ -123,8 +140,29 @@ const ViewProfile = () => {
             </NavLink>
                );
               })} 
-</div>
-</div>
+              </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+            <div className="container">
+          <div class="row row-cols-1 row-cols-md-4">
+          {dietMealData.map((singleData)=>{
+                return(
+                  <NavLink to= {"/viewDetailDiet/"+ singleData._id}>
+            <div class="col mb-4">
+                  <div class="card" style={{width:"265px"}}>
+                  <img src={"http://localhost:4001/preferences/"+singleData.dietMeal_id.dietImage}></img>
+                </div>
+            </div>
+            </NavLink>
+               );
+              })} 
+              </div>
+              </div>
+            </div>
+            
+          </div>
+          <br/><br/>
       <br/>
       <Footer></Footer>
     </>

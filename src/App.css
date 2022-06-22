@@ -1295,26 +1295,22 @@ background: #ff944d;
 
 
 
-.recipe-btn{
-  margin-left: 600px;
-  background-color: #FF7800;
+.recipe{
+  margin-left: 500px;
   font-family: sans-serif;
   font-weight: bold;
   font-size: 20px;
-  color: #ffffff;
+  color: black;
   border-radius: 10px;
   width: 400px;
  
 }
 
-.diet-btn{
-  
- 
-    background-color: #FF7800;
+.diets{
     font-family: sans-serif;
     font-weight: bold;
     font-size: 20px;
-    color: #ffffff;
+    color: black;
     border-radius: 10px;
     width: 400px;
 
