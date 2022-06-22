@@ -293,9 +293,6 @@ const Home = () => {
                       </p>
                     </div>
                 </NavLink>
-                <div className="card-footer">
-                <button className="btn sendMeal">Add To Cart</button>
-                </div>
               </div>
               </div>
             </div>

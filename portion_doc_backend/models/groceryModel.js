@@ -17,7 +17,7 @@ const grocerySchema = new mongoose.Schema({
     },
     groceryDescription: {
         type: String,
-        required: true
+       
     },
 });
 const Grocery = mongoose.model("Grocery", grocerySchema);

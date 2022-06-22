@@ -141,7 +141,7 @@ router.get('/meal/all', auth.verifyUser, async(req,res)=>{
     res.json({success: true, message:"Meals Data", data:MealData});
 })
 
-router.get('/meal/limit', auth.verifyUser, async(req,res)=>{
+router.get('/meal/limit', async(req,res)=>{
     const MealData = await Meals.find().limit(3)
     res.json({success: true, message:"Meals Data", data:MealData});
 })
