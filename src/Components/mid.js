@@ -150,9 +150,7 @@ class Mid extends Component {
           <Route
             path="/review"
             element={
-              <UserPrivateRoute>
                 <Review />
-              </UserPrivateRoute>
             }
           ></Route>
           <Route
@@ -212,9 +210,7 @@ class Mid extends Component {
           <Route
             path="/requestDiet"
             element={
-              <UserPrivateRoute>
                 <RequestDietary></RequestDietary>
-              </UserPrivateRoute>
             }
           ></Route>
           <Route
