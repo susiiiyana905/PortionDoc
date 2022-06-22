@@ -1287,6 +1287,14 @@ background: #ff944d;
   border-color: black;
 }
 
+.grocery{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+
+
 .recipe-btn{
   margin-left: 600px;
   background-color: #FF7800;
@@ -1309,4 +1317,5 @@ background: #ff944d;
     color: #ffffff;
     border-radius: 10px;
     width: 400px;
+
 }

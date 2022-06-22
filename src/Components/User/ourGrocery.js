@@ -46,6 +46,7 @@ const Grocery = () => {
           </div>
         </div>
       </div>
+
       <div className="container py-5">
         <div className="row">
           <div className="col-12 text-center">
@@ -323,9 +324,287 @@ const Grocery = () => {
               </div>
             </div>
       </div>
+
+      <div className="meal-data container">
+            <div className="container py-3" style={{ width: "275px" }}>
+              <div className="card-deck">
+                <div className="card">
+                {/* <NavLink
+                  to={"/viewRecipe/" + singleData._id}
+                  style={{ textDecoration: "none" }}
+                > */}
+                  <img
+                    src='/images/bibim.jpg'
+                    className="card-img-top"
+                    style={{ height: "200px", width: "100%" }}
+                  ></img>
+                 <div class="card-body">
+                      <p class="card-title" style={{fontSize:"14px", color:"black"}}>grocery</p> <hr />
+                      <p
+                        class="card-text"
+                        style={{ fontWeight: "bold", fontSize: "12px", color:"black" }}
+                      >
+                        <label class="text mr-5">
+                          Price:
+                        </label>
+                        <label
+                          class="text"
+                          style={{ float: "right", marginTop: "1px" }}
+                        >
+                          <i class="fas fa-solid fa-timer"></i>
+                          Time: 
+                        </label>
+                      </p>
+                    </div>
+                {/* </NavLink> */}
+                <div className="card-footer">
+                  <Link to="/cart">
+                <button className="btn sendMeal" >Add To Cart</button>
+                </Link>
+                </div>
+              </div>
+              </div>
+            </div>
+            <div className="container py-3" style={{ width: "275px" }}>
+              <div className="card-deck">
+                <div className="card">
+                {/* <NavLink
+                  to={"/viewRecipe/" + singleData._id}
+                  style={{ textDecoration: "none" }}
+                > */}
+                  <img
+                    src='/images/bibim.jpg'
+                    className="card-img-top"
+                    style={{ height: "200px", width: "100%" }}
+                  ></img>
+                 <div class="card-body">
+                      <p class="card-title" style={{fontSize:"14px", color:"black"}}>grocery</p> <hr />
+                      <p
+                        class="card-text"
+                        style={{ fontWeight: "bold", fontSize: "12px", color:"black" }}
+                      >
+                        <label class="text mr-5">
+                          Price:
+                        </label>
+                        <label
+                          class="text"
+                          style={{ float: "right", marginTop: "1px" }}
+                        >
+                          <i class="fas fa-solid fa-timer"></i>
+                          Time: 
+                        </label>
+                      </p>
+                    </div>
+                {/* </NavLink> */}
+                <div className="card-footer">
+                  <Link to="/cart">
+                <button className="btn sendMeal" >Add To Cart</button>
+                </Link>
+                </div>
+              </div>
+              </div>
+            </div>
+            <div className="container py-3" style={{ width: "275px" }}>
+              <div className="card-deck">
+                <div className="card">
+                {/* <NavLink
+                  to={"/viewRecipe/" + singleData._id}
+                  style={{ textDecoration: "none" }}
+                > */}
+                  <img
+                    src='/images/bibim.jpg'
+                    className="card-img-top"
+                    style={{ height: "200px", width: "100%" }}
+                  ></img>
+                 <div class="card-body">
+                      <p class="card-title" style={{fontSize:"14px", color:"black"}}>grocery</p> <hr />
+                      <p
+                        class="card-text"
+                        style={{ fontWeight: "bold", fontSize: "12px", color:"black" }}
+                      >
+                        <label class="text mr-5">
+                          Price:
+                        </label>
+                        <label
+                          class="text"
+                          style={{ float: "right", marginTop: "1px" }}
+                        >
+                          <i class="fas fa-solid fa-timer"></i>
+                          Time: 
+                        </label>
+                      </p>
+                    </div>
+                {/* </NavLink> */}
+                <div className="card-footer">
+                  <Link to="/cart">
+                <button className="btn sendMeal" >Add To Cart</button>
+                </Link>
+                </div>
+              </div>
+              </div>
+            </div>
+            <div className="container py-3" style={{ width: "275px" }}>
+              <div className="card-deck">
+                <div className="card">
+                {/* <NavLink
+                  to={"/viewRecipe/" + singleData._id}
+                  style={{ textDecoration: "none" }}
+                > */}
+                  <img
+                    src='/images/bibim.jpg'
+                    className="card-img-top"
+                    style={{ height: "200px", width: "100%" }}
+                  ></img>
+                 <div class="card-body">
+                      <p class="card-title" style={{fontSize:"14px", color:"black"}}>grocery</p> <hr />
+                      <p
+                        class="card-text"
+                        style={{ fontWeight: "bold", fontSize: "12px", color:"black" }}
+                      >
+                        <label class="text mr-5">
+                          Price:
+                        </label>
+                        <label
+                          class="text"
+                          style={{ float: "right", marginTop: "1px" }}
+                        >
+                          <i class="fas fa-solid fa-timer"></i>
+                          Time: 
+                        </label>
+                      </p>
+                    </div>
+                {/* </NavLink> */}
+                <div className="card-footer">
+                  <Link to="/cart">
+                <button className="btn sendMeal" >Add To Cart</button>
+                </Link>
+                </div>
+              </div>
+              </div>
+            </div>
+            <div className="container py-3" style={{ width: "275px" }}>
+              <div className="card-deck">
+                <div className="card">
+                {/* <NavLink
+                  to={"/viewRecipe/" + singleData._id}
+                  style={{ textDecoration: "none" }}
+                > */}
+                  <img
+                    src='/images/bibim.jpg'
+                    className="card-img-top"
+                    style={{ height: "200px", width: "100%" }}
+                  ></img>
+                 <div class="card-body">
+                      <p class="card-title" style={{fontSize:"14px", color:"black"}}>grocery</p> <hr />
+                      <p
+                        class="card-text"
+                        style={{ fontWeight: "bold", fontSize: "12px", color:"black" }}
+                      >
+                        <label class="text mr-5">
+                          Price:
+                        </label>
+                        <label
+                          class="text"
+                          style={{ float: "right", marginTop: "1px" }}
+                        >
+                          <i class="fas fa-solid fa-timer"></i>
+                          Time: 
+                        </label>
+                      </p>
+                    </div>
+                {/* </NavLink> */}
+                <div className="card-footer">
+                  <Link to="/cart">
+                <button className="btn sendMeal" >Add To Cart</button>
+                </Link>
+                </div>
+              </div>
+              </div>
+            </div>
+            <div className="container py-3" style={{ width: "275px" }}>
+              <div className="card-deck">
+                <div className="card">
+                {/* <NavLink
+                  to={"/viewRecipe/" + singleData._id}
+                  style={{ textDecoration: "none" }}
+                > */}
+                  <img
+                    src='/images/bibim.jpg'
+                    className="card-img-top"
+                    style={{ height: "200px", width: "100%" }}
+                  ></img>
+                 <div class="card-body">
+                      <p class="card-title" style={{fontSize:"14px", color:"black"}}>grocery</p> <hr />
+                      <p
+                        class="card-text"
+                        style={{ fontWeight: "bold", fontSize: "12px", color:"black" }}
+                      >
+                        <label class="text mr-5">
+                          Price:
+                        </label>
+                        <label
+                          class="text"
+                          style={{ float: "right", marginTop: "1px" }}
+                        >
+                          <i class="fas fa-solid fa-timer"></i>
+                          Time: 
+                        </label>
+                      </p>
+                    </div>
+                {/* </NavLink> */}
+                <div className="card-footer">
+                  <Link to="/cart">
+                <button className="btn sendMeal" >Add To Cart</button>
+                </Link>
+                </div>
+              </div>
+              </div>
+            </div>
+            <div className="container py-3" style={{ width: "275px" }}>
+              <div className="card-deck">
+                <div className="card">
+                {/* <NavLink
+                  to={"/viewRecipe/" + singleData._id}
+                  style={{ textDecoration: "none" }}
+                > */}
+                  <img
+                    src='/images/bibim.jpg'
+                    className="card-img-top"
+                    style={{ height: "200px", width: "100%" }}
+                  ></img>
+                 <div class="card-body">
+                      <p class="card-title" style={{fontSize:"14px", color:"black"}}>grocery</p> <hr />
+                      <p
+                        class="card-text"
+                        style={{ fontWeight: "bold", fontSize: "12px", color:"black" }}
+                      >
+                        <label class="text mr-5">
+                          Price:
+                        </label>
+                        <label
+                          class="text"
+                          style={{ float: "right", marginTop: "1px" }}
+                        >
+                          <i class="fas fa-solid fa-timer"></i>
+                          Time: 
+                        </label>
+                      </p>
+                    </div>
+                {/* </NavLink> */}
+                <div className="card-footer">
+                  <Link to="/cart">
+                <button className="btn sendMeal" >Add To Cart</button>
+                </Link>
+                </div>
+              </div>
+              </div>
+            </div>
+      </div>
+
       {/* </div> */}
       <Footer></Footer>
     </>
   );
 };
 export default Grocery;
+
