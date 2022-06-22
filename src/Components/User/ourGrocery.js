@@ -46,14 +46,8 @@ const Grocery = () => {
           </div>
         </div>
       </div>
-      <div className="container py-5">
-        <div className="row">
-          <div className="col-12 text-center">
-            <h1>Meals</h1>
-            <hr />
-          </div>
-        </div>
       </div>
+
       <div className="meal-data container">
             <div className="container py-3" style={{ width: "275px" }}>
               <div className="card-deck">

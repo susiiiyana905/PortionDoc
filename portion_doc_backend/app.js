@@ -57,6 +57,9 @@ app.use(DietIngredients);
 const RecipeIngredients = require("./router/recipeIngredientsRoute");
 app.use(RecipeIngredients);
 
+const Grocery = require("./router/groceryRoute");
+app.use(Grocery);
+
 
 app.use(express.static(__dirname+'/images/'));
 

@@ -324,10 +324,12 @@ class Mid extends Component {
             element={<ViewMealDiet></ViewMealDiet>}
           ></Route>
           <Route path="/viewOrder" element={<OrderView></OrderView>}></Route>
-          <Route path="/viewGrocery" element ={<ViewGrocery></ViewGrocery>}></Route>
+
+          <Route path="/viewGrocery" element ={<AdminPrivateRoute><ViewGrocery></ViewGrocery></AdminPrivateRoute>}></Route>
           <Route path="/ourGrocery" element ={<Grocery></Grocery>}></Route>
-          <Route path ="/addGrocery" element ={<AddGrocery></AddGrocery>}></Route>
-          <Route path="/updateGrocery" element={<UpdateGrocery></UpdateGrocery>}></Route>
+          <Route path ="/addGrocery" element ={<AdminPrivateRoute><AddGrocery></AddGrocery></AdminPrivateRoute>}></Route>
+          <Route path="/updateGrocery/:gid" element={<AdminPrivateRoute><UpdateGrocery></UpdateGrocery></AdminPrivateRoute>}></Route>
+
         </Routes>
       </div>
     );

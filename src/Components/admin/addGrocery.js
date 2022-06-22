@@ -1,7 +1,80 @@
-import React from "react"
+import React, { useState } from "react";
+import axios from "axios";
 import AdminDashboard from "../adminDashbaord";
+import { useNavigate } from "react-router-dom";
 
 const AddGrocery = () => {
+  const [groceryImage, setGroceryImage] = useState("");
+  const [groceryName, setGroceryName] = useState("");
+  const [groceryPrice, setGroceryPrice] = useState("");
+  const [groceryDescription, setGroceryDescription] = useState("");
+  const [response, setResponse] = useState("");
+  const [sResponse, setSResponse] = useState("");
+  const [message, setMessage] = useState("");
+  const navigate = useNavigate();
+
+  const config = {
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("adminToken"),
+    },
+  };
+
+  const addGrocery = (e) => {
+    e.preventDefault();
+    const priceRegex = new RegExp("^[0-9]+$");
+    const numberRegex = new RegExp("[0-9]");
+    const specialCharacterRegex = new RegExp('[!@#$%^&*(),.?":{}|<>]');
+    if (
+      groceryName.trim() === "" ||
+      groceryPrice.trim() === "" ||
+      groceryDescription.trim() === "" 
+      
+    ) {
+      setMessage("Empty field found. Fill up the form completely.");
+      return;
+    } else if (groceryName.length < 2) {
+      setMessage("Meal Name most contain at least two characters.");
+      return;
+    } 
+    else if (groceryDescription.length < 2) {
+      setMessage("Description most contain at least two characters.");
+      return;
+    } 
+    else if (
+      numberRegex.test(groceryName) ||
+      specialCharacterRegex.test(groceryName)
+    ) {
+      setMessage(
+        "Any numbers or special characters are not allowed in the meal name."
+      );
+      return;
+
+    } else if (!priceRegex.test(groceryPrice)) {
+      setMessage("Invalid meal price.");
+      return;
+    }
+    const groceryData = new FormData();
+    groceryData.append("groceryImage", groceryImage);
+    groceryData.append("groceryName", groceryName);
+    groceryData.append("groceryPrice", groceryPrice);
+    groceryData.append("groceryDescription", groceryDescription);
+
+    axios
+      .post("http://localhost:4001/add/grocery", groceryData, config)
+      .then((result) => {
+        console.log(result.data.data);
+        if (result.data.success) {
+          localStorage.setItem("_id", result.data.data._id);
+          setMessage(result.data.message);
+          navigate("/viewGrocery", { state: { _id: result.data.data._id } });
+        }
+      })
+      .catch((e) => {
+        setMessage(e.response.data.message);
+      });
+  };
+
+  
     return(  
         <>
         <AdminDashboard>
@@ -11,6 +84,7 @@ const AddGrocery = () => {
     className="suggestion-message text-center mb-2"
     style={{ color: "red", fontWeight: "bold" }}
   >
+    {message}
   </div>
   <h2 className="heading-h2-all">Add Grocery:</h2>
   <form>
@@ -20,6 +94,7 @@ const AddGrocery = () => {
         <input
           type="file"
           class="form-control"
+          onChange={(e) => setGroceryImage(e.target.files[0])}
         ></input>
       </div>
     </div>
@@ -29,6 +104,8 @@ const AddGrocery = () => {
         <input
           type="text"
           class="form-control"
+          value={groceryName}
+          onChange={(e) => setGroceryName(e.target.value)}
         ></input>
       </div>
     </div>
@@ -38,6 +115,8 @@ const AddGrocery = () => {
         <input
           type="number"
           class="form-control"
+          value={groceryPrice}
+          onChange={(e) => setGroceryPrice(e.target.value)}
         ></input>
       </div>
     </div>
@@ -47,6 +126,8 @@ const AddGrocery = () => {
         <textarea
           type="text"
           class="form-control"
+          value={groceryDescription}
+          onChange={(e) => setGroceryDescription(e.target.value)}
           style={{ float: "left", marginRight: "5px" }}
         ></textarea>
       </div>
@@ -56,6 +137,7 @@ const AddGrocery = () => {
       <button
         type="submit"
         className="btn btn-primary addMeal"
+        onClick={addGrocery}
       >
         Add Grocery
       </button>
