@@ -38,6 +38,11 @@ const RequestDietary = () => {
         navigate("/");
         setMessage(result.data.message);
       }
+      else if(!localStorage.getItem("userToken")){
+        setMessage("You need to login first!")
+        navigate("/login");
+        
+    }
     })
     .catch((e)=>{
       setMessage(e.response.data.message);
@@ -45,9 +50,9 @@ const RequestDietary = () => {
   }
 
   useEffect(()=>{
-    axios.get("http://localhost:4001/preference/category/all",config)
+    axios.get("http://localhost:4001/preference/category/all")
     .then((preference)=>{
-      console.log(preference.data.data);
+      console.log(preference.data);
       setPreferenceData(preference.data.data);
     })
     .catch((e)=>{
@@ -116,12 +121,13 @@ const RequestDietary = () => {
                 <select
                   className="custom-select custom-select-lg"
                   style={{ width: "100%" }}
-                  value={preference}
                   onChange={(e) => setPreference(e.target.value)}
                 >
-                  <option>Weight Loss</option>
-                  <option>Weight Gain</option>
-                  <option>Muscle Gain</option>
+                  {preferenceData.map((singleData)=>{
+                    return(
+                      <option>{singleData.dietCategoryName}</option>
+                    )
+                  })}
                 </select>
               </div>
             </div>
@@ -132,7 +138,6 @@ const RequestDietary = () => {
                 placeholder='Allergy'
                   type="text"
                   class="form-control"
-                  value={foodAllergies}
                   onChange={(e) => setFoodAllergies(e.target.value)}
                 ></input>
               </div>

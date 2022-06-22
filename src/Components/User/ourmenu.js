@@ -40,7 +40,7 @@ const Meals = () => {
     if(mealName.trim()===""){
       return
     }
-    axios.post("http://localhost:4001/search/meal", {mealName}, config)
+    axios.post("http://localhost:4001/search/meal", {mealName})
     .then(result=>{
       console.log(result)
       setMeals(result.data)
@@ -51,7 +51,7 @@ const Meals = () => {
   }
   useEffect(() => {
     axios
-      .get("http://localhost:4001/meal/all", config)
+      .get("http://localhost:4001/meal/all")
       .then((result) => {
         console.log(result.data);
         setMealData(result.data.data);
@@ -62,7 +62,7 @@ const Meals = () => {
   }, []);
   useEffect(() => {
     axios
-      .get("http://localhost:4001/category/all", config)
+      .get("http://localhost:4001/category/all")
       .then((category) => {
         console.log(category.data.data);
         setCategoryData(category.data.data);
@@ -79,6 +79,16 @@ const Meals = () => {
     <>
       <Header></Header>
       {/* <div> */}
+      
+      <div className="container py-5">
+        <div className="row">
+          <div className="col-12 text-center">
+            <h1>Meals</h1>
+            <hr />
+          </div>
+        </div>
+      </div>
+
       <div className="container">
         <div id="front">
           <div id="one">
@@ -127,14 +137,6 @@ const Meals = () => {
                   )
                 })}
             </div>
-          </div>
-        </div>
-      </div>
-      <div className="container py-5">
-        <div className="row">
-          <div className="col-12 text-center">
-            <h1>Meals</h1>
-            <hr />
           </div>
         </div>
       </div>
