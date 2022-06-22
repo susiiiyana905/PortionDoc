@@ -37,16 +37,17 @@ import ViewMealDiet from "./admin/viewMealDiet";
 import AddDietIngredient from "./admin/dietIngredient";
 import ShowPreferenceCategory from "./admin/preferenceCategory";
 import AddPreferenceCategory from "./admin/addPreferenceCategory";
-import ViewOrders from "./admin/viewOrder";
 import ViewPreferenceCategory from "./admin/viewPreferenceCategory";
 import ViewDetailDiet from "./User/viewDetailDietMeal";
-import RecipeDetail from "./User/viewDetailRecipe";
-import AddRecipeIngredient from "./admin/recipeIngredient";
-import OrderView from "./User/viewOrder";
+import ViewOrders from './admin/viewOrder';
+import RecipeDetail from './User/viewDetailRecipe';
+import AddRecipeIngredient from './admin/recipeIngredient';
+import OrderView from './User/viewOrder';
 import ViewGrocery from './admin/viewGrocery';
 import Grocery from './User/ourGrocery';
 import AddGrocery from './admin/addGrocery';
 import UpdateGrocery from './admin/updateGrocery';
+
 
 class Mid extends Component {
   render() {
@@ -323,10 +324,12 @@ class Mid extends Component {
             element={<ViewMealDiet></ViewMealDiet>}
           ></Route>
           <Route path="/viewOrder" element={<OrderView></OrderView>}></Route>
+
           <Route path="/viewGrocery" element ={<AdminPrivateRoute><ViewGrocery></ViewGrocery></AdminPrivateRoute>}></Route>
           <Route path="/ourGrocery" element ={<Grocery></Grocery>}></Route>
           <Route path ="/addGrocery" element ={<AdminPrivateRoute><AddGrocery></AddGrocery></AdminPrivateRoute>}></Route>
           <Route path="/updateGrocery/:gid" element={<AdminPrivateRoute><UpdateGrocery></UpdateGrocery></AdminPrivateRoute>}></Route>
+
         </Routes>
       </div>
     );
