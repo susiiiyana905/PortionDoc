@@ -37,34 +37,17 @@ import ViewMealDiet from "./admin/viewMealDiet";
 import AddDietIngredient from "./admin/dietIngredient";
 import ShowPreferenceCategory from "./admin/preferenceCategory";
 import AddPreferenceCategory from "./admin/addPreferenceCategory";
-import ViewOrders from "./admin/viewOrder";
 import ViewPreferenceCategory from "./admin/viewPreferenceCategory";
 import ViewDetailDiet from "./User/viewDetailDietMeal";
-
-<<<<<<< Updated upstream
-import RecipeDetail from "./User/viewDetailRecipe";
-import AddRecipeIngredient from "./admin/recipeIngredient";
-=======
-import ViewDietRequest from './admin/viewDietRequest';
-import ViewMealDiet from './admin/viewMealDiet';
-import AddDietIngredient from './admin/dietIngredient';
-import ShowPreferenceCategory from './admin/preferenceCategory';
-import AddPreferenceCategory from './admin/addPreferenceCategory';
 import ViewOrders from './admin/viewOrder';
-import ViewPrefrenceCategory from './admin/viewPreferenceCategory';
-import ViewDetailDiet from './User/viewDetailDietMeal';
-
 import RecipeDetail from './User/viewDetailRecipe';
 import AddRecipeIngredient from './admin/recipeIngredient';
-
 import OrderView from './User/viewOrder';
 import ViewGrocery from './admin/viewGrocery';
 import Grocery from './User/ourGrocery';
 import AddGrocery from './admin/addGrocery';
 import UpdateGrocery from './admin/updateGrocery';
->>>>>>> Stashed changes
 
-import OrderView from "./User/viewOrder";
 
 class Mid extends Component {
   render() {
@@ -198,7 +181,6 @@ class Mid extends Component {
             }
           ></Route>
 
-<<<<<<< Updated upstream
           <Route
             path="/add"
             element={
@@ -320,48 +302,6 @@ class Mid extends Component {
               </AdminPrivateRoute>
             }
           ></Route>
-=======
-          <Route path="/add" element={
-          <AdminPrivateRoute>
-          <AddDiet></AddDiet>
-          </AdminPrivateRoute>
-          }></Route>
-
-          <Route path="/viewDietRequest" element={
-          <AdminPrivateRoute>
-            <ViewDietRequest></ViewDietRequest>
-            </AdminPrivateRoute>}>
-            </Route>
-
-          <Route path="/updateDiet/:did" element={
-          <AdminPrivateRoute>
-          <UpdateDiet></UpdateDiet>
-          </AdminPrivateRoute>}>
-          </Route>
-
-          <Route path="/requestDiet" element={<UserPrivateRoute><RequestDietary></RequestDietary></UserPrivateRoute>}></Route>
-          <Route path="/orderMeal" element={<UserPrivateRoute><OrderMeal></OrderMeal></UserPrivateRoute>}></Route>
-          <Route path="/categoryMeals/:category" element={<CategoryMeal></CategoryMeal>}></Route>
-          <Route path="/viewDietMeal" element={<UserPrivateRoute><ViewDietMeals></ViewDietMeals></UserPrivateRoute>}></Route>
-          <Route path="/viewUserDietMeal" element={<UserPrivateRoute><ViewUserDietMeal></ViewUserDietMeal></UserPrivateRoute>}></Route>
-          <Route path="/cart" element={<UserPrivateRoute><Cart></Cart></UserPrivateRoute>}></Route>
-          <Route path ="/showPreferenceCategory" element={<AdminPrivateRoute><ShowPreferenceCategory></ShowPreferenceCategory></AdminPrivateRoute>}></Route>
-          <Route path ="/viewPreferenceCategory" element={<AdminPrivateRoute><ViewPrefrenceCategory></ViewPrefrenceCategory></AdminPrivateRoute>}></Route>
-          <Route path ="/addPreferenceCategory" element={<AdminPrivateRoute><AddPreferenceCategory></AddPreferenceCategory></AdminPrivateRoute>}></Route>
-          <Route path="/viewMealDiet" element={<AdminPrivateRoute><ViewMealDiet></ViewMealDiet></AdminPrivateRoute>}></Route>
-          <Route path='/viewDetailDiet/:did' element={<AdminPrivateRoute><ViewDetailDiet></ViewDetailDiet></AdminPrivateRoute>}></Route>
-          <Route path="/diet/addIngredients" element={<AdminPrivateRoute><AddDietIngredient></AddDietIngredient></AdminPrivateRoute>}></Route>
-          <Route path ="/viewOrders" element={<AdminPrivateRoute><ViewOrders></ViewOrders></AdminPrivateRoute>}></Route>
-
-          <Route path = "/viewDetailRecipe/:rid" element={<UserPrivateRoute><RecipeDetail></RecipeDetail></UserPrivateRoute>}></Route>
-           <Route path = "/addRecipeIngredient" element={<AdminPrivateRoute><AddRecipeIngredient></AddRecipeIngredient></AdminPrivateRoute>}></Route> 
-          <Route path="/viewMealDiet" element={<ViewMealDiet></ViewMealDiet>}></Route>
-          <Route path="/viewOrder" element={<OrderView></OrderView>}></Route>
-          <Route path="/viewGrocery" element ={<ViewGrocery></ViewGrocery>}></Route>
-          <Route path="/ourGrocery" element ={<Grocery></Grocery>}></Route>
-          <Route path ="/addGrocery" element ={<AddGrocery></AddGrocery>}></Route>
-          <Route path="/updateGrocery" element={<UpdateGrocery></UpdateGrocery>}></Route>
->>>>>>> Stashed changes
 
           <Route
             path="/viewDetailRecipe/:rid"
@@ -384,6 +324,10 @@ class Mid extends Component {
             element={<ViewMealDiet></ViewMealDiet>}
           ></Route>
           <Route path="/viewOrder" element={<OrderView></OrderView>}></Route>
+          <Route path="/viewGrocery" element ={<ViewGrocery></ViewGrocery>}></Route>
+          <Route path="/ourGrocery" element ={<Grocery></Grocery>}></Route>
+          <Route path ="/addGrocery" element ={<AddGrocery></AddGrocery>}></Route>
+          <Route path="/updateGrocery" element={<UpdateGrocery></UpdateGrocery>}></Route>
         </Routes>
       </div>
     );

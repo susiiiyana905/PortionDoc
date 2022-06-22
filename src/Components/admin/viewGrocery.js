@@ -37,9 +37,6 @@ const ViewGrocery =()=>{
                             Price
                           </th>
                           <th scope="col" colSpan="6">
-                            Category
-                          </th>
-                          <th scope="col" colSpan="6">
                             Edit
                           </th>
                         </tr>

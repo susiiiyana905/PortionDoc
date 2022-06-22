@@ -102,20 +102,6 @@ const UpdateGrocery = () => {
               </div>
               <div className="form-group row">
                 <label
-                  htmlFor="mealCategory"
-                  className="col-sm-3 col-form-label"
-                >
-                 Grocery Category
-                </label>
-                <div className="col-sm-9">
-                  <input
-                    type="text"
-                    className="form-control"
-                  />
-                </div>
-              </div>
-              <div className="form-group row">
-                <label
                   htmlFor="mealDescription"
                   className="col-sm-3 col-form-label"
                 >
