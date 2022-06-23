@@ -36,6 +36,10 @@ const Review = ()=> {
               
                 setSMessage(result.data.message);
             }
+            else if(!localStorage.getItem("userToken")){
+                setMessage("First you need to login")
+                
+            }
         })
         .catch((e)=>{
             setMessage(e.response.data.message);

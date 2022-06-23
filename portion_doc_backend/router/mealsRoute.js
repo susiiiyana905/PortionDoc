@@ -136,12 +136,12 @@ router.get("/meals/category/:category", auth.verifyUser, function(req,res){
     })
 })
 
-router.get('/meal/all', auth.verifyUser, async(req,res)=>{
+router.get('/meal/all', async(req,res)=>{
     const MealData = await Meals.find()
     res.json({success: true, message:"Meals Data", data:MealData});
 })
 
-router.get('/meal/limit', auth.verifyUser, async(req,res)=>{
+router.get('/meal/limit', async(req,res)=>{
     const MealData = await Meals.find().limit(3)
     res.json({success: true, message:"Meals Data", data:MealData});
 })
@@ -179,7 +179,7 @@ router.delete("/meals/delete/:mid", auth.verifyAdmin, function(req,res){
 
 })
 
-router.post("/search/meal", auth.verifyUser, async(req, res)=>{
+router.post("/search/meal", async(req, res)=>{
     
     const keyMealName = req.body.mealName
 
