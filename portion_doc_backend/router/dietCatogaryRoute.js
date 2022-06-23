@@ -44,7 +44,7 @@ router.get(
   }
 );
 
-router.get("/preference/category/all", auth.verifyUser, async (req, res) => {
+router.get("/preference/category/all", async (req, res) => {
   const PreferenceData = await PreferenceCategory.find();
   res.json({ success: true, message: "Preference Data", data: PreferenceData });
 });

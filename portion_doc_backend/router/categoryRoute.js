@@ -42,7 +42,7 @@ router.get("/category/single", auth.verifyAdmin, async (req, res) => {
   res.json({ success: true, message: "Category Data", data: CategoryData });
 });
 
-router.get("/category/all", auth.verifyUser, async (req, res) => {
+router.get("/category/all", async (req, res) => {
   const CategoryData = await Category.find();
   res.json({ success: true, message: "Category Data", data: CategoryData });
 });
