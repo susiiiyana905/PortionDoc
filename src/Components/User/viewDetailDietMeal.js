@@ -12,8 +12,6 @@ const ViewDetailDiet = () => {
   const [dietDescription, setDietDescription] = useState("");
   const [steps, setSteps] = useState([]);
   const [time, setTime] = useState("");
-  const [preference, setPreference] = useState("");
-  const [calory, setCalory] = useState("");
   const [difficulty, setDifficulty] = useState("");
   const [ingredientData, setIngredientData] = useState([]);
   const [message, setMessage] = useState("");
@@ -25,16 +23,14 @@ const ViewDetailDiet = () => {
   };
   const { did } = useParams();
   useEffect(() => {
-    axios
+    axios 
       .get("http://localhost:4001/diet/single/view/" + did, config)
       .then((result) => {
-        console.log(result.data.data);
+        console.log(result.data);
         setDietImage(result.data.data.dietImage);
         setDietName(result.data.data.dietName);
         setDietDescription(result.data.data.dietDescription);
         setSteps(result.data.data.steps);
-        setPreference(result.data.data.preference);
-        setCalory(result.data.data.calory);
         setDifficulty(result.data.data.difficulty);
         setTime(result.data.data.time);
       })
