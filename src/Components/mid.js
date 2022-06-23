@@ -329,7 +329,6 @@ class Mid extends Component {
           <Route path="/ourGrocery" element ={<Grocery></Grocery>}></Route>
           <Route path ="/addGrocery" element ={<AdminPrivateRoute><AddGrocery></AddGrocery></AdminPrivateRoute>}></Route>
           <Route path="/updateGrocery/:gid" element={<AdminPrivateRoute><UpdateGrocery></UpdateGrocery></AdminPrivateRoute>}></Route>
-
         </Routes>
       </div>
     );
