@@ -148,7 +148,7 @@ const ViewProfile = () => {
           <div class="row row-cols-1 row-cols-md-4">
           {dietMealData.map((singleData)=>{
                 return(
-                  <NavLink to= {"/viewDetailDiet/"+ singleData._id}>
+                  <NavLink to= {"/viewDetailDiet/"+ singleData.dietMeal_id._id}>
             <div class="col mb-4">
                   <div class="card" style={{width:"265px"}}>
                   <img src={"http://localhost:4001/preferences/"+singleData.dietMeal_id.dietImage}></img>

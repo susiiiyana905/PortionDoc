@@ -10,6 +10,8 @@ router.post("/cart/insert",auth.verifyUser, async function(req,res){
         const user_id = req.userInfo._id;
         const meals_id = req.body.meals_id;
         _meals = await Meals.findOne({_id : meals_id}).exec()
+
+        console.log(_meals, "hello");
         _cart = await Cart.findOne({user_id : user_id, meals_id: meals_id}).exec()
         if(_cart){
             
