@@ -40,30 +40,21 @@ router.get("/order/get", auth.verifyAdmin, async function (req, res) {
     res.json({success: true, message:"Order Data", data:data});
 })
 
-// router.get("/orders/get", auth.verifyAdmin, async function (req, res){
-//     try{
-//         const getOrders = await Order.find({}).populate(["user_id", {path : 'addToCart', populate : {
-//             path: "meals_id" }}]).exec()
-//             res.json({message:"Orders", data:getOrders});
-//     }
-//     catch(e){
-//         console.log(e)
-//         res.join({message:"Failed to retrieve order"});
-//     }
-// })
-
-
-router.get("/orders/get", auth.verifyAdmin.apply, async function (req, res){
+router.get("/orders/get", auth.verifyAdmin, async function (req, res){
     try{
-        const getOrders = await Order.find({}).populate(["user_id", {path : 'addToCart', populate : {
+        const getOrders = await Order.find({}).populate(["user_id", 
+        // "firstName lastName address phone_no", 
+        {path : 'addToCart', populate : {
             path: "meals_id" }}]).exec()
+            // .sort({createdAt:-1});
             res.json({message:"Orders", data:getOrders});
     }
     catch(e){
         console.log(e)
-        res.join({message:"Failed to retrieve order"});
+        res.json({message:"Failed to retrieve order"});
     }
 })
+
 //for user
 router.get("/order/user/get", auth.verifyUser, async function (req, res) {
     const data = await Order.find() 
@@ -71,5 +62,47 @@ router.get("/order/user/get", auth.verifyUser, async function (req, res) {
 
   
 })
+
+router.put("/order/update", auth.verifyUser, auth.verifyAdmin, async function (req, res) {
+    try {
+        const updateOrder = await Order.findByIdAndUpdate(req.userInfo._id, {status: "Delivered"}, {new: true} ).exec() 
+        res.json({ message: "Order update", data: updateOrder });
+    }
+    catch(e){
+        res.json({ message: "Failed to update order" });
+    }
+})
+
+router.delete('/order/cancel/:id', auth.verifyUser,function(req,res){
+    const id = req.params.id;
+    Order.deleteOne({_id : id})
+    .then(function(){
+        res.json({message: "Order deleted"})
+    })
+    .catch(function(){
+        res.json({message: "Something went wrong"})
+    })
+})
+
+router.put("/order/update/:oid", auth.verifyAdmin, async function (req, res) {
+    const oid = req.params.oid;
+    const status = req.body.status;
+
+    Order.findOne({_id: oid})
+    .then((data)=>{
+        Order.updateOne({_id:oid},{
+            status:status
+        })
+
+        .then(function(){
+            res.status(200).send({success:true, message: "Status details has been updated!"})
+        })
+        .catch(function(){
+            res.status(400).send({message: e})
+        });
+    })
+
+})
+
 
 module.exports = router
