@@ -153,6 +153,19 @@ router.get("/grocery/single/view/:gid", auth.verifyUser, async (req, res) => {
     });
 });
 
+router.post("/grocery/single/view", async (req, res) => {
+  const gid = req.body.gid;
+  Grocery.findOne({ _id: gid })
+    .then(function (result) {
+      res
+        .status(200)
+        .send({ success: true, data: result, message: "Grocery details by Id" });
+    })
+    .catch(function () {
+      res.status(400).send({ message: "Something went wrong!" });
+    });
+});
+
 router.delete("/grocery/delete/:gid", auth.verifyAdmin, function (req, res) {
   const gid = req.params.gid;
   Grocery.deleteOne({ _id: gid })

@@ -7,6 +7,11 @@ import React from "react";
 const Grocery = () => {
   const [groceryData, setGroceryData] = useState([]);
   const [groceries, setGroceries] = useState([]);
+  const [groceryImage, setGroceryImage] = useState("");
+  const [groceryName, setGroceryName] = useState("");
+  const [groceryDescription , setGroceryDescription] = useState("");
+  const [groceryPrice, setGroceryPrice] = useState("");
+  const [quantity, setQuantity] = useState("");
   const [cartData, setCartData] = useState("");
   const [cart, setCart] = useState([]);
   const config = {
@@ -21,7 +26,6 @@ const Grocery = () => {
       setCartData("");
     }
   };
-  //add to localstorage
   useEffect(() => {
     localStorage.setItem("lists", JSON.stringify(cart));
   }, [cart]);
@@ -29,7 +33,6 @@ const Grocery = () => {
     axios
       .get("http://localhost:4001/all/grocery")
       .then((result) => {
-        console.log(result.data.data);
         setGroceryData(result.data.data);
       })
       .catch((e) => {
@@ -43,12 +46,24 @@ const Grocery = () => {
     axios
       .post("http://localhost:4001/search/grocery", { groceryName })
       .then((result) => {
-        console.log(result);
         setGroceries(result.data);
       })
       .catch((e) => {
         console.log(e);
       });
+  }
+  function singleGrocery(gid){
+    axios.post("http://localhost:4001/grocery/single/view",{gid})
+    .then((result)=>{
+      setGroceryImage(result.data.data.groceryImage);
+      setGroceryName(result.data.data.groceryName);
+      setGroceryPrice(result.data.data.groceryPrice);
+      setGroceryDescription(result.data.data.groceryDescription);
+      setQuantity(result.data.data.quantity);
+    })
+    .catch((e)=>{
+      console.log(e);
+    })
   }
   return (
     <>
@@ -77,8 +92,8 @@ const Grocery = () => {
             <div className="d-flex flex-column">
               {groceries.map((singleData) => {
                 return (
-                  <div className="d-flex justify-content-between align-items-center">
-                    {/* <NavLink to={"/viewRecipe/"+singleData._id}> */}
+                  <div className="d-flex justify-content-between align-items-center" key={singleData._id}>
+                  
                     <div
                       className="d-flex justify-content-start align-items-center my-2"
                       key={singleData._id}
@@ -111,11 +126,12 @@ const Grocery = () => {
           return (
             <div className="container py-3" style={{ width: "275px" }}>
               <div className="card-deck">
-                <div className="card" data-toggle="modal" data-target="#exampleModal">
-                  {/* <NavLink
-                  to={"/viewRecipe/" + singleData._id}
-                  style={{ textDecoration: "none" }}
-                > */}
+                <div
+                  className="card"
+                  data-toggle="modal"
+                  data-target="#exampleModal"
+                  onClick={()=>singleGrocery(singleData._id)}
+                >
                   <img
                     src={
                       "http://localhost:4001/grocery/" + singleData.groceryImage
@@ -148,7 +164,6 @@ const Grocery = () => {
                       </label>
                     </p>
                   </div>
-                  {/* </NavLink> */}
                   <div className="card-footer">
                     <Link to="/cart">
                       <button className="btn sendMeal" onClick={addCart}>
@@ -156,40 +171,86 @@ const Grocery = () => {
                       </button>
                     </Link>
                   </div>
-                   
-                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <img src="images/bibim.jpg" style={{height:"200px", width:"200px", marginLeft:"120px"}}></img>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <h2> Ginger</h2>
-     <p> Ginger is a flowering plant whose rhizome, ginger root or ginger, is widely used as a spice and a folk medicine.</p>
-     <div>
-              <label style={{fontWeight:"bold"}}>Price: <text style={{fontWeight:"normal"}}>Rs.123</text></label>
-              <br />
-              <label style={{fontWeight:"bold"}}>Quantity: <text style={{fontWeight:"normal"}}>1gm</text></label>
-            </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" className="btn sendMeal" data-dismiss="modal"style={{marginRight:"180px"}}>Add to cart</button>
-        
-      </div>
-    </div>
-  </div>
-</div>
+
+                  
                 </div>
               </div>
             </div>
           );
         })}
       </div>
+      <div
+                    class="modal fade"
+                    id="exampleModal"
+                    tabindex="-1"
+                    aria-labelledby="exampleModalLabel"
+                    aria-hidden="true"
+                  >
+                    {/* {singleGroceryData.map((singleData)=>{
+                          return( */}
+                    <div class="modal-dialog">
+                    
+                            <div class="modal-content">
+                        
+                        <div class="modal-header">
+                          <img
+                            src={
+                              "http://localhost:4001/grocery/" + groceryImage
+                            }
+                            style={{
+                              height: "200px",
+                              width: "200px",
+                              marginLeft: "120px",
+                            }}
+                          ></img>
+                          <button
+                            type="button"
+                            class="close"
+                            data-dismiss="modal"
+                            aria-label="Close"
+                          >
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <h2> {groceryName}</h2>
+                          <p>
+                            {groceryDescription}
+                          </p>
+                          <div>
+                            <label style={{ fontWeight: "bold" }}>
+                              Price:{" "}
+                              <text style={{ fontWeight: "normal" }}>
+                                Rs. {groceryPrice}
+                              </text>
+                            </label>
+                            <br />
+                            <label style={{ fontWeight: "bold" }}>
+                              Quantity:{" "}
+                              <text style={{ fontWeight: "normal" }}>{quantity}</text>
+                            </label>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                        <Link to="/cart">
+                          <button
+                            type="button"
+                            className="btn sendMeal"
+                            data-dismiss="modal"
+                            style={{ marginRight: "180px" }}
+                            onClick={addCart}
+                          >
+                            Add to cart
+                          </button>
+                          </Link>
+                        </div>
+                      </div>
+                        
+                      
+                    </div>
+                    
+                  </div>
 
-      {/* </div> */}
       <Footer></Footer>
     </>
   );
