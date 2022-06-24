@@ -188,6 +188,7 @@ const Grocery = () => {
           );
         })}
       </div>
+
       {/* </div> */}
       <Footer></Footer>
     </>
