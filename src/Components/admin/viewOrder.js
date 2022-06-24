@@ -6,6 +6,27 @@ import AdminDashboard from "../adminDashbaord";
 
 
 const ViewOrders = () => {
+  const [orderData, setOrderData] = useState([]);
+  const [message, setMessage] = useState("");
+
+  const config = {
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("adminToken"),
+    },
+  };
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:4001/order/get", config)
+      .then((result) => {
+        
+        setOrderData(result.data.data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }, []);
+
   return (
     <>
     <AdminDashboard>
@@ -39,7 +60,7 @@ const ViewOrders = () => {
                             Total
                           </th>
                           <th scope="col " colSpan="6">
-                            Payment
+                            Delivery
                           </th>
                           <th scope="col " colSpan="6">
                             Status
@@ -47,25 +68,22 @@ const ViewOrders = () => {
                         </tr>
                       </thead>
                       <tbody>
-                      
-                            <tr>
+                      {orderData.map((singleData)=>{
+                        return(
+                            <tr key={singleData._id}>
                               <th scope="row"></th>
-                             
-                              <td colSpan="2"> Sadikshya Shrestha</td>
-                              <td colSpan="6"> Baneshwor</td>
-                              <td colSpan="6"> 98745856245</td>
+                              <td colSpan="2"> {singleData.user_id.firstName} {singleData.user_id.lastName}</td>
+                              <td colSpan="6"> {singleData.user_id.address} </td>
+                              <td colSpan="6"> {singleData.user_id.phone_no} </td>
                               <td colSpan="6">
-                                <p>Cocount Curry with Rice</p>
-                                <p>Cocount Curry with Rice</p>
-                                <p>Cocount Curry with Rice</p>
+                                <p>{singleData.addToCart} </p>
                                 </td>
                               <td colSpan="6" style={{"textAlign":"center"}}> 
-                              <p>4</p>
-                              <p>2</p>
-                              <p>4</p>
+                              <p>{singleData.serving} </p>
+                              
                               </td>
-                              <td colSpan="6"> Rs.8000</td>
-                              <td colSpan="6"> COD</td>
+                              <td colSpan="6">{singleData.total} </td>
+                              <td colSpan="6"> {singleData.delivery} </td>
                               <td colSpan="6">
                                 <div style={{float:"left"}}>
                                 <button
@@ -75,77 +93,13 @@ const ViewOrders = () => {
                                         border: "none",
                                       }}
                                     >
-                                      On Progress
+                                     {singleData.status} 
                                     </button>
                                 </div>
                                  </td>
                             </tr>
-
-                            <tr>
-                              <th scope="row"></th>
-                             
-                              <td colSpan="2"> Sadikshya Shrestha</td>
-                              <td colSpan="6"> Baneshwor</td>
-                              <td colSpan="6"> 98745856245</td>
-                              <td colSpan="6">
-                                <p>Cocount Curry with Rice</p>
-                                <p>Cocount Curry with Rice</p>
-                                <p>Cocount Curry with Rice</p>
-                                </td>
-                              <td colSpan="6" style={{"textAlign":"center"}}> 
-                              <p>4</p>
-                              <p>2</p>
-                              <p>4</p>
-                              </td>
-                              <td colSpan="6"> Rs.8000</td>
-                              <td colSpan="6"> Khalti</td>
-                              <td colSpan="6">
-                                <div style={{float:"left"}}>
-                                <button
-                                      className="btn btn-success mb-2"
-                                      style={{
-                                       
-                                        border: "none",
-                                      }}
-                                    >
-                                     Delivered
-                                    </button>
-                                </div>
-                                 </td>
-                            </tr>
-
-                            <tr>
-                              <th scope="row"></th>
-                             
-                              <td colSpan="2"> Sadikshya Shrestha</td>
-                              <td colSpan="6"> Baneshwor</td>
-                              <td colSpan="6"> 98745856245</td>
-                              <td colSpan="6">
-                                <p>Cocount Curry with Rice</p>
-                                <p>Cocount Curry with Rice</p>
-                                <p>Cocount Curry with Rice</p>
-                                </td>
-                              <td colSpan="6" style={{"textAlign":"center"}}> 
-                              <p>4</p>
-                              <p>2</p>
-                              <p>4</p>
-                              </td>
-                              <td colSpan="6"> Rs.8000</td>
-                              <td colSpan="6"> Khalti</td>
-                              <td colSpan="6">
-                                <div style={{float:"left"}}>
-                                <button
-                                      className="btn btn-danger mb-2"
-                                      style={{
-                                       
-                                        border: "none",
-                                      }}
-                                    >
-                                     Canceled
-                                    </button>
-                                </div>
-                                 </td>
-                            </tr>
+                             )
+                            })}
                       </tbody>
                     </table>
                   </div>
