@@ -18,8 +18,8 @@ const OrderSchema = new mongoose.Schema({
   ],
   status: {
     type: String,
-    enum:["Delivered", "On-progess"],
-    default: "On-progess"
+    enum:["Delivered", "On-progress"],
+    default: "On-progress"
   },
   total: {
     type: Number

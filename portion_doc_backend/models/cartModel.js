@@ -8,15 +8,24 @@ const cartSchema = new mongoose.Schema({
   meals_id: {
     type: mongoose.Types.ObjectId,
     ref: "Meals",
+    default: null
   },
   serving: {
     type: Number,
-    required: true,
     default: 2,
+  },
+  grocery_id: {
+    type: mongoose.Types.ObjectId,
+    ref: "Grocery",
+    default: null
+  },
+  quantity: {
+    type: Number,
+    default: 1,
   },
   total: {
     type: Number,
   },
 });
-const Cart = mongoose.model("addtocart", cartSchema);
+const Cart = mongoose.model("Cart", cartSchema);
 module.exports = Cart;
