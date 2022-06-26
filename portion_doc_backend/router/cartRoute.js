@@ -26,10 +26,9 @@ router.post("/cart/insert",auth.verifyUser, async function(req,res){
                 serving,
                 total: parseInt(total.split('Rs.')[0])
             })
-            // console.log
             data.save()
         }
-        res.json({success: true, message: "Cart inserted succesfully"});
+        res.json({success: true, message: "Cart inserted successfully"});
     }catch(e){
         console.log(e)
         res.json({success: false, message: "Cart Error"});
