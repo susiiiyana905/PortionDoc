@@ -1,13 +1,16 @@
 import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import AdminDashboard from "../adminDashbaord";
 
 
 const ViewOrders = () => {
   const [orderData, setOrderData] = useState([]);
   const [message, setMessage] = useState("");
+  const [status, setStatus] = useState("");
+  const [_id, setID] = useState("");
+  const navigate = useNavigate();
 
   const config = {
     headers: {
@@ -15,6 +18,7 @@ const ViewOrders = () => {
     },
   };
 
+  const {oid} = useParams();
   useEffect(() => {
     axios
       .get("http://localhost:4001/order/get", config)
@@ -26,6 +30,45 @@ const ViewOrders = () => {
         console.log(e);
       });
   }, []);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:4001/order/single/" + oid, config)
+      .then((result) => {
+        console.log(result.data.data);
+        setStatus(result.data.data.status)
+        setID(result.data.data._id);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }, []);
+
+  const updateStatus = (e) => {
+    e.preventDefault();
+
+    const orderData = new FormData();
+    orderData.append("status", status);
+
+    axios
+      .put("http://localhost:4001/order/update/" + oid, orderData, config)
+      .then((result) => {
+        if (result.data.success) {
+          setMessage(result.data.message);
+          navigate("/viewOrders");
+          axios
+            .get(`http://localhost:4001/order/get`, config)
+            .then((result1) => {
+              setOrderData(result1.data.data);
+            });
+        } else {
+          setMessage("Something is wrong!!!");
+        }
+      })
+      .catch(e=>{
+        console.log(e);
+      });
+  }
 
   return (
     <>
@@ -95,6 +138,41 @@ const ViewOrders = () => {
                                     >
                                      {singleData.status} 
                                     </button>
+                                    <i class="fas fa-solid fa-pen-to-square" data-toggle="modal" data-target="#exampleModal">Edit</i>
+                                </div>
+                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                  <div class="modal-dialog">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h2> Update Status </h2>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                        </button>
+                                      </div>
+                                      <div class="modal-body">
+                                        <form>
+                                        <div class="form-group row">
+                                              <label class="col-sm-2 col-form-label">Status</label>
+                                              <div class="col-sm-10">
+                                                <select
+                                                  className="custom-select custom-select-lg"
+                                                  style={{ width: "100%" }}
+                                                  onChange = {(e)=> setStatus(e.target.value)}
+                                                >
+                                                  <option value="Weight Loss">Delivered</option>
+                                                  <option value="Weight Gain">Pending</option>
+                                                  <option value="Muscle Gain">On-Progress</option>
+                                                </select>
+                                              </div>
+                                            </div>
+                                        </form>
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" className="btn sendMeal" data-dismiss="modal" style={{marginRight:"180px"}} onClick={updateStatus}>Update Status</button>
+                                        
+                                      </div>
+                                    </div>
+                                  </div>
                                 </div>
                                  </td>
                             </tr>

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Button } from "bootstrap";
 import React, { Component, useEffect, useState } from "react";
 import Header from "../header";
 import khaltiConfig  from "../khalti/khaltiConfig";
@@ -83,6 +84,7 @@ const OrderMeal = () => {
             <h1 style={{ textAlign: "center" }}>Shipping Details</h1>
 
             <form className="m-3">
+              <div>
               <div class="form-check">
                 <input
                   class="form-check-input"
@@ -108,7 +110,6 @@ const OrderMeal = () => {
                   type="radio"
                   name="exampleRadios"
                   id="exampleRadios2"
-                  // value="Outside Ringroad"
                   value={delivery}
                   onChange={(e) => {
                     setDelivery(e.target.value);
@@ -118,6 +119,7 @@ const OrderMeal = () => {
                 <label class="form-check-label" for="exampleRadios2">
                   Outside Valley
                 </label>
+              </div>
               </div>
 
               <div class="form-group">
@@ -158,26 +160,6 @@ const OrderMeal = () => {
           <div className="card border">
             <h1 style={{ textAlign: "center" }}>Order Summary</h1>
             <div className="mt-3">
-              <div className="row ml-1 mb-2">
-                <h5 className="col">Sub Total:</h5>
-                <h6
-                  className="col"
-                  style={{ float: "right", fontSize: "20px" }}
-                >
-                  Rs. 1200
-                </h6>
-              </div>
-              <div className="row ml-1 mb-2">
-                <h5 className="col" style={{}}>
-                  Discount:
-                </h5>
-                <h6
-                  className="col"
-                  style={{ float: "right", fontSize: "20px" }}
-                >
-                  Rs. 150
-                </h6>
-              </div>
               <div className="row ml-1">
                 <h5 className="col" style={{}}>
                   Total:
@@ -195,6 +177,7 @@ const OrderMeal = () => {
                   {total} */}
                 </h6>
               </div>
+<<<<<<< Updated upstream
               <div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle"  type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Payment Method
@@ -205,8 +188,42 @@ const OrderMeal = () => {
     
   </div>
 </div>
+=======
+              <div style={{marginLeft:"20px"}}>
+              <h3>Payment Method</h3>
+              
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  style={{ backgroundColor: "blue" }}
+                  name="exampleRadios"
+                  id="exampleRadios1"
+                  checked
+               
+                />
+                <label class="form-check-label" for="exampleRadios1">
+                  Cash on Delivery
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="exampleRadios"
+                  id="exampleRadios2"
+                />
+                <label class="form-check-label" for="exampleRadios2">
+                  Pay Via Khalti
+                </label>
+              </div>
+              </div>
+>>>>>>> Stashed changes
             </div>
           </div>
+        </div>
+        <div className="col-md-6 d-flex justify-content-center mx-auto ">
+        <button className="btn start order-btn"> Place an Order</button>
         </div>
       </div>
     </>

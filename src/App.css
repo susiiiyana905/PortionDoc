@@ -974,10 +974,6 @@ font-size: 20px;
 }
 
 
-
-
-
-
 .review-btn{
   padding: 10px 50px;
   border-radius: 0%;
@@ -1312,3 +1308,12 @@ background: #ff944d;
     width: 400px;
 
 }
+
+.order-btn{
+  padding: 10px 40px;
+  border-radius: 0%;
+  margin-top: 10px;
+  margin-left: 330px;
+  border-radius: 15px;
+}
+

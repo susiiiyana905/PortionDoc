@@ -42,7 +42,7 @@ router.get("/cart",auth.verifyUser, async function(req,res){
     res.json({message: "Cart", data: cart});
 })
 router.put("/cart/update/:id", auth.verifyUser, async function(req,res){
-    const cartId = req.body.cardId;
+    const cartId = req.body.cartId;
     const serving = req.body.serving;
     console.log(cartId, serving);
     Cart.findByIdAndUpdate({_id: cartId},{
