@@ -320,7 +320,6 @@ class Mid extends Component {
             element={<ViewMealDiet></ViewMealDiet>}
           ></Route>
           <Route path="user/viewOrder" element={<UserPrivateRoute><OrderView></OrderView></UserPrivateRoute>}></Route>
-
           <Route path="/viewGrocery" element ={<AdminPrivateRoute><ViewGrocery></ViewGrocery></AdminPrivateRoute>}></Route>
           <Route path="/ourGrocery" element ={<UserPrivateRoute><Grocery></Grocery></UserPrivateRoute>}></Route>
           <Route path ="/addGrocery" element ={<AdminPrivateRoute><AddGrocery></AddGrocery></AdminPrivateRoute>}></Route>

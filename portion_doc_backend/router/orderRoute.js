@@ -54,6 +54,7 @@ router.get("/order/get", auth.verifyAdmin, async function (req, res) {
 
 //for user
 router.get("/order/user/get", auth.verifyUser, async function (req, res) {
+<<<<<<< Updated upstream
   const data = await Order.find();
   res.json({ success: true, message: "Order Data", data: data });
 });
@@ -63,6 +64,34 @@ router.delete("/order/cancel/:oid", auth.verifyUser, function (req, res) {
   Order.deleteOne({ _id: oid })
     .then(function () {
       res.json({ message: "Order deleted" });
+=======
+    const data = await Order.find() 
+    res.json({success: true, message:"Order Data", data:data});
+
+  
+})
+
+router.get("/order/single/:oid", auth.verifyAdmin, function(req,res){
+    const oid = req.params.oid;
+    Order.findOne({_id : oid})
+    .then(function(result){
+        res.status(200).send({success:true, data:result, message: "Order details by Id"})
+    })
+    .catch(function(){
+        res.status(400).send({message: "Something went wrong!"})
+    })
+})
+
+
+router.delete('/order/cancel/:oid', auth.verifyUser,function(req,res){
+    const oid = req.params.id;
+    Order.deleteOne({_id : oid})
+    .then(function(){
+        res.json({message: "Order deleted"})
+    })
+    .catch(function(){
+        res.json({message: "Something went wrong"})
+>>>>>>> Stashed changes
     })
     .catch(function () {
       res.json({ message: "Something went wrong" });
@@ -70,6 +99,7 @@ router.delete("/order/cancel/:oid", auth.verifyUser, function (req, res) {
 });
 
 router.put("/order/update/:oid", auth.verifyAdmin, async function (req, res) {
+<<<<<<< Updated upstream
   const oid = req.params.oid;
   const status = req.body.status;
 
@@ -93,3 +123,26 @@ router.put("/order/update/:oid", auth.verifyAdmin, async function (req, res) {
 });
 
 module.exports = router;
+=======
+    const oid = req.body.oid;
+    const status = req.body.status;
+
+    Order.findOne({_id: oid})
+    .then((data)=>{
+        Order.updateOne({_id:oid},{
+            status:status
+        })
+
+        .then(function(){
+            res.status(200).send({success:true, message: "Status details has been updated!"})
+        })
+        .catch(function(){
+            res.status(400).send({message: e})
+        });
+    })
+
+})
+
+
+module.exports = router
+>>>>>>> Stashed changes
