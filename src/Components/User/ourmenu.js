@@ -4,24 +4,25 @@ import { Link, NavLink } from "react-router-dom";
 import Footer from "../footer";
 import Header from "../header";
 import React from "react";
-
+import { addToCart } from "./product_functions";
 
 const Meals = () => {
   const [mealData, setMealData] = useState([]);
   const [categoryData, setCategoryData] = useState([]);
   const [meals, setMeals] = useState([]);
-
+  const localCart = localStorage.getItem("cart")
   const [cartData, setCartData] = ('');
   const [cart, setCart] = useState([]);
 
 
-  const addCart = () => {
-    if(!cartData) {
-      
-    } else {
-      setCart([...cart, cartData]);
-      setCartData('')
+  const addCart = (item) => {
+    const data = {
+      _id: item._id,
+      image: "http://localhost:4001/meal/" + item.mealImage,
+      name: item.mealName,
+      price: item.mealPrice,
     }
+    addToCart(data, 1)
   }
 
   //add to localstorage
@@ -181,9 +182,9 @@ const Meals = () => {
                 </NavLink>
                 
                 <div className="card-footer">
-                  <Link to="/cart">
-                <button className="btn sendMeal" onClick={addCart}>Add To Cart</button>
-                </Link>
+                  
+                <button className="btn sendMeal" onClick={() => addCart(singleData)}>Add To Cart</button>
+               
                 </div>
               </div>
               </div>
