@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { Component, useEffect, useState } from "react";
 import Header from "../header";
+import khaltiConfig  from "../khalti/khaltiConfig";
+import KhaltiCheckout from "khalti-checkout-web";
 
 const OrderMeal = () => {
   const [delivery, setDelivery] = useState("");
@@ -17,6 +19,8 @@ const OrderMeal = () => {
     },
   };
   
+  const checkout = new KhaltiCheckout(khaltiConfig);
+
   const sendOrder = (e) => {
     e.preventDefault();
 
@@ -197,7 +201,7 @@ const OrderMeal = () => {
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     <a class="dropdown-item" href="#">Cash on Delivery</a>
-    <a class="dropdown-item" href="#">Pay Via Khalti</a>
+    <a onClick={()=>{checkout.show({ amount: 105000 })}} class="dropdown-item" href="#">Pay Via Khalti</a>
     
   </div>
 </div>
