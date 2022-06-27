@@ -1,8 +1,6 @@
-import myKey from './khaltiKey'
-
-let config = {
+let khaltiConfig = {
     // replace this key with yours
-    "publicKey": "test_public_key_dc74e0fd57cb46cd93832aee0a390234",
+    "publicKey": "test_public_key_5118bd8f922e49ef98df55df138dd2a7",
     "productIdentity": "1234567890",
     "productName": "The Portion",
     "productUrl": "http://gameofthrones.com/buy/Dragons",
@@ -22,4 +20,5 @@ let config = {
     },
     "paymentPreference": ["KHALTI", "EBANKING","MOBILE_BANKING", "CONNECT_IPS", "SCT"],
 };
-export default config;
+
+export default khaltiConfig;

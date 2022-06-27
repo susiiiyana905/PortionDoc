@@ -3,26 +3,25 @@ import React from "react";
 import Footer from "../footer";
 import Header from "../header";
 import axios from "axios";
+import { NavLink } from "react-router-dom";
+import { deleteFromCart } from "./product_functions";
+
 const Cart =()=> {
-
     const [count, setCount] = useState(2);
-   
-
+    const [cartItem, setCartItem] = useState([])
+    const localCart = localStorage.getItem("cart")
     const incrementCount = () => {
         // Update state with incremented value
         if(count < 4) {
-        setCount(count + 2);
+            setCount(count + 2);
         }
       };
-
-
       const decrementCount = () => {
         // Update state with incremented value
         if(count > 2) {
-        setCount(count - 2);
+            setCount(count - 2);
         }
       };
-
     const [cartItems, setCartItems] = useState([{
         serving: 0,
         total: 0,
@@ -31,6 +30,31 @@ const Cart =()=> {
             mealPrice: ""
         }
     }])
+
+    const updateQuantity = (productId, quantity) => {
+      console.log(productId);
+      const newCartItem = [...cartItem];
+      if(quantity === 0){
+        return;
+      }
+      cartItem.map((product,index)=>{
+        if(product.itemid===productId){
+          newCartItem[index].qty = quantity;
+        }
+      })
+      setCartItem(newCartItem);
+      localStorage.setItem("cart", JSON.stringify(newCartItem))
+
+    }
+
+    const deleteFromCart = (productId) => {
+      const newCartItem = cartItem.filter((product)=>{
+        return product.itemid!==productId;
+      })
+      setCartItem(newCartItem);
+
+      localStorage.setItem("cart", JSON.stringify(newCartItem))
+    }
 
     async function getCartItems () {
         const res = await axios.get('http://localhost:4001/cart', {
@@ -44,47 +68,131 @@ const Cart =()=> {
             console.log(cartItems);
         }
     }
-
     useEffect(() => {
+        setCartItem(JSON.parse(localCart))
         getCartItems()
     }, [])
-
         return(
             <>
-          
             <Header></Header>
-
-            <div>
+            <div className="container-fluid">
+          <>
+            <table id="cart" className="table table-hover table-condensed">
+              <thead>
+                <tr>
+                  <th style={{ width: "50%" }}>Product</th>
+                  <th style={{ width: "10%" }}>Price</th>
+                  <th style={{ width: "8%" }}>Quantity</th>
+                  <th style={{ width: "22%" }} className="text-center">
+                    Subtotal
+                  </th>
+                  <th style={{ width: "10%" }}></th>
+                </tr>
+              </thead>
+              <tbody>
                 {
-                    cartItems.map((item, index) => (
-                        <div class="chi" key={index}>
-                    <div>
-                    <img src="images/1.png"  className="thi"></img>
-                    </div>
-                    <div>
-                    <p class="cup">{item.meals_id.mealName}</p>
-                    <label class="cups">{item.meals_id.mealPrice}</label>
-                    </div>
-
-                    <div  class="cc">
-                    <button class="dis" onClick={decrementCount}>-</button>
-                     <p class="disss">{count}</p>
-                     <button onClick={incrementCount} class="diss">+</button>
-                     <button class="de">Delete</button>
-                    
-                    </div>
-                </div>
-
-                    ))
-                }
-                
-                <hr></hr>
-           </div>
-
-            <Footer></Footer>
+                 cartItem.length > 0 &&   cartItem.map((item) => 
+                 <tr>
+                      <td data-th="Product">
+                        <div className="row">
+                          <div className="col-sm-10">
+                            <h2 className="nomargin">
+                                {item.name}
+                              {/* {cart.productId?.productName} */}
+                            </h2>
+                            {/* <p>{cart.productId.productDescription}</p> */}
+                          </div>
+                        </div>
+                      </td>
+                      <td data-th="Price">
+                        Rs.{item.price}
+                        {/* {cart.productId?.productPrice} */}
+                      </td>
+                      <td className="quantity" data-th="Quantity">
+                        <button
+                          className="btn btn-warning"
+                          onClick={
+                            ()=>{
+                              updateQuantity(item.itemid, item.qty - 1)
+                            }
+                          }
+                        //   onClick={this.updateQuantity.bind(
+                        //     this,
+                        //     cart._id,
+                        //     cart.quantity - 1
+                        //   )}
+                        >
+                          <h5>-</h5>
+                        </button>
+                        <span style={{ margin: "5px" }}>
+                          {item.qty}
+                          {/* {cart.quantity} */}
+                        </span>
+                        <button
+                          className="btn btn-warning"
+                          onClick={
+                            ()=>{
+                              updateQuantity(item.itemid, item.qty +1)
+                            }
+                          }
+                        //   onClick={this.updateQuantity.bind(
+                        //     this,
+                        //     cart._id,
+                        //     cart.quantity + 1
+                        //   )}
+                        >
+                          <h5>+</h5>
+                        </button>
+                      </td>
+                      <td data-th="Subtotal" className="text-center">
+                        {/* {cart.total} */}Rs.{item.price}
+                      </td>
+                      <td className="actions" data-th="">
+                        <button
+                          className="btn btn-danger btn-lg"
+                          // onClick={() => this.openModal(cart)}
+                        //   onClick={() => this.deleteCart(cart._id)}
+                        onClick={
+                          ()=>{
+                            deleteFromCart(item.itemid);
+                          }
+                        }
+                        >
+                          {/* {" "} */}
+                          Delete
+                          <i className="fa fa-trash-o"></i>
+                        </button>
+                      </td>
+                    </tr>
+                    )
+}
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td>
+                    <a href="/ourMenu" className="btn btn-warning">
+                      <i className="fa fa-angle-left"></i> Continue Shopping
+                    </a>
+                  </td>
+                  <td colspan="2" className="hidden-xs"></td>
+                  <td className="hidden-xs text-center">
+                    <strong>Total Rs </strong>
+                  </td>
+                  <td>
+                    <NavLink
+                      to="/orderMeal"
+                      className="btn btn-success btn-block"
+                      style={{ height: "25px" }}
+                    >
+                      Checkout <i className="fa fa-angle-right"></i>
+                    </NavLink>
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </>
+        </div>
             </>
-
             )
             }
-
 export default Cart;
