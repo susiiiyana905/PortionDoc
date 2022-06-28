@@ -87,10 +87,12 @@ router.delete('/order/cancel/:oid', auth.verifyUser,function(req,res){
     });
 });
 
-router.put("/order/update/:oid", auth.verifyAdmin, async function (req, res) {
+router.put("/order/update", auth.verifyAdmin, async function (req, res) {
 
     const oid = req.body.oid;
     const status = req.body.status;
+
+    console.log(oid, status)
 
     Order.findOne({_id: oid})
     .then((data)=>{
