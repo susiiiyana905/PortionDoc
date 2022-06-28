@@ -177,18 +177,18 @@ const OrderMeal = () => {
                   {total} */}
                 </h6>
               </div>
-<<<<<<< Updated upstream
-              <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle"  type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Payment Method
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Cash on Delivery</a>
-    <a onClick={()=>{checkout.show({ amount: 105000 })}} class="dropdown-item" href="#">Pay Via Khalti</a>
-    
-  </div>
-</div>
-=======
+
+             {/* <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle"  type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Payment Method
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="#">Cash on Delivery</a>
+          <a onClick={()=>{checkout.show({ amount: 105000 })}} class="dropdown-item" href="#">Pay Via Khalti</a>
+              
+            </div>
+          </div> */}
+
               <div style={{marginLeft:"20px"}}>
               <h3>Payment Method</h3>
               
@@ -218,7 +218,7 @@ const OrderMeal = () => {
                 </label>
               </div>
               </div>
->>>>>>> Stashed changes
+
             </div>
           </div>
         </div>

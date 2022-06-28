@@ -5,6 +5,7 @@ import Footer from "../footer";
 import { useParams } from "react-router-dom";
 import React from "react"
 import Header from "../header";
+
 const ViewRecipe = () => {
   const [mealImage, setMealImage] = useState([]);
   const [mealName, setMealName] = useState("");
@@ -17,6 +18,7 @@ const ViewRecipe = () => {
   const [ingredientData, setIngredientData] = useState([]);
   const [message, setMessage] = useState("");
   const [serving, setServing] = useState(1);
+
   const config = {
     headers: {
       Authorization: "Bearer " + localStorage.getItem("userToken"),
@@ -162,11 +164,13 @@ const ViewRecipe = () => {
           </div>
         </div>
         <div>
+       
           <button
             className="btn cart"
-          >
+            >
             Add To Cart
           </button>
+        
         </div>
       </div>
       </div>

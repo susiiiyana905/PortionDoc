@@ -167,6 +167,71 @@ const Cart =()=> {
                     )
 }
               </tbody>
+               {/* ----------------------------------------------Groceries-------------------------------------------------------------- */}
+              <tbody>
+              <tr>
+                      <td data-th="Product">
+                        <div className="row">
+                          <div className="col-sm-10">
+                            <h2 className="nomargin">
+                                Rice
+                             
+                            </h2>
+                          
+                          </div>
+                        </div>
+                      </td>
+                      <td data-th="Price">
+                        Rs.300
+                      </td>
+                      <td className="quantity" data-th="Quantity">
+                        <button
+                          className="btn btn-warning"
+                          // onClick={
+                          //   ()=>{
+                          //     updateQuantity(item.itemid, item.qty - 2)
+                          //   }
+                          // }
+                        >
+                          <h5>-</h5>
+                        </button>
+                        <span style={{ margin: "5px" }}>
+                          2
+                          {/* {cart.quantity} */}
+                        </span>
+                        <button
+                          className="btn btn-warning"
+                          // onClick={
+                          //   ()=>{
+                          //     updateQuantity(item.itemid, item.qty +2)
+                          //   }
+                          // }
+                       
+                        >
+                          <h5>+</h5>
+                        </button>
+                      </td>
+                      <td data-th="Subtotal" className="text-center">
+                       Rs.300
+                      </td>
+                      <td className="actions" data-th="">
+                        <button
+                          className="btn btn-danger btn-lg"
+                          
+                        // onClick={
+                        //   ()=>{
+                        //     deleteFromCart(item.itemid);
+                        //   }
+                        // }
+                        >
+                       
+                          Delete
+                          <i className="fa fa-trash-o"></i>
+                        </button>
+                      </td>
+                    </tr>
+              </tbody>
+              {/* --------------------------------End Grocerires----------------------------------------------------------------- */}
               <tfoot>
                 <tr>
                   <td>
@@ -176,7 +241,7 @@ const Cart =()=> {
                   </td>
                   <td colspan="2" className="hidden-xs"></td>
                   <td className="hidden-xs text-center">
-                    <strong>Total Rs </strong>
+                    <strong> Rs. 1100 </strong>
                   </td>
                   <td>
                     <NavLink
