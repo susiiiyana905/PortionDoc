@@ -102,4 +102,35 @@ router.post("/grocery/insert",auth.verifyUser, async function(req,res){
     }
 })
 
+
+router.put("/grocery/update/:id", auth.verifyUser, async function(req,res){
+    const cartId = req.body.cartId;
+    const quantity = req.body.quantity;
+    console.log(cartId,quantity);
+    Cart.findByIdAndUpdate({_id: cartId},{
+        quantity: quantity,
+    },{new:true})
+    .then(function(data){
+        Grocery.findById(data.grocery_id).then(k=>{
+            data.total = parseInt(k.groceryPrice.split('Rs. ')[1])  * quantity
+            data.save() 
+        })
+        res.json({success: true, message:"Cart Updated"})
+    })
+    .catch(function(){
+        res.json({success: false, message: "Something went wrong"})
+    })  
+})
+
+router.delete('/grocery/delete/:id',auth.verifyUser, function(req,res){
+    const id = req.params.id;
+    Cart.deleteOne({_id : id})
+    .then(function(){
+        res.json({message: "Cart deleted"})
+    })
+    .catch(function(){
+        res.json({message: "Something went wrong"})
+    })
+})
+
 module.exports = router;
