@@ -14,7 +14,7 @@ const Meals = () => {
   const [cartData, setCartData] = ('');
   const [cart, setCart] = useState([]);
 
-
+ 
   const addCart = (item) => {
     const data = {
       _id: item._id,

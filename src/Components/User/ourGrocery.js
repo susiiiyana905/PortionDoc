@@ -4,6 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 import Footer from "../footer";
 import Header from "../header";
 import React from "react";
+import { addToCart } from "./product_functions";
 const Grocery = () => {
   const [groceryData, setGroceryData] = useState([]);
   const [groceries, setGroceries] = useState([]);
@@ -11,24 +12,32 @@ const Grocery = () => {
   const [groceryName, setGroceryName] = useState("");
   const [groceryDescription , setGroceryDescription] = useState("");
   const [groceryPrice, setGroceryPrice] = useState("");
-  const [quantity, setQuantity] = useState("");
-  const [cartData, setCartData] = useState("");
+  const localCart = localStorage.getItem("cart")
+  const [cartData, setCartData] = ('');
   const [cart, setCart] = useState([]);
+  const [quantity, setQuantity] = useState("");
+
+
+  const addCart = (item) => {
+    const data = {
+      _id: item._id,
+      // image: "http://localhost:4001/meal/" + item.mealImage,
+      name: item.groceryName,
+      price: item.groceryPrice,
+    }
+    addToCart(data, 1)
+  }
+
+  useEffect(() => {
+    localStorage.setItem('lists', JSON.stringify(cart))
+  }, [cart]);
+
   const config = {
     headers: {
       Authorization: "Bearer " + localStorage.getItem("userToken"),
     },
   };
-  const addCart = () => {
-    if (!cartData) {
-    } else {
-      setCart([...cart, cartData]);
-      setCartData("");
-    }
-  };
-  useEffect(() => {
-    localStorage.setItem("lists", JSON.stringify(cart));
-  }, [cart]);
+  
   useEffect(() => {
     axios
       .get("http://localhost:4001/all/grocery")
@@ -166,7 +175,7 @@ const Grocery = () => {
                   </div>
                   <div className="card-footer">
                     <Link to="/cart">
-                      <button className="btn sendMeal" onClick={addCart}>
+                      <button className="btn sendMeal" onClick={()=> addCart(singleData)}>
                         Add To Cart
                       </button>
                     </Link>
@@ -232,7 +241,7 @@ const Grocery = () => {
                           </div>
                         </div>
                         <div class="modal-footer">
-                        <Link to="/cart">
+                        
                           <button
                             type="button"
                             className="btn sendMeal"
@@ -242,7 +251,7 @@ const Grocery = () => {
                           >
                             Add to cart
                           </button>
-                          </Link>
+                          
                         </div>
                       </div>
                         

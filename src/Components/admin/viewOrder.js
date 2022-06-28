@@ -10,6 +10,7 @@ const ViewOrders = () => {
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState("");
   const [_id, setID] = useState("");
+  const [statusId, setStatusId] = useState("");
   const navigate = useNavigate();
 
   const config = {
@@ -44,22 +45,36 @@ const ViewOrders = () => {
       });
   }, []);
 
-  const updateStatus = (e) => {
+  function setData(statusId, statusName) {
+    setStatusId(statusId)
+     setStatus(statusName)
+  }
+
+  
+   const updateStatus = (e) => {
     e.preventDefault();
 
-    const orderData = new FormData();
-    orderData.append("status", status);
+    if(statusId==="") {
+      return;
+    }
+
+   const statusDetail = {
+      "status":status,
+      "oid":statusId,
+    }
 
     axios
-      .put("http://localhost:4001/order/update/" + oid, orderData, config)
+      .put("http://localhost:4001/order/update/", statusDetail,config)
       .then((result) => {
         if (result.data.success) {
           setMessage(result.data.message);
           navigate("/viewOrders");
           axios
-            .get(`http://localhost:4001/order/get`, config)
+            .get(`http://localhost:4001/order/get`,  config)
             .then((result1) => {
               setOrderData(result1.data.data);
+              setStatusId("");
+              setStatus("");
             });
         } else {
           setMessage("Something is wrong!!!");
@@ -138,7 +153,7 @@ const ViewOrders = () => {
                                     >
                                      {singleData.status} 
                                     </button>
-                                    <i class="fas fa-solid fa-pen-to-square" data-toggle="modal" data-target="#exampleModal">Edit</i>
+                                    <i class="fas fa-solid fa-pen-to-square" data-toggle="modal" data-target="#exampleModal" onClick={()=> {setData(singleData._id, singleData.status)}}>Edit</i>
                                 </div>
                                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                   <div class="modal-dialog">
@@ -159,9 +174,9 @@ const ViewOrders = () => {
                                                   style={{ width: "100%" }}
                                                   onChange = {(e)=> setStatus(e.target.value)}
                                                 >
-                                                  <option value="Weight Loss">Delivered</option>
-                                                  <option value="Weight Gain">Pending</option>
-                                                  <option value="Muscle Gain">On-Progress</option>
+                                                  <option selected={status=="Delivered"?true:false}  value="Delivered">Delivered</option>
+                                                  <option selected={status=="Pending"?true:false} value="Pending">Pending</option>
+                                                  <option selected={status=="On-Progress"?true:false} value="On-Progress">On-Progress</option>
                                                 </select>
                                               </div>
                                             </div>

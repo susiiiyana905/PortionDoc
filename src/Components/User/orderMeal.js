@@ -212,6 +212,7 @@ const OrderMeal = () => {
                   type="radio"
                   name="exampleRadios"
                   id="exampleRadios2"
+                  onClick={()=>{checkout.show({ amount: 105000 })}}
                 />
                 <label class="form-check-label" for="exampleRadios2">
                   Pay Via Khalti
