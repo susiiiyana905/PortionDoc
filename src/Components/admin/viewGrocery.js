@@ -74,6 +74,9 @@ const ViewGrocery =()=>{
                             Name
                           </th>
                           <th scope="col" colSpan="6">
+                            Quantity
+                          </th>
+                          <th scope="col" colSpan="6">
                             Price
                           </th>
                           <th scope="col" colSpan="6">
@@ -96,6 +99,7 @@ const ViewGrocery =()=>{
                                 />
                               </td>
                               <td colSpan="6">{singleData.groceryName}</td>
+                              <td colSpan="6">{singleData.quantity}</td>
                               <td colSpan="6">{singleData.groceryPrice}</td>
                               <td colSpan="6">
                                 <div style={{ float: "left" }}>

@@ -8,10 +8,12 @@ const AddGrocery = () => {
   const [groceryName, setGroceryName] = useState("");
   const [groceryPrice, setGroceryPrice] = useState("");
   const [groceryDescription, setGroceryDescription] = useState("");
+  // const [quantity, setQuantity] = useState("");
   const [response, setResponse] = useState("");
   const [sResponse, setSResponse] = useState("");
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
+
 
   const config = {
     headers: {
@@ -58,7 +60,17 @@ const AddGrocery = () => {
     groceryData.append("groceryName", groceryName);
     groceryData.append("groceryPrice", groceryPrice);
     groceryData.append("groceryDescription", groceryDescription);
+    // groceryData.append("quantity", quantity);
 
+    // if (this.state.unit === undefined) {
+    //   groceryData.append("quantity", this.state.quantity + " Unit");
+    // } else {
+    //  groceryData.append(
+    //     "quantity",
+    //     this.state.quantity + " " + this.state.unit
+    //   );
+    // }
+  
     axios
       .post("http://localhost:4001/add/grocery", groceryData, config)
       .then((result) => {
@@ -74,6 +86,7 @@ const AddGrocery = () => {
       });
   };
 
+ 
   
     return(  
         <>
@@ -132,6 +145,41 @@ const AddGrocery = () => {
         ></textarea>
       </div>
     </div>
+
+    {/* <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Quantity</label>
+      <div class="col-sm-10">
+      <div className="form-row">
+      <div className="form-group col-md-6">
+        <input
+           type="text"
+            className="form-control"
+             id="inputCity"
+              onChange={(e) =>
+              setState({ quantity: e.target.value })
+               }
+               ></input>
+               </div>
+               <div className="form-group col-md-4">
+                              <select
+                                id="inputState"
+                                className="form-control"
+                                onChange={(e) =>
+                                  this.setState({ unit: e.target.value })
+                                }
+                              >
+                                <option selected>Unit</option>
+                                <option>Kg</option>
+                                <option>Ltr</option>
+                                <option>Gm</option>
+                                <option>Ml</option>
+                              </select>
+                            </div>
+      </div>
+      </div>
+    </div> */}
+
+   
    
     <p>
       <button
