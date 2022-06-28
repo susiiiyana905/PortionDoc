@@ -12,10 +12,11 @@ const Grocery = () => {
   const [groceryName, setGroceryName] = useState("");
   const [groceryDescription , setGroceryDescription] = useState("");
   const [groceryPrice, setGroceryPrice] = useState("");
+  const [quantity, setQuantity] = useState("");
   const localCart = localStorage.getItem("cart")
   const [cartData, setCartData] = ('');
   const [cart, setCart] = useState([]);
-  const [quantity, setQuantity] = useState("");
+  
 
 
   const addCart = (item) => {
