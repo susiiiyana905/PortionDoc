@@ -117,8 +117,14 @@ const Cart =()=> {
                           className="btn btn-warning"
                           onClick={
                             ()=>{
-                              updateQuantity(item.itemid, item.qty - 1)
+                              if (item.mealCategory === 'Non-Veg') {
+                              updateQuantity(item.itemid, item.qty - 2)
                             }
+                            else {
+                              updateQuantity(item.itemid, item.qty - 1)
+                              
+                            }
+                          }
                           }
                         //   onClick={this.updateQuantity.bind(
                         //     this,
@@ -136,7 +142,13 @@ const Cart =()=> {
                           className="btn btn-warning"
                           onClick={
                             ()=>{
-                              updateQuantity(item.itemid, item.qty +1)
+                              if (item.mealCategory === 'Non-Veg') {
+                              updateQuantity(item.itemid, item.qty +2)
+                              }
+                              else {
+                                updateQuantity(item.itemid, item.qty +1)
+                                
+                              }
                             }
                           }
                         //   onClick={this.updateQuantity.bind(
@@ -149,7 +161,7 @@ const Cart =()=> {
                         </button>
                       </td>
                       <td data-th="Subtotal" className="text-center">
-                        {/* {cart.total} */}Rs.{item.price}
+                        {/* {cart.total} */}Rs.{item.price * item.qty}
                       </td>
                       <td className="actions" data-th="">
                         <button
