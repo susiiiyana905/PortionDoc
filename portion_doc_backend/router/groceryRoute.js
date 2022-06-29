@@ -17,14 +17,14 @@ router.post(
     const groceryName = req.body.groceryName;
     const groceryPrice = req.body.groceryPrice;
     const groceryDescription = req.body.groceryDescription;
-    const quantity = req.body.quantity
+    // const quantity = req.body.quantity
 
     const groceryData = new Grocery({
       groceryImage: groceryImage,
       groceryName: groceryName,
       groceryPrice: groceryPrice,
       groceryDescription: groceryDescription,
-      quantity:quantity
+      // quantity:quantity
     });
     groceryData
       .save()
@@ -91,7 +91,7 @@ router.put(
     const groceryName = req.body.groceryName;
     const groceryPrice = req.body.groceryPrice;
     const groceryDescription = req.body.groceryDescription;
-    const quantity = req.body.quantity
+    // const quantity = req.body.quantity
 
     Grocery.findOne({ _id: gid })
       .then((groceryData) => {
@@ -101,7 +101,7 @@ router.put(
             groceryName: groceryName,
             groceryPrice: groceryPrice,
             groceryDescription: groceryDescription,
-            quantity: quantity
+            // quantity: quantity
           }
         )
           .then(function () {

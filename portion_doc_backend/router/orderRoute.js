@@ -30,10 +30,10 @@ router.post("/order/insert", auth.verifyUser, async function (req, res) {
     });
 });
 
-//for admin
+// for admin
 router.get("/order/get", auth.verifyAdmin, async function (req, res) {
   const data = await Order.find()
-    // .populate("user_id", "firstName lastName phone_no address")
+    .populate("user_id", "firstName lastName phone_no address")
     .populate("addToCart", "serving")
     .sort({ createdAt: -1 });
   res.json({ success: true, message: "Order Data", data: data });
@@ -43,7 +43,7 @@ router.get("/order/get", auth.verifyAdmin, async function (req, res) {
 
 //     try {
 //         const getOrders = await Order.find({}).populate(["user_id", {path : 'addToCart',populate : {
-//           path:"meals_id"}}]).exec()
+//           path:"proudctId"}}]).exec()
 //         res.json({ message: "Orders", data: getOrders });
 //     }
 //     catch(e){
@@ -109,6 +109,8 @@ router.put("/order/update", auth.verifyAdmin, async function (req, res) {
     })
 
 })
+
+
 
 
 module.exports = router
