@@ -20,10 +20,10 @@ const grocerySchema = new mongoose.Schema({
        
     },
 
-    quantity:{
-        type: String,
-        required: true
-    }
+    // quantity:{
+    //     type: String,
+    //     required: true
+    // }
 });
 const Grocery = mongoose.model("Grocery", grocerySchema);
 module.exports = Grocery;

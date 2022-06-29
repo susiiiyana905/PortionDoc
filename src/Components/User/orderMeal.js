@@ -202,7 +202,7 @@ const OrderMeal = () => {
                   checked
                
                 />
-                <label class="form-check-label" for="exampleRadios1">
+                <label class="form-check-label" for="exampleRadios1" checked>
                   Cash on Delivery
                 </label>
               </div>
