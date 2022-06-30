@@ -213,7 +213,7 @@ const localCart = localStorage.getItem("cart")
                   value={'cod'}
                   onChange={(e) => setPaymentMethod(e.target.value)}
                 />
-                <label class="form-check-label" for="exampleRadios1">
+                <label class="form-check-label" for="exampleRadios1" checked>
                   Cash on Delivery
                 </label>
               </div>
