@@ -17,6 +17,7 @@ export const addToCart = (item, qty) => {
         localCartCopy.push(cartItem)
     }
     localStorage.setItem("cart", JSON.stringify(localCartCopy))
+    //api ma yo data send
 }
 export const editCart = (id, qty) => {
     const localCart = JSON.parse(localStorage.getItem("cart"));

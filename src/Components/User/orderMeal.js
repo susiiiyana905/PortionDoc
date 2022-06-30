@@ -7,12 +7,16 @@ import KhaltiCheckout from "khalti-checkout-web";
 
 const OrderMeal = () => {
   const [delivery, setDelivery] = useState("");
-  const [total,setTotal] = useState("");
   const [address, setAddress] = useState("");
   const [phone_no, setPhoneNo] = useState("");
   const [message, setMessage] = useState("");
   const [sMessage, setSMessage] = useState("");
   const [_id, setID] = useState("");
+  const [cartItem, setCartItem] = useState([])
+  const [total, setTotal] = useState(0);
+  const [paymentMethod, setPaymentMethod] = useState('')
+
+const localCart = localStorage.getItem("cart")
 
   const config = {
     headers: {
@@ -52,6 +56,12 @@ const OrderMeal = () => {
       .catch((e) => {
         console.log(e);
       });
+      setCartItem(JSON.parse(localCart))
+      let totalC = 0;
+      cartItem.map((item)=>{
+        totalC += item.price*item.qty;
+      })
+      setTotal(totalC)
   }, []);
 
   // const editProfile = (e) => {
@@ -168,7 +178,7 @@ const OrderMeal = () => {
                   className="col"
                   style={{ float: "right", fontSize: "20px" }}
                 >
-                  Rs.1050
+                  Rs.{total}
                   {/* {
                     this.state.carts.map(cart => {
                       total += cart.total
@@ -200,7 +210,8 @@ const OrderMeal = () => {
                   name="exampleRadios"
                   id="exampleRadios1"
                   checked
-               
+                  value={'cod'}
+                  onChange={(e) => setPaymentMethod(e.target.value)}
                 />
                 <label class="form-check-label" for="exampleRadios1">
                   Cash on Delivery
@@ -212,7 +223,8 @@ const OrderMeal = () => {
                   type="radio"
                   name="exampleRadios"
                   id="exampleRadios2"
-                  onClick={()=>{checkout.show({ amount: 105000 })}}
+                  value={'khalti'}
+                  onChange={(e) => setPaymentMethod(e.target.value)}
                 />
                 <label class="form-check-label" for="exampleRadios2">
                   Pay Via Khalti
@@ -224,7 +236,16 @@ const OrderMeal = () => {
           </div>
         </div>
         <div className="col-md-6 d-flex justify-content-center mx-auto ">
-        <button className="btn start order-btn"> Place an Order</button>
+        <button 
+        className="btn start order-btn"
+        onClick={() => {
+          if (paymentMethod === 'khalti') {
+            khalti.checkout({})
+          } else {
+            console.log("cod");
+          }
+        }}
+        > Place an Order</button>
         </div>
       </div>
     </>
