@@ -38,12 +38,12 @@ const ReviewRoute = require("./router/reviewRoute");
 app.use(ReviewRoute);
 
 
-const OrderRoute = require("./router/orderRoute");
-app.use(OrderRoute);
+// const OrderRoute = require("./router/orderRoute");
+// app.use(OrderRoute);
 
 
-const CartRoute = require("./router/cartRoute");
-app.use(CartRoute);
+// const CartRoute = require("./router/cartRoute");
+// app.use(CartRoute);
 
 const PreferenceCategory = require("./router/dietCatogaryRoute");
 app.use(PreferenceCategory);
