@@ -25,6 +25,7 @@ const Grocery = () => {
       // image: "http://localhost:4001/meal/" + item.mealImage,
       name: item.groceryName,
       price: item.groceryPrice,
+      type: 'grocery'
     }
     addToCart(data, 1)
   }

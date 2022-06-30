@@ -5,10 +5,12 @@ import Header from "../header";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
 import { deleteFromCart } from "./product_functions";
+import { toBeEmpty } from "@testing-library/jest-dom/dist/matchers";
 
 const Cart =()=> {
     const [count, setCount] = useState(2);
     const [cartItem, setCartItem] = useState([])
+    const [total, setTotal] = useState(0);
     const localCart = localStorage.getItem("cart")
     const incrementCount = () => {
         // Update state with incremented value
@@ -35,6 +37,14 @@ const Cart =()=> {
         }
     }])
 
+    useEffect(() => {
+      let totalC = 0;
+      cartItem.map((item)=>{
+        totalC += item.price*item.qty;
+      })
+      setTotal(totalC)
+    }, [cartItem]);
+
     const updateQuantity = (productId, quantity) => {
       console.log(productId);
       const newCartItem = [...cartItem];
@@ -48,7 +58,6 @@ const Cart =()=> {
       })
       setCartItem(newCartItem);
       localStorage.setItem("cart", JSON.stringify(newCartItem))
-
     }
 
     const deleteFromCart = (productId) => {
@@ -264,7 +273,7 @@ const Cart =()=> {
                   <td colspan="2" className="hidden-xs"></td>
                   
                   <td className="hidden-xs text-center">
-                    <strong> Rs. 1120 </strong>
+                    <strong> Rs. {total} </strong>
                   </td>
                   <td>
                     <NavLink

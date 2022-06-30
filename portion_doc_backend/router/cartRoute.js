@@ -8,8 +8,6 @@
 //     try{
 //         const user_id = req.userInfo._id;
 //         const meals_id = req.body.meals_id;
-
-
 //         _meals = await Meals.findOne({_id : meals_id}).exec()
 //         _cart = await Cart.findOne({user_id : user_id, meals_id: meals_id}).exec()
 
@@ -69,6 +67,7 @@
 //         res.json({message: "Something went wrong"})
 //     })
 // })
+
 
 // // -----------------------------Grocery Backend--------------------------------------
 // router.post("/grocery/insert",auth.verifyUser, async function(req,res){
