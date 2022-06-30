@@ -135,9 +135,11 @@ const ViewOrders = () => {
                               <td colSpan="6"> {singleData.user_id.address} </td>
                               <td colSpan="6"> {singleData.user_id.phone_no} </td>
                               <td colSpan="6">
-                                <p>{singleData.addToCart} </p>
+                                <p> Momo </p>
+                                <p> Momo </p>
                                 </td>
                               <td colSpan="6" style={{"textAlign":"center"}}> 
+                              
                               <p>{singleData.serving} </p>
                               
                               </td>
