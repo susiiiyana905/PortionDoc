@@ -18,6 +18,8 @@ router.post("/order/insert", auth.verifyUser, async function (req, res) {
     user_id: req.userInfo._id,
   });
 
+  console.log(data);
+
   data
     .save()
     .then(function () {
@@ -34,8 +36,9 @@ router.post("/order/insert", auth.verifyUser, async function (req, res) {
 router.get("/order/get", auth.verifyAdmin, async function (req, res) {
   const data = await Order.find()
     .populate("user_id", "firstName lastName phone_no address")
-    .populate("addToCart", "serving")
+    .populate("addToCart")
     .sort({ createdAt: -1 });
+    console.log(data)
   res.json({ success: true, message: "Order Data", data: data });
 });
 

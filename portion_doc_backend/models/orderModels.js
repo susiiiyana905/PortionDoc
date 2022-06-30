@@ -10,12 +10,12 @@ const OrderSchema = new mongoose.Schema({
     type : mongoose.Types.ObjectId, 
     ref : "User"
   },
-  addToCart: [
+  addToCart: 
     {
       type: mongoose.Types.ObjectId,
       ref: "Cart",
     },
-  ],
+
   status: {
     type: String,
     enum:["Delivered", "On-progress", "Pending"],
