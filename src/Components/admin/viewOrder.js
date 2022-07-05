@@ -33,18 +33,18 @@ const ViewOrders = () => {
       });
   }, []);
 
-  useEffect(() => {
-    axios
-      .get("http://localhost:4001/order/single/" + oid, config)
-      .then((result) => {
-        console.log(result.data.data);
-        setStatus(result.data.data.status)
-        setID(result.data.data._id);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get("http://localhost:4001/order/single/" + oid, config)
+  //     .then((result) => {
+  //       console.log(result.data.data);
+  //       setStatus(result.data.data.status)
+  //       setID(result.data.data._id);
+  //     })
+  //     .catch((e) => {
+  //       console.log(e);
+  //     });
+  // }, []);
 
   function setData(statusId, statusName) {
     setStatusId(statusId)
@@ -135,8 +135,10 @@ const ViewOrders = () => {
                               <td colSpan="6"> {singleData.user_id.address} </td>
                               <td colSpan="6"> {singleData.user_id.phone_no} </td>
                               <td colSpan="6">
-                                <p> Momo </p>
-                                <p> Momo </p>
+                                {
+                                    singleData.addToCart.map((item) => 
+                                      <p>{item.name}</p>)
+                                  }
                                 </td>
                               <td colSpan="6" style={{"textAlign":"center"}}> 
                               

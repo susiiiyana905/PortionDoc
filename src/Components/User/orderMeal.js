@@ -16,6 +16,7 @@ const OrderMeal = () => {
   const [total, setTotal] = useState(0);
   const [paymentMethod, setPaymentMethod] = useState('')
 
+  let totalC = 0
 const localCart = localStorage.getItem("cart")
 
   const config = {
@@ -26,22 +27,29 @@ const localCart = localStorage.getItem("cart")
   
   const checkout = new KhaltiCheckout(khaltiConfig);
 
-  const sendOrder = (e) => {
-    e.preventDefault();
+  const sendOrder = () => {
+    // e.preventDefault();
 
-    const orderData = new FormData();
-    orderData.append("delivery", delivery);
-    orderData.append("total",total);
-
-    axios.post("http://localhost:4001/order/insert", orderData, config)
+    const orderData = {
+      delivery: delivery || "Inside RingRoad",
+      total: totalC,
+      addToCart: cartItem
+    }
+    console.log(orderData);
+      axios.post("http://localhost:4001/order/insert", orderData, config)
     .then((result) => {
       if(result.data.success){
         setSMessage(result.data.message);
       }
     })
     .catch((e) => {
-      setMessage(e.response.data.message);
+      setMessage(e.response.message);
     });
+  }
+
+  const handlePaymentOption = (e) => {
+    console.log(e.target.value);
+    setPaymentMethod(e.target.value)
   }
 
   useEffect(() => {
@@ -56,12 +64,12 @@ const localCart = localStorage.getItem("cart")
         console.log(e);
       });
       setCartItem(JSON.parse(localCart))
-      let totalC = 0;
+      
+      // setTotal(totalC)
+  }, []);
       cartItem.map((item)=>{
         totalC += item.price*item.qty;
       })
-      setTotal(totalC)
-  }, []);
 
   // const editProfile = (e) => {
   //   e.preventDefault();
@@ -177,7 +185,7 @@ const localCart = localStorage.getItem("cart")
                   className="col"
                   style={{ float: "right", fontSize: "20px" }}
                 >
-                  Rs.{total}
+                  Rs.{totalC}
                   {/* {
                     this.state.carts.map(cart => {
                       total += cart.total
@@ -208,9 +216,9 @@ const localCart = localStorage.getItem("cart")
                   style={{ backgroundColor: "blue" }}
                   name="exampleRadios"
                   id="exampleRadios1"
-                  checked
-                  value={'cod'}
-                  onChange={(e) => setPaymentMethod(e.target.value)}
+                  // checked
+                  value='cod'
+                  onChange={handlePaymentOption}
                 />
                 <label class="form-check-label" for="exampleRadios1" checked>
                   Cash on Delivery
@@ -222,8 +230,8 @@ const localCart = localStorage.getItem("cart")
                   type="radio"
                   name="exampleRadios"
                   id="exampleRadios2"
-                  value={'khalti'}
-                  onChange={(e) => setPaymentMethod(e.target.value)}
+                  value='khalti'
+                  onChange={handlePaymentOption}
                 />
                 <label class="form-check-label" for="exampleRadios2">
                   Pay Via Khalti
@@ -239,9 +247,14 @@ const localCart = localStorage.getItem("cart")
         className="btn start order-btn"
         onClick={() => {
           if (paymentMethod === 'khalti') {
-            checkout.show({amount: 12000})
+
+            checkout.show({amount: totalC * 100})
+
+            
+
           } else {
             console.log("cod");
+            sendOrder()
           }
         }}
         > Place an Order</button>
