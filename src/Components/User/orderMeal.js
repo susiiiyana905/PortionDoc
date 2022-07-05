@@ -56,7 +56,6 @@ const localCart = localStorage.getItem("cart")
     axios
       .get("http://localhost:4001/profile", config)
       .then((result) => {
-        console.log(result.data);
         setAddress(result.data.address);
         setPhoneNo(result.data.phone_no);
         setID(result.data._id);
@@ -248,7 +247,11 @@ const localCart = localStorage.getItem("cart")
         className="btn start order-btn"
         onClick={() => {
           if (paymentMethod === 'khalti') {
+
             checkout.show({amount: totalC * 100})
+
+            
+
           } else {
             console.log("cod");
             sendOrder()
