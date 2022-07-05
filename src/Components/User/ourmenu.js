@@ -112,10 +112,10 @@ const Meals = () => {
               </div>
             </div>
           </div>
-          <div id="two">
-            <div class="d-flex">
+          <div className="container">
+            <form className="form-inline my-2 my-lg-0 search-box">
               <input
-                class="form-control me-2"
+                class="form-control mr-2"
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
@@ -123,7 +123,7 @@ const Meals = () => {
                 onChange={(e)=>searchMeal(e.target.value)}
               ></input>
               
-            </div>
+            </form>
             <div className="d-flex flex-column">
                 {meals.map((singleData)=>{
                   return(

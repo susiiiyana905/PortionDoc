@@ -512,13 +512,16 @@ margin-bottom:20px;
 
 #one
 {
-  margin-left: 90px;
+  margin-left: 20px;
 }
 
-#two
-{
-  margin-left: 600px;
-  margin-bottom: 20px;
+
+.search-box{
+  width: 320px;
+}
+.search-grocery{
+  width: 350px;
+  margin-left: 20px;
 }
 
 
