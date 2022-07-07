@@ -7,6 +7,7 @@ const res = require("express/lib/response");
 const Order = require("../models/orderModels");
 
 router.post("/order/insert", auth.verifyUser, async function (req, res) {
+  console.log("hello")
   const delivery = req.body.delivery;
   const total = req.body.total;
   const addToCart = req.body.addToCart;
