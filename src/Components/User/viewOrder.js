@@ -1,8 +1,54 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 import Footer from "../footer";
 import Header from "../header";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const ViewOrder = () => {
+  const [orderData, setOrderData] = useState([]);
+  const[_id, setID] = useState("");
+  const [message, setMessage] = useState("");
+  const navigate = useNavigate();
+
+  const config = {
+    headers: {
+      Authorization : "Bearer " + localStorage.getItem("userToken")
+    }
+  }
+
+  const {id} = useParams();
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:4001/order/user/get", config)
+      .then((result) => {
+        
+        setOrderData(result.data.data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }, []);
+
+
+  const deleteOrder = () => {
+  axios
+  .post("http://localhost:4001/order/cancel/" + id, config)
+  .then((result) => {
+    console.log(result.data.data);
+    if (result.data.success) {
+      localStorage.setItem("_id", result.data.data._id);
+      setMessage(result.data.message);
+      navigate("/", { state: { _id: result.data.data._id } });
+    }
+  })
+  .catch((e) => {
+    setMessage(e.response.data.message);
+  });
+};
+
   return (
     <>
       <Header></Header>
@@ -18,76 +64,58 @@ const ViewOrder = () => {
           </div>
         </div>
         <div className="container">
+        {orderData.map((singleData)=>{
+                        return(
           <div className="card">
-          <h4> Date: 2022/06/14</h4>
-            <div class="card mb-3" style={{height: "210px",marginRight:"70px ",marginTop:"20px", marginLeft:"70px" }}>
+         
+            <div class="card mb-3" style={{height: "200px",marginRight:"70px ",marginTop:"20px", marginLeft:"70px" }}>
           
               <div class="row no-gutters">
-                <div class="col-md-4">
-                  <img
-                    src="/images/1.png" height="180px" style={{marginTop:"10px", marginLeft:"10px"}}
-                  ></img>
-                </div>
                 <div class="col-md-8">
                   <div class="card-body">
                    
-                      <h5 class="card-title">Chicken Pizza</h5>
-                   
-                    <p class="card-text">Serving: 4</p>
+                  <p
+                        class="card-text"
+                        style={{ fontWeight: "bold", fontSize: "25px", color:"black" }}
+                      >
+                        <label class="text mr-5">
+                          Item Name: {
+                                    singleData.addToCart.map((item) => 
+                                      <p>{item.name}</p>)
+                                  }
+                        </label>
+                        <label
+                          class="text"
+                          style={{ float: "right", marginTop: "1px" }}
+                        >
+                          <i class="fas fa-solid fa-timer"></i>
+                          Quantity:   {
+                                    singleData.addToCart.map((item) => 
+                                      <p>{item.qty}</p>)
+                                  }
+                        </label>
+                      </p>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="card mb-3" style={{ height: "210px",marginRight:"70px ", marginTop:"10px", marginLeft:"70px" }}>
-              <div class="row no-gutters">
-                <div class="col-md-4">
-                  <img
-                    src="/images/1.png" height="180px" style={{marginTop:"10px", marginLeft:"10px"}}
-                  ></img>
-                </div>
-                <div class="col-md-8">
-                  <div class="card-body">
-                   
-                      <h5 class="card-title">Chicken Pizza</h5>
-                   
-                    <p class="card-text">Serving: 4</p>
-                    
-                   
-                  </div>
-                  
-                </div>
-              </div>
-            </div>
-            <div class="card mb-3" style={{ height: "210px",marginRight:"70px ", marginTop:"10px", marginLeft:"70px" }}>
-              <div class="row no-gutters">
-                <div class="col-md-4">
-                  <img
-                    src="/images/1.png" height="180px" style={{marginTop:"10px", marginLeft:"10px"}}
-                  ></img>
-                </div>
-                <div class="col-md-8">
-                  <div class="card-body">
-                   
-                      <h5 class="card-title">Chicken Pizza</h5>
-                   
-                    <p class="card-text">Serving: 4</p>
-                    
-                   
-                  </div>
-                  
-                </div>
-              </div>
-            </div>
+           
             <button
                         className="btn btn-danger"
-                        style={{marginBottom:"20px", marginLeft:"900px"}}
+                        style={{marginBottom:"20px", marginLeft:"800px", marginRight:"20px"}}
+                        onClick={deleteOrder}
                       >
                     Cancel Order
                       </button>
-           
+
+            
             </div>
+            )
+                            })}
             </div>
       </div>
+
+      <br/>
       <Footer></Footer>
     </>
   );
