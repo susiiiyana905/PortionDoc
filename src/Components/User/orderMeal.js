@@ -109,7 +109,6 @@ const localCart = localStorage.getItem("cart")
                   style={{ backgroundColor: "blue" }}
                   name="exampleRadios"
                   id="exampleRadios1"
-                  // value="Inside Ringroad"
                   value={delivery}
                   onChange={(e) => {
                     setDelivery(e.target.value);
