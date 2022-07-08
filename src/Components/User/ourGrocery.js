@@ -89,8 +89,8 @@ const Grocery = () => {
       </div>
       <div className="container">
         <div id="front">
-          <div id="two">
-            <div className="d-flex">
+          <div>
+            <div className="d-flex search-grocery">
               <input
                 className="form-control me-2"
                 type="search"
@@ -176,11 +176,11 @@ const Grocery = () => {
                     </p>
                   </div>
                   <div className="card-footer">
-                    <Link to="/cart">
+                   
                       <button className="btn sendMeal" onClick={()=> addCart(singleData)}>
                         Add To Cart
                       </button>
-                    </Link>
+                    
                   </div>
 
                   
@@ -236,10 +236,7 @@ const Grocery = () => {
                               </text>
                             </label>
                             <br />
-                            <label style={{ fontWeight: "bold" }}>
-                              Quantity:{" "}
-                              <text style={{ fontWeight: "normal" }}>{quantity}</text>
-                            </label>
+                            
                           </div>
                         </div>
                         <div class="modal-footer">
