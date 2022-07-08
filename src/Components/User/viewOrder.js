@@ -18,7 +18,7 @@ const ViewOrder = () => {
     }
   }
 
-  const {id} = useParams();
+  
 
   useEffect(() => {
     axios
@@ -33,20 +33,10 @@ const ViewOrder = () => {
   }, []);
 
 
-  const deleteOrder = () => {
+  const deleteOrder = (id) => {
+    console.log(id)
   axios
   .post("http://localhost:4001/order/cancel/" + id, config)
-  .then((result) => {
-    console.log(result.data.data);
-    if (result.data.success) {
-      localStorage.setItem("_id", result.data.data._id);
-      setMessage(result.data.message);
-      navigate("/", { state: { _id: result.data.data._id } });
-    }
-  })
-  .catch((e) => {
-    setMessage(e.response.data.message);
-  });
 };
 
   return (
@@ -103,7 +93,9 @@ const ViewOrder = () => {
             <button
                         className="btn btn-danger"
                         style={{marginBottom:"20px", marginLeft:"800px", marginRight:"20px"}}
-                        onClick={deleteOrder}
+                        onClick={() => {
+                          deleteOrder(singleData._id);
+                        }}
                       >
                     Cancel Order
                       </button>
@@ -112,7 +104,9 @@ const ViewOrder = () => {
             </div>
             )
                             })}
+                            
             </div>
+          
       </div>
 
       <br/>
