@@ -4,6 +4,7 @@ import Footer from "../footer";
 import { useParams } from "react-router-dom";
 import React from "react"
 import Header from "../header";
+import { addToCart } from "./product_functions";
 
 const ViewRecipe = () => {
   const [mealImage, setMealImage] = useState([]);
@@ -17,6 +18,7 @@ const ViewRecipe = () => {
   const [ingredientData, setIngredientData] = useState([]);
   const [message, setMessage] = useState("");
   const [serving, setServing] = useState(1);
+  const [mealPrice, setMealPrice] = useState(0);
 
   const config = {
     headers: {
@@ -24,6 +26,17 @@ const ViewRecipe = () => {
     },
   };
   const { mid } = useParams();
+
+  const addCart = () => {
+    const data = {
+      _id: mid,
+      image: "http://localhost:4001/meal/" + mealImage,
+      name: mealName,
+      price: mealPrice,
+    }
+    addToCart(data, serving)
+  }
+
   useEffect(() => {
     axios
       .get("http://localhost:4001/meals/single/view/" + mid, config)
@@ -31,6 +44,7 @@ const ViewRecipe = () => {
         console.log(result.data.data);
         setMealImage(result.data.data.mealImage);
         setMealName(result.data.data.mealName);
+        setMealPrice(result.data.data.mealPrice);
         setMealDescription(result.data.data.mealDescription);
         setSteps(result.data.data.steps);
         setMealCategory(result.data.data.mealCategory);
@@ -166,6 +180,7 @@ const ViewRecipe = () => {
        
           <button
             className="btn cart"
+            onClick={addCart}
             >
             Add To Cart
           </button>
