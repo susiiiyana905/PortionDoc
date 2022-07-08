@@ -27,7 +27,7 @@ const OrderSchema = new mongoose.Schema({
         image: {
             type: String,
             default: "",
-            required: true
+            
         },
         name: {
             type: String,
