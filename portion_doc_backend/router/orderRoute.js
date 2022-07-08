@@ -7,10 +7,12 @@ const res = require("express/lib/response");
 const Order = require("../models/orderModels");
 
 router.post("/order/insert", auth.verifyUser, async function (req, res) {
+  console.log("hello")
+  console.log(req.body.addToCart)
   const delivery = req.body.delivery;
   const total = req.body.total;
   const addToCart = req.body.addToCart;
-  console.log(req.body);
+  // console.log(req.body);
   const data = new Order({
     delivery: delivery,
     total: total,
@@ -18,7 +20,7 @@ router.post("/order/insert", auth.verifyUser, async function (req, res) {
     user_id: req.userInfo._id,
   });
 
-  console.log(data);
+  // console.log(data);
 
   data
     .save()
@@ -46,7 +48,18 @@ router.get("/order/get", auth.verifyAdmin, async function (req, res) {
 
 //for user
 router.get("/order/user/get", auth.verifyUser, async function (req, res) {
-  const data = await Order.find();
+ console.log(req.userInfo._id)
+  const data = await Order.find({
+    user_id:  req.userInfo._id
+  });
+  res.json({ success: true, message: "Order Data", data: data });
+});
+
+//for user
+router.post("/order/cancel/:id", auth.verifyUser, async function (req, res) {
+  const data = await Order.findById(req.params.id)
+  data.status='Cancel';
+  await data.save()
   res.json({ success: true, message: "Order Data", data: data });
 });
 

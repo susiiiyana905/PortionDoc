@@ -141,8 +141,11 @@ const ViewOrders = () => {
                                   }
                                 </td>
                               <td colSpan="6" style={{"textAlign":"center"}}> 
-                              
-                              <p>{singleData.serving} </p>
+                              {
+                                    singleData.addToCart.map((item) => 
+                                      <p>{item.qty}</p>)
+                                  }
+                             
                               
                               </td>
                               <td colSpan="6">{singleData.total} </td>
