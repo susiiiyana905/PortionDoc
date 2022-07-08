@@ -111,9 +111,10 @@ const ViewRecipe = () => {
           </div>
           <div id="two">
           <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
-            <h6 style={{marginRight:"20px", marginTop:"15px"}}>Serving Amount</h6>
-            <button onClick={()=>{ setServing(1) }} type="button" class="btn btn-success serving">2</button>
-            <button onClick={()=>{ setServing(2) }} type="button" class="btn btn-success serving">4</button>
+            <h6 style={{marginLeft:"20px", marginTop:"15px"}}>Serving Amount </h6>
+            <button onClick={()=>{ setServing(1) }} type="button" class="btn btn-success serving">1</button>
+            <button onClick={()=>{ setServing(2) }} type="button" class="btn btn-success serving">2</button>
+            <button onClick={()=>{ setServing(4) }} type="button" class="btn btn-success serving">4</button>
           </div>
           </div>
         </div>
