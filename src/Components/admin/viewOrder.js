@@ -134,13 +134,13 @@ const ViewOrders = () => {
                               <td colSpan="2"> {singleData.user_id.firstName} {singleData.user_id.lastName}</td>
                               <td colSpan="6"> {singleData.user_id.address} </td>
                               <td colSpan="6"> {singleData.user_id.phone_no} </td>
-                              <td colSpan="6">
+                              <td colSpan="6" style={{fontSize:"12px"}}>
                                 {
                                     singleData.addToCart.map((item) => 
                                       <p>{item.name}</p>)
                                   }
                                 </td>
-                              <td colSpan="6" style={{"textAlign":"center"}}> 
+                              <td colSpan="6" style={{fontSize:"12px"}}> 
                               {
                                     singleData.addToCart.map((item) => 
                                       <p>{item.qty}</p>)

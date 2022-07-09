@@ -118,7 +118,7 @@ router.get("/diet/single/:did", auth.verifyAdmin, function (req, res) {
         });
     })
     .catch((e)=>{
-        res.status(400).send({message: e});
+        // res.status(400).send({message: e});
     })
     })
     router.get('/diet/all', auth.verifyAdmin, async(req,res)=>{
