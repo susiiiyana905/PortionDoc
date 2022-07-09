@@ -9,7 +9,7 @@ const AddMeal = () => {
   const [mealPrice, setMealPrice] = useState("");
   const [mealDescription, setMealDescription] = useState("");
   const [time, setTime] = useState("");
-  const [mealCategory, setMealCategory] = useState("Veg");
+  const [mealCategory, setMealCategory] = useState("");
   const [calory, setCalory] = useState("");
   const [difficulty, setDifficulty] = useState("Difficult");
   const [steps, setSteps] = useState([]);
@@ -174,7 +174,7 @@ const AddMeal = () => {
                   onChange={(e) => setMealCategory(e.target.value)}
                 >
                   {categoryData.map((category) => {
-                    return <option value="Veg">{category.categoryName}</option>;
+                    return <option value={category.categoryName}>{category.categoryName}</option>;
                   })}
                 </select>
               </div>
