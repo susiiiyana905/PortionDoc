@@ -4,6 +4,7 @@ import React, { Component, useEffect, useState } from "react";
 import Header from "../header";
 import khaltiConfig  from "../khalti/khaltiConfig";
 import KhaltiCheckout from "khalti-checkout-web";
+import { NavLink } from "react-router-dom";
 
 const OrderMeal = () => {
   const [delivery, setDelivery] = useState("");
@@ -242,6 +243,7 @@ const localCart = localStorage.getItem("cart")
           </div>
         </div>
         <div className="col-md-6 d-flex justify-content-center mx-auto ">
+          <NavLink to = {"/"}>
         <button 
         className="btn start order-btn"
         onClick={() => {
@@ -256,7 +258,9 @@ const localCart = localStorage.getItem("cart")
             sendOrder()
           }
         }}
-        > Place an Order</button>
+        > Place an Order
+        </button>
+        </NavLink>
         </div>
       </div>
     </>

@@ -91,7 +91,6 @@ const ViewOrder = () => {
                   </div>
                 </div>
 
-
                 {singleData.status === "Cancel" ?
                   <button
                     className="btn btn-danger"
