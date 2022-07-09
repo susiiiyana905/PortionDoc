@@ -32,6 +32,7 @@ const ViewOrder = () => {
       });
   }, []);
 
+
   const deleteOrder = (id) => {
     console.log(id)
     axios
@@ -89,13 +90,11 @@ const ViewOrder = () => {
                     </div>
                   </div>
                 </div>
-           
+
                 {singleData.status === "Cancel" ?
                   <button
                     className="btn btn-danger"
                     style={{ marginBottom: "20px", marginLeft: "800px", marginRight: "20px" }}
-
-
                   >
                     Order Canceled
                   </button> :

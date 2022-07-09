@@ -48,7 +48,7 @@ router.get("/order/get", auth.verifyAdmin, async function (req, res) {
 
 //for user
 router.get("/order/user/get", auth.verifyUser, async function (req, res) {
-//  console.log(req.userInfo._id)
+ console.log(req.userInfo._id)
   const data = await Order.find({
     user_id:  req.userInfo._id
   });
@@ -56,6 +56,7 @@ router.get("/order/user/get", auth.verifyUser, async function (req, res) {
 });
 
 //for user
+
 
 // router.post("/order/cancel/:id", auth.verifyUser, async function (req, res) {
 //   try {
@@ -69,6 +70,7 @@ router.get("/order/user/get", auth.verifyUser, async function (req, res) {
 //     res.json(error)
 //   }
 
+
 // router.post("/order/cancel/:id", auth.verifyUser, async function (req, res) {
 //   const data = await Order.findById(req.params.id)
 //   data.status='Cancel';
@@ -81,7 +83,6 @@ router.post("/order/cancel", auth.verifyUser, async function (req, res) {
   .then(()=>{
     res.json({ success: true, message: "Order Data"});
   })
-
 });
 
 
