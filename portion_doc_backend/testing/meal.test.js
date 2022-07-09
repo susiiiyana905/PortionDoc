@@ -49,12 +49,12 @@ describe('Meals Schema test anything',() =>{
 
     //update meal
     it('to test the update', async() =>{
-        return Meal.findOneAndUpdate({_id :Object("6288dfd43d7db2c146b45a93")},
-        {$set : {mealCategory:"Vegan"}})
+        return Meal.findOneAndUpdate({_id :Object("62c9aa9160b2e7ae5d82618d")},
+        {$set : {mealCategory:"Non-Vegetarian"}})
         .then(()=>{
-            return(Meal.findOne({_id : Object('6288dfd43d7db2c146b45a93')}))
+            return(Meal.findOne({_id : Object('62c9aa9160b2e7ae5d82618d')}))
             .then((un)=>{
-                expect(un.mealCategory).toEqual('Vegan')
+                expect(un.mealCategory).toEqual('Non-Vegetarian')
             })
         })
     });
