@@ -1,0 +1,4 @@
+__v,_id,calory,createdAt,difficulty,mealCategory,mealDescription,mealImage,mealName,mealPrice,steps,time,updatedAt
+0,62c9aafc01b1880df4b96038,650kcal,2022-07-09T16:21:16.614Z,Medium,Vegetarian,This is a salad. This salad is made from tofu,c1.png,Tofu Salad,Rs.1200,[],45min,2022-07-09T16:21:16.614Z
+0,62c9b7f6c0a1976a9d1ccfc4,650kcal,2022-07-09T17:16:38.243Z,Easy,Non-Vegetarian,This is a Pizza. This salad is made from different vegetables.,c1.png,Pizza,Rs.350,[],30min,2022-07-09T17:16:38.243Z
+0,62c9b821e37c885dfb8e1718,650kcal,2022-07-09T17:17:21.758Z,Easy,Non-Vegetarian,This is a momo. This salad is made from flour and minced chicken,c1.png,Chicken Momo,Rs.120,[],30min,2022-07-09T17:17:21.758Z
