@@ -1,0 +1,8 @@
+__v,_id,address,admin,bio,createdAt,dob,email,firstName,gender,lastName,password,phone,phone_no,profile_pic,updatedAt,verified
+0,6281c61a0fa028d0349ec7db,Baneshwor,true,,2022-05-16T03:33:46.521Z,,portiondoc77@gmail.com,Sadikshya,,Shrestha,$2a$10$y/qdPi4hAu8rINxUADrccu4MaBJyFGQhPYxh5O6Yv9NSqLex2VmaS,9874578582,,,2022-05-16T03:35:58.445Z,true
+0,6285d92f3259c67fd10eb20b,kathmandu,false,Food Lover,2022-05-19T05:44:15.053Z,2001-02-08,sadikshyasht123@gmail.com,Sadixya,Female,Shrestha,$2a$10$QJ4CgRdJiZ6iFt6B0TvRs./o6ayRiziTveteenfzJKcr0KhqRgPdS,,9876543251,1653990244112pro.jpg,2022-05-31T09:45:13.889Z,true
+0,62887089f922a303a233c6b9,,false,,2022-05-21T04:54:33.997Z,,susiyanashrestha448@gmail.com,bkesh,,thapa,$2a$10$TvXnrTfoaOclXmDy7WkA0.br1NEUVrSmPVKDuadN3SCJrYTuONkRS,,,profilePic.png,2022-05-21T04:54:33.997Z,false
+0,6289b89b81b2bbac4281fb58,,false,,2022-05-22T04:14:19.725Z,,test1@gmail.com,test,,test,$2a$10$5PICo6NwCKjQ/KDi/O9QkeVKhrNRJKzYmBRQ3iIdecI4KTb.1yoFe,,,profilePic.png,2022-05-22T04:14:19.725Z,false
+0,629ebadbe62d52aac61d956b,Bhaktapur,false,Love to eat,2022-06-07T02:41:31.505Z,2022-06-28,shtsadikshya28@gmail.com,Sarah,Female,Shrestha,$2a$10$HUa0Epr2K/APVpxlPtF7eeewxiBHSG4qbaQ9NJ5806ES6oVBvEC0W,,9876543251,1657346694226images.jpg,2022-07-09T06:04:54.235Z,true
+0,62a6a12885d8b8dd40ac3cb6,Naxal,false,Love to eat,2022-06-13T02:30:00.044Z,,sammystha123444@gmail.com,Sambhav,,Shrestha,$2a$10$QWvnz.HIPmQJRgB9qXee8e6zDV.ht2VrYsfgIGSjcSHtzJqSE/0u2,,9685745145,1657346433933download.jpg,2022-07-09T06:01:16.142Z,true
+0,62aa884610eb951497d7d99f,kathmandu,false,,2022-06-16T01:32:54.961Z,,sambhavstha1233@gmail.com,Sadikshya,Female,Shrestha,$2a$10$mBnobSon4PCfKaZihd/ssOP/m.tGcdAOFY8TzEaVqJFc10IsAGMxW,,9874563214,profilePic.png,2022-06-29T07:04:21.700Z,true
