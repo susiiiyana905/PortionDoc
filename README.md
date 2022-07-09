@@ -1,1 +1,2 @@
-![My Image](Screenshot/1.jpg)
+# Images
+![My Image](Screenshot/1.JPG)
