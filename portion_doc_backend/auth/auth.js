@@ -10,6 +10,7 @@ module.exports.verifyUser = function (req, res, next) {
     // console.log("try");
     User.findOne({ _id: uData.userId })
       .then(function (userData) {
+        console.log(userData)
         if (userData.admin == false) {
           req.userInfo = userData;
           next();

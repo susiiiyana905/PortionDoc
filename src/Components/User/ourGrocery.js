@@ -22,7 +22,7 @@ const Grocery = () => {
   const addCart = (item) => {
     const data = {
       _id: item._id,
-      // image: "http://localhost:4001/meal/" + item.mealImage,
+      image: "http://localhost:4001/meal/" + item.mealImage,
       name: item.groceryName,
       price: item.groceryPrice,
       type: 'grocery'
@@ -190,19 +190,19 @@ const Grocery = () => {
           );
         })}
       </div>
-      <div
+      {/* <div
                     class="modal fade"
                     id="exampleModal"
                     tabindex="-1"
                     aria-labelledby="exampleModalLabel"
                     aria-hidden="true"
-                  >
+                  > */}
                     {/* {singleGroceryData.map((singleData)=>{
                           return( */}
-                    <div class="modal-dialog">
+                    {/* <div class="modal-dialog">
                     
-                            <div class="modal-content">
-                        
+                            <div class="modal-content"> */}
+{/*                         
                         <div class="modal-header">
                           <img
                             src={
@@ -251,13 +251,13 @@ const Grocery = () => {
                             Add to cart
                           </button>
                           
-                        </div>
-                      </div>
+                        </div> */}
+                      {/* </div> */}
                         
                       
-                    </div>
+                    {/* </div>
                     
-                  </div>
+                  </div> */}
 
       <Footer></Footer>
     </>
