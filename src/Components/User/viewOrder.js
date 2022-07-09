@@ -33,8 +33,8 @@ const ViewOrder = () => {
   }, []);
 
 
-  const deleteOrder = () => {
-  axios
+  const deleteOrder = async (id) => {
+  await axios
   .post("http://localhost:4001/order/cancel/" + id, config)
   .then((result) => {
     console.log(result.data.data);
@@ -103,7 +103,7 @@ const ViewOrder = () => {
             <button
                         className="btn btn-danger"
                         style={{marginBottom:"20px", marginLeft:"800px", marginRight:"20px"}}
-                        onClick={deleteOrder}
+                        onClick={() => deleteOrder(singleData._id)}
                       >
                     Cancel Order
                       </button>

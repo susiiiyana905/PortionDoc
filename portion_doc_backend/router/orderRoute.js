@@ -48,7 +48,7 @@ router.get("/order/get", auth.verifyAdmin, async function (req, res) {
 
 //for user
 router.get("/order/user/get", auth.verifyUser, async function (req, res) {
- console.log(req.userInfo._id)
+//  console.log(req.userInfo._id)
   const data = await Order.find({
     user_id:  req.userInfo._id
   });
@@ -57,10 +57,16 @@ router.get("/order/user/get", auth.verifyUser, async function (req, res) {
 
 //for user
 router.post("/order/cancel/:id", auth.verifyUser, async function (req, res) {
-  const data = await Order.findById(req.params.id)
-  data.status='Cancel';
-  await data.save()
+  // try {
+    const data = await Order.findOne({ _id: req.params.id })
+  // data.status='Cancel';
+  // await data.save()
+  console.log(data);
   res.json({ success: true, message: "Order Data", data: data });
+  // } catch (error) {
+  //   console.log(error);
+  //   res.json(error)
+  // }
 });
 
 
