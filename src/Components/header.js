@@ -117,6 +117,11 @@ class Header extends Component {
                       </Link>
                     </li>
                     <li>
+                      <Link className="dropdown-item" to="/user/viewOrder">
+                        Orders
+                      </Link>
+                    </li>
+                    <li>
                       <button className="dropdown-item" onClick={logout} to="#">
                         Logout
                       </button>
