@@ -40,7 +40,7 @@ const ViewReview =()=>{
                                  <div class="card-body">
                              <h5>{singleData.subject}</h5>
                              <p>{singleData.reviewMessage}</p>
-                             <p>Date: 11/09/2021</p>
+                             
                          </div>
                          </div>
                          </div>

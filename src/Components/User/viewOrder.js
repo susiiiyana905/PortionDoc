@@ -58,7 +58,7 @@ const ViewOrder = () => {
             return (
               <div className="card">
 
-                <div class="card mb-3" style={{ height: "200px", marginRight: "70px ", marginTop: "20px", marginLeft: "70px" }}>
+                <div class="card mb-3" style={{ height: "300px", marginRight: "70px ", marginTop: "20px", marginLeft: "70px" }}>
 
                   <div class="row no-gutters">
                     <div class="col-md-8">
@@ -66,10 +66,10 @@ const ViewOrder = () => {
 
                         <p
                           class="card-text"
-                          style={{ fontWeight: "bold", fontSize: "25px", color: "black" }}
+                          style={{fontSize: "25px", color: "black" }}
                         >
                           <label class="text mr-5">
-                            Item Name: {
+                           <span style={{fontWeight:"bold"}}>Item Name:</span>  {
                               singleData.addToCart.map((item) =>
                                 <p>{item.name}</p>)
                             }
@@ -79,7 +79,7 @@ const ViewOrder = () => {
                             style={{ float: "right", marginTop: "1px" }}
                           >
                             <i class="fas fa-solid fa-timer"></i>
-                            Quantity:   {
+                            <span style={{fontWeight:"bold"}}>Quantity: </span>   {
                               singleData.addToCart.map((item) =>
                                 <p>{item.qty}</p>)
                             }
