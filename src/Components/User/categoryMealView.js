@@ -4,10 +4,14 @@ import { useEffect, useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
 import Footer from "../footer";
 import Header from "../header";
+import { addToCart } from "./product_functions";
 
 const CategoryMeal = () => {
   const [mealData, setMealData] = useState([]);
   const [categoryData, setCategoryData] = useState([]);
+  const localCart = localStorage.getItem("cart")
+  const [cartData, setCartData] = ('');
+  const [cart, setCart] = useState([]);
   const config = {
     headers: {
       Authorization: "Bearer " + localStorage.getItem("userToken"),
@@ -26,6 +30,22 @@ const CategoryMeal = () => {
         console.log(e);
       });
   }, []);
+
+  const addCart = (item) => {
+    const data = {
+      _id: item._id,
+      image: "http://localhost:4001/meal/" + item.mealImage,
+      name: item.mealName,
+      price: item.mealPrice,
+    }
+    addToCart(data, 1)
+  }
+
+  //add to localstorage
+
+  useEffect(() => {
+    localStorage.setItem('lists', JSON.stringify(cart))
+  }, [cart]);
   return (
     <>
       <Header></Header>
@@ -74,7 +94,7 @@ const CategoryMeal = () => {
                     </div>
                 </NavLink>
                 <div className="card-footer">
-                <button className="btn sendMeal">Add To Cart</button>
+                <button className="btn sendMeal" onClick={() => addCart(singleData)}>Add To Cart</button>
                 </div>
               </div>
               </div>
