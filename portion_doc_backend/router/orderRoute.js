@@ -56,13 +56,19 @@ router.get("/order/user/get", auth.verifyUser, async function (req, res) {
 });
 
 //for user
-router.post("/order/cancel/:id", auth.verifyUser, async function (req, res) {
-  const data = await Order.findById(req.params.id)
-  data.status='Cancel';
-  await data.save()
-  res.json({ success: true, message: "Order Data", data: data });
-});
+// router.post("/order/cancel/:id", auth.verifyUser, async function (req, res) {
+//   const data = await Order.findById(req.params.id)
+//   data.status='Cancel';
+//   await data.save()
+//   res.json({ success: true, message: "Order Data", data: data });
+// });
 
+router.post("/order/cancel", auth.verifyUser, async function (req, res) {
+  Order.findByIdAndUpdate(req.body.id,{status:'Cancel'})
+  .then(()=>{
+    res.json({ success: true, message: "Order Data"});
+  })
+});
 
 
 router.get("/order/single/:oid", auth.verifyAdmin, function(req,res){

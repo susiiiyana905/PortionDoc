@@ -134,7 +134,7 @@ const ViewRecipe = () => {
                     </div>
                     <div class="col-md-4 ml-3">
                       <div class="body">
-                        <label className="m-0 mt-3">{parseInt(singleData.quantity)*serving}</label>
+                        <label className="m-0 mt-3">{parseInt(singleData.quantity)*serving} {singleData.quantity.split(" ")[1]}</label>
                         <br/>
                         <label className="m-0">{singleData.name}</label>
                       </div>
